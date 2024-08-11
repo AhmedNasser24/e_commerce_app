@@ -1,0 +1,15 @@
+{
+    "name" : "name",
+    "register" : "register",
+    "login" : "login",
+    "email" : "email",
+    "password" : "password",
+    "passwordConfirm" : "passwordConfirm",
+    "whatsapp_number" : "whatsapp_number",
+    "required_field" : "required_field",
+    "phone_number_must_be_at_least_11_characters" : "phone_number_must_be_at_least_11_characters",
+    "passwords_do_not_match"   : "passwords_do_not_match",
+    "account_kind" : "account_kind",
+    "trader" : "trader",
+    "customer" : "customer"
+}
