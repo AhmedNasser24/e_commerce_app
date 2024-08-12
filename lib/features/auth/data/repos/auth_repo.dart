@@ -1,8 +1,10 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../utils/errors/failure.dart';
+import '../models/login_model.dart';
+import '../models/register_model.dart';
 
 abstract class AuthRepo {
-  Future < Either < void , Failure >> login (String email , String password);
-  Future < Either < void , Failure >> register (String name , String email , String password , String whatsappNumber , String accountKind);
+  Future<Either<void, Failure>> login(LoginModel loginModel);
+  Future<Either<void, Failure>> register(RegisterModel registerModel);
 }
