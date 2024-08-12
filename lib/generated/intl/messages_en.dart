@@ -35,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone_number_must_be_at_least_11_characters":
             MessageLookupByLibrary.simpleMessage(
                 "phone_number_must_be_at_least_11_characters"),
+        "please_check_your_email_for_verification":
+            MessageLookupByLibrary.simpleMessage(
+                "please check your email for verification"),
         "register": MessageLookupByLibrary.simpleMessage("register"),
         "required_field":
             MessageLookupByLibrary.simpleMessage("required_field"),

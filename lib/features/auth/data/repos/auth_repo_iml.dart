@@ -9,11 +9,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepoIml extends AuthRepo {
   @override
-  Future<Either<void, Failure>> login(LoginModel loginModel) async {
+  Future<Either<void, Failure>> login({required LoginModel loginModel}) async {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: loginModel.email, password: loginModel.password);
-        
+      await credential.user!.sendEmailVerification();
       return left(null);
     } on FirebaseAuthException catch (e) {
       return right(FireBaseFailure.fromAuthException(e));
@@ -23,7 +23,8 @@ class AuthRepoIml extends AuthRepo {
   }
 
   @override
-  Future<Either<void, Failure>> register(RegisterModel registerModel) async {
+  Future<Either<void, Failure>> register(
+      {required RegisterModel registerModel}) async {
     try {
       final credential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -38,7 +39,7 @@ class AuthRepoIml extends AuthRepo {
     }
   }
 
-  Future < Either < void , Failure >> signOut () async {
+  Future<Either<void, Failure>> signOut() async {
     try {
       await FirebaseAuth.instance.signOut();
       return left(null);

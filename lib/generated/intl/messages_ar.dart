@@ -35,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone_number_must_be_at_least_11_characters":
             MessageLookupByLibrary.simpleMessage(
                 "رقم الهاتف يجب الا يقل عن 11 رقم"),
+        "please_check_your_email_for_verification":
+            MessageLookupByLibrary.simpleMessage(
+                "يرجى التحقق من بريدك الالكتروني لتأكيد الحساب"),
         "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "required_field":
             MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),

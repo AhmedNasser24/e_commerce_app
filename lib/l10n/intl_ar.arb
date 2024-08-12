@@ -11,5 +11,6 @@
    "passwords_do_not_match" : "كلمات المرور غير متطابقة",
    "account_kind" : "نوع الحساب",
    "trader" : "تاجر",
-   "customer" : "عميل"
+   "customer" : "عميل",
+   "please_check_your_email_for_verification" : "يرجى التحقق من بريدك الالكتروني لتأكيد الحساب"
 }

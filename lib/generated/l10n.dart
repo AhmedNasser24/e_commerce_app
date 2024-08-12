@@ -179,6 +179,16 @@ class S {
       args: [],
     );
   }
+
+  /// `please check your email for verification`
+  String get please_check_your_email_for_verification {
+    return Intl.message(
+      'please check your email for verification',
+      name: 'please_check_your_email_for_verification',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

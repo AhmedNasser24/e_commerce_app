@@ -3,36 +3,35 @@ import 'package:flutter/material.dart';
 
 class Failure {
   final String errMessage;
-  Failure(this.errMessage);
+  const Failure(this.errMessage);
 }
 
 class FireBaseFailure extends Failure {
-  FireBaseFailure(super.errMessage);
+  const FireBaseFailure(super.errMessage);
 
   factory FireBaseFailure.fromAuthException(FirebaseAuthException e) {
     if (e.code == 'invalid-email') {
       debugPrint(e.code);
-      return (FireBaseFailure(
-          'Invalid email , email should be : email_name@*****.com'));
+      return const FireBaseFailure(
+          'Invalid email , email should be : email_name@*****.com');
     } else if (e.code == 'weak-password') {
       debugPrint(e.code);
-      return (FireBaseFailure('The password provided is too weak'));
+      return const FireBaseFailure('The password provided is too weak');
     } else if (e.code == 'email-already-in-use') {
       debugPrint(e.code);
-      return (FireBaseFailure('This email is already exist'));
+      return const FireBaseFailure('This email is already exist');
     } else if (e.code == 'network-request-failed') {
       debugPrint(e.code);
-      return (FireBaseFailure('please check your internet connection'));
+      return const FireBaseFailure('please check your internet connection');
     } else if (e.code == 'invalid-credential') {
       debugPrint(e.code);
-      return (FireBaseFailure('Email Not Found'));
+      return const FireBaseFailure('Email Not Found');
     } else if (e.code == 'invalid-email') {
       debugPrint(e.code);
-      return (FireBaseFailure(
-          'invalid email , email should be: email_name@*****.com'));
+      return const FireBaseFailure('invalid email , email should be: email_name@*****.com');
     } else {
       debugPrint(e.code);
-      return (FireBaseFailure('unknown input'));
+      return const FireBaseFailure('unknown input');
     }
   }
 }
