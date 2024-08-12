@@ -6,12 +6,12 @@ import '../../../../utils/core/img_picker.dart';
 import 'widgets/login_body.dart';
 
 class LoginView extends StatelessWidget {
-  const LoginView ({super.key});
-
+  const LoginView ({super.key, required this.changeAppLanguage});
+  final void Function(Locale) changeAppLanguage;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: const LoginBody(),
+      body:  LoginBody(changeAppLanguage:changeAppLanguage),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           String? path = await imgPicker();

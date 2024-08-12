@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../../../../../../generated/l10n.dart';
 import '../../../../../utils/core/app_style.dart';
@@ -10,18 +11,27 @@ import 'navigate_to_register_view.dart';
 import 'title_text.dart';
 
 class LoginBody extends StatefulWidget {
-  const LoginBody({super.key});
-
+  const LoginBody({super.key, required this.changeAppLanguage});
+  final void Function(Locale) changeAppLanguage;
   @override
   State<LoginBody> createState() => _LoginBodyState();
 }
 
 class _LoginBodyState extends State<LoginBody> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  bool isLoading = false;
+  void loading(bool isLoading1) {
+    setState(() {
+      isLoading = !isLoading1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
-        key: formKey,
+      key: formKey,
+      child: ModalProgressHUD(
+        inAsyncCall: isLoading,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: SingleChildScrollView(
@@ -36,23 +46,42 @@ class _LoginBodyState extends State<LoginBody> {
                   child: TitleText(title: S.of(context).login),
                 ),
                 const Gap(50),
-                Text(S.of(context).email , style: AppStyle.medium14),
+                Text(S.of(context).email, style: AppStyle.medium14),
                 const Gap(5),
                 const LoginEmail(),
                 const Gap(10),
-                Text(S.of(context).password , style: AppStyle.medium14),
+                Text(S.of(context).password, style: AppStyle.medium14),
                 const Gap(5),
                 const LoginPassword(),
                 const Gap(50),
                 Align(
                   alignment: Alignment.center,
                   child: LoginButton(formKey: formKey),
-                ), 
+                ),
+                TextButton(
+                  onPressed: () {
+                    // loading(isLoading);
+                    // await S.load(const Locale('ar'));
+                    // loading(isLoading);
+                    widget.changeAppLanguage(const Locale('ar'));
+                  },
+                  child: const Text('ar', style: AppStyle.medium14),
+                ),
+                TextButton(
+                  onPressed: () {
+                    widget.changeAppLanguage(const Locale('en'));
+
+                    //   loading(isLoading);
+                    //   await S.load(const Locale('en'));
+                    //   loading(isLoading);
+                  },
+                  child: const Text('aen', style: AppStyle.medium14),
+                ),
               ],
             ),
           ),
         ),
-      
+      ),
     );
   }
 }

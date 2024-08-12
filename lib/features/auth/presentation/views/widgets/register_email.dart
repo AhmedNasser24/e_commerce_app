@@ -17,7 +17,7 @@ class _RegisterEmailState extends State<RegisterEmail> {
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
-      hintText: 'email' , //  S.of(context).email,
+      hintText:  S.of(context).email,
       onChanged: (value) => email = value,
       validator: (value) {
         if (value == null || value.isEmpty) {

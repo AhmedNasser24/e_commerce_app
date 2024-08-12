@@ -1,0 +1,15 @@
+{
+   "name" : "الاسم",
+   "register" : "تسجيل", 
+   "login" : "تسجيل الدخول",
+   "email" : "البريد الالكتروني",
+   "password" : "كلمة المرور",
+   "passwordConfirm" : "تأكيد كلمة المرور",
+   "whatsapp_number" : "رقم الواتساب",
+   "required_field" : "هذا الحقل مطلوب",
+   "phone_number_must_be_at_least_11_characters" : "رقم الهاتف يجب الا يقل عن 11 رقم",
+   "passwords_do_not_match" : "كلمات المرور غير متطابقة",
+   "account_kind" : "نوع الحساب",
+   "trader" : "تاجر",
+   "customer" : "عميل"
+}

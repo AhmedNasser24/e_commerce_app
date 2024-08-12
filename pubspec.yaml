@@ -39,6 +39,7 @@ dependencies:
   flutter_localization: ^0.2.1
   gap: ^3.0.1
   image_picker: ^1.1.2
+  modal_progress_hud_nsn: ^0.5.1
   path: ^1.9.0
 
 dev_dependencies:
