@@ -16,7 +16,7 @@ class _WhatsAppNumberState extends State<WhatsAppNumber> {
   String number = '';
   @override
   Widget build(BuildContext context) {
-    return CustomTextFormField(hintText: '' ,//S.of(context).whats_app_number,
+    return CustomTextFormField(hintText: S.of(context).whatsapp_number,
     keyboardType: TextInputType.phone,
     onChanged: (value) => number = value,
     validator: (value) {

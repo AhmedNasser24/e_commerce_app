@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../../utils/core/app_style.dart';
+import 'account_kind.dart';
 import 'password_and_confirm_password.dart';
 import 'register_button.dart';
 import 'register_email.dart';
@@ -51,10 +52,10 @@ class _RegisterBodyState extends State<RegisterBody> {
                 Text(S.of(context).whatsapp_number , style : AppStyle.medium14),
                 const Gap(5),
                 const WhatsAppNumber(),
-                // const Gap(10),
-                // Text(S.of(context).account_kind),
-                // const Gap(5),
-                // const AccountKind(),
+                const Gap(10),
+                Text(S.of(context).account_kind),
+                const Gap(5),
+                const AccountKind(),
                 const Gap(50),
                 Align(
                   alignment: Alignment.center,

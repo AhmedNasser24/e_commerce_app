@@ -20,6 +20,7 @@ class _PasswordAndConfirmPasswordState extends State<PasswordAndConfirmPassword>
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomTextFormField(hintText: S.of(context).password,
         onChanged: (value) => password = value,
@@ -32,9 +33,7 @@ class _PasswordAndConfirmPasswordState extends State<PasswordAndConfirmPassword>
         ),
         
         const Gap(10),
-        Align(
-            alignment: Alignment.centerRight,
-            child: Text(S.of(context).passwordConfirm)),
+        Text(S.of(context).passwordConfirm),
         const Gap(5),
         CustomTextFormField(hintText: S.of(context).passwordConfirm,
         onChanged: (value) => confirmPassword = value,
