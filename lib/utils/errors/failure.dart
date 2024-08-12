@@ -23,6 +23,13 @@ class FireBaseFailure extends Failure {
     } else if (e.code == 'network-request-failed') {
       debugPrint(e.code);
       return (FireBaseFailure('please check your internet connection'));
+    } else if (e.code == 'invalid-credential') {
+      debugPrint(e.code);
+      return (FireBaseFailure('Email Not Found'));
+    } else if (e.code == 'invalid-email') {
+      debugPrint(e.code);
+      return (FireBaseFailure(
+          'invalid email , email should be: email_name@*****.com'));
     } else {
       debugPrint(e.code);
       return (FireBaseFailure('unknown input'));
