@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../../utils/core/app_style.dart';
+import '../../../data/models/login_model.dart';
 import 'login_button.dart';
 import 'login_email.dart';
 import 'login_password.dart';
@@ -16,7 +17,7 @@ class LoginBody extends StatefulWidget {
 
 class _LoginBodyState extends State<LoginBody> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  
+  LoginModel loginModel = LoginModel();
 
   @override
   Widget build(BuildContext context) {
@@ -38,17 +39,16 @@ class _LoginBodyState extends State<LoginBody> {
               const Gap(50),
               Text(S.of(context).email, style: AppStyle.medium14),
               const Gap(5),
-              const LoginEmail(),
+              LoginEmail(loginModel: loginModel),
               const Gap(10),
               Text(S.of(context).password, style: AppStyle.medium14),
               const Gap(5),
-              const LoginPassword(),
+              LoginPassword(loginModel: loginModel),
               const Gap(50),
               Align(
                 alignment: Alignment.center,
-                child: LoginButton(formKey: formKey),
+                child: LoginButton(formKey: formKey, loginModel: loginModel),
               ),
-              
             ],
           ),
         ),

@@ -4,17 +4,28 @@ import '../../../../../utils/core/app_style.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
-    super.key, required this.hintText, this.onChanged, this.suffix ,  this.validator, this.onTap,  this.readOnly = false, this.controller, this.suffixIcon, this.keyboardType,
+    super.key,
+    required this.hintText,
+    this.onChanged,
+    this.suffix,
+    this.validator,
+    this.onTap,
+    this.readOnly = false,
+    this.controller,
+    this.suffixIcon,
+    this.keyboardType,
+    this.obscureText = false,
   });
   final void Function(String)? onChanged;
   final String? Function(String?)? validator;
   final String hintText;
-  final void Function()? onTap ;
+  final void Function()? onTap;
   final bool readOnly;
-  final TextEditingController? controller ;
-  final Widget? suffixIcon ;
-  final TextInputType? keyboardType ;
-  final Widget? suffix ;
+  final TextEditingController? controller;
+  final Widget? suffixIcon;
+  final TextInputType? keyboardType;
+  final Widget? suffix;
+  final bool obscureText;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -24,18 +35,18 @@ class CustomTextFormField extends StatelessWidget {
       validator: validator,
       onChanged: onChanged,
       onTap: onTap,
-      
+      obscureText: obscureText,
       readOnly: readOnly,
-      decoration:  InputDecoration(
+      decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: AppStyle.regular12.copyWith(color: Colors.grey),  
+        hintStyle: AppStyle.regular12.copyWith(color: Colors.grey),
         suffixIcon: suffixIcon,
         suffix: suffix,
-        
+
         // fillColor: Colors.white,
         // focusColor: Colors.white,
         // hoverColor: Colors.white,
-        
+
         focusedBorder: focusBorderDecoration(),
         enabledBorder: borderDecoration(),
         errorBorder: errorBorderDecoration(),
@@ -46,16 +57,13 @@ class CustomTextFormField extends StatelessWidget {
 
   OutlineInputBorder focusBorderDecoration() {
     return OutlineInputBorder(
-
       borderRadius: BorderRadius.circular(10),
       borderSide: const BorderSide(color: Colors.blueGrey, width: 1.5),
-
     );
   }
 
   OutlineInputBorder borderDecoration() {
     return OutlineInputBorder(
-
       borderRadius: BorderRadius.circular(10),
       borderSide: const BorderSide(color: Colors.blueGrey, width: 1),
     );

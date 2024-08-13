@@ -1,7 +1,7 @@
 class LoginModel {
-  final String email, password;
-  const LoginModel({
-    required this.email,
-    required this.password,
+  String? email, password;
+  LoginModel({
+    this.email,
+    this.password,
   });
 }

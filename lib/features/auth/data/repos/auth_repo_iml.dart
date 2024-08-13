@@ -12,7 +12,7 @@ class AuthRepoIml extends AuthRepo {
   Future<Either<void, Failure>> login({required LoginModel loginModel}) async {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: loginModel.email, password: loginModel.password);
+          email: loginModel.email!, password: loginModel.password!);
       return left(null);
     } on FirebaseAuthException catch (e) {
       return right(FireBaseFailure.fromAuthException(e));

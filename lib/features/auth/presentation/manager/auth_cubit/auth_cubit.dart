@@ -12,17 +12,17 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
   final AuthRepo _authRepoImpl = AuthRepoIml();
-  Future<void> login(context, {required LoginModel loginMOdel}) async {
-    emit(AuthLoading()) ;
+  Future<void> login(context, {required LoginModel loginModel}) async {
+    emit(AuthLoading());
     Either<void, Failure> response =
-        await _authRepoImpl.login(loginModel: loginMOdel);
+        await _authRepoImpl.login(loginModel: loginModel);
     response.fold(
       (ok) {
         if (FirebaseAuth.instance.currentUser?.emailVerified ?? false) {
+          emit(AuthSuccess());
+        } else {
           emit(AuthFailure(
               S.of(context).please_check_your_email_for_verification));
-        } else {
-          emit(AuthSuccess());
         }
       },
       (failure) => emit(AuthFailure(failure.errMessage)),
@@ -30,7 +30,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> register(context, {required RegisterModel registerModel}) async {
-    emit(AuthLoading()) ;
+    emit(AuthLoading());
     Either<void, Failure> response =
         await _authRepoImpl.register(registerModel: registerModel);
     response.fold(

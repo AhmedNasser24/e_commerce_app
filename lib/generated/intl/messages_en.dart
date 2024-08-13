@@ -25,7 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "account_kind": MessageLookupByLibrary.simpleMessage("account_kind"),
         "customer": MessageLookupByLibrary.simpleMessage("customer"),
         "email": MessageLookupByLibrary.simpleMessage("email"),
-        "login": MessageLookupByLibrary.simpleMessage("login"),
+        "login": MessageLookupByLibrary.simpleMessage("Login"),
         "name": MessageLookupByLibrary.simpleMessage("name"),
         "password": MessageLookupByLibrary.simpleMessage("password"),
         "passwordConfirm":
@@ -38,7 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "please_check_your_email_for_verification":
             MessageLookupByLibrary.simpleMessage(
                 "please check your email for verification"),
-        "register": MessageLookupByLibrary.simpleMessage("register"),
+        "register": MessageLookupByLibrary.simpleMessage("Register"),
         "required_field":
             MessageLookupByLibrary.simpleMessage("required_field"),
         "trader": MessageLookupByLibrary.simpleMessage("trader"),

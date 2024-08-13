@@ -60,20 +60,20 @@ class S {
     );
   }
 
-  /// `register`
+  /// `Register`
   String get register {
     return Intl.message(
-      'register',
+      'Register',
       name: 'register',
       desc: '',
       args: [],
     );
   }
 
-  /// `login`
+  /// `Login`
   String get login {
     return Intl.message(
-      'login',
+      'Login',
       name: 'login',
       desc: '',
       args: [],

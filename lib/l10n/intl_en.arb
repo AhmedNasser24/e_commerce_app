@@ -1,7 +1,7 @@
 {
     "name" : "name",
-    "register" : "register",
-    "login" : "login",
+    "register" : "Register",
+    "login" : "Login",
     "email" : "email",
     "password" : "password",
     "passwordConfirm" : "confirm password",
