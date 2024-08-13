@@ -4,7 +4,7 @@
     "login" : "login",
     "email" : "email",
     "password" : "password",
-    "passwordConfirm" : "passwordConfirm",
+    "passwordConfirm" : "confirm password",
     "whatsapp_number" : "whatsapp_number",
     "required_field" : "required_field",
     "phone_number_must_be_at_least_11_characters" : "phone_number_must_be_at_least_11_characters",

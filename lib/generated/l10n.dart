@@ -100,10 +100,10 @@ class S {
     );
   }
 
-  /// `passwordConfirm`
+  /// `confirm password`
   String get passwordConfirm {
     return Intl.message(
-      'passwordConfirm',
+      'confirm password',
       name: 'passwordConfirm',
       desc: '',
       args: [],

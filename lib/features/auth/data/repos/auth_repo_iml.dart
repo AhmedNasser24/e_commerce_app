@@ -13,7 +13,6 @@ class AuthRepoIml extends AuthRepo {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: loginModel.email, password: loginModel.password);
-      await credential.user!.sendEmailVerification();
       return left(null);
     } on FirebaseAuthException catch (e) {
       return right(FireBaseFailure.fromAuthException(e));
@@ -28,9 +27,10 @@ class AuthRepoIml extends AuthRepo {
     try {
       final credential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: registerModel.email,
-        password: registerModel.password,
+        email: registerModel.email!,
+        password: registerModel.password!,
       );
+      await credential.user!.sendEmailVerification();
       return left(null);
     } on FirebaseAuthException catch (e) {
       return right(FireBaseFailure.fromAuthException(e));

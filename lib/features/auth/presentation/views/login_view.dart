@@ -6,11 +6,11 @@ import '../../../../utils/core/img_picker.dart';
 import 'widgets/login_body.dart';
 
 class LoginView extends StatelessWidget {
-  const LoginView ({super.key});
+  const LoginView({super.key});
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body:  LoginBody(),
+    return Scaffold(
+      body:  const LoginBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           String? path = await imgPicker();
@@ -18,7 +18,7 @@ class LoginView extends StatelessWidget {
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ),
+      ),  
     );
   }
 }

@@ -29,7 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("name"),
         "password": MessageLookupByLibrary.simpleMessage("password"),
         "passwordConfirm":
-            MessageLookupByLibrary.simpleMessage("passwordConfirm"),
+            MessageLookupByLibrary.simpleMessage("confirm password"),
         "passwords_do_not_match":
             MessageLookupByLibrary.simpleMessage("passwords_do_not_match"),
         "phone_number_must_be_at_least_11_characters":

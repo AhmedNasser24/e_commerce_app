@@ -1,10 +1,10 @@
 class RegisterModel {
-  final String email, password;
-  final String? name, whatsappNumber, accountKind;
+   String? email, password;
+   String? name, whatsappNumber, accountKind;
 
-  const RegisterModel({
-    required this.email,
-    required this.password,
+   RegisterModel({
+    this.email,
+    this.password,
     this.name,
     this.whatsappNumber,
     this.accountKind,

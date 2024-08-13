@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../data/models/register_model.dart';
 import 'custom_text_form_field.dart';
 
 class AccountKind extends StatefulWidget {
   const AccountKind({
     super.key,
+    required this.registerModel,
   });
+  final RegisterModel registerModel;
 
   @override
   State<AccountKind> createState() => _AccountKindState();
@@ -19,16 +22,17 @@ class _AccountKindState extends State<AccountKind> {
     return CustomTextFormField(
       hintText: S.of(context).account_kind,
       onTap: () {
-        // _showAccountKindDialog(context);
+        _showAccountKindDialog(context);
       },
       readOnly: true,
       controller: TextEditingController(text: selectedAccountKind),
-      suffixIcon: const Icon(Icons.arrow_drop_down , color: Colors.black),
-      suffix: _showPopUpMenu(),
+      suffixIcon: const Icon(Icons.arrow_drop_down, color: Colors.black),
+      // suffix: _showPopUpMenu(),
       validator: (_) {
         if (selectedAccountKind == '') {
           return S.of(context).required_field;
         }
+        widget.registerModel.accountKind = selectedAccountKind;
         return null;
       },
     );
@@ -40,7 +44,6 @@ class _AccountKindState extends State<AccountKind> {
       S.of(context).customer
     ];
     return PopupMenuButton<String>(
-      
       icon: const Icon(Icons.arrow_drop_down, color: Colors.black),
       itemBuilder: (BuildContext context) {
         return accountKindList.map((String accountKind) {

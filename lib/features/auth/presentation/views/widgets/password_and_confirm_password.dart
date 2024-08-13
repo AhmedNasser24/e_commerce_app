@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
+import '../../../data/models/register_model.dart';
 import 'custom_text_form_field.dart';
 
 class PasswordAndConfirmPassword extends StatefulWidget {
   const PasswordAndConfirmPassword({
-    super.key,
+    super.key, required this.registerModel,
   });
+  final RegisterModel registerModel;
 
   @override
   State<PasswordAndConfirmPassword> createState() => _PasswordAndConfirmPasswordState();
@@ -28,6 +30,10 @@ class _PasswordAndConfirmPasswordState extends State<PasswordAndConfirmPassword>
           if(value == null || value.isEmpty){
             return S.of(context).required_field;
           }
+          if ( confirmPassword != password) {
+            return S.of(context).passwords_do_not_match;
+          }
+          widget.registerModel.password = value;
           return null;
         },
         ),
