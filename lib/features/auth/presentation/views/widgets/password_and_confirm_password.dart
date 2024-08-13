@@ -21,7 +21,7 @@ class _PasswordAndConfirmPasswordState
     extends State<PasswordAndConfirmPassword> {
   String password = '';
   String confirmPassword = '';
-  bool isObscure1 = false , isObscure2 = false;
+  bool isObscure1 = true , isObscure2 = true;
   @override
   Widget build(BuildContext context) {
     return Column(

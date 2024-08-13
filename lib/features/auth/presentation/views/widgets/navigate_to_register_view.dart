@@ -15,7 +15,12 @@ class NavigateToRegisterView extends StatelessWidget {
       onPressed: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterView())) ;
       },
-      child: Text(S.of(context).register, style: AppStyle.medium16),
+      child: Row(
+        children: [
+          const Spacer(),
+          Text(S.of(context).register, style: AppStyle.medium16),
+        ],
+      ),
     );
   }
 }
