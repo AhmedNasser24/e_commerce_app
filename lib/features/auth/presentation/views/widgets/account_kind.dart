@@ -38,30 +38,7 @@ class _AccountKindState extends State<AccountKind> {
     );
   }
 
-  Widget _showPopUpMenu() {
-    List<String> accountKindList = [
-      S.of(context).trader,
-      S.of(context).customer
-    ];
-    return PopupMenuButton<String>(
-      icon: const Icon(Icons.arrow_drop_down, color: Colors.black),
-      itemBuilder: (BuildContext context) {
-        return accountKindList.map((String accountKind) {
-          return PopupMenuItem<String>(
-            value: accountKind,
-            child: Text(accountKind),
-          );
-        }).toList();
-      },
-      onSelected: (String accountKind) {
-        setState(() {
-          selectedAccountKind = accountKind;
-        });
-        print('Selected accountKind: $accountKind');
-      },
-    );
-  }
-
+  
   void _showAccountKindDialog(BuildContext context) {
     showDialog(
       context: context,
