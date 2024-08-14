@@ -1,3 +1,5 @@
+import '../../../../constants.dart';
+
 class RegisterModel {
    String? email, password;
    String? name, whatsappNumber, accountKind;
@@ -9,4 +11,14 @@ class RegisterModel {
     this.whatsappNumber,
     this.accountKind,
   });
+
+  toJson(){
+    return {
+      kEmail : email ,
+      kPassword : password ,
+      kName : name ,
+      kWhatsAppNumber: whatsappNumber ,
+      kAccountKind : accountKind,
+    };
+  }
 }
