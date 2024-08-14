@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import '../../../../../../generated/l10n.dart';
+import '../../../../../generated/l10n.dart';
 
 AppBar traderAppBar(BuildContext context) {
   return AppBar(

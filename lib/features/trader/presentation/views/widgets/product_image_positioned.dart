@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/utils/app_images.dart';
+import '../../../../../core/utils/app_images.dart';
 
 class CustomProductImagePositioned extends StatelessWidget {
   const CustomProductImagePositioned({

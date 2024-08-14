@@ -20,24 +20,26 @@ class _AddNewProductBodyState extends State<AddNewProductBody> {
       key: formKey,
       child: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Gap(40),
-            Text('Product Name', style: AppStyle.medium14),
-            Gap(5),
-            ProductNameTextFormField(),
-            Gap(25),
-            Text('Product Category', style: AppStyle.medium14),
-            Gap(5),
-            ProductCategoryTextFormField(),
-            Gap(25),
-            Text('Product Price', style: AppStyle.medium14),
-            Gap(5),
-            ProductPriceTextFormField(),
-            Gap(40),
-        
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Gap(40),
+              Text('Product Name', style: AppStyle.medium14),
+              Gap(5),
+              ProductNameTextFormField(),
+              Gap(25),
+              Text('Product Category', style: AppStyle.medium14),
+              Gap(5),
+              ProductCategoryTextFormField(),
+              Gap(25),
+              Text('Product Price', style: AppStyle.medium14),
+              Gap(5),
+              ProductPriceTextFormField(),
+              Gap(40),
+          
+            ],
+          ),
         ),
       ),
     );

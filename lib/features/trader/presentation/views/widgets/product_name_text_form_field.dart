@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../generated/l10n.dart';
-import '../../../../../../core/widgets/custom_text_form_field.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../../../core/widgets/custom_text_form_field.dart';
 
 class ProductNameTextFormField extends StatelessWidget {
   const ProductNameTextFormField({

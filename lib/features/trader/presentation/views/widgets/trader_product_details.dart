@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../../../../../../utils/core/app_style.dart';
+import '../../../../../utils/core/app_style.dart';
 import 'edit_icon_button.dart';
 
 class TraderProductDetails extends StatelessWidget {
