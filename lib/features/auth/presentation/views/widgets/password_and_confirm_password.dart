@@ -3,7 +3,7 @@ import 'package:gap/gap.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/register_model.dart';
-import 'custom_text_form_field.dart';
+import '../../../../../core/widgets/custom_text_form_field.dart';
 
 class PasswordAndConfirmPassword extends StatefulWidget {
   const PasswordAndConfirmPassword({

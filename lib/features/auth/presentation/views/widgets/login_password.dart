@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../generated/l10n.dart';
 import '../../../data/models/login_model.dart';
-import 'custom_text_form_field.dart';
+import '../../../../../core/widgets/custom_text_form_field.dart';
 
 class LoginPassword extends StatefulWidget {
   const LoginPassword({
