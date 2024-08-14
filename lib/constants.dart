@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 const String kUsersCollection = "Users" ;
 const String kShopCollection = "Shop" ;
 const String kCustomerCollection = "Customer" ;
@@ -13,4 +15,5 @@ const String kCustomerAccountKindEnglish = "Customer" ;
 const String kCustomerAccountKindArabic = "عميل" ;
 const String kTraderAccountKindEnglish = "Trader" ;
 const String kTraderAccountKindArabic = "تاجر" ;
+const Color kScaffoldColor = Color(0XFFFAF7FA) ;
 

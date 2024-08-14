@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
-class TraderBody extends StatelessWidget {
-  const TraderBody({super.key});
+import 'trader_product_card_listview.dart';
+
+class TraderViewBody extends StatelessWidget {
+  const TraderViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const TraderProductCardListView();
   }
 }
+

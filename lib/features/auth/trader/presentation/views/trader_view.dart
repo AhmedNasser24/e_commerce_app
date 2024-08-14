@@ -1,3 +1,4 @@
+import 'package:e_commerce/constants.dart';
 import 'package:flutter/material.dart';
 import 'widgets/trader_app_bar.dart';
 import 'widgets/trader_body.dart';
@@ -9,7 +10,8 @@ class TraderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const TraderBody(),
+      backgroundColor: kScaffoldColor,
+      body: const TraderViewBody(),
       appBar: traderAppBar(context),
     );
   }
