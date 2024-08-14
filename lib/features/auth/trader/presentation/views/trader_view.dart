@@ -13,6 +13,12 @@ class TraderView extends StatelessWidget {
       backgroundColor: kScaffoldColor,
       body: const TraderViewBody(),
       appBar: traderAppBar(context),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.green,
+        onPressed: () {
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
