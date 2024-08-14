@@ -189,6 +189,66 @@ class S {
       args: [],
     );
   }
+
+  /// `My Shop`
+  String get my_shop {
+    return Intl.message(
+      'My Shop',
+      name: 'my_shop',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shop`
+  String get shop {
+    return Intl.message(
+      'Shop',
+      name: 'shop',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Electronics`
+  String get electronics_category {
+    return Intl.message(
+      'Electronics',
+      name: 'electronics_category',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clothes`
+  String get clothes_category {
+    return Intl.message(
+      'Clothes',
+      name: 'clothes_category',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Jewellary`
+  String get jewellary_category {
+    return Intl.message(
+      'Jewellary',
+      name: 'jewellary_category',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shoes`
+  String get shoes_category {
+    return Intl.message(
+      'Shoes',
+      name: 'shoes_category',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -7,6 +7,7 @@ import 'bloc_observer.dart';
 import 'features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'features/auth/presentation/views/login_view.dart';
 import 'features/auth/presentation/views/register_view.dart';
+import 'features/auth/trader/presentation/views/trader_view.dart';
 import 'firebase_options.dart';
 import 'generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -72,7 +73,7 @@ class _MyAppState extends State<MyApp> {
           useMaterial3: true,
         ),
         home:
-            LoginView(), // isLogin ? const RegisterView() : const LoginView(),
+            const TraderView(), // isLogin ? const RegisterView() : const LoginView(),
       ),
     );
   }

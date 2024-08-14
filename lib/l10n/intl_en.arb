@@ -12,5 +12,11 @@
     "account_kind" : "account_kind",
     "trader" : "trader",
     "customer" : "customer",
-    "please_check_your_email_for_verification" : "please check your email for verification"
+    "please_check_your_email_for_verification" : "please check your email for verification",
+    "my_shop" : "My Shop",
+    "shop" : "Shop",
+    "electronics_category" : "Electronics",
+    "clothes_category" : "Clothes",
+    "jewellary_category" : "Jewellary",
+    "shoes_category" : "Shoes"
 }

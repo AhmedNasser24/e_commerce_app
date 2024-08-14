@@ -23,9 +23,14 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account_kind": MessageLookupByLibrary.simpleMessage("account_kind"),
+        "clothes_category": MessageLookupByLibrary.simpleMessage("Clothes"),
         "customer": MessageLookupByLibrary.simpleMessage("customer"),
+        "electronics_category":
+            MessageLookupByLibrary.simpleMessage("Electronics"),
         "email": MessageLookupByLibrary.simpleMessage("email"),
+        "jewellary_category": MessageLookupByLibrary.simpleMessage("Jewellary"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "my_shop": MessageLookupByLibrary.simpleMessage("My Shop"),
         "name": MessageLookupByLibrary.simpleMessage("name"),
         "password": MessageLookupByLibrary.simpleMessage("password"),
         "passwordConfirm":
@@ -41,6 +46,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "required_field":
             MessageLookupByLibrary.simpleMessage("required_field"),
+        "shoes_category": MessageLookupByLibrary.simpleMessage("Shoes"),
+        "shop": MessageLookupByLibrary.simpleMessage("Shop"),
         "trader": MessageLookupByLibrary.simpleMessage("trader"),
         "whatsapp_number":
             MessageLookupByLibrary.simpleMessage("whatsapp_number")

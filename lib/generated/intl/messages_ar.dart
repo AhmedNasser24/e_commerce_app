@@ -23,9 +23,14 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account_kind": MessageLookupByLibrary.simpleMessage("نوع الحساب"),
+        "clothes_category": MessageLookupByLibrary.simpleMessage("الملابس"),
         "customer": MessageLookupByLibrary.simpleMessage("عميل"),
+        "electronics_category":
+            MessageLookupByLibrary.simpleMessage("الكترونيات"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
+        "jewellary_category": MessageLookupByLibrary.simpleMessage("المجوهرات"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "my_shop": MessageLookupByLibrary.simpleMessage("متجري"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordConfirm":
@@ -41,6 +46,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "required_field":
             MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
+        "shoes_category": MessageLookupByLibrary.simpleMessage("الحقائب"),
+        "shop": MessageLookupByLibrary.simpleMessage("المتجر"),
         "trader": MessageLookupByLibrary.simpleMessage("تاجر"),
         "whatsapp_number": MessageLookupByLibrary.simpleMessage("رقم الواتساب")
       };
