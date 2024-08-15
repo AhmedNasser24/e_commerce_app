@@ -5,7 +5,7 @@ import 'package:e_commerce/features/auth/data/repos/auth_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../constants.dart';
-import '../../../../../generated/l10n.dart';
+// import '../../../../../generated/l10n.dart';
 import '../../../../../core/errors/failure.dart';
 import '../../../data/models/login_model.dart';
 import '../../../data/repos/auth_repo_iml.dart';
