@@ -110,40 +110,40 @@ class S {
     );
   }
 
-  /// `whatsapp_number`
+  /// `whatsapp number`
   String get whatsapp_number {
     return Intl.message(
-      'whatsapp_number',
+      'whatsapp number',
       name: 'whatsapp_number',
       desc: '',
       args: [],
     );
   }
 
-  /// `required_field`
+  /// `required field`
   String get required_field {
     return Intl.message(
-      'required_field',
+      'required field',
       name: 'required_field',
       desc: '',
       args: [],
     );
   }
 
-  /// `phone_number_must_be_at_least_11_characters`
+  /// `phone number must be at least 11 characters`
   String get phone_number_must_be_at_least_11_characters {
     return Intl.message(
-      'phone_number_must_be_at_least_11_characters',
+      'phone number must be at least 11 characters',
       name: 'phone_number_must_be_at_least_11_characters',
       desc: '',
       args: [],
     );
   }
 
-  /// `passwords_do_not_match`
+  /// `passwords do not match`
   String get passwords_do_not_match {
     return Intl.message(
-      'passwords_do_not_match',
+      'passwords do not match',
       name: 'passwords_do_not_match',
       desc: '',
       args: [],
@@ -250,40 +250,40 @@ class S {
     );
   }
 
-  /// `Product_category`
+  /// `Product category`
   String get product_category {
     return Intl.message(
-      'Product_category',
+      'Product category',
       name: 'product_category',
       desc: '',
       args: [],
     );
   }
 
-  /// `Product_name`
+  /// `Product name`
   String get product_name {
     return Intl.message(
-      'Product_name',
+      'Product name',
       name: 'product_name',
       desc: '',
       args: [],
     );
   }
 
-  /// `Product_price`
+  /// `Product price`
   String get product_price {
     return Intl.message(
-      'Product_price',
+      'Product price',
       name: 'product_price',
       desc: '',
       args: [],
     );
   }
 
-  /// `Product_image`
+  /// `Product image`
   String get product_image {
     return Intl.message(
-      'Product_image',
+      'Product image',
       name: 'product_image',
       desc: '',
       args: [],
@@ -310,11 +310,31 @@ class S {
     );
   }
 
-  /// `image_is_added`
+  /// `image isadded`
   String get image_is_added {
     return Intl.message(
-      'image_is_added',
+      'image isadded',
       name: 'image_is_added',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `image is not_added`
+  String get image_is_not_added {
+    return Intl.message(
+      'image is not_added',
+      name: 'image_is_not_added',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add product`
+  String get add_product {
+    return Intl.message(
+      'Add product',
+      name: 'add_product',
       desc: '',
       args: [],
     );

@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account_kind": MessageLookupByLibrary.simpleMessage("نوع الحساب"),
+        "add_product": MessageLookupByLibrary.simpleMessage("اضافة منتج"),
         "clothes_category": MessageLookupByLibrary.simpleMessage("الملابس"),
         "customer": MessageLookupByLibrary.simpleMessage("عميل"),
         "electronics_category":
@@ -32,6 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "from_gallery": MessageLookupByLibrary.simpleMessage("من المعرض"),
         "image_is_added":
             MessageLookupByLibrary.simpleMessage("تمت اضافة الصورة"),
+        "image_is_not_added":
+            MessageLookupByLibrary.simpleMessage("لم تتم اضافة الصورة"),
         "jewellary_category": MessageLookupByLibrary.simpleMessage("المجوهرات"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "my_shop": MessageLookupByLibrary.simpleMessage("متجري"),

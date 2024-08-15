@@ -1,0 +1,26 @@
+import 'package:flutter/material.dart';
+
+import '../../constants.dart';
+import '../utils/app_style.dart';
+
+class CustomButton extends StatelessWidget {
+  const CustomButton({super.key, this.isLoading = false, required this.title, this.onTap});
+  final bool isLoading ;
+  final String title ;
+  final void Function()? onTap ;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+          onTap: onTap,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20 , vertical: 10),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: kButtonColor),
+            child: isLoading
+                ? const CircularProgressIndicator()
+                : Text(title , style: AppStyle.medium20),
+          ),
+        );
+  }
+}

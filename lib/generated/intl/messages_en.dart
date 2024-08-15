@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account_kind": MessageLookupByLibrary.simpleMessage("account_kind"),
+        "add_product": MessageLookupByLibrary.simpleMessage("Add product"),
         "clothes_category": MessageLookupByLibrary.simpleMessage("Clothes"),
         "customer": MessageLookupByLibrary.simpleMessage("customer"),
         "electronics_category":
@@ -30,8 +31,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("email"),
         "from_camera": MessageLookupByLibrary.simpleMessage("From Camera"),
         "from_gallery": MessageLookupByLibrary.simpleMessage("from Gallery"),
-        "image_is_added":
-            MessageLookupByLibrary.simpleMessage("image_is_added"),
+        "image_is_added": MessageLookupByLibrary.simpleMessage("image isadded"),
+        "image_is_not_added":
+            MessageLookupByLibrary.simpleMessage("image is not_added"),
         "jewellary_category": MessageLookupByLibrary.simpleMessage("Jewellary"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "my_shop": MessageLookupByLibrary.simpleMessage("My Shop"),
@@ -40,25 +42,25 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordConfirm":
             MessageLookupByLibrary.simpleMessage("confirm password"),
         "passwords_do_not_match":
-            MessageLookupByLibrary.simpleMessage("passwords_do_not_match"),
+            MessageLookupByLibrary.simpleMessage("passwords do not match"),
         "phone_number_must_be_at_least_11_characters":
             MessageLookupByLibrary.simpleMessage(
-                "phone_number_must_be_at_least_11_characters"),
+                "phone number must be at least 11 characters"),
         "please_check_your_email_for_verification":
             MessageLookupByLibrary.simpleMessage(
                 "please check your email for verification"),
         "product_category":
-            MessageLookupByLibrary.simpleMessage("Product_category"),
-        "product_image": MessageLookupByLibrary.simpleMessage("Product_image"),
-        "product_name": MessageLookupByLibrary.simpleMessage("Product_name"),
-        "product_price": MessageLookupByLibrary.simpleMessage("Product_price"),
+            MessageLookupByLibrary.simpleMessage("Product category"),
+        "product_image": MessageLookupByLibrary.simpleMessage("Product image"),
+        "product_name": MessageLookupByLibrary.simpleMessage("Product name"),
+        "product_price": MessageLookupByLibrary.simpleMessage("Product price"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "required_field":
-            MessageLookupByLibrary.simpleMessage("required_field"),
+            MessageLookupByLibrary.simpleMessage("required field"),
         "shoes_category": MessageLookupByLibrary.simpleMessage("Shoes"),
         "shop": MessageLookupByLibrary.simpleMessage("Shop"),
         "trader": MessageLookupByLibrary.simpleMessage("trader"),
         "whatsapp_number":
-            MessageLookupByLibrary.simpleMessage("whatsapp_number")
+            MessageLookupByLibrary.simpleMessage("whatsapp number")
       };
 }

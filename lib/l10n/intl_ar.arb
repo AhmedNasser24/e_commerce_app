@@ -25,5 +25,7 @@
    "product_image" : "صورة المنتج",
    "from_camera" : "من الكاميرا",
    "from_gallery" : "من المعرض",
-   "image_is_added" : "تمت اضافة الصورة"
+   "image_is_added" : "تمت اضافة الصورة",
+   "image_is_not_added" : "لم تتم اضافة الصورة",
+   "add_product" : "اضافة منتج"
 }

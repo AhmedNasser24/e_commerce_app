@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/app_style.dart';
+import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/functions/show_snack_bar.dart';
 import '../../../data/models/register_model.dart';
@@ -34,7 +35,9 @@ class RegisterButton extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return GestureDetector(
+        return CustomButton(
+          title: S.of(context).register,
+          isLoading: isLoading,
           onTap: () {
             if (formKey.currentState!.validate()) {
               BlocProvider.of<AuthCubit>(context)
@@ -43,15 +46,6 @@ class RegisterButton extends StatelessWidget {
               formKey.currentState!.save();
             }
           },
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: const Color.fromARGB(218, 182, 165, 71)),
-            child: isLoading
-                ? const CircularProgressIndicator()
-                : Text(S.of(context).register, style: AppStyle.medium20),
-          ),
         );
       },
     );

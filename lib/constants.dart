@@ -16,4 +16,5 @@ const String kCustomerAccountKindArabic = "عميل" ;
 const String kTraderAccountKindEnglish = "Trader" ;
 const String kTraderAccountKindArabic = "تاجر" ;
 const Color kScaffoldColor = Color(0XFFFAF7FA) ;
+const Color kButtonColor = Color.fromARGB(218, 182, 165, 71);
 
