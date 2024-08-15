@@ -28,6 +28,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "electronics_category":
             MessageLookupByLibrary.simpleMessage("الكترونيات"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
+        "from_camera": MessageLookupByLibrary.simpleMessage("من الكاميرا"),
+        "from_gallery": MessageLookupByLibrary.simpleMessage("من المعرض"),
+        "image_is_added":
+            MessageLookupByLibrary.simpleMessage("تمت اضافة الصورة"),
         "jewellary_category": MessageLookupByLibrary.simpleMessage("المجوهرات"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "my_shop": MessageLookupByLibrary.simpleMessage("متجري"),
@@ -43,10 +47,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "please_check_your_email_for_verification":
             MessageLookupByLibrary.simpleMessage(
                 "يرجى التحقق من بريدك الالكتروني لتأكيد الحساب"),
+        "product_category": MessageLookupByLibrary.simpleMessage("نوع المنتج"),
+        "product_image": MessageLookupByLibrary.simpleMessage("صورة المنتج"),
+        "product_name": MessageLookupByLibrary.simpleMessage("اسم المنتج"),
+        "product_price": MessageLookupByLibrary.simpleMessage("سعر المنتج"),
         "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "required_field":
             MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
-        "shoes_category": MessageLookupByLibrary.simpleMessage("الحقائب"),
+        "shoes_category": MessageLookupByLibrary.simpleMessage("الأحذية"),
         "shop": MessageLookupByLibrary.simpleMessage("المتجر"),
         "trader": MessageLookupByLibrary.simpleMessage("تاجر"),
         "whatsapp_number": MessageLookupByLibrary.simpleMessage("رقم الواتساب")

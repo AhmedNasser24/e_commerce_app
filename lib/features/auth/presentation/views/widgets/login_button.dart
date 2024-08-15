@@ -1,9 +1,9 @@
-import 'package:e_commerce/utils/core/show_snack_bar.dart';
+import 'package:e_commerce/core/functions/show_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../../utils/core/app_style.dart';
 import '../../../data/models/login_model.dart';
 import '../../manager/auth_cubit/auth_cubit.dart';
 

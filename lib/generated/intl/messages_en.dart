@@ -28,6 +28,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "electronics_category":
             MessageLookupByLibrary.simpleMessage("Electronics"),
         "email": MessageLookupByLibrary.simpleMessage("email"),
+        "from_camera": MessageLookupByLibrary.simpleMessage("From Camera"),
+        "from_gallery": MessageLookupByLibrary.simpleMessage("from Gallery"),
+        "image_is_added":
+            MessageLookupByLibrary.simpleMessage("image_is_added"),
         "jewellary_category": MessageLookupByLibrary.simpleMessage("Jewellary"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "my_shop": MessageLookupByLibrary.simpleMessage("My Shop"),
@@ -43,6 +47,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "please_check_your_email_for_verification":
             MessageLookupByLibrary.simpleMessage(
                 "please check your email for verification"),
+        "product_category":
+            MessageLookupByLibrary.simpleMessage("Product_category"),
+        "product_image": MessageLookupByLibrary.simpleMessage("Product_image"),
+        "product_name": MessageLookupByLibrary.simpleMessage("Product_name"),
+        "product_price": MessageLookupByLibrary.simpleMessage("Product_price"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "required_field":
             MessageLookupByLibrary.simpleMessage("required_field"),

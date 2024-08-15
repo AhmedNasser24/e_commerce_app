@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import '../../../../../core/functions/product_category.dart';
+import '../../../../../core/functions/list_of_product_category.dart';
 import '../../../../../generated/l10n.dart';
 
 AppBar traderAppBar(BuildContext context) {

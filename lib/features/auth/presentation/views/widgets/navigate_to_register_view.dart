@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../../utils/core/app_style.dart';
 import '../register_view.dart';
 
 class NavigateToRegisterView extends StatelessWidget {

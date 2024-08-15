@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:e_commerce/features/auth/data/models/login_model.dart';
 import 'package:e_commerce/features/auth/data/models/register_model.dart';
 import 'package:e_commerce/features/auth/data/repos/auth_repo.dart';
-import 'package:e_commerce/utils/errors/failure.dart';
+import 'package:e_commerce/core/errors/failure.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepoIml extends AuthRepo {

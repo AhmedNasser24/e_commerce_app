@@ -11,7 +11,7 @@ class ProductNameTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
-      hintText: "Product Name",
+      hintText: S.of(context).product_name,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return S.of(context).required_field;

@@ -18,5 +18,12 @@
     "electronics_category" : "Electronics",
     "clothes_category" : "Clothes",
     "jewellary_category" : "Jewellary",
-    "shoes_category" : "Shoes"
+    "shoes_category" : "Shoes" ,
+    "product_category" : "Product_category",
+    "product_name" : "Product_name",
+    "product_price" : "Product_price",
+    "product_image" : "Product_image",
+    "from_camera" : "From Camera",
+    "from_gallery" : "from Gallery",
+    "image_is_added" : "image_is_added"
 }

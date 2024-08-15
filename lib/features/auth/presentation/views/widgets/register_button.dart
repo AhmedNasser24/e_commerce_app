@@ -2,9 +2,9 @@ import 'package:e_commerce/features/auth/presentation/manager/auth_cubit/auth_cu
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../../utils/core/app_style.dart';
-import '../../../../../utils/core/show_snack_bar.dart';
+import '../../../../../core/functions/show_snack_bar.dart';
 import '../../../data/models/register_model.dart';
 
 class RegisterButton extends StatelessWidget {

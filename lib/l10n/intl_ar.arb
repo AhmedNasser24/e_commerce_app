@@ -18,5 +18,12 @@
    "electronics_category" : "الكترونيات",
    "clothes_category" : "الملابس",
    "jewellary_category" : "المجوهرات",
-   "shoes_category" : "الحقائب"
+   "shoes_category" : "الأحذية",
+   "product_category" : "نوع المنتج",
+   "product_name" : "اسم المنتج",
+   "product_price" : "سعر المنتج",
+   "product_image" : "صورة المنتج",
+   "from_camera" : "من الكاميرا",
+   "from_gallery" : "من المعرض",
+   "image_is_added" : "تمت اضافة الصورة"
 }

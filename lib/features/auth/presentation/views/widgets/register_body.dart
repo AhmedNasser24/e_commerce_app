@@ -2,8 +2,8 @@ import 'package:e_commerce/features/auth/data/models/register_model.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../../utils/core/app_style.dart';
 import 'account_kind.dart';
 import 'password_and_confirm_password.dart';
 import 'register_button.dart';

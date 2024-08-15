@@ -249,6 +249,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Product_category`
+  String get product_category {
+    return Intl.message(
+      'Product_category',
+      name: 'product_category',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product_name`
+  String get product_name {
+    return Intl.message(
+      'Product_name',
+      name: 'product_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product_price`
+  String get product_price {
+    return Intl.message(
+      'Product_price',
+      name: 'product_price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product_image`
+  String get product_image {
+    return Intl.message(
+      'Product_image',
+      name: 'product_image',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `From Camera`
+  String get from_camera {
+    return Intl.message(
+      'From Camera',
+      name: 'from_camera',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `from Gallery`
+  String get from_gallery {
+    return Intl.message(
+      'from Gallery',
+      name: 'from_gallery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `image_is_added`
+  String get image_is_added {
+    return Intl.message(
+      'image_is_added',
+      name: 'image_is_added',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

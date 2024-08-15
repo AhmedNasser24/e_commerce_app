@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../../../../../../generated/l10n.dart';
-import '../../../../../utils/core/app_style.dart';
+import '../../../../../core/utils/app_style.dart';
 import '../../../data/models/login_model.dart';
 import 'login_button.dart';
 import 'login_email.dart';
