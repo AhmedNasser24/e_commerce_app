@@ -210,6 +210,16 @@ class S {
     );
   }
 
+  /// `All`
+  String get all_category {
+    return Intl.message(
+      'All',
+      name: 'all_category',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Electronics`
   String get electronics_category {
     return Intl.message(

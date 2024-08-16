@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "LE": MessageLookupByLibrary.simpleMessage("جنية"),
         "account_kind": MessageLookupByLibrary.simpleMessage("نوع الحساب"),
         "add_product": MessageLookupByLibrary.simpleMessage("اضافة منتج"),
+        "all_category": MessageLookupByLibrary.simpleMessage("الكل"),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
         "clothes_category": MessageLookupByLibrary.simpleMessage("الملابس"),
         "customer": MessageLookupByLibrary.simpleMessage("عميل"),

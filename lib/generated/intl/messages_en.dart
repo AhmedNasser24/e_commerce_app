@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "LE": MessageLookupByLibrary.simpleMessage("LE"),
         "account_kind": MessageLookupByLibrary.simpleMessage("account_kind"),
         "add_product": MessageLookupByLibrary.simpleMessage("Add product"),
+        "all_category": MessageLookupByLibrary.simpleMessage("All"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "clothes_category": MessageLookupByLibrary.simpleMessage("Clothes"),
         "customer": MessageLookupByLibrary.simpleMessage("customer"),
