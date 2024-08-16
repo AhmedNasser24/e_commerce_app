@@ -1,11 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-
-import '../../../../../core/functions/list_of_product_category.dart';
+import '../../../../../core/functions/show_category_pop_up_menu.dart';
 import '../../../../../generated/l10n.dart';
 
-AppBar traderAppBar(BuildContext context , GlobalKey < ScaffoldState> scaffoldKey) {
+AppBar traderAppBar(
+    BuildContext context, GlobalKey<ScaffoldState> scaffoldKey) {
   return AppBar(
     elevation: 0,
     scrolledUnderElevation: 0,
@@ -23,29 +21,7 @@ AppBar traderAppBar(BuildContext context , GlobalKey < ScaffoldState> scaffoldKe
       ),
     ),
     actions: [
-      _showCategoryPopUpMenu(context),
+      showCategoryPopUpMenu(context),
     ],
-  );
-}
-
-Widget _showCategoryPopUpMenu(context) {
-  
-  return PopupMenuButton<String>(
-    icon: const Icon(
-      Icons.arrow_drop_down,
-      color: Colors.black,
-      size: 30,
-    ),
-    itemBuilder: (BuildContext context) {
-      return categoryList(context).map((String category) {
-        return PopupMenuItem<String>(
-          value: category,
-          child: Text(category),
-        );
-      }).toList();
-    },
-    onSelected: (String category) {
-      log('Selected category: $category');
-    },
   );
 }
