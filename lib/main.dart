@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:e_commerce/features/customer/presentation/views/customer_home_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -68,12 +69,13 @@ class _MyAppState extends State<MyApp> {
         ],
         supportedLocales: S.delegate.supportedLocales,
         title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
         home:
-            const TraderHomeView(), // isLogin ? const RegisterView() : const LoginView(),
+            const CustomerHomeView(), // isLogin ? const RegisterView() : const LoginView(),
       ),
     );
   }

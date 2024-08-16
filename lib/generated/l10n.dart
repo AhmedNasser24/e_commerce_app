@@ -429,6 +429,26 @@ class S {
       args: [],
     );
   }
+
+  /// `My orders`
+  String get my_orders {
+    return Intl.message(
+      'My orders',
+      name: 'my_orders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add to card`
+  String get add_to_card {
+    return Intl.message(
+      'Add to card',
+      name: 'add_to_card',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/l10n.dart';
 
-class OldOrdersForTrader extends StatelessWidget {
-  const OldOrdersForTrader({
+class OldOrdersForCustomer extends StatelessWidget {
+  const OldOrdersForCustomer({
     super.key,
   });
 

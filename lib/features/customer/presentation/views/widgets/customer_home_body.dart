@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/customer/presentation/views/widgets/list_of_customer_product_card.dart';
 import 'package:flutter/material.dart';
 
 class CustomerHomeBody extends StatelessWidget {
@@ -5,6 +6,6 @@ class CustomerHomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const ListOfCustomerProductCard();
   }
 }

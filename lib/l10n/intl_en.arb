@@ -36,7 +36,8 @@
     "english" : "English",
     "arabic" : "Arabic",
     "new_orders" : "New orders",
-    "old_orders" : "Old orders"
-    
+    "old_orders" : "Old orders",
+    "my_orders" : "My orders",
+    "add_to_card" : "Add to card"
 
 }
