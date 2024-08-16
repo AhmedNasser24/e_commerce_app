@@ -7,8 +7,9 @@ import '../../../../../generated/l10n.dart';
 class ProductCategoryTextFormField extends StatefulWidget {
   const ProductCategoryTextFormField({
     super.key,
+    this.selectedCategory = '',
   });
-
+  final String selectedCategory;
   @override
   State<ProductCategoryTextFormField> createState() =>
       _ProductCategoryTextFormFieldState();
@@ -16,11 +17,18 @@ class ProductCategoryTextFormField extends StatefulWidget {
 
 class _ProductCategoryTextFormFieldState
     extends State<ProductCategoryTextFormField> {
-  String selectedCategory = '';
+  late String selectedCategory  ;
+  late TextEditingController controller ;
+  @override
+  void initState() {
+    selectedCategory = widget.selectedCategory ;
+    controller = TextEditingController(text: selectedCategory);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
-      controller: TextEditingController(text: selectedCategory),
+      controller: controller,
       hintText: S.of(context).product_category,
       readOnly: true,
       suffixIcon : const Icon(Icons.arrow_drop_down, color : Colors.black),

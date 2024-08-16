@@ -339,6 +339,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Edit product`
+  String get edit_product {
+    return Intl.message(
+      'Edit product',
+      name: 'edit_product',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `LE`
+  String get LE {
+    return Intl.message(
+      'LE',
+      name: 'LE',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

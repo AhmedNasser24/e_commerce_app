@@ -6,19 +6,22 @@ import 'package:flutter/material.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../../generated/l10n.dart';
 
-class AddProductImageTextFormField extends StatefulWidget {
-  const AddProductImageTextFormField({
+class ProductImageTextFormField extends StatefulWidget {
+  const ProductImageTextFormField({
     super.key,
+    this.imageUrl = '',
   });
 
+  final String imageUrl ;
   @override
-  State<AddProductImageTextFormField> createState() =>
-      _AddProductImageTextFormFieldState();
+  State<ProductImageTextFormField> createState() =>
+      _ProductImageTextFormFieldState();
 }
 
-class _AddProductImageTextFormFieldState
-    extends State<AddProductImageTextFormField> {
-  String selectedImage = '';
+class _ProductImageTextFormFieldState
+    extends State<ProductImageTextFormField> {
+  String selectedImage = '' ;
+ 
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
@@ -55,6 +58,7 @@ class _AddProductImageTextFormFieldState
                   (category) => ListTile(
                     title: Text(category),
                     onTap: () async {
+                      Navigator.pop(context);
                       String? imageUrl;
                       if (category == S.of(context).from_camera) {
                         imageUrl = await imgPickerFromCamera();
@@ -65,10 +69,10 @@ class _AddProductImageTextFormFieldState
                         setState(() {
                           selectedImage = S.of(context).image_is_added;
                         });
-                        Navigator.pop(context);
                       }else {
                         showSnackBar(context, S.of(context).image_is_not_added);
                       }
+
                     },
                   ),
                 )

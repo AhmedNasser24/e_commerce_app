@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/utils/app_style.dart';
+import '../../../../../generated/l10n.dart';
 import 'edit_icon_button.dart';
 
 class TraderProductDetails extends StatelessWidget {
@@ -30,14 +30,14 @@ class TraderProductDetails extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         const Gap(6),
-        const Row(
+        Row(
           children: [
             Text(
-              "55.99 LE",
+              "55.99 ${S.of(context).LE}",
               style: AppStyle.semiBold16,
             ),
-            Spacer(),
-            EditIconButton()
+            const Spacer(),
+            const EditIconButton()
           ],
         ),
       ],
