@@ -3,23 +3,23 @@ import 'package:flutter/material.dart';
 import 'widgets/custom_floating_action_button.dart';
 import 'widgets/custom_trader_drawer.dart';
 import 'widgets/trader_app_bar.dart';
-import 'widgets/trader_body.dart';
+import 'widgets/trader_home_body.dart';
 
-class TraderView extends StatefulWidget {
-  const TraderView({super.key});
+class TraderHomeView extends StatefulWidget {
+  const TraderHomeView({super.key});
 
   @override
-  State<TraderView> createState() => _TraderViewState();
+  State<TraderHomeView> createState() => _TraderHomeViewState();
 }
 
-class _TraderViewState extends State<TraderView> {
+class _TraderHomeViewState extends State<TraderHomeView> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: kScaffoldColor,
-      body: const TraderViewBody(),
+      body: const TraderHomeViewBody(),
       appBar: traderAppBar(context, scaffoldKey),
       floatingActionButton: const CustomFloatingActionButton(),
       drawer: const CustomTraderDrawer(),

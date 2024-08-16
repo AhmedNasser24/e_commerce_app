@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'trader_product_card_listview.dart';
 
-class TraderViewBody extends StatelessWidget {
-  const TraderViewBody({super.key});
+class TraderHomeViewBody extends StatelessWidget {
+  const TraderHomeViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
