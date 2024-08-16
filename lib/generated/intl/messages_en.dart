@@ -25,21 +25,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "LE": MessageLookupByLibrary.simpleMessage("LE"),
         "account_kind": MessageLookupByLibrary.simpleMessage("account_kind"),
         "add_product": MessageLookupByLibrary.simpleMessage("Add product"),
+        "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "clothes_category": MessageLookupByLibrary.simpleMessage("Clothes"),
         "customer": MessageLookupByLibrary.simpleMessage("customer"),
         "edit_product": MessageLookupByLibrary.simpleMessage("Edit product"),
         "electronics_category":
             MessageLookupByLibrary.simpleMessage("Electronics"),
         "email": MessageLookupByLibrary.simpleMessage("email"),
+        "english": MessageLookupByLibrary.simpleMessage("English"),
         "from_camera": MessageLookupByLibrary.simpleMessage("From Camera"),
         "from_gallery": MessageLookupByLibrary.simpleMessage("from Gallery"),
         "image_is_added": MessageLookupByLibrary.simpleMessage("image isadded"),
         "image_is_not_added":
             MessageLookupByLibrary.simpleMessage("image is not_added"),
         "jewellary_category": MessageLookupByLibrary.simpleMessage("Jewellary"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "my_shop": MessageLookupByLibrary.simpleMessage("My Shop"),
         "name": MessageLookupByLibrary.simpleMessage("name"),
+        "new_orders": MessageLookupByLibrary.simpleMessage("New orders"),
+        "old_orders": MessageLookupByLibrary.simpleMessage("Old orders"),
         "password": MessageLookupByLibrary.simpleMessage("password"),
         "passwordConfirm":
             MessageLookupByLibrary.simpleMessage("confirm password"),
@@ -61,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("required field"),
         "shoes_category": MessageLookupByLibrary.simpleMessage("Shoes"),
         "shop": MessageLookupByLibrary.simpleMessage("Shop"),
+        "sign_out": MessageLookupByLibrary.simpleMessage("Sign out"),
         "trader": MessageLookupByLibrary.simpleMessage("trader"),
         "whatsapp_number":
             MessageLookupByLibrary.simpleMessage("whatsapp number")

@@ -25,12 +25,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "LE": MessageLookupByLibrary.simpleMessage("جنية"),
         "account_kind": MessageLookupByLibrary.simpleMessage("نوع الحساب"),
         "add_product": MessageLookupByLibrary.simpleMessage("اضافة منتج"),
+        "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
         "clothes_category": MessageLookupByLibrary.simpleMessage("الملابس"),
         "customer": MessageLookupByLibrary.simpleMessage("عميل"),
         "edit_product": MessageLookupByLibrary.simpleMessage("تعديل المنتج"),
         "electronics_category":
             MessageLookupByLibrary.simpleMessage("الكترونيات"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
+        "english": MessageLookupByLibrary.simpleMessage("الانجليزية"),
         "from_camera": MessageLookupByLibrary.simpleMessage("من الكاميرا"),
         "from_gallery": MessageLookupByLibrary.simpleMessage("من المعرض"),
         "image_is_added":
@@ -38,9 +40,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "image_is_not_added":
             MessageLookupByLibrary.simpleMessage("لم تتم اضافة الصورة"),
         "jewellary_category": MessageLookupByLibrary.simpleMessage("المجوهرات"),
+        "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "my_shop": MessageLookupByLibrary.simpleMessage("متجري"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+        "new_orders": MessageLookupByLibrary.simpleMessage("الطلبات الجديدة"),
+        "old_orders": MessageLookupByLibrary.simpleMessage("الطلبات السابقة"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordConfirm":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
@@ -61,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
         "shoes_category": MessageLookupByLibrary.simpleMessage("الأحذية"),
         "shop": MessageLookupByLibrary.simpleMessage("المتجر"),
+        "sign_out": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "trader": MessageLookupByLibrary.simpleMessage("تاجر"),
         "whatsapp_number": MessageLookupByLibrary.simpleMessage("رقم الواتساب")
       };
