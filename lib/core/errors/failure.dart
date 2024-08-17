@@ -34,4 +34,34 @@ class FireBaseFailure extends Failure {
       return const FireBaseFailure('unknown input');
     }
   }
+
+  factory FireBaseFailure.fromFireStoreException(FirebaseException e) {
+    if (e.code == 'permission-denied') {
+      return const FireBaseFailure('Permission denied. You do not have access to this resource.');
+    } else if (e.code == 'unavailable') {
+      return const FireBaseFailure('Firestore service is currently unavailable.');
+    } else if (e.code == 'not-found') {
+      return const FireBaseFailure('Document not found.');
+    } else {
+      return FireBaseFailure('An error occurred: ${e.message}');
+    }
+  }
+
+   factory FireBaseFailure.fromSocketException(FirebaseException e) {
+    return const FireBaseFailure('No internet connection. Please check your network and try again.');
+  }
+
+  factory FireBaseFailure.fromFireStorageException(FirebaseException e) {
+    if (e.code == 'object-not-found') {
+      return const FireBaseFailure('No file found at the specified reference.');
+    } else if (e.code == 'unauthenticated') {
+      return const FireBaseFailure('User is not authenticated. Please sign in and try again.');
+    } else if (e.code == 'unauthorized') {
+      return const FireBaseFailure('User does not have permission to access this file.');
+    } else if (e.code == 'quota-exceeded') {
+      return const FireBaseFailure('Quota exceeded. Please upgrade your Firebase plan.');
+    } else {
+      return FireBaseFailure('An error occurred: ${e.message}');
+    }
+  }
 }
