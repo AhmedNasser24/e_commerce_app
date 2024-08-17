@@ -75,7 +75,7 @@ class _MyAppState extends State<MyApp> {
           useMaterial3: true,
         ),
         home:
-            const CustomerHomeView(), // isLogin ? const RegisterView() : const LoginView(),
+            const TraderHomeView(), // isLogin ? const RegisterView() : const LoginView(),
       ),
     );
   }
