@@ -24,4 +24,4 @@ const String kProductPrice = "product_price" ;
 const String kProductImageUrl = "product_image_url" ;
 const String kProductQuantity = "product_quantity" ;
 const String kTraderId = "trader_id" ;
-
+const String kDateOfBuying = "date_of_buying" ;

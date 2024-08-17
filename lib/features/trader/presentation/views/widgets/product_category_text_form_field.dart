@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import '../../../../../core/functions/list_of_product_category.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../data/model/product_item_model.dart';
 
 class ProductCategoryTextFormField extends StatefulWidget {
   const ProductCategoryTextFormField({
     super.key,
-    this.selectedCategory = '',
+    this.selectedCategory = '', required this.productItemModel,
   });
+  final ProductItemModel productItemModel ;
+
   final String selectedCategory;
   @override
   State<ProductCategoryTextFormField> createState() =>
@@ -39,6 +42,7 @@ class _ProductCategoryTextFormFieldState
         if (value == null || value.isEmpty) {
           return S.of(context).required_field;
         }
+        widget.productItemModel.category = value;
         return null;
       },
     );

@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/trader/data/model/product_item_model.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/product_image_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -17,6 +18,7 @@ class AddNewProductBody extends StatefulWidget {
 
 class _AddNewProductBodyState extends State<AddNewProductBody> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  ProductItemModel productItemModel = ProductItemModel() ;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -30,26 +32,26 @@ class _AddNewProductBodyState extends State<AddNewProductBody> {
               const Gap(40),
               Text("${S.of(context).product_name} *", style: AppStyle.medium14),
               const Gap(5),
-              const ProductNameTextFormField(),
+               ProductNameTextFormField(productItemModel:productItemModel),
               const Gap(25),
               Text("${S.of(context).product_category} *",
                   style: AppStyle.medium14),
               const Gap(5),
-              const ProductCategoryTextFormField(),
+               ProductCategoryTextFormField(productItemModel:productItemModel),
               const Gap(25),
               Text("${S.of(context).product_price} *",
                   style: AppStyle.medium14),
               const Gap(5),
-              const ProductPriceTextFormField(),
+               ProductPriceTextFormField(productItemModel:productItemModel),
               const Gap(25),
               Text("${S.of(context).product_image} *",
                   style: AppStyle.medium14),
               const Gap(5),
-              const ProductImageTextFormField(),
+               ProductImageTextFormField(productItemModel:productItemModel),
               const Gap(40),
               Align(
                 alignment: Alignment.center,
-                child: AddProductButton(formKey: formKey),
+                child: AddProductButton(formKey: formKey , productItemModel:productItemModel),
               ),
               const Gap(60),
             ],

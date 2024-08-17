@@ -5,12 +5,14 @@ import 'package:e_commerce/core/functions/show_snack_bar.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../data/model/product_item_model.dart';
 
 class ProductImageTextFormField extends StatefulWidget {
   const ProductImageTextFormField({
     super.key,
-    this.imageUrl = '',
+    this.imageUrl = '', required this.productItemModel,
   });
+  final ProductItemModel productItemModel ;
 
   final String imageUrl ;
   @override
@@ -66,6 +68,7 @@ class _ProductImageTextFormFieldState
                         imageUrl = await imgPickerFromGallery();
                       }
                       if (imageUrl != null) {
+                        widget.productItemModel.imageUrl = imageUrl;
                         setState(() {
                           selectedImage = S.of(context).image_is_added;
                         });

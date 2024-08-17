@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/trader/data/model/product_item_model.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/product_image_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -9,7 +10,8 @@ import 'product_name_text_form_field.dart';
 import 'product_price_text_form_field.dart';
 
 class EditProductBody extends StatefulWidget {
-  const EditProductBody({super.key});
+  const EditProductBody({super.key, required this.productItemModel});
+  final ProductItemModel productItemModel  ;
 
   @override
   State<EditProductBody> createState() => _EditProductBodyState();
@@ -30,26 +32,26 @@ class _EditProductBodyState extends State<EditProductBody> {
               const Gap(40),
               Text("${S.of(context).product_name} *", style: AppStyle.medium14),
               const Gap(5),
-              const ProductNameTextFormField(productName: 'tv',),
+               ProductNameTextFormField(productName: 'tv', productItemModel: widget.productItemModel),
               const Gap(25),
               Text("${S.of(context).product_category} *",
                   style: AppStyle.medium14),
               const Gap(5),
-              const ProductCategoryTextFormField(selectedCategory:  'electronics'),
+               ProductCategoryTextFormField(selectedCategory:  'electronics' ,productItemModel: widget.productItemModel),
               const Gap(25),
               Text("${S.of(context).product_price} *",
                   style: AppStyle.medium14),
               const Gap(5),
-              const ProductPriceTextFormField(productPrice: '30',),
+               ProductPriceTextFormField(productPrice: '30',productItemModel: widget.productItemModel),
               const Gap(25),
               Text("${S.of(context).product_image} *",
                   style: AppStyle.medium14),
               const Gap(5),
-              const ProductImageTextFormField(imageUrl: 'kjdlkaf',),
+               ProductImageTextFormField(imageUrl: 'kjdlkaf',productItemModel: widget.productItemModel),
               const Gap(40),
               Align(
                 alignment: Alignment.center,
-                child: EditProductButton(formKey: formKey),
+                child: EditProductButton(formKey: formKey,productItemModel: widget.productItemModel),
               ),
               const Gap(60),
             ],
