@@ -3,6 +3,6 @@ import 'package:e_commerce/core/errors/failure.dart';
 import 'package:e_commerce/features/trader/data/model/product_item_model.dart';
 
 abstract class TraderRepo {
-  Future <Either < void , Failure >> addProduct(ProductItemModel productItemModel) ;
-  Future <Either < void , Failure >> editProduct(ProductItemModel productItemModel) ;
+  Future <Either < void , Failure >> addProduct({required ProductItemModel productItemModel}) ;
+  Future <Either < void , Failure >> editProduct({required ProductItemModel productItemModel}) ;
 }

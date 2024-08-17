@@ -13,7 +13,7 @@ import 'trader_repo.dart';
 class TraderRepoImpl extends TraderRepo {
   @override
   Future<Either<void, Failure>> addProduct(
-      ProductItemModel productItemModel) async {
+      {required ProductItemModel productItemModel}) async {
     try {
       await FirebaseServices().addProduct(productItemModel);
       return left(null);
@@ -28,7 +28,7 @@ class TraderRepoImpl extends TraderRepo {
 
   @override
   Future<Either<void, Failure>> editProduct(
-      ProductItemModel productItemModel) async {
+      {required ProductItemModel productItemModel}) async {
     try {
       await FirebaseServices().editProduct(productItemModel);
       return left(null);
