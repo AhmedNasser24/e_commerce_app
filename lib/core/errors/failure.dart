@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -47,7 +49,7 @@ class FireBaseFailure extends Failure {
     }
   }
 
-   factory FireBaseFailure.fromSocketException(FirebaseException e) {
+   factory FireBaseFailure.fromSocketException(SocketException e) {
     return const FireBaseFailure('No internet connection. Please check your network and try again.');
   }
 

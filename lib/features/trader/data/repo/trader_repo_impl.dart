@@ -1,1 +1,43 @@
+import 'dart:io';
 
+import 'package:dartz/dartz.dart';
+
+import 'package:e_commerce/core/errors/failure.dart';
+import 'package:e_commerce/core/utils/firebase_services.dart';
+
+import 'package:e_commerce/features/trader/data/model/product_item_model.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+import 'trader_repo.dart';
+
+class TraderRepoImpl extends TraderRepo {
+  @override
+  Future<Either<void, Failure>> addProduct(
+      ProductItemModel productItemModel) async {
+    try {
+      await FirebaseServices().addProduct(productItemModel);
+      return left(null);
+    } on FirebaseException catch (e) {
+      return right(FireBaseFailure.fromFireStoreException(e));
+    } on SocketException catch (e) {
+      return right(FireBaseFailure.fromSocketException(e));
+    } catch (e) {
+      return right(Failure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<void, Failure>> editProduct(
+      ProductItemModel productItemModel) async {
+    try {
+      await FirebaseServices().editProduct(productItemModel);
+      return left(null);
+    } on FirebaseException catch (e) {
+      return right(FireBaseFailure.fromFireStoreException(e));
+    } on SocketException catch (e) {
+      return right(FireBaseFailure.fromSocketException(e));
+    } catch (e) {
+      return right(Failure(e.toString()));
+    }
+  }
+}
