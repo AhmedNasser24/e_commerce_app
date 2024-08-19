@@ -75,7 +75,7 @@ class _MyAppState extends State<MyApp> {
           useMaterial3: true,
         ),
         home:
-            const LoginView(), // isLogin ? const RegisterView() : const LoginView(),
+            const LoginView() , // isLogin ? const RegisterView() : const LoginView(),
       ),
     );
   }

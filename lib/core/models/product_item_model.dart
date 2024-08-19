@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:e_commerce/constants.dart';
 
 class ProductItemModel {
