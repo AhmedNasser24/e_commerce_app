@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  cached_network_image: ^3.3.1
   cloud_firestore: ^5.2.1
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
@@ -85,7 +86,7 @@ flutter:
   # see https://flutter.dev/to/font-from-package
 flutter_intl:
   enabled: true
-  
+
 flutter_assets:
   assets_path: assets/images/
   output_path: lib/core/utils/

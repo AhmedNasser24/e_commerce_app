@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../data/model/product_item_model.dart';
+import '../../../../core/models/product_item_model.dart';
 import 'widgets/back_arrow_button.dart';
 import 'widgets/edit_product_body.dart';
 

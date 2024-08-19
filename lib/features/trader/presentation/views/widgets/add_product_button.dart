@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../generated/l10n.dart';
-import '../../../data/model/product_item_model.dart';
+import '../../../../../core/models/product_item_model.dart';
 import '../../manager/add_product_cubit/add_product_cubit.dart';
 
 class AddProductButtonBlocConsumer extends StatelessWidget {

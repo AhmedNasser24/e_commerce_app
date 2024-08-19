@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:e_commerce/core/errors/failure.dart';
 import 'package:e_commerce/core/utils/firebase_services.dart';
 
-import 'package:e_commerce/features/trader/data/model/product_item_model.dart';
+import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'trader_repo.dart';

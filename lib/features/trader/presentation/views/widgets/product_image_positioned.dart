@@ -1,29 +1,26 @@
-
 import 'package:flutter/material.dart';
-
-import '../../../../../core/utils/app_images.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CustomProductImagePositioned extends StatelessWidget {
   const CustomProductImagePositioned({
     super.key,
   });
-
+  
   @override
   Widget build(BuildContext context) {
     return Positioned(
       top: -90,
       right: 0,
       left: 0,
-      child: Container(
-        height: 150,
-        decoration: const BoxDecoration(
-          // color: Colors.blue,
-          image: DecorationImage(
-            image: AssetImage(Assets.imagesBag),
+      child: SizedBox(
+          height: 150,
+          child: CachedNetworkImage(
             fit: BoxFit.contain,
-          ),
-        ),
-      ),
+            imageUrl: "http://via.placeholder.com/350x150",
+            progressIndicatorBuilder: (context, url, downloadProgress) =>
+                CircularProgressIndicator(value: downloadProgress.progress),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+          )),
     );
   }
 }

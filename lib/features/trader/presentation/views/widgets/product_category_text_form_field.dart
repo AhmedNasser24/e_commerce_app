@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/functions/list_of_product_category.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../data/model/product_item_model.dart';
+import '../../../../../core/models/product_item_model.dart';
 
 class ProductCategoryTextFormField extends StatefulWidget {
   const ProductCategoryTextFormField({

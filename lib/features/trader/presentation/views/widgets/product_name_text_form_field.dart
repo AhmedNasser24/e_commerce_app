@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/trader/data/model/product_item_model.dart';
+import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../generated/l10n.dart';

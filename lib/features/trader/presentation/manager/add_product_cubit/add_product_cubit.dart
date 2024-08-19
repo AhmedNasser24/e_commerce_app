@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/errors/failure.dart';
-import '../../../data/model/product_item_model.dart';
+import '../../../../../core/models/product_item_model.dart';
 import '../../../data/repo/trader_repo.dart';
 import '../../../data/repo/trader_repo_impl.dart';
 
