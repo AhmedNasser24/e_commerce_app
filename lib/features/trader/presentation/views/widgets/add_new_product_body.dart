@@ -51,7 +51,7 @@ class _AddNewProductBodyState extends State<AddNewProductBody> {
               const Gap(40),
               Align(
                 alignment: Alignment.center,
-                child: AddProductButton(formKey: formKey , productItemModel:productItemModel),
+                child: AddProductButtonBlocConsumer(formKey: formKey , productItemModel:productItemModel),
               ),
               const Gap(60),
             ],

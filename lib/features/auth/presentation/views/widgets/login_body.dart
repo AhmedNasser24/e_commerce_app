@@ -49,6 +49,7 @@ class _LoginBodyState extends State<LoginBody> {
                 alignment: Alignment.center,
                 child: LoginButton(formKey: formKey, loginModel: loginModel),
               ),
+              const Gap(40),
             ],
           ),
         ),

@@ -22,8 +22,12 @@ class ProductImageTextFormField extends StatefulWidget {
 
 class _ProductImageTextFormFieldState
     extends State<ProductImageTextFormField> {
-  String selectedImage = '' ;
- 
+  late String selectedImage ;
+  @override
+  void initState() {
+    selectedImage = widget.imageUrl ;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
@@ -31,8 +35,8 @@ class _ProductImageTextFormFieldState
       hintText: S.of(context).product_image,
       readOnly: true,
       suffixIcon: const Icon(Icons.arrow_drop_down, color: Colors.black),
-      onTap: () {
-        _showCategoryDialog(context);
+      onTap: () async{
+        await _showCategoryDialog(context);
       },
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -43,7 +47,7 @@ class _ProductImageTextFormFieldState
     );
   }
 
-  void _showCategoryDialog(BuildContext context) {
+  Future <void> _showCategoryDialog(BuildContext context) async{
     List<String> pickImageFrom = [
       S.of(context).from_camera,
       S.of(context).from_gallery
@@ -60,9 +64,8 @@ class _ProductImageTextFormFieldState
                   (category) => ListTile(
                     title: Text(category),
                     onTap: () async {
-                      Navigator.pop(context);
                       String? imageUrl;
-                      if (category == S.of(context).from_camera) {
+                      if (category == S.of(context).from_camera)  {
                         imageUrl = await imgPickerFromCamera();
                       } else {
                         imageUrl = await imgPickerFromGallery();
@@ -70,11 +73,13 @@ class _ProductImageTextFormFieldState
                       if (imageUrl != null) {
                         widget.productItemModel.imageUrl = imageUrl;
                         setState(() {
-                          selectedImage = S.of(context).image_is_added;
+                          selectedImage = imageUrl!;
                         });
+                        showSnackBar(context, S.of(context).image_is_added);
                       }else {
                         showSnackBar(context, S.of(context).image_is_not_added);
                       }
+                      Navigator.pop(context);
 
                     },
                   ),

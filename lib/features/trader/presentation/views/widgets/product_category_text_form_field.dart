@@ -25,13 +25,12 @@ class _ProductCategoryTextFormFieldState
   @override
   void initState() {
     selectedCategory = widget.selectedCategory ;
-    controller = TextEditingController(text: selectedCategory);
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
-      controller: controller,
+      controller: TextEditingController(text: selectedCategory),
       hintText: S.of(context).product_category,
       readOnly: true,
       suffixIcon : const Icon(Icons.arrow_drop_down, color : Colors.black),

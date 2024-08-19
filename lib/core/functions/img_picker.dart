@@ -19,7 +19,7 @@ Future<String?> imgPickerFromGallery() async {
     file = File(pickedImage.path);
     int rand = Random().nextInt(10000000);
     String imageName = "$rand$basename(pickedImage.path)";
-    var storage = FirebaseStorage.instance.ref('image').child(imageName);
+    var storage =  FirebaseStorage.instance.ref('image').child(imageName);
     // var ref = FireBaseStorage()
     await storage.putFile(file);
     imageUrl = await storage.getDownloadURL();
