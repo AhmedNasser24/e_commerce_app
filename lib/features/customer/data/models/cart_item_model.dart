@@ -1,11 +1,11 @@
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/models/product_item_model.dart';
 
-class AddToCartModel {
+class CartItemModel {
   final ProductItemModel productItemModel ;
   final String addToCartDate ;
 
-  AddToCartModel({
+  CartItemModel({
     required this.productItemModel,
     required this.addToCartDate,
   });
@@ -17,8 +17,8 @@ class AddToCartModel {
     };
   }
 
-  factory AddToCartModel.fromJson(json){
-    return AddToCartModel(
+  factory CartItemModel.fromJson(json){
+    return CartItemModel(
       productItemModel: ProductItemModel.fromJson(json[kProductInfoKey]),
       addToCartDate: json[kAddToCartDateKey],
     );

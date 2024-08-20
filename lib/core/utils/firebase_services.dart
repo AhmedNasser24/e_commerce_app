@@ -4,7 +4,7 @@ import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../features/customer/data/models/add_to_cart_model.dart';
+import '../../features/customer/data/models/cart_item_model.dart';
 
 class FirebaseServices {
   Future<void> addProduct(ProductItemModel productItemModel) async {
@@ -119,7 +119,7 @@ class FirebaseServices {
     }
   }
 
-  Future<void> addToCart({required AddToCartModel addToCartModel}) async {
+  Future<void> addToCart({required CartItemModel addToCartModel}) async {
     String userId = FirebaseAuth.instance.currentUser!.uid;
     await FirebaseFirestore.instance
         .collection(kUsersCollection)
@@ -129,5 +129,23 @@ class FirebaseServices {
         .collection(kCartDocOrCollection)
         .doc()
         .set(addToCartModel.toJson());
+  }
+
+  Future<List<CartItemModel>> fetchCartItems() async {
+    String userId = FirebaseAuth.instance.currentUser!.uid;
+    List<CartItemModel> addToCartModelList = [];
+    QuerySnapshot<Map<String, dynamic>> response = await FirebaseFirestore
+        .instance
+        .collection(kUsersCollection)
+        .doc(userId)
+        .collection(kCustomerCollection)
+        .doc(kCartDocOrCollection)
+        .collection(kCartDocOrCollection)
+        .orderBy(kAddToCartDateKey, descending: true)
+        .get();
+    for (var doc in response.docs) {
+      addToCartModelList.add(CartItemModel.fromJson(doc.data()));
+    }
+    return addToCartModelList;
   }
 }
