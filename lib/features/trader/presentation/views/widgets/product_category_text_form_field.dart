@@ -51,23 +51,24 @@ class _ProductCategoryTextFormFieldState
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          
           title: Text(S.of(context).product_category),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: categoryList(context)
-                .map(
-                  (category) => ListTile(
-                    title: Text(category),
-                    onTap: () {
-                      setState(() {
-                        selectedCategory = category;
-                      });
-                      Navigator.pop(context);
-                    },
-                  ),
-                )
-                .toList(),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: categoryList(context)
+                  .map(
+                    (category) => ListTile(
+                      title: Text(category),
+                      onTap: () {
+                        setState(() {
+                          selectedCategory = category;
+                        });
+                        Navigator.pop(context);
+                      },
+                    ),
+                  )
+                  .toList(),
+            ),
           ),
         );
       },
