@@ -73,6 +73,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "product_name": MessageLookupByLibrary.simpleMessage("اسم المنتج"),
         "product_price": MessageLookupByLibrary.simpleMessage("سعر المنتج"),
         "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
+        "remove_from_card":
+            MessageLookupByLibrary.simpleMessage("ازالة من السلة"),
         "required_field":
             MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
         "shoes_category": MessageLookupByLibrary.simpleMessage("الأحذية"),

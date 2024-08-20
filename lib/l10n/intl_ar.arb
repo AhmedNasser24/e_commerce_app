@@ -39,6 +39,7 @@
    "old_orders" : "الطلبات السابقة",
    "my_orders" : "طلباتي",
    "add_to_card" : "اضافة للسلة",
+   "remove_from_card" : "ازالة من السلة",
    "product_is_added_successfully": "تمت اضافة المنتج بنجاح",
    "my_cart" : "السلة",
    "product_is_added_to_cart" : "تمت اضافة المنتج للسلة بنجاح",

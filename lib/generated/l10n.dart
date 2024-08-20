@@ -450,6 +450,16 @@ class S {
     );
   }
 
+  /// `Remove from card`
+  String get remove_from_card {
+    return Intl.message(
+      'Remove from card',
+      name: 'remove_from_card',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Product is added successfully`
   String get product_is_added_successfully {
     return Intl.message(

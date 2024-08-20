@@ -12,7 +12,7 @@ class ReloadIconButtonForCustomer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () async {
+      onPressed: ()  {
         BlocProvider.of<FetchCategoryProductForCustomerCubit>(context)
             .fetchCategoryProductsForCustomer();
       },

@@ -6,15 +6,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../generated/l10n.dart';
 
-class AddToCardButton extends StatelessWidget {
-  const AddToCardButton({super.key, required this.productItemModel});
+class RemoveItemCartButton extends StatelessWidget {
+  const RemoveItemCartButton({super.key, required this.productItemModel});
   final ProductItemModel productItemModel;
 
   @override
   Widget build(BuildContext context) {
     return CustomButton(
-      title: S.of(context).add_to_card,
+      title: S.of(context).remove_from_card,
       style: AppStyle.medium12,
+      backGroundColor: const Color.fromARGB(255, 98, 170, 229),
       onTap: () {
         BlocProvider.of<CartCubit>(context)
             .addToCart(productItemModel: productItemModel , context: context);
