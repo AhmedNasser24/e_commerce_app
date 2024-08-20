@@ -56,4 +56,20 @@ class TraderRepoImpl extends TraderRepo {
       return right(Failure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<List<ProductItemModel>, Failure>>
+      fetchCategoryProductsForTrader({required String category}) async {
+    try {
+      List<ProductItemModel> productItemModelList =
+          await FirebaseServices().fetchCategoryProductsForTrader(category: category);
+      return left(productItemModelList);
+    } on FirebaseException catch (e) {
+      return right(FireBaseFailure.fromFireStoreException(e));
+    } on SocketException catch (e) {
+      return right(FireBaseFailure.fromSocketException(e));
+    } catch (e) {
+      return right(Failure(e.toString()));
+    }
+  }
 }
