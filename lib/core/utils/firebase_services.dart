@@ -4,6 +4,8 @@ import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../features/customer/data/models/add_to_cart_model.dart';
+
 class FirebaseServices {
   Future<void> addProduct(ProductItemModel productItemModel) async {
     String productId = productItemModel.productId!;
@@ -43,7 +45,7 @@ class FirebaseServices {
     return productItemModelList;
   }
 
-   Future<List<ProductItemModel>> fetchCategoryProductsForCustomer(
+  Future<List<ProductItemModel>> fetchCategoryProductsForCustomer(
       {required String category}) async {
     List<ProductItemModel> productItemModelList = [];
     List<String> categoryInEngOrArbLangList =
@@ -86,12 +88,14 @@ class FirebaseServices {
         .get();
   }
 
-  Future<QuerySnapshot<Map<String, dynamic>>> __getAllProductForCustomer() async {
+  Future<QuerySnapshot<Map<String, dynamic>>>
+      __getAllProductForCustomer() async {
     return await FirebaseFirestore.instance.collection(kShopCollection).get();
   }
 
-  Future<QuerySnapshot<Map<String, dynamic>>> __getCategoriezedProductForCustomer(
-      List<String> categoryInEngOrArbLangList) async {
+  Future<QuerySnapshot<Map<String, dynamic>>>
+      __getCategoriezedProductForCustomer(
+          List<String> categoryInEngOrArbLangList) async {
     return await FirebaseFirestore.instance
         .collection(kShopCollection)
         .where(
@@ -115,20 +119,15 @@ class FirebaseServices {
     }
   }
 
-  // String __handleProductCategoryBeforePush(ProductItemModel productItemModel) {
-  //   if (productItemModel.category == kElectronicsCategory ||
-  //       productItemModel.category == "الكترونيات") {
-  //     return kElectronicsCategory;
-  //   } else if (productItemModel.category == kClothesCategory ||
-  //       productItemModel.category == "الملابس") {
-  //     return kClothesCategory;
-  //   } else if (productItemModel.category == kShoesCategory ||
-  //       productItemModel.category == "الأحذية") {
-  //     return kShoesCategory;
-  //   } else if (productItemModel.category == kJewellaryCategory ||
-  //       productItemModel.category == "المجوهرات") {
-  //     return kJewellaryCategory;
-  //   }
-  //   return 'Others';
-  // }
+  Future<void> addToCart({required AddToCartModel addToCartModel}) async {
+    String userId = FirebaseAuth.instance.currentUser!.uid;
+    await FirebaseFirestore.instance
+        .collection(kUsersCollection)
+        .doc(userId)
+        .collection(kCustomerCollection)
+        .doc(kCartDocOrCollection)
+        .collection(kCartDocOrCollection)
+        .doc()
+        .set(addToCartModel.toJson());
+  }
 }

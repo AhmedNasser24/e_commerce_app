@@ -30,3 +30,6 @@ const String kClothesCategory = "Clothes" ;
 const String kShoesCategory = "Shoes" ;
 const String kJewellaryCategory = "Jewellary" ;
 const String kAllCategory = "All" ;
+const String kProductInfoKey = "product_info" ;
+const String kAddToCartDateKey = "add_to_cart_date" ;
+const String kCartDocOrCollection = "Cart" ;
