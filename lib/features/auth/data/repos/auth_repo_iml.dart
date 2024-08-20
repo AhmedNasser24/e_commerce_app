@@ -23,7 +23,7 @@ class AuthRepoIml extends AuthRepo {
 
   @override
   Future<Either<void, Failure>> register(
-      {required RegisterModel registerModel}) async {
+      {required UserInfoModel registerModel}) async {
     try {
       final credential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(

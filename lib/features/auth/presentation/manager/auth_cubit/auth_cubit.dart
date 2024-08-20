@@ -31,7 +31,7 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  Future<void> register(context, {required RegisterModel registerModel}) async {
+  Future<void> register(context, {required UserInfoModel registerModel}) async {
     emit(AuthLoading());
     Either<void, Failure> response =
         await _authRepoImpl.register(registerModel: registerModel);
@@ -49,7 +49,7 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  Future<void> _setTraderInfoIntoFireStore(RegisterModel registerModel) async {
+  Future<void> _setTraderInfoIntoFireStore(UserInfoModel registerModel) async {
     String traderUidDoc = FirebaseAuth.instance.currentUser!.uid;
     await FirebaseFirestore.instance
         .collection(kUsersCollection)
@@ -60,7 +60,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> _setCustomerInfoIntoFireStore(
-      RegisterModel registerModel) async {
+      UserInfoModel registerModel) async {
     String customerUidDoc = FirebaseAuth.instance.currentUser!.uid;
     await FirebaseFirestore.instance
         .collection(kUsersCollection)

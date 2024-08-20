@@ -8,7 +8,7 @@ class WhatsAppNumber extends StatefulWidget {
   const WhatsAppNumber({
     super.key, required this.registerModel,
   });
-  final RegisterModel registerModel;
+  final UserInfoModel registerModel;
 
   @override
   State<WhatsAppNumber> createState() => _WhatsAppNumberState();

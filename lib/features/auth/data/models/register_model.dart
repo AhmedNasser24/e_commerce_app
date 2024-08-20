@@ -1,10 +1,10 @@
 import '../../../../constants.dart';
 
-class RegisterModel {
+class UserInfoModel {
    String? email, password;
    String? name, whatsappNumber, accountKind;
 
-   RegisterModel({
+   UserInfoModel({
     this.email,
     this.password,
     this.name,
@@ -20,5 +20,14 @@ class RegisterModel {
       kWhatsAppNumber: whatsappNumber ,
       kAccountKind : accountKind,
     };
+  }
+  factory UserInfoModel.fromJson(json){
+    return UserInfoModel(
+      email: json[kEmail],
+      password: json[kPassword],
+      name: json[kName],
+      whatsappNumber: json[kWhatsAppNumber],
+      accountKind: json[kAccountKind],  
+    );
   }
 }

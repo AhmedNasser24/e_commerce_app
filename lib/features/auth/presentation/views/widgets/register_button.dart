@@ -12,7 +12,7 @@ class RegisterButton extends StatelessWidget {
     required this.formKey,
     required this.registerModel,
   });
-  final RegisterModel registerModel;
+  final UserInfoModel registerModel;
   final GlobalKey<FormState> formKey;
 
   @override

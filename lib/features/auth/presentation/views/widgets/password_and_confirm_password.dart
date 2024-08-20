@@ -10,7 +10,7 @@ class PasswordAndConfirmPassword extends StatefulWidget {
     super.key,
     required this.registerModel,
   });
-  final RegisterModel registerModel;
+  final UserInfoModel registerModel;
 
   @override
   State<PasswordAndConfirmPassword> createState() =>

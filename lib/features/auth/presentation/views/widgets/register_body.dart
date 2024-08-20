@@ -21,7 +21,7 @@ class RegisterBody extends StatefulWidget {
 
 class _RegisterBodyState extends State<RegisterBody> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  RegisterModel registerModel = RegisterModel();
+  UserInfoModel registerModel = UserInfoModel();
   @override
   Widget build(BuildContext context) {
     return Form(

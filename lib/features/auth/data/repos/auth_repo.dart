@@ -6,5 +6,5 @@ import '../models/register_model.dart';
 
 abstract class AuthRepo {
   Future<Either<void, Failure>> login({required LoginModel loginModel});
-  Future<Either<void, Failure>> register( {required RegisterModel registerModel});
+  Future<Either<void, Failure>> register( {required UserInfoModel registerModel});
 }

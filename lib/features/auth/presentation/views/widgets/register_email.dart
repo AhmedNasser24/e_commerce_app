@@ -8,7 +8,7 @@ class RegisterEmail extends StatefulWidget {
   const RegisterEmail({
     super.key, required this.registerModel,
   });
-  final RegisterModel registerModel;
+  final UserInfoModel registerModel;
 
   @override
   State<RegisterEmail> createState() => _RegisterEmailState();
