@@ -25,18 +25,17 @@ class FirebaseServices {
         .set(productItemModel.tojson(), SetOptions(merge: true));
   }
 
-  
-
   Future<List<ProductItemModel>> fetchCategoryProductsForTrader(
       {required String category}) async {
     List<ProductItemModel> productItemModelList = [];
     List<String> categoryInEngOrArbLangList =
         __getCategoryKeyCorrectly(category);
     late QuerySnapshot<Map<String, dynamic>> response;
-    if (listEquals(categoryInEngOrArbLangList , [kAllCategory, "الكل"])) {
-      response = await __getAllProduct();
+    if (listEquals(categoryInEngOrArbLangList, [kAllCategory, "الكل"])) {
+      response = await __getAllProductForTrader();
     } else {
-      response = await __getCategoriezedProduct(categoryInEngOrArbLangList);
+      response =
+          await __getCategoriezedProductForTrader(categoryInEngOrArbLangList);
     }
     for (var doc in response.docs) {
       productItemModelList.add(ProductItemModel.fromJson(doc.data()));
@@ -44,14 +43,35 @@ class FirebaseServices {
     return productItemModelList;
   }
 
-  Future<QuerySnapshot<Map<String, dynamic>>> __getAllProduct() async {
-    return await FirebaseFirestore.instance.collection(kShopCollection).where(
-        kTraderId,
-        isEqualTo: FirebaseAuth.instance.currentUser!.uid,
-        ).get();
+   Future<List<ProductItemModel>> fetchCategoryProductsForCustomer(
+      {required String category}) async {
+    List<ProductItemModel> productItemModelList = [];
+    List<String> categoryInEngOrArbLangList =
+        __getCategoryKeyCorrectly(category);
+    late QuerySnapshot<Map<String, dynamic>> response;
+    if (listEquals(categoryInEngOrArbLangList, [kAllCategory, "الكل"])) {
+      response = await __getAllProductForCustomer();
+    } else {
+      response =
+          await __getCategoriezedProductForCustomer(categoryInEngOrArbLangList);
+    }
+    for (var doc in response.docs) {
+      productItemModelList.add(ProductItemModel.fromJson(doc.data()));
+    }
+    return productItemModelList;
   }
 
-  Future<QuerySnapshot<Map<String, dynamic>>> __getCategoriezedProduct(
+  Future<QuerySnapshot<Map<String, dynamic>>> __getAllProductForTrader() async {
+    return await FirebaseFirestore.instance
+        .collection(kShopCollection)
+        .where(
+          kTraderId,
+          isEqualTo: FirebaseAuth.instance.currentUser!.uid,
+        )
+        .get();
+  }
+
+  Future<QuerySnapshot<Map<String, dynamic>>> __getCategoriezedProductForTrader(
       List<String> categoryInEngOrArbLangList) async {
     return await FirebaseFirestore.instance
         .collection(kShopCollection)
@@ -59,6 +79,21 @@ class FirebaseServices {
           kTraderId,
           isEqualTo: FirebaseAuth.instance.currentUser!.uid,
         )
+        .where(
+          kProductCategory,
+          whereIn: categoryInEngOrArbLangList,
+        )
+        .get();
+  }
+
+  Future<QuerySnapshot<Map<String, dynamic>>> __getAllProductForCustomer() async {
+    return await FirebaseFirestore.instance.collection(kShopCollection).get();
+  }
+
+  Future<QuerySnapshot<Map<String, dynamic>>> __getCategoriezedProductForCustomer(
+      List<String> categoryInEngOrArbLangList) async {
+    return await FirebaseFirestore.instance
+        .collection(kShopCollection)
         .where(
           kProductCategory,
           whereIn: categoryInEngOrArbLangList,

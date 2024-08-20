@@ -6,4 +6,5 @@ abstract class TraderRepo {
   Future<Either<void, Failure>> addProduct({required ProductItemModel productItemModel});
   Future<Either<void, Failure>> editProduct({required ProductItemModel productItemModel});
   Future<Either<List<ProductItemModel>, Failure>> fetchCategoryProductsForTrader({required String category});
+  Future<Either<List<ProductItemModel>, Failure>> fetchCategoryProductsForCustomer({required String category});
 }
