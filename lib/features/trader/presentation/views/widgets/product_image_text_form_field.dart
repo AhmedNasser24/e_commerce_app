@@ -3,7 +3,6 @@
 import 'package:e_commerce/core/functions/img_picker.dart';
 import 'package:e_commerce/core/functions/show_snack_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/models/product_item_model.dart';
