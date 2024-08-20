@@ -23,23 +23,24 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "LE": MessageLookupByLibrary.simpleMessage("LE"),
-        "account_kind": MessageLookupByLibrary.simpleMessage("account_kind"),
+        "account_kind": MessageLookupByLibrary.simpleMessage("Account_kind"),
         "add_product": MessageLookupByLibrary.simpleMessage("Add product"),
         "add_to_card": MessageLookupByLibrary.simpleMessage("Add to card"),
         "all_category": MessageLookupByLibrary.simpleMessage("All"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "clothes_category": MessageLookupByLibrary.simpleMessage("Clothes"),
-        "customer": MessageLookupByLibrary.simpleMessage("customer"),
+        "customer": MessageLookupByLibrary.simpleMessage("Customer"),
         "edit_product": MessageLookupByLibrary.simpleMessage("Edit product"),
         "electronics_category":
             MessageLookupByLibrary.simpleMessage("Electronics"),
-        "email": MessageLookupByLibrary.simpleMessage("email"),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
         "from_camera": MessageLookupByLibrary.simpleMessage("From Camera"),
-        "from_gallery": MessageLookupByLibrary.simpleMessage("from Gallery"),
-        "image_is_added": MessageLookupByLibrary.simpleMessage("image isadded"),
+        "from_gallery": MessageLookupByLibrary.simpleMessage("From Gallery"),
+        "image_is_added":
+            MessageLookupByLibrary.simpleMessage("image is added"),
         "image_is_not_added":
-            MessageLookupByLibrary.simpleMessage("image is not_added"),
+            MessageLookupByLibrary.simpleMessage("image is not added"),
         "jewellary_category": MessageLookupByLibrary.simpleMessage("Jewellary"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
@@ -48,9 +49,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("name"),
         "new_orders": MessageLookupByLibrary.simpleMessage("New orders"),
         "old_orders": MessageLookupByLibrary.simpleMessage("Old orders"),
-        "password": MessageLookupByLibrary.simpleMessage("password"),
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordConfirm":
-            MessageLookupByLibrary.simpleMessage("confirm password"),
+            MessageLookupByLibrary.simpleMessage("Confirm password"),
         "passwords_do_not_match":
             MessageLookupByLibrary.simpleMessage("passwords do not match"),
         "phone_number_must_be_at_least_11_characters":
@@ -62,6 +63,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "product_category":
             MessageLookupByLibrary.simpleMessage("Product category"),
         "product_image": MessageLookupByLibrary.simpleMessage("Product image"),
+        "product_is_added_successfully": MessageLookupByLibrary.simpleMessage(
+            "Product is added successfully"),
         "product_name": MessageLookupByLibrary.simpleMessage("Product name"),
         "product_price": MessageLookupByLibrary.simpleMessage("Product price"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
@@ -70,8 +73,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "shoes_category": MessageLookupByLibrary.simpleMessage("Shoes"),
         "shop": MessageLookupByLibrary.simpleMessage("Shop"),
         "sign_out": MessageLookupByLibrary.simpleMessage("Sign out"),
-        "trader": MessageLookupByLibrary.simpleMessage("trader"),
+        "trader": MessageLookupByLibrary.simpleMessage("Trader"),
         "whatsapp_number":
-            MessageLookupByLibrary.simpleMessage("whatsapp number")
+            MessageLookupByLibrary.simpleMessage("Whatsapp number")
       };
 }

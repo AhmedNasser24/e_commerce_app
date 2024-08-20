@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/l10n.dart';
-import 'add_product_button.dart';
+import 'add_product_button_bloc_consumer.dart';
 import 'product_category_text_form_field.dart';
 import 'product_name_text_form_field.dart';
 import 'product_price_text_form_field.dart';

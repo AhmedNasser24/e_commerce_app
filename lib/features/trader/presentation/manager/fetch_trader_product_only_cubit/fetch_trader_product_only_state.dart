@@ -8,8 +8,8 @@ class FetchTraderProductOnlySuccess extends FetchTraderProductOnlyState {
   final List < ProductItemModel > productItemModelList ;
   FetchTraderProductOnlySuccess({required this.productItemModelList});
 }
-class FetchTraderProductOnlyfailure extends FetchTraderProductOnlyState {
+class FetchTraderProductOnlyFailure extends FetchTraderProductOnlyState {
   final String errMessage ;
 
-  FetchTraderProductOnlyfailure(this.errMessage);
+  FetchTraderProductOnlyFailure(this.errMessage);
 }

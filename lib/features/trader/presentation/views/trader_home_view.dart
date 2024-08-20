@@ -19,7 +19,8 @@ class _TraderHomeViewState extends State<TraderHomeView> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: kScaffoldColor,
-      body: const TraderHomeViewBody(),
+      body:  const TraderHomeViewBody(),
+      
       appBar: traderAppBar(context, scaffoldKey),
       floatingActionButton: const CustomFloatingActionButton(),
       drawer: const CustomTraderDrawer(),

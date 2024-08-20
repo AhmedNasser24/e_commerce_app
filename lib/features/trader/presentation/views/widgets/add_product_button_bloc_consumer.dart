@@ -33,7 +33,7 @@ class AddProductButtonBlocConsumer extends StatelessWidget {
           dv.log("$isLoading") ;
         } else if (state is AddProductSuccess) {
           isLoading = false;
-          Navigator.pop(context);
+          showSnackBar(context , S.of(context).product_is_added_successfully);
         } else if (state is AddProductFailure) {
           showSnackBar(context, state.errMessage);
           isLoading = false;
@@ -43,10 +43,10 @@ class AddProductButtonBlocConsumer extends StatelessWidget {
         return CustomButton(
           title: S.of(context).add_product,
           isLoading: isLoading,
-          onTap: () async {
+          onTap: ()  {
             if (formKey.currentState!.validate()) {
               setProductIdAndTraderIdAndDate();
-              await BlocProvider.of<AddProductCubit>(context)
+               BlocProvider.of<AddProductCubit>(context)
                   .addProduct(productItemModel: productItemModel);
             } else {
               formKey.currentState!.save();

@@ -80,40 +80,40 @@ class S {
     );
   }
 
-  /// `email`
+  /// `Email`
   String get email {
     return Intl.message(
-      'email',
+      'Email',
       name: 'email',
       desc: '',
       args: [],
     );
   }
 
-  /// `password`
+  /// `Password`
   String get password {
     return Intl.message(
-      'password',
+      'Password',
       name: 'password',
       desc: '',
       args: [],
     );
   }
 
-  /// `confirm password`
+  /// `Confirm password`
   String get passwordConfirm {
     return Intl.message(
-      'confirm password',
+      'Confirm password',
       name: 'passwordConfirm',
       desc: '',
       args: [],
     );
   }
 
-  /// `whatsapp number`
+  /// `Whatsapp number`
   String get whatsapp_number {
     return Intl.message(
-      'whatsapp number',
+      'Whatsapp number',
       name: 'whatsapp_number',
       desc: '',
       args: [],
@@ -150,30 +150,30 @@ class S {
     );
   }
 
-  /// `account_kind`
+  /// `Account_kind`
   String get account_kind {
     return Intl.message(
-      'account_kind',
+      'Account_kind',
       name: 'account_kind',
       desc: '',
       args: [],
     );
   }
 
-  /// `trader`
+  /// `Trader`
   String get trader {
     return Intl.message(
-      'trader',
+      'Trader',
       name: 'trader',
       desc: '',
       args: [],
     );
   }
 
-  /// `customer`
+  /// `Customer`
   String get customer {
     return Intl.message(
-      'customer',
+      'Customer',
       name: 'customer',
       desc: '',
       args: [],
@@ -310,30 +310,30 @@ class S {
     );
   }
 
-  /// `from Gallery`
+  /// `From Gallery`
   String get from_gallery {
     return Intl.message(
-      'from Gallery',
+      'From Gallery',
       name: 'from_gallery',
       desc: '',
       args: [],
     );
   }
 
-  /// `image isadded`
+  /// `image is added`
   String get image_is_added {
     return Intl.message(
-      'image isadded',
+      'image is added',
       name: 'image_is_added',
       desc: '',
       args: [],
     );
   }
 
-  /// `image is not_added`
+  /// `image is not added`
   String get image_is_not_added {
     return Intl.message(
-      'image is not_added',
+      'image is not added',
       name: 'image_is_not_added',
       desc: '',
       args: [],
@@ -445,6 +445,16 @@ class S {
     return Intl.message(
       'Add to card',
       name: 'add_to_card',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product is added successfully`
+  String get product_is_added_successfully {
+    return Intl.message(
+      'Product is added successfully',
+      name: 'product_is_added_successfully',
       desc: '',
       args: [],
     );

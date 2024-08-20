@@ -62,6 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "يرجى التحقق من بريدك الالكتروني لتأكيد الحساب"),
         "product_category": MessageLookupByLibrary.simpleMessage("نوع المنتج"),
         "product_image": MessageLookupByLibrary.simpleMessage("صورة المنتج"),
+        "product_is_added_successfully":
+            MessageLookupByLibrary.simpleMessage("تمت اضافة المنتج بنجاح"),
         "product_name": MessageLookupByLibrary.simpleMessage("اسم المنتج"),
         "product_price": MessageLookupByLibrary.simpleMessage("سعر المنتج"),
         "register": MessageLookupByLibrary.simpleMessage("تسجيل"),

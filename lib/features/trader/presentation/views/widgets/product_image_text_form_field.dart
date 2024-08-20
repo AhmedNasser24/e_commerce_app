@@ -3,6 +3,7 @@
 import 'package:e_commerce/core/functions/img_picker.dart';
 import 'package:e_commerce/core/functions/show_snack_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/models/product_item_model.dart';
@@ -10,24 +11,23 @@ import '../../../../../core/models/product_item_model.dart';
 class ProductImageTextFormField extends StatefulWidget {
   const ProductImageTextFormField({
     super.key,
-    this.imageUrl = '', required this.productItemModel,
+    required this.productItemModel,
   });
-  final ProductItemModel productItemModel ;
+  final ProductItemModel productItemModel;
 
-  final String imageUrl ;
   @override
   State<ProductImageTextFormField> createState() =>
       _ProductImageTextFormFieldState();
 }
 
-class _ProductImageTextFormFieldState
-    extends State<ProductImageTextFormField> {
-  late String selectedImage ;
+class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
+  late String selectedImage;
   @override
   void initState() {
-    selectedImage = widget.imageUrl ;
+    selectedImage = widget.productItemModel.imageUrl ?? '';
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
@@ -35,7 +35,7 @@ class _ProductImageTextFormFieldState
       hintText: S.of(context).product_image,
       readOnly: true,
       suffixIcon: const Icon(Icons.arrow_drop_down, color: Colors.black),
-      onTap: () async{
+      onTap: () async {
         await _showCategoryDialog(context);
       },
       validator: (value) {
@@ -47,7 +47,7 @@ class _ProductImageTextFormFieldState
     );
   }
 
-  Future <void> _showCategoryDialog(BuildContext context) async{
+  Future<void> _showCategoryDialog(BuildContext context) async {
     List<String> pickImageFrom = [
       S.of(context).from_camera,
       S.of(context).from_gallery
@@ -57,7 +57,7 @@ class _ProductImageTextFormFieldState
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(S.of(context).product_image),
-          content: Column(
+          content:Column(
             mainAxisSize: MainAxisSize.min,
             children: pickImageFrom
                 .map(
@@ -65,7 +65,7 @@ class _ProductImageTextFormFieldState
                     title: Text(category),
                     onTap: () async {
                       String? imageUrl;
-                      if (category == S.of(context).from_camera)  {
+                      if (category == S.of(context).from_camera) {
                         imageUrl = await imgPickerFromCamera();
                       } else {
                         imageUrl = await imgPickerFromGallery();
@@ -76,11 +76,10 @@ class _ProductImageTextFormFieldState
                           selectedImage = imageUrl!;
                         });
                         showSnackBar(context, S.of(context).image_is_added);
-                      }else {
+                      } else {
                         showSnackBar(context, S.of(context).image_is_not_added);
                       }
                       Navigator.pop(context);
-
                     },
                   ),
                 )

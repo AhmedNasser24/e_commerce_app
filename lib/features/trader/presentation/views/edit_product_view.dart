@@ -6,10 +6,11 @@ import 'widgets/back_arrow_button.dart';
 import 'widgets/edit_product_body.dart';
 
 class EditProductView extends StatelessWidget {
-  const EditProductView({super.key,});
+  const EditProductView({super.key, required this.productItemModel});
+  
+  final ProductItemModel productItemModel ;
   @override
   Widget build(BuildContext context) {
-  ProductItemModel productItemModel = ProductItemModel();
     return Scaffold(
       body:
           SafeArea(child: EditProductBody(productItemModel: productItemModel)),

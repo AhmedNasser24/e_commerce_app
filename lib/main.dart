@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:e_commerce/features/customer/presentation/views/customer_home_view.dart';
+import 'package:e_commerce/features/trader/presentation/manager/fetch_trader_product_only_cubit/fetch_trader_product_only_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -57,8 +58,15 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     log('isLogin : $isLogin');
-    return BlocProvider(
-      create: (context) => AuthCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AuthCubit(),
+        ),
+        // BlocProvider(
+        //   create: (context) => FetchTraderProductOnlyCubit(),
+        // ),
+      ],
       child: MaterialApp(
         locale: _locale,
         localizationsDelegates: const [
@@ -75,7 +83,7 @@ class _MyAppState extends State<MyApp> {
           useMaterial3: true,
         ),
         home:
-            const LoginView() , // isLogin ? const RegisterView() : const LoginView(),
+            const LoginView(), // isLogin ? const RegisterView() : const LoginView(),
       ),
     );
   }

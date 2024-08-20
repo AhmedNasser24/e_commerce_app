@@ -8,11 +8,10 @@ import '../../../../../core/models/product_item_model.dart';
 class ProductCategoryTextFormField extends StatefulWidget {
   const ProductCategoryTextFormField({
     super.key,
-    this.selectedCategory = '', required this.productItemModel,
+     required this.productItemModel,
   });
   final ProductItemModel productItemModel ;
 
-  final String selectedCategory;
   @override
   State<ProductCategoryTextFormField> createState() =>
       _ProductCategoryTextFormFieldState();
@@ -24,7 +23,7 @@ class _ProductCategoryTextFormFieldState
   late TextEditingController controller ;
   @override
   void initState() {
-    selectedCategory = widget.selectedCategory ;
+    selectedCategory = widget.productItemModel.category ?? '' ;
     super.initState();
   }
   @override
@@ -52,6 +51,7 @@ class _ProductCategoryTextFormFieldState
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          
           title: Text(S.of(context).product_category),
           content: Column(
             mainAxisSize: MainAxisSize.min,

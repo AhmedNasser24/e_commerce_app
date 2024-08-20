@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../trader/presentation/views/widgets/product_image_positioned.dart';
+import '../../../../../core/widgets/product_image_positioned.dart';
 import 'customer_product_details.dart';
 
 class CustomerProductCard extends StatelessWidget {
@@ -20,7 +20,7 @@ class CustomerProductCard extends StatelessWidget {
             ),
           ),
 
-          CustomProductImagePositioned(),
+          CustomProductImagePositioned(imageUrl: ''),
         ],
       ),
     );

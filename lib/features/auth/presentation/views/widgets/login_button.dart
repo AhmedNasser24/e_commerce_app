@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../trader/presentation/views/trader_home_view.dart';
+import '../../../../trader/presentation/views/widgets/trader_home_view_bloc_provider.dart';
 import '../../../data/models/login_model.dart';
 import '../../manager/auth_cubit/auth_cubit.dart';
 
@@ -30,10 +31,11 @@ class LoginButton extends StatelessWidget {
           isLoading = false;
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => const TraderHomeView()),
+            MaterialPageRoute(
+              builder: (context) => const TraderHomeViewBlocProvider(),
+            ),
             (route) => false,
           );
-          debugPrint("login success");
         } else {
           isLoading = false;
         }

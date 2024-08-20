@@ -38,5 +38,6 @@
    "new_orders" : "الطلبات الجديدة",
    "old_orders" : "الطلبات السابقة",
    "my_orders" : "طلباتي",
-   "add_to_card" : "اضافة للسلة"
+   "add_to_card" : "اضافة للسلة",
+   "product_is_added_successfully": "تمت اضافة المنتج بنجاح"
 }

@@ -9,7 +9,7 @@ class FirebaseServices {
   Future<void> addProduct(ProductItemModel productItemModel) async {
     String productId = productItemModel.productId!;
     log(productId);
-    FirebaseFirestore.instance
+    await FirebaseFirestore.instance
         .collection(kShopCollection)
         .doc(productId)
         .set(productItemModel.tojson());
@@ -17,7 +17,7 @@ class FirebaseServices {
 
   Future<void> editProduct(ProductItemModel productItemModel) async {
     String productId = productItemModel.productId!;
-    FirebaseFirestore.instance
+    await FirebaseFirestore.instance
         .collection(kShopCollection)
         .doc(productId)
         .set(productItemModel.tojson(), SetOptions(merge: true));

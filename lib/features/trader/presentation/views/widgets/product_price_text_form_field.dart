@@ -7,22 +7,21 @@ import '../../../../../core/models/product_item_model.dart';
 class ProductPriceTextFormField extends StatelessWidget {
   const ProductPriceTextFormField({
     super.key,
-    this.productPrice = '', required this.productItemModel,
+    required this.productItemModel,
   });
-  final ProductItemModel productItemModel ;
+  final ProductItemModel productItemModel;
 
-  final String productPrice ;
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
-      controller: TextEditingController(text:productPrice),
+      controller: TextEditingController(text: productItemModel.price ?? ''),
       hintText: S.of(context).product_price,
       keyboardType: TextInputType.number,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return S.of(context).required_field;
         }
-        productItemModel.price = value ;
+        productItemModel.price = value;
         return null;
       },
     );

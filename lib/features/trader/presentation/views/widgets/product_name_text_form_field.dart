@@ -7,14 +7,14 @@ import '../../../../../core/widgets/custom_text_form_field.dart';
 class ProductNameTextFormField extends StatelessWidget {
   const ProductNameTextFormField({
     super.key,
-    this.productName = '', required this.productItemModel,
+    required this.productItemModel,
   });
   final ProductItemModel productItemModel ;
-  final String productName ;
+  
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
-      controller: TextEditingController(text: productName),
+      controller: TextEditingController(text: productItemModel.name ?? ''),
       hintText: S.of(context).product_name,
       validator: (value) {
         if (value == null || value.isEmpty) {
