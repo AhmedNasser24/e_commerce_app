@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/functions/show_category_pop_up_menu.dart';
 import '../../../../../generated/l10n.dart';
+import 'customer_menu_icon_button.dart';
+import 'reload_icon_button_for_customer.dart';
+import 'show_category_popup_menu_for_customer.dart';
 
 AppBar customerAppBar(
     BuildContext context, GlobalKey<ScaffoldState> scaffoldKey) {
@@ -10,18 +12,10 @@ AppBar customerAppBar(
     backgroundColor: Colors.white,
     title: Text(S.of(context).shop),
     centerTitle: true,
-    leading: IconButton(
-      onPressed: () {
-        scaffoldKey.currentState!.openDrawer();
-      },
-      icon: const Icon(
-        Icons.menu,
-        color: Colors.black,
-        size: 30,
-      ),
-    ),
+    leading: CustomerMenuIconButton(scaffoldKey: scaffoldKey),
     actions: [
-      showCategoryPopUpMenu(context),
+      const ReloadIconButtonForCustomer(),
+      showCategoryPopUpMenuForCustomer(context),
     ],
   );
 }

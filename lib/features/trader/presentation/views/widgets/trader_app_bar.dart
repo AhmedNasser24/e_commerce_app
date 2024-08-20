@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../../core/functions/show_category_pop_up_menu.dart';
+import 'show_category_pop_up_menu_for_trader.dart';
 import '../../../../../generated/l10n.dart';
 import 'menu_icon_button.dart';
-import 'reload_icon_button.dart';
+import 'reload_icon_button_for_trader.dart';
 
 AppBar traderAppBar(
     BuildContext context, GlobalKey<ScaffoldState> scaffoldKey) {
@@ -14,8 +14,8 @@ AppBar traderAppBar(
     centerTitle: true,
     leading: MenuIconButton(scaffoldKey: scaffoldKey),
     actions: [
-      const ReloadIconButton(),
-      showCategoryPopUpMenu(context),
+      const ReloadIconButtonForTrader(),
+      showCategoryPopUpMenuForTrader(context),
     ],
   );
 }

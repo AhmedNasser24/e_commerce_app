@@ -2,13 +2,15 @@ import 'package:e_commerce/features/customer/presentation/views/widgets/add_to_c
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../core/models/product_item_model.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/l10n.dart';
 
 class CustomerProductDetails extends StatelessWidget {
   const CustomerProductDetails({
-    super.key,
+    super.key, required this.productItemModel,
   });
+  final ProductItemModel productItemModel ;
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +18,15 @@ class CustomerProductDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Gap(60),
-        const Text(
-          "product name",
+        Text(
+          productItemModel.name!,
           style: AppStyle.medium16,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
         const Gap(6),
         Text(
-          "product Category",
+          productItemModel.category!,
           style: AppStyle.medium16.copyWith(color: Colors.grey),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -33,7 +35,7 @@ class CustomerProductDetails extends StatelessWidget {
         Row(
           children: [
             Text(
-              "55.99 ${S.of(context).LE}",
+              "${productItemModel.price!} ${S.of(context).LE}",
               style: AppStyle.semiBold16,
             ),
             const Spacer(),

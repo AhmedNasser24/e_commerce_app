@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../features/trader/presentation/manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
-import '../../generated/l10n.dart';
-import 'list_of_product_category.dart';
+import '../../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../../../core/functions/list_of_product_category.dart';
 
-Widget showCategoryPopUpMenu(context) {
+Widget showCategoryPopUpMenuForTrader(context) {
   List<String> categoriesList = [S.of(context).all_category];
   categoriesList.addAll(categoryList(context));
   return PopupMenuButton<String>(

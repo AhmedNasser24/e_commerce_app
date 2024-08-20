@@ -6,7 +6,7 @@ import '../../../../../generated/l10n.dart';
 
 class AddToCardButton extends StatelessWidget {
   const AddToCardButton({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return CustomButton(

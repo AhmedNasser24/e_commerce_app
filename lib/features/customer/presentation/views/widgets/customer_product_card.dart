@@ -1,29 +1,28 @@
+import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/widgets/product_image_positioned.dart';
 import 'customer_product_details.dart';
 
 class CustomerProductCard extends StatelessWidget {
-  const CustomerProductCard({super.key});
-
+  const CustomerProductCard({super.key, required this.productItemModel});
+  final ProductItemModel productItemModel;
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(right: 8, left: 8, top: 120),
+    return Padding(
+      padding: const EdgeInsets.only(right: 8, left: 8, top: 120),
       child: Stack(
         clipBehavior: Clip.none,
         children: [
           Card(
             color: Colors.white,
             child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: CustomerProductDetails(),
+              padding: const EdgeInsets.all(8.0),
+              child: CustomerProductDetails(productItemModel: productItemModel),
             ),
           ),
-
-          CustomProductImagePositioned(imageUrl: ''),
+          CustomProductImagePositioned(imageUrl: productItemModel.imageUrl!),
         ],
       ),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'package:e_commerce/features/customer/presentation/views/customer_home_view.dart';
-import 'package:e_commerce/features/trader/presentation/manager/fetch_trader_product_only_cubit/fetch_trader_product_only_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
