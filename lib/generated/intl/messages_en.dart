@@ -35,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Electronics"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
+        "error_product_is_not_added_to_cart":
+            MessageLookupByLibrary.simpleMessage(
+                "Error: Product isn\'t added to cart"),
         "from_camera": MessageLookupByLibrary.simpleMessage("From Camera"),
         "from_gallery": MessageLookupByLibrary.simpleMessage("From Gallery"),
         "image_is_added":
@@ -66,6 +69,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "product_image": MessageLookupByLibrary.simpleMessage("Product image"),
         "product_is_added_successfully": MessageLookupByLibrary.simpleMessage(
             "Product is added successfully"),
+        "product_is_added_to_cart":
+            MessageLookupByLibrary.simpleMessage("Product is added to cart"),
         "product_name": MessageLookupByLibrary.simpleMessage("Product name"),
         "product_price": MessageLookupByLibrary.simpleMessage("Product price"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),

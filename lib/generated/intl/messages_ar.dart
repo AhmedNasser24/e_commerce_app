@@ -35,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الكترونيات"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
         "english": MessageLookupByLibrary.simpleMessage("الانجليزية"),
+        "error_product_is_not_added_to_cart":
+            MessageLookupByLibrary.simpleMessage(
+                "حدث خطأ: لم يتم اضافة المنتج للسلة"),
         "from_camera": MessageLookupByLibrary.simpleMessage("من الكاميرا"),
         "from_gallery": MessageLookupByLibrary.simpleMessage("من المعرض"),
         "image_is_added":
@@ -65,6 +68,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "product_image": MessageLookupByLibrary.simpleMessage("صورة المنتج"),
         "product_is_added_successfully":
             MessageLookupByLibrary.simpleMessage("تمت اضافة المنتج بنجاح"),
+        "product_is_added_to_cart": MessageLookupByLibrary.simpleMessage(
+            "تمت اضافة المنتج للسلة بنجاح"),
         "product_name": MessageLookupByLibrary.simpleMessage("اسم المنتج"),
         "product_price": MessageLookupByLibrary.simpleMessage("سعر المنتج"),
         "register": MessageLookupByLibrary.simpleMessage("تسجيل"),

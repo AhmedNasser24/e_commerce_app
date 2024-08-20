@@ -469,6 +469,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Product is added to cart`
+  String get product_is_added_to_cart {
+    return Intl.message(
+      'Product is added to cart',
+      name: 'product_is_added_to_cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error: Product isn't added to cart`
+  String get error_product_is_not_added_to_cart {
+    return Intl.message(
+      'Error: Product isn\'t added to cart',
+      name: 'error_product_is_not_added_to_cart',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

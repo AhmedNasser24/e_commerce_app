@@ -31,7 +31,7 @@ class ListOfCustomerProductCard extends StatelessWidget {
             ? const Center(child: CircularProgressIndicator())
             : ListView.builder(
                 itemCount: productItemModelList.length,
-                itemBuilder: (context, i) =>  CustomerProductCard(productItemModel : productItemModelList[i]),
+                itemBuilder: (context, i) =>  CustomerProductCard(productItemModel : productItemModelList[i] ),
               );
       },
     );

@@ -8,9 +8,10 @@ import '../../../../../generated/l10n.dart';
 
 class CustomerProductDetails extends StatelessWidget {
   const CustomerProductDetails({
-    super.key, required this.productItemModel,
+    super.key,
+    required this.productItemModel,
   });
-  final ProductItemModel productItemModel ;
+  final ProductItemModel productItemModel;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class CustomerProductDetails extends StatelessWidget {
               style: AppStyle.semiBold16,
             ),
             const Spacer(),
-            const AddToCardButton(),
+            AddToCardButton(productItemModel: productItemModel),
           ],
         ),
       ],

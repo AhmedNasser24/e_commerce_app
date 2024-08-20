@@ -40,5 +40,7 @@
    "my_orders" : "طلباتي",
    "add_to_card" : "اضافة للسلة",
    "product_is_added_successfully": "تمت اضافة المنتج بنجاح",
-   "my_cart" : "السلة"
+   "my_cart" : "السلة",
+   "product_is_added_to_cart" : "تمت اضافة المنتج للسلة بنجاح",
+   "error_product_is_not_added_to_cart" : "حدث خطأ: لم يتم اضافة المنتج للسلة"
 }
