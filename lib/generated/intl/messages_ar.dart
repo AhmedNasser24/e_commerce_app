@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "jewellary_category": MessageLookupByLibrary.simpleMessage("المجوهرات"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "my_cart": MessageLookupByLibrary.simpleMessage("السلة"),
         "my_orders": MessageLookupByLibrary.simpleMessage("طلباتي"),
         "my_shop": MessageLookupByLibrary.simpleMessage("متجري"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),

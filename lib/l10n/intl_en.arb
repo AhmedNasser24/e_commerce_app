@@ -39,5 +39,6 @@
     "old_orders" : "Old orders",
     "my_orders" : "My orders",
     "add_to_card" : "Add to card",
-    "product_is_added_successfully" : "Product is added successfully"
+    "product_is_added_successfully" : "Product is added successfully",
+    "my_cart" : "My Cart" 
 }
