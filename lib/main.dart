@@ -47,7 +47,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
-  Locale _locale = const Locale('en');
+  Locale _locale = const Locale('ar');
   void _changeLanguage(Locale newLocale) {
     setState(() {
       _locale = newLocale;

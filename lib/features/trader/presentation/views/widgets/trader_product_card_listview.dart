@@ -1,9 +1,7 @@
-import 'dart:developer';
-
-import 'package:e_commerce/features/trader/presentation/manager/fetch_trader_product_only_cubit/fetch_trader_product_only_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
 import 'trader_product_card.dart';
 
 class TraderProductCardListView extends StatelessWidget {
@@ -13,21 +11,19 @@ class TraderProductCardListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FetchTraderProductOnlyCubit,
-        FetchTraderProductOnlyState>(
+    return BlocBuilder<FetchCategoryProductsForTraderCubit,
+        FetchCategoryProductsForTraderState>(
       builder: (context, state) {
-        if (state is FetchTraderProductOnlySuccess) {
-          log('succeed');
+        if (state is FetchCategoryProductsForTraderSuccess) {
           return ListView.builder(
             physics: const BouncingScrollPhysics(),
             itemCount: state.productItemModelList.length,
             itemBuilder: (context, i) {
-              log(state.productItemModelList[i].name!);
               return TraderProductCard(
                   productItemModel: state.productItemModelList[i]);
             },
           );
-        } else if (state is FetchTraderProductOnlyFailure) {
+        } else if (state is FetchCategoryProductsForTraderFailure) {
           return Center(child: Text(state.errMessage));
         } else {
           return const LoadingWidget();
