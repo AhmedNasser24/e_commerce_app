@@ -10,7 +10,7 @@ void showSnackBar(context, message) {
         message,
         style: AppStyle.regular14.copyWith(color: Colors.red),
       ),
-      duration: const Duration(seconds: 6),
+      duration: const Duration(seconds: 3),
     ),
   );
 }

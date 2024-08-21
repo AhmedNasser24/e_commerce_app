@@ -119,16 +119,17 @@ class FirebaseServices {
     }
   }
 
-  Future<void> addToCart({required CartItemModel addToCartModel}) async {
+  Future<void> addToCart({required CartItemModel cartItemModel}) async {
     String userId = FirebaseAuth.instance.currentUser!.uid;
+    String orderId = cartItemModel.orderId ;
     await FirebaseFirestore.instance
         .collection(kUsersCollection)
         .doc(userId)
         .collection(kCustomerCollection)
         .doc(kCartDocOrCollection)
         .collection(kCartDocOrCollection)
-        .doc()
-        .set(addToCartModel.toJson());
+        .doc(orderId)
+        .set(cartItemModel.toJson());
   }
 
   Future<List<CartItemModel>> fetchCartItems() async {
@@ -147,5 +148,18 @@ class FirebaseServices {
       addToCartModelList.add(CartItemModel.fromJson(doc.data()));
     }
     return addToCartModelList;
+  }
+
+  Future < void > removeProductFromCart({required CartItemModel cartItemModel})async{
+    String userId = FirebaseAuth.instance.currentUser!.uid;
+    String orderId = cartItemModel.orderId ;
+    await FirebaseFirestore.instance
+        .collection(kUsersCollection)
+        .doc(userId)
+        .collection(kCustomerCollection)
+        .doc(kCartDocOrCollection)
+        .collection(kCartDocOrCollection)
+        .doc(orderId)
+        .delete();
   }
 }

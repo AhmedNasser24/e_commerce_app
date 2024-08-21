@@ -2,16 +2,16 @@ import 'package:e_commerce/features/customer/presentation/views/widgets/remove_i
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../../../../../core/models/product_item_model.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../data/models/cart_item_model.dart';
 
 class CartItemDetails extends StatelessWidget {
   const CartItemDetails({
     super.key,
-    required this.productItemModel,
+    required this.cartItemModel,
   });
-  final ProductItemModel productItemModel;
+  final CartItemModel cartItemModel;
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +20,14 @@ class CartItemDetails extends StatelessWidget {
       children: [
         const Gap(60),
         Text(
-          productItemModel.name!,
+          cartItemModel.productItemModel.name!,
           style: AppStyle.medium16,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
         const Gap(6),
         Text(
-          productItemModel.category!,
+          cartItemModel.productItemModel.category!,
           style: AppStyle.medium16.copyWith(color: Colors.grey),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -36,11 +36,11 @@ class CartItemDetails extends StatelessWidget {
         Row(
           children: [
             Text(
-              "${productItemModel.price!} ${S.of(context).LE}",
+              "${cartItemModel.productItemModel.price!} ${S.of(context).LE}",
               style: AppStyle.semiBold16,
             ),
             const Spacer(),
-            RemoveItemCartButton(productItemModel: productItemModel),
+            RemoveItemCartButton(cartItemModel: cartItemModel),
           ],
         ),
       ],

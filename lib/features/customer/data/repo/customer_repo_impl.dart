@@ -13,9 +13,9 @@ import 'customer_repo.dart';
 class CustomerRepoImpl extends CustomerRepo {
   @override
   Future <Either<void, Failure>> addToCart(
-      {required CartItemModel addToCartModel}) async {
+      {required CartItemModel cartItemModel}) async {
     try {
-      await FirebaseServices().addToCart(addToCartModel: addToCartModel);
+      await FirebaseServices().addToCart(cartItemModel: cartItemModel);
       return left(null);
     } on FirebaseException catch (e) {
       return right(FireBaseFailure.fromFireStoreException(e) ) ;
@@ -31,6 +31,20 @@ class CustomerRepoImpl extends CustomerRepo {
     try {
       List<CartItemModel> cartItemList = await FirebaseServices().fetchCartItems();
       return left(cartItemList);
+    } on FirebaseException catch (e) {
+      return right(FireBaseFailure.fromFireStoreException(e) ) ;
+    } on SocketException catch (e) {
+      return right(FireBaseFailure.fromSocketException(e));
+    }catch (e) {
+      return right(Failure(e.toString())) ;
+    }
+  }
+  
+  @override
+  Future<Either<void, Failure>> removeProductFromCart({required CartItemModel cartItemModel}) async{
+    try {
+      await FirebaseServices().removeProductFromCart(cartItemModel: cartItemModel);
+      return left(null);
     } on FirebaseException catch (e) {
       return right(FireBaseFailure.fromFireStoreException(e) ) ;
     } on SocketException catch (e) {

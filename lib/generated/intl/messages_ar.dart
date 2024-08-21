@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_to_card": MessageLookupByLibrary.simpleMessage("اضافة للسلة"),
         "all_category": MessageLookupByLibrary.simpleMessage("الكل"),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "buy": MessageLookupByLibrary.simpleMessage("شراء"),
         "clothes_category": MessageLookupByLibrary.simpleMessage("الملابس"),
         "customer": MessageLookupByLibrary.simpleMessage("عميل"),
         "edit_product": MessageLookupByLibrary.simpleMessage("تعديل المنتج"),
@@ -38,6 +39,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "error_product_is_not_added_to_cart":
             MessageLookupByLibrary.simpleMessage(
                 "حدث خطأ: لم يتم اضافة المنتج للسلة"),
+        "error_product_is_not_removed_from_cart":
+            MessageLookupByLibrary.simpleMessage(
+                "حدث خطأ: لم يتم ازالة المنتج من السلة"),
         "from_camera": MessageLookupByLibrary.simpleMessage("من الكاميرا"),
         "from_gallery": MessageLookupByLibrary.simpleMessage("من المعرض"),
         "image_is_added":
@@ -70,6 +74,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تمت اضافة المنتج بنجاح"),
         "product_is_added_to_cart": MessageLookupByLibrary.simpleMessage(
             "تمت اضافة المنتج للسلة بنجاح"),
+        "product_is_removed_from_cart": MessageLookupByLibrary.simpleMessage(
+            "تمت ازالة المنتج من السلة بنجاح"),
         "product_name": MessageLookupByLibrary.simpleMessage("اسم المنتج"),
         "product_price": MessageLookupByLibrary.simpleMessage("سعر المنتج"),
         "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
@@ -80,6 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "shoes_category": MessageLookupByLibrary.simpleMessage("الأحذية"),
         "shop": MessageLookupByLibrary.simpleMessage("المتجر"),
         "sign_out": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+        "total_price": MessageLookupByLibrary.simpleMessage("السعر الكلي"),
         "trader": MessageLookupByLibrary.simpleMessage("تاجر"),
         "whatsapp_number": MessageLookupByLibrary.simpleMessage("رقم الواتساب")
       };

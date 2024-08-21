@@ -499,6 +499,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Product is removed from cart`
+  String get product_is_removed_from_cart {
+    return Intl.message(
+      'Product is removed from cart',
+      name: 'product_is_removed_from_cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error: Product isn't removed from cart`
+  String get error_product_is_not_removed_from_cart {
+    return Intl.message(
+      'Error: Product isn\'t removed from cart',
+      name: 'error_product_is_not_removed_from_cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Buy`
+  String get buy {
+    return Intl.message(
+      'Buy',
+      name: 'buy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total price`
+  String get total_price {
+    return Intl.message(
+      'Total price',
+      name: 'total_price',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -2,8 +2,7 @@ import 'package:e_commerce/core/utils/app_style.dart';
 import 'package:e_commerce/features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'cart_item.dart';
+import 'custom_sliver_scroll_view.dart';
 
 class AddToCartViewBody extends StatefulWidget {
   const AddToCartViewBody({super.key});
@@ -18,19 +17,13 @@ class _AddToCartViewBodyState extends State<AddToCartViewBody> {
     BlocProvider.of<CartCubit>(context).fetchCartItem();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
         if (state is CartSuccess) {
-          return ListView.builder(
-            itemCount: state.cartItemModelList.length,
-            itemBuilder: (context, i) {
-              return CartItem(
-                productItemModel: state.cartItemModelList[i].productItemModel,
-              );
-            },
-          );
+          return  CustomSliverScrollView(cartItemModelList: state.cartItemModelList);
         } else if (state is CartFailure) {
           return ShowErrorMessage(errMessage: state.errMessage);
         } else {
@@ -40,6 +33,9 @@ class _AddToCartViewBodyState extends State<AddToCartViewBody> {
     );
   }
 }
+
+
+
 
 class ShowErrorMessage extends StatelessWidget {
   const ShowErrorMessage({

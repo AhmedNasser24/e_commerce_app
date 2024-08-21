@@ -15,6 +15,9 @@ class AddToCartView extends StatelessWidget {
         title: Text(S.of(context).my_cart),
         centerTitle: true,
         leading: const BackArrowButton(),
+        elevation: 0,
+        scrolledUnderElevation: 0 ,
+        
       ),
     );
   }

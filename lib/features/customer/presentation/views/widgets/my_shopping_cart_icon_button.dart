@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../manager/cart_cubit/cart_cubit.dart';
-import '../add_to_cart_view.dart';
 import 'add_to_card_view_bloc_provider.dart';
 
 class MyShoppingCartIconButton extends StatelessWidget {

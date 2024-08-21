@@ -12,9 +12,8 @@ part 'fetch_category_product_for_customer_state.dart';
 class FetchCategoryProductForCustomerCubit
     extends Cubit<FetchCategoryProductForCustomerState> {
   FetchCategoryProductForCustomerCubit()
-      : super(FetchCategoryProductForCustomerInitial()){
-        fetchCategoryProductsForCustomer(category: kAllCategory) ;
-      }
+      : super(FetchCategoryProductForCustomerInitial());
+      
   final TraderRepo __traderRepoImpl = TraderRepoImpl();
   String __selectedCategory = kAllCategory;
   Future<void> fetchCategoryProductsForCustomer(

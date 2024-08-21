@@ -43,5 +43,9 @@
     "product_is_added_successfully" : "Product is added successfully",
     "my_cart" : "My Cart" ,
     "product_is_added_to_cart" : "Product is added to cart",
-    "error_product_is_not_added_to_cart" : "Error: Product isn't added to cart"
+    "error_product_is_not_added_to_cart" : "Error: Product isn't added to cart",
+    "product_is_removed_from_cart" : "Product is removed from cart",
+    "error_product_is_not_removed_from_cart" : "Error: Product isn't removed from cart",
+    "buy" : "Buy",
+    "total_price" : "Total price"
 }

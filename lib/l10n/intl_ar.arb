@@ -43,5 +43,9 @@
    "product_is_added_successfully": "تمت اضافة المنتج بنجاح",
    "my_cart" : "السلة",
    "product_is_added_to_cart" : "تمت اضافة المنتج للسلة بنجاح",
-   "error_product_is_not_added_to_cart" : "حدث خطأ: لم يتم اضافة المنتج للسلة"
+   "error_product_is_not_added_to_cart" : "حدث خطأ: لم يتم اضافة المنتج للسلة",
+   "product_is_removed_from_cart" : "تمت ازالة المنتج من السلة بنجاح",
+   "error_product_is_not_removed_from_cart" : "حدث خطأ: لم يتم ازالة المنتج من السلة",
+   "buy" : "شراء",
+   "total_price" : "السعر الكلي"
 }

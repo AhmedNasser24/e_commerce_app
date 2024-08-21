@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_to_card": MessageLookupByLibrary.simpleMessage("Add to card"),
         "all_category": MessageLookupByLibrary.simpleMessage("All"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+        "buy": MessageLookupByLibrary.simpleMessage("Buy"),
         "clothes_category": MessageLookupByLibrary.simpleMessage("Clothes"),
         "customer": MessageLookupByLibrary.simpleMessage("Customer"),
         "edit_product": MessageLookupByLibrary.simpleMessage("Edit product"),
@@ -38,6 +39,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "error_product_is_not_added_to_cart":
             MessageLookupByLibrary.simpleMessage(
                 "Error: Product isn\'t added to cart"),
+        "error_product_is_not_removed_from_cart":
+            MessageLookupByLibrary.simpleMessage(
+                "Error: Product isn\'t removed from cart"),
         "from_camera": MessageLookupByLibrary.simpleMessage("From Camera"),
         "from_gallery": MessageLookupByLibrary.simpleMessage("From Gallery"),
         "image_is_added":
@@ -71,6 +75,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Product is added successfully"),
         "product_is_added_to_cart":
             MessageLookupByLibrary.simpleMessage("Product is added to cart"),
+        "product_is_removed_from_cart": MessageLookupByLibrary.simpleMessage(
+            "Product is removed from cart"),
         "product_name": MessageLookupByLibrary.simpleMessage("Product name"),
         "product_price": MessageLookupByLibrary.simpleMessage("Product price"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
@@ -81,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "shoes_category": MessageLookupByLibrary.simpleMessage("Shoes"),
         "shop": MessageLookupByLibrary.simpleMessage("Shop"),
         "sign_out": MessageLookupByLibrary.simpleMessage("Sign out"),
+        "total_price": MessageLookupByLibrary.simpleMessage("Total price"),
         "trader": MessageLookupByLibrary.simpleMessage("Trader"),
         "whatsapp_number":
             MessageLookupByLibrary.simpleMessage("Whatsapp number")

@@ -33,3 +33,4 @@ const String kAllCategory = "All" ;
 const String kProductInfoKey = "product_info" ;
 const String kAddToCartDateKey = "add_to_cart_date" ;
 const String kCartDocOrCollection = "Cart" ;
+const String kOrderIdKey = "order_id" ;
