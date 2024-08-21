@@ -14,7 +14,7 @@ class FirebaseServices {
     await FirebaseFirestore.instance
         .collection(kShopCollection)
         .doc(productId)
-        .set(productItemModel.tojson());
+        .set(productItemModel.toJson());
   }
 
   Future<void> editProduct(ProductItemModel productItemModel) async {
@@ -24,7 +24,7 @@ class FirebaseServices {
     await FirebaseFirestore.instance
         .collection(kShopCollection)
         .doc(productId)
-        .set(productItemModel.tojson(), SetOptions(merge: true));
+        .set(productItemModel.toJson(), SetOptions(merge: true));
   }
 
   Future<List<ProductItemModel>> fetchCategoryProductsForTrader(
@@ -162,4 +162,20 @@ class FirebaseServices {
         .doc(orderId)
         .delete();
   }
+
+  // buyProduct({required List < CartItemModel > cartItemModelList}) async {
+  //   await __removeAllProductFromCart(cartItemModelList);
+
+  // }
+
+  // Future<void> __removeAllProductFromCart(List<CartItemModel> cartItemModelList) async {
+  //   for (var cartItemModel in cartItemModelList) {
+  //     await removeProductFromCart(cartItemModel: cartItemModel);
+  //   }
+  // }
+
+  // Future < void > __sendOrderToTrader(
+  //     {required List < CartItemModel > cartItemModelList}) async {
+
+  //     }
 }

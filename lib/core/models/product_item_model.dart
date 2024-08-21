@@ -14,7 +14,7 @@ class ProductItemModel {
       this.traderId,
       this.quantity});
 
-  Map<String, dynamic> tojson() {
+  Map<String, dynamic> toJson() {
     return {
       kProductId: productId,
       kProductName: name,

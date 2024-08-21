@@ -14,7 +14,7 @@ class CartItemModel {
 
   toJson(){
     return {
-      kProductInfoKey : productItemModel.tojson(),
+      kProductInfoKey : productItemModel.toJson(),
       kAddToCartDateKey : addToCartDate,
       kOrderIdKey : orderId,
     };
