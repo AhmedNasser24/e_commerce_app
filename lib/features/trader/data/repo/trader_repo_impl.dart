@@ -6,6 +6,7 @@ import 'package:e_commerce/core/errors/failure.dart';
 import 'package:e_commerce/core/utils/firebase_services.dart';
 
 import 'package:e_commerce/core/models/product_item_model.dart';
+import 'package:e_commerce/features/customer/data/models/buy_product_model.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'trader_repo.dart';
@@ -41,14 +42,12 @@ class TraderRepoImpl extends TraderRepo {
     }
   }
 
-  
-
   @override
   Future<Either<List<ProductItemModel>, Failure>>
       fetchCategoryProductsForTrader({required String category}) async {
     try {
-      List<ProductItemModel> productItemModelList =
-          await FirebaseServices().fetchCategoryProductsForTrader(category: category);
+      List<ProductItemModel> productItemModelList = await FirebaseServices()
+          .fetchCategoryProductsForTrader(category: category);
       return left(productItemModelList);
     } on FirebaseException catch (e) {
       return right(FireBaseFailure.fromFireBaseException(e));
@@ -59,14 +58,14 @@ class TraderRepoImpl extends TraderRepo {
     }
   }
 
-  
+
   @override
-  Future<Either<List<ProductItemModel>, Failure>>
-      fetchCategoryProductsForCustomer({required String category}) async {
+  Future<Either<List<BuyProductModel>, Failure>>
+      fetchNewOrdersforTrader() async {
     try {
-      List<ProductItemModel> productItemModelList =
-          await FirebaseServices().fetchCategoryProductsForCustomer(category: category);
-      return left(productItemModelList);
+      List<BuyProductModel> buyProductModelList =
+          await FirebaseServices().fetchNewOrdersforTrader();
+      return left(buyProductModelList);
     } on FirebaseException catch (e) {
       return right(FireBaseFailure.fromFireBaseException(e));
     } on SocketException catch (e) {

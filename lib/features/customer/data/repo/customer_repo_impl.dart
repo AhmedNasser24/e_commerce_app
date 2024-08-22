@@ -8,10 +8,27 @@ import 'package:e_commerce/core/utils/firebase_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 
+import '../../../../core/models/product_item_model.dart';
 import '../models/cart_item_model.dart';
 import 'customer_repo.dart';
 
 class CustomerRepoImpl extends CustomerRepo {
+
+   @override
+  Future<Either<List<ProductItemModel>, Failure>>
+      fetchCategoryProductsForCustomer({required String category}) async {
+    try {
+      List<ProductItemModel> productItemModelList = await FirebaseServices()
+          .fetchCategoryProductsForCustomer(category: category);
+      return left(productItemModelList);
+    } on FirebaseException catch (e) {
+      return right(FireBaseFailure.fromFireBaseException(e));
+    } on SocketException catch (e) {
+      return right(FireBaseFailure.fromSocketException(e));
+    } catch (e) {
+      return right(Failure(e.toString()));
+    }
+  }
   @override
   Future <Either<void, Failure>> addToCart(
       {required CartItemModel cartItemModel}) async {
