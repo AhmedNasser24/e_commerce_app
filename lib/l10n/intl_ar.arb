@@ -47,5 +47,8 @@
    "product_is_removed_from_cart" : "تمت ازالة المنتج من السلة بنجاح",
    "error_product_is_not_removed_from_cart" : "حدث خطأ: لم يتم ازالة المنتج من السلة",
    "buy" : "شراء",
-   "total_price" : "السعر الكلي"
+   "total_price" : "السعر الكلي",
+   "we_will_contact_you_within_24_hours" : "سوف يتم التوصل معك خلال 24 ساعة" ,
+   "thank_you" : "شكر لتواصلك معنا" ,
+   "num_of_products" : "عدد المنتجات"
 }

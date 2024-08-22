@@ -56,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "my_shop": MessageLookupByLibrary.simpleMessage("متجري"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "new_orders": MessageLookupByLibrary.simpleMessage("الطلبات الجديدة"),
+        "num_of_products": MessageLookupByLibrary.simpleMessage("عدد المنتجات"),
         "old_orders": MessageLookupByLibrary.simpleMessage("الطلبات السابقة"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordConfirm":
@@ -86,8 +87,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "shoes_category": MessageLookupByLibrary.simpleMessage("الأحذية"),
         "shop": MessageLookupByLibrary.simpleMessage("المتجر"),
         "sign_out": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+        "thank_you": MessageLookupByLibrary.simpleMessage("شكر لتواصلك معنا"),
         "total_price": MessageLookupByLibrary.simpleMessage("السعر الكلي"),
         "trader": MessageLookupByLibrary.simpleMessage("تاجر"),
+        "we_will_contact_you_within_24_hours":
+            MessageLookupByLibrary.simpleMessage(
+                "سوف يتم التوصل معك خلال 24 ساعة"),
         "whatsapp_number": MessageLookupByLibrary.simpleMessage("رقم الواتساب")
       };
 }

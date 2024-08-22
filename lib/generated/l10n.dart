@@ -539,6 +539,36 @@ class S {
       args: [],
     );
   }
+
+  /// `We will contact you within 24 hours`
+  String get we_will_contact_you_within_24_hours {
+    return Intl.message(
+      'We will contact you within 24 hours',
+      name: 'we_will_contact_you_within_24_hours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thank you`
+  String get thank_you {
+    return Intl.message(
+      'Thank you',
+      name: 'thank_you',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of products`
+  String get num_of_products {
+    return Intl.message(
+      'Number of products',
+      name: 'num_of_products',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

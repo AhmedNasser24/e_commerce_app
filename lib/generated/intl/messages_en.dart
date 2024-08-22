@@ -56,6 +56,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "my_shop": MessageLookupByLibrary.simpleMessage("My Shop"),
         "name": MessageLookupByLibrary.simpleMessage("name"),
         "new_orders": MessageLookupByLibrary.simpleMessage("New orders"),
+        "num_of_products":
+            MessageLookupByLibrary.simpleMessage("Number of products"),
         "old_orders": MessageLookupByLibrary.simpleMessage("Old orders"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordConfirm":
@@ -87,8 +89,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "shoes_category": MessageLookupByLibrary.simpleMessage("Shoes"),
         "shop": MessageLookupByLibrary.simpleMessage("Shop"),
         "sign_out": MessageLookupByLibrary.simpleMessage("Sign out"),
+        "thank_you": MessageLookupByLibrary.simpleMessage("Thank you"),
         "total_price": MessageLookupByLibrary.simpleMessage("Total price"),
         "trader": MessageLookupByLibrary.simpleMessage("Trader"),
+        "we_will_contact_you_within_24_hours":
+            MessageLookupByLibrary.simpleMessage(
+                "We will contact you within 24 hours"),
         "whatsapp_number":
             MessageLookupByLibrary.simpleMessage("Whatsapp number")
       };

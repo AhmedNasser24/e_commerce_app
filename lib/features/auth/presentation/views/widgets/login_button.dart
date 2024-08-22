@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/functions/show_snack_bar.dart';
 import 'package:e_commerce/features/customer/presentation/views/widgets/customer_home_view_bloc_provider.dart';
+import 'package:e_commerce/features/trader/presentation/views/widgets/trader_home_view_bloc_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/widgets/custom_button.dart';
@@ -32,7 +33,7 @@ class LoginButton extends StatelessWidget {
           Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-              builder: (context) =>  const CustomerHomeViewBlocProvider(),  //const TraderHomeViewBlocProvider(),
+              builder: (context) =>  const TraderHomeViewBlocProvider(),  //const TraderHomeViewBlocProvider(),
             ),
             (route) => false,
           );
