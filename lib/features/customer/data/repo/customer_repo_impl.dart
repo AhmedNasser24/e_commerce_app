@@ -63,7 +63,6 @@ class CustomerRepoImpl extends CustomerRepo {
     } on FirebaseException catch (e) {
       return right(FireBaseFailure.fromFireBaseException(e) ) ;
     } 
-    
     on SocketException catch (e) {
       return right(FireBaseFailure.fromSocketException(e));
     }catch (e) {
