@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
-
-import '../../../../../generated/l10n.dart';
+import 'new_order_item.dart';
 
 class NewOrdersViewBody extends StatelessWidget {
   const NewOrdersViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      
-      title: const Text("Customer Name"),
-      subtitle: Text("${S.of(context).num_of_products} : 3"),
-      trailing: Text("${S.of(context).total_price} : 1000 ${S.of(context).LE}"),
-      
+    return ListView.builder(
+      itemCount: 5,
+      itemBuilder: (context, i) => NewOrderItem(isNew: i == 1),
     );
   }
 }

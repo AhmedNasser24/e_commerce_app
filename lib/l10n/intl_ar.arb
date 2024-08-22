@@ -50,5 +50,6 @@
    "total_price" : "السعر الكلي",
    "we_will_contact_you_within_24_hours" : "سوف يتم التوصل معك خلال 24 ساعة" ,
    "thank_you" : "شكر لتواصلك معنا" ,
-   "num_of_products" : "عدد المنتجات"
+   "num_of_products" : "عدد المنتجات",
+   "news" : "جديد"
 }

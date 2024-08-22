@@ -56,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "my_shop": MessageLookupByLibrary.simpleMessage("متجري"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "new_orders": MessageLookupByLibrary.simpleMessage("الطلبات الجديدة"),
+        "news": MessageLookupByLibrary.simpleMessage("جديد"),
         "num_of_products": MessageLookupByLibrary.simpleMessage("عدد المنتجات"),
         "old_orders": MessageLookupByLibrary.simpleMessage("الطلبات السابقة"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),

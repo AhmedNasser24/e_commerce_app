@@ -1,3 +1,4 @@
+import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/back_arrow_button.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/new_orders_view_body.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ class NewOrdersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kScaffoldColor,
       body : const SafeArea(child: NewOrdersViewBody()),
       appBar: AppBar(
         title: Text (S.of(context).new_orders),

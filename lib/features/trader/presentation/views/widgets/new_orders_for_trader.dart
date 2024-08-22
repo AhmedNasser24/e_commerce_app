@@ -24,7 +24,7 @@ class NewOrdersForTrader extends StatelessWidget {
         color: Colors.green,
       ),
       trailing: Text(
-        "new",
+        S.of(context).news,
         style: AppStyle.semiBold16.copyWith(color: Colors.green),
       ),
     );
