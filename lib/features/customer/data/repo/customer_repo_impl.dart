@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 
 import 'package:e_commerce/core/errors/failure.dart';
 import 'package:e_commerce/core/utils/firebase_services.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 import '../models/cart_item_model.dart';
@@ -18,7 +19,7 @@ class CustomerRepoImpl extends CustomerRepo {
       await FirebaseServices().addToCart(cartItemModel: cartItemModel);
       return left(null);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireStoreException(e) ) ;
+      return right(FireBaseFailure.fromFireBaseException(e) ) ;
     } on SocketException catch (e) {
       return right(FireBaseFailure.fromSocketException(e));
     }catch (e) {
@@ -32,7 +33,7 @@ class CustomerRepoImpl extends CustomerRepo {
       List<CartItemModel> cartItemList = await FirebaseServices().fetchCartItems();
       return left(cartItemList);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireStoreException(e) ) ;
+      return right(FireBaseFailure.fromFireBaseException(e) ) ;
     } on SocketException catch (e) {
       return right(FireBaseFailure.fromSocketException(e));
     }catch (e) {
@@ -46,8 +47,24 @@ class CustomerRepoImpl extends CustomerRepo {
       await FirebaseServices().removeProductFromCart(cartItemModel: cartItemModel);
       return left(null);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireStoreException(e) ) ;
+      return right(FireBaseFailure.fromFireBaseException(e) ) ;
     } on SocketException catch (e) {
+      return right(FireBaseFailure.fromSocketException(e));
+    }catch (e) {
+      return right(Failure(e.toString())) ;
+    }
+  }
+  
+  @override
+  Future<Either<void, Failure>> buyProduct({required List<CartItemModel> cartItemModelList}) async{
+    try {
+      await FirebaseServices().buyProduct(cartItemModelList: cartItemModelList);
+      return left(null);
+    } on FirebaseException catch (e) {
+      return right(FireBaseFailure.fromFireBaseException(e) ) ;
+    } 
+    
+    on SocketException catch (e) {
       return right(FireBaseFailure.fromSocketException(e));
     }catch (e) {
       return right(Failure(e.toString())) ;

@@ -11,7 +11,7 @@ class Failure {
 class FireBaseFailure extends Failure {
   const FireBaseFailure(super.errMessage);
 
-  factory FireBaseFailure.fromAuthException(FirebaseAuthException e) {
+  factory FireBaseFailure.fromFireBaseException(FirebaseException e) {
     if (e.code == 'invalid-email') {
       debugPrint(e.code);
       return const FireBaseFailure(
@@ -30,40 +30,34 @@ class FireBaseFailure extends Failure {
       return const FireBaseFailure('Email Not Found');
     } else if (e.code == 'invalid-email') {
       debugPrint(e.code);
-      return const FireBaseFailure('invalid email , email should be: email_name@*****.com');
-    } else {
-      debugPrint(e.code);
-      return const FireBaseFailure('unknown input');
-    }
-  }
-
-  factory FireBaseFailure.fromFireStoreException(FirebaseException e) {
-    if (e.code == 'permission-denied') {
-      return const FireBaseFailure('Permission denied. You do not have access to this resource.');
+      return const FireBaseFailure(
+          'invalid email , email should be: email_name@*****.com');
+    } else if (e.code == 'permission-denied') {
+      return const FireBaseFailure(
+          'Permission denied. You do not have access to this resource.');
     } else if (e.code == 'unavailable') {
-      return const FireBaseFailure('Firestore service is currently unavailable.');
+      return const FireBaseFailure(
+          'Firestore service is currently unavailable.');
     } else if (e.code == 'not-found') {
       return const FireBaseFailure('Document not found.');
-    } else {
-      return FireBaseFailure('An error occurred: ${e.message}');
-    }
-  }
-
-   factory FireBaseFailure.fromSocketException(SocketException e) {
-    return const FireBaseFailure('No internet connection. Please check your network and try again.');
-  }
-
-  factory FireBaseFailure.fromFireStorageException(FirebaseException e) {
-    if (e.code == 'object-not-found') {
+    } else if (e.code == 'object-not-found') {
       return const FireBaseFailure('No file found at the specified reference.');
     } else if (e.code == 'unauthenticated') {
-      return const FireBaseFailure('User is not authenticated. Please sign in and try again.');
+      return const FireBaseFailure(
+          'User is not authenticated. Please sign in and try again.');
     } else if (e.code == 'unauthorized') {
-      return const FireBaseFailure('User does not have permission to access this file.');
+      return const FireBaseFailure(
+          'User does not have permission to access this file.');
     } else if (e.code == 'quota-exceeded') {
-      return const FireBaseFailure('Quota exceeded. Please upgrade your Firebase plan.');
+      return const FireBaseFailure(
+          'Quota exceeded. Please upgrade your Firebase plan.');
     } else {
       return FireBaseFailure('An error occurred: ${e.message}');
     }
+  }
+
+  factory FireBaseFailure.fromSocketException(SocketException e) {
+    return const FireBaseFailure(
+        'No internet connection. Please check your network and try again.');
   }
 }

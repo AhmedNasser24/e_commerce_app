@@ -18,7 +18,7 @@ class TraderRepoImpl extends TraderRepo {
       await FirebaseServices().addProduct(productItemModel);
       return left(null);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireStoreException(e));
+      return right(FireBaseFailure.fromFireBaseException(e));
     } on SocketException catch (e) {
       return right(FireBaseFailure.fromSocketException(e));
     } catch (e) {
@@ -33,7 +33,7 @@ class TraderRepoImpl extends TraderRepo {
       await FirebaseServices().editProduct(productItemModel);
       return left(null);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireStoreException(e));
+      return right(FireBaseFailure.fromFireBaseException(e));
     } on SocketException catch (e) {
       return right(FireBaseFailure.fromSocketException(e));
     } catch (e) {
@@ -51,7 +51,7 @@ class TraderRepoImpl extends TraderRepo {
           await FirebaseServices().fetchCategoryProductsForTrader(category: category);
       return left(productItemModelList);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireStoreException(e));
+      return right(FireBaseFailure.fromFireBaseException(e));
     } on SocketException catch (e) {
       return right(FireBaseFailure.fromSocketException(e));
     } catch (e) {
@@ -68,7 +68,7 @@ class TraderRepoImpl extends TraderRepo {
           await FirebaseServices().fetchCategoryProductsForCustomer(category: category);
       return left(productItemModelList);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireStoreException(e));
+      return right(FireBaseFailure.fromFireBaseException(e));
     } on SocketException catch (e) {
       return right(FireBaseFailure.fromSocketException(e));
     } catch (e) {

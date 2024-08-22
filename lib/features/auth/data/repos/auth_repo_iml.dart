@@ -1,5 +1,7 @@
 // ignore_for_file: unused_local_variable
 
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/features/auth/data/models/login_model.dart';
 import 'package:e_commerce/features/auth/data/models/register_model.dart';
@@ -15,7 +17,9 @@ class AuthRepoIml extends AuthRepo {
           email: loginModel.email!, password: loginModel.password!);
       return left(null);
     } on FirebaseAuthException catch (e) {
-      return right(FireBaseFailure.fromAuthException(e));
+      return right(FireBaseFailure.fromFireBaseException(e));
+    } on SocketException catch (e) {
+      return right(FireBaseFailure.fromSocketException(e));
     } catch (e) {
       return right(Failure("login error : $e"));
     }
@@ -33,7 +37,9 @@ class AuthRepoIml extends AuthRepo {
       await credential.user!.sendEmailVerification();
       return left(null);
     } on FirebaseAuthException catch (e) {
-      return right(FireBaseFailure.fromAuthException(e));
+      return right(FireBaseFailure.fromFireBaseException(e));
+    } on SocketException catch (e) {
+      return right(FireBaseFailure.fromSocketException(e));
     } catch (e) {
       return right(Failure("register error : $e"));
     }
@@ -44,7 +50,9 @@ class AuthRepoIml extends AuthRepo {
       await FirebaseAuth.instance.signOut();
       return left(null);
     } on FirebaseAuthException catch (e) {
-      return right(FireBaseFailure.fromAuthException(e));
+      return right(FireBaseFailure.fromFireBaseException(e));
+    } on SocketException catch (e) {
+      return right(FireBaseFailure.fromSocketException(e));
     } catch (e) {
       return right(Failure("signOut error : $e"));
     }
