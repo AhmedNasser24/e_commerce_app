@@ -14,6 +14,7 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
   final AuthRepo _authRepoImpl = AuthRepoIml();
+
   Future<void> login(context, {required LoginModel loginModel}) async {
     emit(AuthLoading());
     Either<void, Failure> response =
@@ -31,17 +32,17 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  Future<void> register(context, {required UserInfoModel registerModel}) async {
+  Future<void> register(context, {required UserInfoModel userInfo}) async {
     emit(AuthLoading());
     Either<void, Failure> response =
-        await _authRepoImpl.register(registerModel: registerModel);
+        await _authRepoImpl.register(registerModel: userInfo);
     response.fold(
       (ok) async {
-        if (registerModel.accountKind == kTraderAccountKindEnglish ||
-            registerModel.accountKind == kTraderAccountKindArabic) {
-          await _setTraderInfoIntoFireStore(registerModel);
+        if (userInfo.accountKind == kTraderAccountKindEnglish ||
+            userInfo.accountKind == kTraderAccountKindArabic) {
+          await _setTraderInfoIntoFireStore(userInfo);
         } else {
-          await _setCustomerInfoIntoFireStore(registerModel);
+          await _setCustomerInfoIntoFireStore(userInfo);
         }
         emit(AuthSuccess());
       },

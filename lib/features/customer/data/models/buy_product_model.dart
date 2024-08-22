@@ -3,20 +3,24 @@ import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:e_commerce/features/auth/data/models/register_model.dart';
 
 class BuyProductModel {
-  final ProductItemModel productItemModel ;
+  final List < ProductItemModel > productItemModelList ;
   final UserInfoModel userInfoModel;
   final String orderId ;
   final String buyingDate ;
   BuyProductModel({
-    required this.productItemModel,
+    required this.productItemModelList,
     required this.userInfoModel,
     required this.orderId,
     required this.buyingDate,
   });
 
   toJson(){
+    List < Map<String , dynamic> > productItemMapList = [];
+    for (int i = 0 ; i < productItemModelList.length ; i++){
+      productItemMapList.add(productItemModelList[i].toJson());
+    } 
     return {
-      kProductInfoKey : productItemModel.toJson(),
+      kProductInfoListKey : productItemMapList,
       kUserInfoKey : userInfoModel.toJson(),
       kOrderIdKey : orderId,
       kBuyingDateKey : buyingDate,
@@ -24,8 +28,12 @@ class BuyProductModel {
   }
 
   factory BuyProductModel.fromJson( json){
+    List < ProductItemModel > productItemModelList = [];
+    for (int i = 0 ; i < json[kProductInfoListKey].length ; i++){
+      productItemModelList.add(ProductItemModel.fromJson(json[kProductInfoListKey][i]));
+    }
     return BuyProductModel(
-      productItemModel: ProductItemModel.fromJson(json[kProductInfoKey]),
+      productItemModelList: productItemModelList,
       userInfoModel: UserInfoModel.fromJson(json[kUserInfoKey]),
       orderId: json[kOrderIdKey],
       buyingDate: json[kBuyingDateKey],

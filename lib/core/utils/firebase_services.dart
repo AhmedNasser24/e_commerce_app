@@ -1,9 +1,13 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/models/product_item_model.dart';
+import 'package:e_commerce/features/customer/data/models/buy_product_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
+import '../../features/auth/data/models/register_model.dart';
 import '../../features/customer/data/models/cart_item_model.dart';
 
 class FirebaseServices {
@@ -121,7 +125,7 @@ class FirebaseServices {
 
   Future<void> addToCart({required CartItemModel cartItemModel}) async {
     String userId = FirebaseAuth.instance.currentUser!.uid;
-    String orderId = cartItemModel.orderId ;
+    String orderId = cartItemModel.orderId;
     await FirebaseFirestore.instance
         .collection(kUsersCollection)
         .doc(userId)
@@ -150,9 +154,10 @@ class FirebaseServices {
     return addToCartModelList;
   }
 
-  Future < void > removeProductFromCart({required CartItemModel cartItemModel})async{
+  Future<void> removeProductFromCart(
+      {required CartItemModel cartItemModel}) async {
     String userId = FirebaseAuth.instance.currentUser!.uid;
-    String orderId = cartItemModel.orderId ;
+    String orderId = cartItemModel.orderId;
     await FirebaseFirestore.instance
         .collection(kUsersCollection)
         .doc(userId)
@@ -163,19 +168,33 @@ class FirebaseServices {
         .delete();
   }
 
-  // buyProduct({required List < CartItemModel > cartItemModelList}) async {
+  // buyProduct({required List<CartItemModel> cartItemModelList}) async {
   //   await __removeAllProductFromCart(cartItemModelList);
-
   // }
 
-  // Future<void> __removeAllProductFromCart(List<CartItemModel> cartItemModelList) async {
+  // Future<void> __removeAllProductFromCart(
+  //     List<CartItemModel> cartItemModelList) async {
   //   for (var cartItemModel in cartItemModelList) {
   //     await removeProductFromCart(cartItemModel: cartItemModel);
   //   }
   // }
 
-  // Future < void > __sendOrderToTrader(
-  //     {required List < CartItemModel > cartItemModelList}) async {
+  // // ignore: unused_element
+  // Future<void> __sendOrderToTrader(
+  //     {required List<CartItemModel> cartItemModelList}) async {
+  //   BuyProductModel buyProductModel = BuyProductModel(
+  //     productItemModel: cartItemModelList[0].productItemModel,
+  //     userInfoModel: cartItemModelList[0].userInfoModel,
+  //     orderId: Random().nextDouble().toString(),
+  //     buyingDate: DateTime.now().toString(),
+  //   );
 
-  //     }
+
+  // }
+
+  Future <UserInfoModel> __getUserInfoModel ()async{
+    String userId =  FirebaseAuth.instance.currentUser!.uid;
+    var response = await FirebaseFirestore.instance.collection(kUsersCollection).doc(userId).collection(kCustomerCollection).doc(kCustomerInfoDoc).get() ;
+    return UserInfoModel.fromJson(response.data()!);
+  }
 }

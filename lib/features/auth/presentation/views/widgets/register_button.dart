@@ -39,7 +39,7 @@ class RegisterButton extends StatelessWidget {
           onTap: () {
             if (formKey.currentState!.validate()) {
               BlocProvider.of<AuthCubit>(context)
-                  .register(registerModel: registerModel, context);
+                  .register(userInfo: registerModel, context);
             } else {
               formKey.currentState!.save();
             }
