@@ -173,6 +173,24 @@ class FirebaseServices {
     await __removeAllProductFromCart(cartItemModelList);
   }
 
+  Future < List < BuyProductModel > > fetchNewOrdersforTrader()async{
+    String traderId = FirebaseAuth.instance.currentUser!.uid;
+    var response = await FirebaseFirestore.instance
+        .collection(kUsersCollection)
+        .doc(traderId)
+        .collection(kTraderCollection)
+        .doc(kTraderNewOrderCollectionAndDoc)
+        .collection(kTraderNewOrderCollectionAndDoc)
+        .orderBy(kDateOfBuying , descending: true).get() ;
+
+    List<BuyProductModel> buyProductModelList = [];
+    for (var doc in response.docs) {
+      buyProductModelList.add(BuyProductModel.fromJson(doc.data()));
+    } 
+
+    return buyProductModelList ;  
+  }
+
   Future<void> __removeAllProductFromCart(
       List<CartItemModel> cartItemModelList) async {
     for (var cartItemModel in cartItemModelList) {
