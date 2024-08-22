@@ -37,3 +37,4 @@ const String kCartDocOrCollection = "Cart" ;
 const String kOrderIdKey = "order_id" ;
 const String kBuyingDateKey = "buying_date" ;
 const String kUserInfoKey = "user_info" ;
+const String kTraderNewOrderCollectionAndDoc = "new_orders" ;

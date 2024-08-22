@@ -168,33 +168,59 @@ class FirebaseServices {
         .delete();
   }
 
-  // buyProduct({required List<CartItemModel> cartItemModelList}) async {
-  //   await __removeAllProductFromCart(cartItemModelList);
-  // }
+  Future<void> buyProduct( {required List<CartItemModel> cartItemModelList}) async {
+    await __sendOrderToTrader(cartItemModelList: cartItemModelList);
+    await __removeAllProductFromCart(cartItemModelList);
+  }
 
-  // Future<void> __removeAllProductFromCart(
-  //     List<CartItemModel> cartItemModelList) async {
-  //   for (var cartItemModel in cartItemModelList) {
-  //     await removeProductFromCart(cartItemModel: cartItemModel);
-  //   }
-  // }
+  Future<void> __removeAllProductFromCart(
+      List<CartItemModel> cartItemModelList) async {
+    for (var cartItemModel in cartItemModelList) {
+      await removeProductFromCart(cartItemModel: cartItemModel);
+    }
+  }
 
-  // // ignore: unused_element
-  // Future<void> __sendOrderToTrader(
-  //     {required List<CartItemModel> cartItemModelList}) async {
-  //   BuyProductModel buyProductModel = BuyProductModel(
-  //     productItemModel: cartItemModelList[0].productItemModel,
-  //     userInfoModel: cartItemModelList[0].userInfoModel,
-  //     orderId: Random().nextDouble().toString(),
-  //     buyingDate: DateTime.now().toString(),
-  //   );
+  // ignore: unused_element
+  Future<void> __sendOrderToTrader(
+      {required List<CartItemModel> cartItemModelList}) async {
+    UserInfoModel userInfo = await __getUserInfoModel();
 
+    List<ProductItemModel> productItemModelList = [];
+    for (var cartItemModel in cartItemModelList) {
+      productItemModelList.add(cartItemModel.productItemModel);
+    }
 
-  // }
+    BuyProductModel buyProductModel = BuyProductModel(
+      productItemModelList: productItemModelList,
+      userInfoModel: userInfo,
+      orderId: Random().nextDouble().toString(),
+      buyingDate: DateTime.now().toString(),
+    );
 
-  Future <UserInfoModel> __getUserInfoModel ()async{
-    String userId =  FirebaseAuth.instance.currentUser!.uid;
-    var response = await FirebaseFirestore.instance.collection(kUsersCollection).doc(userId).collection(kCustomerCollection).doc(kCustomerInfoDoc).get() ;
+    await __sendOrder(buyProductModel);
+  }
+
+  Future<void> __sendOrder(BuyProductModel buyProductModel) async {
+    String traderId = buyProductModel.productItemModelList[0].traderId!;
+    String orderId = buyProductModel.orderId;
+    await FirebaseFirestore.instance
+        .collection(kUsersCollection)
+        .doc(traderId)
+        .collection(kTraderCollection)
+        .doc(kTraderNewOrderCollectionAndDoc)
+        .collection(kTraderNewOrderCollectionAndDoc)
+        .doc(orderId)
+        .set(buyProductModel.toJson());
+  }
+
+  Future<UserInfoModel> __getUserInfoModel() async {
+    String userId = FirebaseAuth.instance.currentUser!.uid;
+    var response = await FirebaseFirestore.instance
+        .collection(kUsersCollection)
+        .doc(userId)
+        .collection(kCustomerCollection)
+        .doc(kCustomerInfoDoc)
+        .get();
     return UserInfoModel.fromJson(response.data()!);
   }
 }
