@@ -1,11 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-
 import '../../../data/models/cart_item_model.dart';
-import 'buy_button.dart';
 import 'cart_item.dart';
-import 'total_price.dart';
+import 'sliver_buy_product.dart';
 
 class CustomSliverScrollView extends StatelessWidget {
   const CustomSliverScrollView({
@@ -17,28 +14,20 @@ class CustomSliverScrollView extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-             SliverList.builder(
-              itemCount: cartItemModelList.length,
-              itemBuilder: (context, i) {
-                return CartItem(
-                  cartItemModel: cartItemModelList[i],
-                );
-              },
+        SliverList.builder(
+          itemCount: cartItemModelList.length,
+          itemBuilder: (context, i) {
+            return CartItem(
+              cartItemModel: cartItemModelList[i],
+            );
+          },
         ),
         const SliverGap(20),
-        cartItemModelList.isEmpty ? const SliverGap(0) : SliverToBoxAdapter(
-          child : Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12 , vertical: 24),
-            child: Row(
-              children: [
-                const BuyButton() ,
-                const Spacer(),
-                TotalPrice(cartItemModelList:cartItemModelList),
-              ],
-            ),
-          ),
-        ),
+        cartItemModelList.isEmpty
+            ? const SliverGap(0)
+            : SliverBuyProduct(cartItemModelList: cartItemModelList),
       ],
     );
   }
 }
+

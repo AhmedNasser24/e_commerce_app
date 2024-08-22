@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../trader/presentation/views/widgets/trader_home_view_bloc_provider.dart';
+// import '../../../../trader/presentation/views/widgets/trader_home_view_bloc_provider.dart';
 import '../../../data/models/login_model.dart';
 import '../../manager/auth_cubit/auth_cubit.dart';
 
