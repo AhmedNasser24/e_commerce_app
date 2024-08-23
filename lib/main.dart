@@ -8,6 +8,7 @@ import 'bloc_observer.dart';
 import 'features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'features/auth/presentation/views/login_view.dart';
 import 'features/auth/presentation/views/register_view.dart';
+import 'features/trader/presentation/manager/fetch_new_orders_cubit/fetch_new_orders_cubit.dart';
 import 'features/trader/presentation/views/trader_home_view.dart';
 import 'firebase_options.dart';
 import 'generated/l10n.dart';
@@ -62,9 +63,9 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(
           create: (context) => AuthCubit(),
         ),
-        // BlocProvider(
-        //   create: (context) => FetchTraderProductOnlyCubit(),
-        // ),
+        BlocProvider(
+          create: (context) => FetchNewOrdersCubit(),
+        ),
       ],
       child: MaterialApp(
         locale: _locale,

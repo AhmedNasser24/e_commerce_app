@@ -58,7 +58,7 @@ class AddProductButtonBlocConsumer extends StatelessWidget {
   }
 
   void setProductIdAndTraderIdAndDate() {
-    productItemModel.dateOfBuying = DateTime.now().toString();
+    productItemModel.createAt = DateTime.now().toString();
     productItemModel.productId = Random().nextDouble().toString();
     productItemModel.traderId = FirebaseAuth.instance.currentUser!.uid;
   }

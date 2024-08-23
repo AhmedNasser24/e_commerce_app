@@ -3,9 +3,9 @@ import 'package:e_commerce/constants.dart';
 class ProductItemModel {
   String? productId, name, category, price, imageUrl, traderId;
   int? quantity;
-  String? dateOfBuying;
+  String? createAt;
   ProductItemModel(
-      {this.dateOfBuying,
+      {this.createAt,
       this.productId,
       this.name,
       this.category,
@@ -23,7 +23,7 @@ class ProductItemModel {
       kProductImageUrl: imageUrl,
       kProductQuantity: quantity,
       kTraderId: traderId,
-      kDateOfBuying: dateOfBuying,
+      kCreatedAt: createAt,
     };
   }
 
@@ -36,7 +36,7 @@ class ProductItemModel {
       imageUrl: json[kProductImageUrl],
       traderId: json[kTraderId],
       quantity: json[kProductQuantity],
-      dateOfBuying: json[kDateOfBuying],
+      createAt: json[kCreatedAt],
     );
   }
 }

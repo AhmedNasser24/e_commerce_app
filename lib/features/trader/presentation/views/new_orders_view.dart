@@ -12,9 +12,9 @@ class NewOrdersView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kScaffoldColor,
-      body : const SafeArea(child: NewOrdersViewBody()),
+      body: const SafeArea(child: NewOrdersViewBody()),
       appBar: AppBar(
-        title: Text (S.of(context).new_orders),
+        title: Text(S.of(context).new_orders),
         centerTitle: true,
         elevation: 0,
         scrolledUnderElevation: 0,

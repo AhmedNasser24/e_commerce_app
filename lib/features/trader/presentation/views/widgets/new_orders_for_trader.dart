@@ -1,8 +1,7 @@
+import 'package:e_commerce/features/trader/presentation/manager/fetch_new_orders_cubit/fetch_new_orders_cubit.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../core/utils/app_style.dart';
-import '../../../../../generated/l10n.dart';
-import '../new_orders_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'new_order_list_tile.dart';
 
 class NewOrdersForTrader extends StatelessWidget {
   const NewOrdersForTrader({
@@ -11,22 +10,11 @@ class NewOrdersForTrader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const NewOrdersView()));
+    return  BlocBuilder<FetchNewOrdersCubit, FetchNewOrdersState>(
+      builder: (context, state) {
+        bool isThereNewOrder = BlocProvider.of<FetchNewOrdersCubit>(context).isthereNewOrder; 
+        return NewOrderListTile(isActive: isThereNewOrder);
       },
-      title: Text(
-        S.of(context).new_orders,
-        style: AppStyle.semiBold16.copyWith(color: Colors.green),
-      ),
-      leading: const Icon(
-        Icons.notification_add,
-        color: Colors.green,
-      ),
-      trailing: Text(
-        S.of(context).news,
-        style: AppStyle.semiBold16.copyWith(color: Colors.green),
-      ),
     );
   }
 }

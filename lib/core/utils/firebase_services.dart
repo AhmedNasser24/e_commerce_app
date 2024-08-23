@@ -106,6 +106,7 @@ class FirebaseServices {
           kProductCategory,
           whereIn: categoryInEngOrArbLangList,
         )
+        .orderBy(kCreatedAt, descending: true)
         .get();
   }
 
@@ -168,12 +169,13 @@ class FirebaseServices {
         .delete();
   }
 
-  Future<void> buyProduct( {required List<CartItemModel> cartItemModelList}) async {
+  Future<void> buyProduct(
+      {required List<CartItemModel> cartItemModelList}) async {
     await __sendOrderToTrader(cartItemModelList: cartItemModelList);
     await __removeAllProductFromCart(cartItemModelList);
   }
 
-  Future < List < BuyProductModel > > fetchNewOrdersforTrader()async{
+  Future<List<BuyProductModel>> fetchNewOrdersforTrader() async {
     String traderId = FirebaseAuth.instance.currentUser!.uid;
     var response = await FirebaseFirestore.instance
         .collection(kUsersCollection)
@@ -181,14 +183,30 @@ class FirebaseServices {
         .collection(kTraderCollection)
         .doc(kTraderNewOrderCollectionAndDoc)
         .collection(kTraderNewOrderCollectionAndDoc)
-        .orderBy(kDateOfBuying , descending: true).get() ;
+        .orderBy(kBuyingDateKey, descending: true)
+        .get();
 
     List<BuyProductModel> buyProductModelList = [];
     for (var doc in response.docs) {
       buyProductModelList.add(BuyProductModel.fromJson(doc.data()));
-    } 
+    }
+    print("buyProductModelList.length: ${buyProductModelList.length}") ;
+    return buyProductModelList;
+  }
 
-    return buyProductModelList ;  
+  Future<void> changeOrderFromNewToOld(
+      {required BuyProductModel buyProductModel}) async {
+    buyProductModel.isNew = false;
+    String traderId = FirebaseAuth.instance.currentUser!.uid;
+    String orderId = buyProductModel.orderId;
+    await FirebaseFirestore.instance
+        .collection(kUsersCollection)
+        .doc(traderId)
+        .collection(kTraderCollection)
+        .doc(kTraderNewOrderCollectionAndDoc)
+        .collection(kTraderNewOrderCollectionAndDoc)
+        .doc(orderId)
+        .set(buyProductModel.toJson(), SetOptions(merge: true));
   }
 
   Future<void> __removeAllProductFromCart(
