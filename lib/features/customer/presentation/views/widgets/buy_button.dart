@@ -45,8 +45,8 @@ class BuyButton extends StatelessWidget {
       context: context,
       dialogType: DialogType.success,
       animType: AnimType.topSlide,
-      title: 'Thank you',
-      desc: 'We will contact you within 24 hours',
+      title: S.of(context).thank_you,
+      desc: S.of(context).we_will_contact_you_within_24_hours,
       btnOkOnPress: () {
         Navigator.pop(context);
       },

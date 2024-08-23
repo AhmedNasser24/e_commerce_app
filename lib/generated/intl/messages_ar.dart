@@ -48,6 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تمت اضافة الصورة"),
         "image_is_not_added":
             MessageLookupByLibrary.simpleMessage("لم تتم اضافة الصورة"),
+        "invalid_email":
+            MessageLookupByLibrary.simpleMessage("بريد الالكتروني خطأ"),
         "jewellary_category": MessageLookupByLibrary.simpleMessage("المجوهرات"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),

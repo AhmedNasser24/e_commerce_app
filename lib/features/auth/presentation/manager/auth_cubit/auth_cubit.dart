@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../constants.dart';
 // import '../../../../../generated/l10n.dart';
 import '../../../../../core/errors/failure.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/models/login_model.dart';
 import '../../../data/repos/auth_repo_iml.dart';
 part 'auth_state.dart';
@@ -19,10 +20,35 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     Either<void, Failure> response =
         await _authRepoImpl.login(loginModel: loginModel);
+
+    // check if account kind is right for this email ?
+    bool isValid = true;
+    late Either<UserInfoModel?, Failure> userResponse;
+    if (loginModel.accountKind == kTraderAccountKindEnglish ||
+        loginModel.accountKind == kTraderAccountKindArabic) {
+      userResponse = await _authRepoImpl.gettraderInfoModel();
+    } else {
+      userResponse = await _authRepoImpl.getCustomerInfoModel();
+    }
+    userResponse.fold(
+      (userInfoModel) {
+        if (userInfoModel == null) {
+          isValid = false;
+        }
+      },
+      (fail) => isValid = false,
+    );
+    // --------------------------------------------------------------------
+
     response.fold(
       (ok) {
         // if (FirebaseAuth.instance.currentUser?.emailVerified ?? false) {
-        emit(AuthSuccess());
+        if (isValid) {
+          emit(AuthSuccess());
+        } else {
+          emit(AuthFailure(S.of(context).invalid_email));
+        }
+
         // } else {
         //   emit(AuthFailure(
         //       S.of(context).please_check_your_email_for_verification));

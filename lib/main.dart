@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'package:e_commerce/features/customer/presentation/views/customer_home_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -7,9 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc_observer.dart';
 import 'features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'features/auth/presentation/views/login_view.dart';
-import 'features/auth/presentation/views/register_view.dart';
 import 'features/trader/presentation/manager/fetch_new_orders_cubit/fetch_new_orders_cubit.dart';
-import 'features/trader/presentation/views/trader_home_view.dart';
 import 'firebase_options.dart';
 import 'generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/auth/presentation/views/widgets/account_kind_for_login.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../../../../../../generated/l10n.dart';
@@ -29,7 +30,7 @@ class _LoginBodyState extends State<LoginBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Gap(40),
+              const Gap(25),
               const NavigateToRegisterView(),
               const Gap(20),
               Align(
@@ -44,6 +45,10 @@ class _LoginBodyState extends State<LoginBody> {
               Text(S.of(context).password, style: AppStyle.medium14),
               const Gap(5),
               LoginPassword(loginModel: loginModel),
+              const Gap(10),
+              Text(S.of(context).account_kind, style: AppStyle.medium14),
+              const Gap(5),
+              AccountKindForLogin(loginModel: loginModel),
               const Gap(50),
               Align(
                 alignment: Alignment.center,

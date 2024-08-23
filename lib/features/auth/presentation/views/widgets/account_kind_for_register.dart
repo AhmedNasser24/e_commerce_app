@@ -4,18 +4,18 @@ import '../../../../../generated/l10n.dart';
 import '../../../data/models/register_model.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 
-class AccountKind extends StatefulWidget {
-  const AccountKind({
+class AccountKindForRegister extends StatefulWidget {
+  const AccountKindForRegister({
     super.key,
     required this.registerModel,
   });
   final UserInfoModel registerModel;
 
   @override
-  State<AccountKind> createState() => _AccountKindState();
+  State<AccountKindForRegister> createState() => _AccountKindForRegisterState();
 }
 
-class _AccountKindState extends State<AccountKind> {
+class _AccountKindForRegisterState extends State<AccountKindForRegister> {
   String selectedAccountKind = '';
   @override
   Widget build(BuildContext context) {

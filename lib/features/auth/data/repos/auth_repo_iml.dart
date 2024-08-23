@@ -9,6 +9,8 @@ import 'package:e_commerce/features/auth/data/repos/auth_repo.dart';
 import 'package:e_commerce/core/errors/failure.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../../../core/utils/firebase_services.dart';
+
 class AuthRepoIml extends AuthRepo {
   @override
   Future<Either<void, Failure>> login({required LoginModel loginModel}) async {
@@ -55,6 +57,32 @@ class AuthRepoIml extends AuthRepo {
       return right(FireBaseFailure.fromSocketException(e));
     } catch (e) {
       return right(Failure("signOut error : $e"));
+    }
+  }
+
+  @override
+  Future<Either<UserInfoModel?, Failure>> getCustomerInfoModel() async {
+    try {
+      UserInfoModel? userInfoModel =
+          await FirebaseServices().getCustomerInfoModel();
+      return left(userInfoModel);
+    } on FirebaseException catch (e) {
+      return right(FireBaseFailure.fromFireBaseException(e));
+    }catch (e){
+      return right(Failure("getCustomerInfoModel error : $e"));
+    }
+  }
+
+  @override
+  Future<Either<UserInfoModel?, Failure>> gettraderInfoModel() async{
+    try {
+      UserInfoModel? userInfoModel =
+          await FirebaseServices().getTraderInfoModel();
+      return left(userInfoModel);
+    } on FirebaseException catch (e) {
+      return right(FireBaseFailure.fromFireBaseException(e));
+    }catch (e){
+      return right(Failure("getCustomerInfoModel error : $e"));
     }
   }
 }

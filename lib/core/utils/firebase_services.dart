@@ -190,7 +190,6 @@ class FirebaseServices {
     for (var doc in response.docs) {
       buyProductModelList.add(BuyProductModel.fromJson(doc.data()));
     }
-    print("buyProductModelList.length: ${buyProductModelList.length}") ;
     return buyProductModelList;
   }
 
@@ -219,7 +218,7 @@ class FirebaseServices {
   // ignore: unused_element
   Future<void> __sendOrderToTrader(
       {required List<CartItemModel> cartItemModelList}) async {
-    UserInfoModel userInfo = await __getUserInfoModel();
+    UserInfoModel? userInfo = await getCustomerInfoModel();
 
     List<ProductItemModel> productItemModelList = [];
     for (var cartItemModel in cartItemModelList) {
@@ -228,7 +227,7 @@ class FirebaseServices {
 
     BuyProductModel buyProductModel = BuyProductModel(
       productItemModelList: productItemModelList,
-      userInfoModel: userInfo,
+      userInfoModel: userInfo!,
       orderId: Random().nextDouble().toString(),
       buyingDate: DateTime.now().toString(),
     );
@@ -249,7 +248,7 @@ class FirebaseServices {
         .set(buyProductModel.toJson());
   }
 
-  Future<UserInfoModel> __getUserInfoModel() async {
+  Future<UserInfoModel?> getCustomerInfoModel() async {
     String userId = FirebaseAuth.instance.currentUser!.uid;
     var response = await FirebaseFirestore.instance
         .collection(kUsersCollection)
@@ -257,6 +256,23 @@ class FirebaseServices {
         .collection(kCustomerCollection)
         .doc(kCustomerInfoDoc)
         .get();
-    return UserInfoModel.fromJson(response.data()!);
+    if (response.data() == null) {
+      return null;
+    }
+    return UserInfoModel.fromJson(response.data());
+  }
+
+   Future<UserInfoModel?> getTraderInfoModel() async {
+    String userId = FirebaseAuth.instance.currentUser!.uid;
+    var response = await FirebaseFirestore.instance
+        .collection(kUsersCollection)
+        .doc(userId)
+        .collection(kTraderCollection)
+        .doc(kTraderInfoDoc)
+        .get();
+    if (response.data() == null) {
+      return null;
+    }    
+    return UserInfoModel.fromJson(response.data());
   }
 }

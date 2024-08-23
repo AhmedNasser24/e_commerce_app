@@ -3,6 +3,7 @@ import 'package:e_commerce/features/customer/presentation/views/widgets/customer
 import 'package:e_commerce/features/trader/presentation/views/widgets/trader_home_view_bloc_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../constants.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../generated/l10n.dart';
 // import '../../../../trader/presentation/views/widgets/trader_home_view_bloc_provider.dart';
@@ -33,7 +34,15 @@ class LoginButton extends StatelessWidget {
           Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-              builder: (context) =>  const TraderHomeViewBlocProvider(),  //const TraderHomeViewBlocProvider(),
+              builder: (context) {
+                // check if this email is for customer or trader
+                if (loginModel.accountKind == kTraderAccountKindEnglish ||
+                    loginModel.accountKind == kTraderAccountKindArabic) {
+                  return const TraderHomeViewBlocProvider();
+                } else {
+                  return const CustomerHomeViewBlocProvider();
+                }
+              }, //const TraderHomeViewBlocProvider(),
             ),
             (route) => false,
           );

@@ -48,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("image is added"),
         "image_is_not_added":
             MessageLookupByLibrary.simpleMessage("image is not added"),
+        "invalid_email": MessageLookupByLibrary.simpleMessage("Invalid email"),
         "jewellary_category": MessageLookupByLibrary.simpleMessage("Jewellary"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),

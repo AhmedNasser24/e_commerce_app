@@ -4,7 +4,7 @@ import 'package:gap/gap.dart';
 
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/l10n.dart';
-import 'account_kind.dart';
+import 'account_kind_for_register.dart';
 import 'password_and_confirm_password.dart';
 import 'register_button.dart';
 import 'register_email.dart';
@@ -56,7 +56,7 @@ class _RegisterBodyState extends State<RegisterBody> {
               const Gap(10),
               Text(S.of(context).account_kind),
               const Gap(5),
-              AccountKind(registerModel: registerModel),
+              AccountKindForRegister(registerModel: registerModel),
               const Gap(50),
               Align(
                 alignment: Alignment.center,
