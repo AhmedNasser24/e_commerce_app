@@ -28,7 +28,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_to_card": MessageLookupByLibrary.simpleMessage("Add to card"),
         "all_category": MessageLookupByLibrary.simpleMessage("All"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+        "are_you_sure_you_want_to_signOut":
+            MessageLookupByLibrary.simpleMessage(
+                "Are you sure you want to signOut"),
         "buy": MessageLookupByLibrary.simpleMessage("Buy"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "clothes_category": MessageLookupByLibrary.simpleMessage("Clothes"),
         "customer": MessageLookupByLibrary.simpleMessage("Customer"),
         "edit_product": MessageLookupByLibrary.simpleMessage("Edit product"),
@@ -60,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "news": MessageLookupByLibrary.simpleMessage("New"),
         "num_of_products":
             MessageLookupByLibrary.simpleMessage("Number of products"),
+        "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "old_orders": MessageLookupByLibrary.simpleMessage("Old orders"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordConfirm":

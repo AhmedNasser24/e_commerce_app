@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:e_commerce/core/widgets/sign_out.dart';
 import 'package:e_commerce/features/auth/data/models/register_model.dart';
 import 'package:e_commerce/features/auth/data/repos/auth_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,7 +16,7 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
   final AuthRepo _authRepoImpl = AuthRepoIml();
-
+  late UserInfoModel userInfo ;
   Future<void> login(context, {required LoginModel loginModel}) async {
     emit(AuthLoading());
     Either<void, Failure> response =
@@ -34,6 +35,8 @@ class AuthCubit extends Cubit<AuthState> {
       (userInfoModel) {
         if (userInfoModel == null) {
           isValid = false;
+        }else {
+          userInfo = userInfoModel ;
         }
       },
       (fail) => isValid = false,
@@ -56,6 +59,13 @@ class AuthCubit extends Cubit<AuthState> {
       },
       (failure) => emit(AuthFailure(failure.errMessage)),
     );
+  }
+
+  Future<void> signOut() async {
+    emit(AuthLoading());
+    Either<void, Failure> response = await _authRepoImpl.signOut();
+    response.fold((ok) => emit(AuthSuccess()),
+        (failure) => emit(AuthFailure(failure.errMessage)));
   }
 
   Future<void> register(context, {required UserInfoModel userInfo}) async {

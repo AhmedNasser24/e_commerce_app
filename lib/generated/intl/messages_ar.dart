@@ -28,7 +28,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_to_card": MessageLookupByLibrary.simpleMessage("اضافة للسلة"),
         "all_category": MessageLookupByLibrary.simpleMessage("الكل"),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "are_you_sure_you_want_to_signOut":
+            MessageLookupByLibrary.simpleMessage("هل تريد حقا تسجيل الخروج"),
         "buy": MessageLookupByLibrary.simpleMessage("شراء"),
+        "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
         "clothes_category": MessageLookupByLibrary.simpleMessage("الملابس"),
         "customer": MessageLookupByLibrary.simpleMessage("عميل"),
         "edit_product": MessageLookupByLibrary.simpleMessage("تعديل المنتج"),
@@ -60,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "new_orders": MessageLookupByLibrary.simpleMessage("الطلبات الجديدة"),
         "news": MessageLookupByLibrary.simpleMessage("جديد"),
         "num_of_products": MessageLookupByLibrary.simpleMessage("عدد المنتجات"),
+        "ok": MessageLookupByLibrary.simpleMessage("موافق"),
         "old_orders": MessageLookupByLibrary.simpleMessage("الطلبات السابقة"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordConfirm":

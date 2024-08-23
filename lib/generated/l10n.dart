@@ -580,6 +580,36 @@ class S {
     );
   }
 
+  /// `Ok`
+  String get ok {
+    return Intl.message(
+      'Ok',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to signOut`
+  String get are_you_sure_you_want_to_signOut {
+    return Intl.message(
+      'Are you sure you want to signOut',
+      name: 'are_you_sure_you_want_to_signOut',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Invalid email`
   String get invalid_email {
     return Intl.message(

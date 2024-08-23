@@ -52,5 +52,8 @@
    "thank_you" : "شكر لتواصلك معنا" ,
    "num_of_products" : "عدد المنتجات",
    "news" : "جديد",
+   "ok" : "موافق",
+   "cancel" : "الغاء",
+   "are_you_sure_you_want_to_signOut" : "هل تريد حقا تسجيل الخروج",
    "invalid_email" : "بريد الالكتروني خطأ"
 }

@@ -46,7 +46,7 @@ class AuthRepoIml extends AuthRepo {
       return right(Failure("register error : $e"));
     }
   }
-
+  @override
   Future<Either<void, Failure>> signOut() async {
     try {
       await FirebaseAuth.instance.signOut();

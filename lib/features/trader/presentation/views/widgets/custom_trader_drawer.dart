@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/widgets/select_language.dart';
 import '../../../../../core/widgets/sign_out.dart';
+import '../../../../auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'new_orders_for_trader.dart';
 import 'old_orders_for_trader.dart';
 
@@ -12,19 +14,20 @@ class CustomTraderDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Drawer(
+    String traderName = BlocProvider.of<AuthCubit>(context).userInfo.name! ;
+    return  Drawer(
       child: Column(
         children: [
           DrawerHeader(
             child: Text(
-              "Trader Name",
+              traderName,
               style: AppStyle.semiBold22,
             ),
           ),
-          NewOrdersForTrader(),
-          OldOrdersForTrader(),
-          SelectLanguage(),
-          SignOut()
+          const NewOrdersForTrader(),
+          const OldOrdersForTrader(),
+          const SelectLanguage(),
+          const SignOut()
         ],
       ),
     );

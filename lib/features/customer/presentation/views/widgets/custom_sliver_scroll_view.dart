@@ -26,6 +26,7 @@ class CustomSliverScrollView extends StatelessWidget {
         cartItemModelList.isEmpty
             ? const SliverGap(0)
             : SliverBuyProduct(cartItemModelList: cartItemModelList),
+        const SliverGap(20),    
       ],
     );
   }

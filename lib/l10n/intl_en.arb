@@ -52,5 +52,8 @@
     "thank_you" : "Thank you",
     "num_of_products" : "Number of products" ,
     "news" : "New",
+    "ok" : "Ok",
+    "cancel" : "Cancel" ,
+    "are_you_sure_you_want_to_signOut" : "Are you sure you want to signOut",
     "invalid_email" : "Invalid email"
 }
