@@ -2,16 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/functions/show_snack_bar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class WhatsAppIconButton extends StatelessWidget {
   const WhatsAppIconButton({
-    super.key,
+    super.key, required this.whatsappNumber,
   });
-
+  final String whatsappNumber ;
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () {},
+      onPressed: () {
+        whatsapp(context, whatsappNumber);
+      },
       icon: const Icon(
         FontAwesomeIcons.whatsapp,
         color: Colors.green,
@@ -19,7 +22,7 @@ class WhatsAppIconButton extends StatelessWidget {
       ),
     );
   }
-  Future<void> whatsapp(context) async {
+  Future<void> whatsapp(context , String whatsappNumber) async {
     String phoneNumber = '+201066505898';
     // Uri url = Uri.parse('whatsapp://send?phone=$phoneNumber');  please note that starting from WhatsApp version 2.21.100 and later, WhatsApp has implemented a security feature that restricts launching the app using URL schemes directly. This means that this method may not work with recent versions of WhatsApp.
     Uri url = Uri.parse(

@@ -3,7 +3,7 @@ import 'package:e_commerce/features/trader/presentation/manager/fetch_new_orders
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../customer/data/models/buy_product_model.dart';
-import 'new_order_items_list_view.dart';
+import 'order_items_list_view.dart';
 
 class NewOrdersViewBody extends StatelessWidget {
   const NewOrdersViewBody({super.key});
@@ -20,11 +20,11 @@ class NewOrdersViewBody extends StatelessWidget {
           List<BuyProductModel> buyProductModelList =
               BlocProvider.of<FetchNewOrdersCubit>(context).buyProductModelList;
           if (state is FetchNewOrdersSuccess) {
-            return NewOrderItemsListView(
+            return OrderItemsListView(
                 buyProductModelList: state.buyProductModelList);
           } else if (state is FetchNewOrdersFailure) {
             showSnackBar(context, state.errMessage);
-            return NewOrderItemsListView(
+            return OrderItemsListView(
                 buyProductModelList: buyProductModelList);
           } else {
             return const Center(child: CircularProgressIndicator());
