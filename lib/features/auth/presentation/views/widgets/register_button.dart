@@ -20,12 +20,12 @@ class RegisterButton extends StatelessWidget {
     bool isLoading = false;
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is AuthLoading) {
+        if (state is RegisterLoading) {
           isLoading = true;
-        } else if (state is AuthFailure) {
+        } else if (state is RegisterFailure) {
           isLoading = false;
           showSnackBar(context, state.errMessage);
-        } else if (state is AuthSuccess) {
+        } else if (state is RegisterSuccess) {
           isLoading = false;
           Navigator.pop(context);
         } else {

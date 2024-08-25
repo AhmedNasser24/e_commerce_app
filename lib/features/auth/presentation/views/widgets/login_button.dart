@@ -14,9 +14,10 @@ class LoginButton extends StatelessWidget {
   const LoginButton({
     super.key,
     required this.formKey,
-    required this.loginModel,
+    required this.loginModel, required this.changeLanguage,
   });
 
+  final void Function(Locale newLocale) changeLanguage;
   final GlobalKey<FormState> formKey;
   final LoginModel loginModel;
   @override
@@ -24,12 +25,12 @@ class LoginButton extends StatelessWidget {
     bool isLoading = false;
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is AuthLoading) {
+        if (state is LoginLoading) {
           isLoading = true;
-        } else if (state is AuthFailure) {
+        } else if (state is LoginFailure) {
           isLoading = false;
           showSnackBar(context, state.errMessage);
-        } else if (state is AuthSuccess) {
+        } else if (state is LoginSuccess) {
           isLoading = false;
           Navigator.pushAndRemoveUntil(
             context,
@@ -38,9 +39,9 @@ class LoginButton extends StatelessWidget {
                 // check if this email is for customer or trader
                 if (loginModel.accountKind == kTraderAccountKindEnglish ||
                     loginModel.accountKind == kTraderAccountKindArabic) {
-                  return const TraderHomeViewBlocProvider();
+                  return  TraderHomeViewBlocProvider(changeLanguage: changeLanguage);
                 } else {
-                  return const CustomerHomeViewBlocProvider();
+                  return  CustomerHomeViewBlocProvider(changeLanguage: changeLanguage);
                 }
               }, //const TraderHomeViewBlocProvider(),
             ),

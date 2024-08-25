@@ -5,7 +5,8 @@ import 'widgets/customer_drawer.dart';
 import 'widgets/customer_home_body.dart';
 
 class CustomerHomeView extends StatefulWidget {
-  const CustomerHomeView({super.key});
+  const CustomerHomeView({super.key, required this.changeLanguage});
+  final void Function(Locale newLocale) changeLanguage;
 
   @override
   State<CustomerHomeView> createState() => _CustomerHomeViewState();
@@ -18,7 +19,7 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
     return  Scaffold(
       key: scaffoldKey,
       body: const CustomerHomeBody(),
-      drawer: const CustomerDrawer(),
+      drawer: CustomerDrawer(changeLanguage: widget.changeLanguage),
       appBar: customerAppBar(context, scaffoldKey),
     );
   }

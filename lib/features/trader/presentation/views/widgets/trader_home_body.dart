@@ -12,7 +12,7 @@ class TraderHomeViewBody extends StatelessWidget {
     bool isLoading = false ;
     return  BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is AuthLoading){
+        if (state is SignOutLoading){
           isLoading = true ;
         }else {
           isLoading = false ;

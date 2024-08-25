@@ -275,4 +275,25 @@ class FirebaseServices {
     }    
     return UserInfoModel.fromJson(response.data());
   }
+
+    Future<void> setTraderInfoIntoFireStore(UserInfoModel registerModel) async {
+    String traderUidDoc = FirebaseAuth.instance.currentUser!.uid;
+    await FirebaseFirestore.instance
+        .collection(kUsersCollection)
+        .doc(traderUidDoc)
+        .collection(kTraderCollection)
+        .doc(kTraderInfoDoc)
+        .set(registerModel.toJson());
+  }
+
+  Future<void> setCustomerInfoIntoFireStore(
+      UserInfoModel registerModel) async {
+    String customerUidDoc = FirebaseAuth.instance.currentUser!.uid;
+    await FirebaseFirestore.instance
+        .collection(kUsersCollection)
+        .doc(customerUidDoc)
+        .collection(kCustomerCollection)
+        .doc(kCustomerInfoDoc)
+        .set(registerModel.toJson());
+  }
 }

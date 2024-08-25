@@ -7,11 +7,12 @@ import '../../../data/models/login_model.dart';
 import 'login_button.dart';
 import 'login_email.dart';
 import 'login_password.dart';
-import 'navigate_to_register_view.dart';
 import 'title_text.dart';
 
 class LoginBody extends StatefulWidget {
-  const LoginBody({super.key});
+  const LoginBody({super.key, required this.changeLanguage});
+  final void Function(Locale newLocale) changeLanguage;
+
   @override
   State<LoginBody> createState() => _LoginBodyState();
 }
@@ -30,8 +31,7 @@ class _LoginBodyState extends State<LoginBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Gap(25),
-              const NavigateToRegisterView(),
+              
               const Gap(20),
               Align(
                 alignment: Alignment.center,
@@ -52,7 +52,11 @@ class _LoginBodyState extends State<LoginBody> {
               const Gap(50),
               Align(
                 alignment: Alignment.center,
-                child: LoginButton(formKey: formKey, loginModel: loginModel),
+                child: LoginButton(
+                  formKey: formKey,
+                  loginModel: loginModel,
+                  changeLanguage: widget.changeLanguage,
+                ),
               ),
               const Gap(40),
             ],

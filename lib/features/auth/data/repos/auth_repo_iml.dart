@@ -46,6 +46,7 @@ class AuthRepoIml extends AuthRepo {
       return right(Failure("register error : $e"));
     }
   }
+
   @override
   Future<Either<void, Failure>> signOut() async {
     try {
@@ -68,21 +69,52 @@ class AuthRepoIml extends AuthRepo {
       return left(userInfoModel);
     } on FirebaseException catch (e) {
       return right(FireBaseFailure.fromFireBaseException(e));
-    }catch (e){
+    } catch (e) {
       return right(Failure("getCustomerInfoModel error : $e"));
     }
   }
 
   @override
-  Future<Either<UserInfoModel?, Failure>> gettraderInfoModel() async{
+  Future<Either<UserInfoModel?, Failure>> gettraderInfoModel() async {
     try {
       UserInfoModel? userInfoModel =
           await FirebaseServices().getTraderInfoModel();
       return left(userInfoModel);
     } on FirebaseException catch (e) {
       return right(FireBaseFailure.fromFireBaseException(e));
-    }catch (e){
+    } catch (e) {
       return right(Failure("getCustomerInfoModel error : $e"));
+    }
+  }
+
+  @override
+  Future<Either<void, Failure>> setTraderInfoIntoFireStore(
+      UserInfoModel registerModel) async {
+    try {
+      await FirebaseServices().setTraderInfoIntoFireStore(registerModel);
+      return left(null);
+    } on FirebaseAuthException catch (e) {
+      return right(FireBaseFailure.fromFireBaseException(e));
+    } on SocketException catch (e) {
+      return right(FireBaseFailure.fromSocketException(e));
+    } catch (e) {
+      return right(Failure("signOut error : $e"));
+    }
+  }
+
+  @override
+  Future<Either<void, Failure>> setCustomerInfoIntoFireStore(
+      UserInfoModel registerModel) async {
+    try {
+      await FirebaseServices().setCustomerInfoIntoFireStore(registerModel);
+
+      return left(null);
+    } on FirebaseAuthException catch (e) {
+      return right(FireBaseFailure.fromFireBaseException(e));
+    } on SocketException catch (e) {
+      return right(FireBaseFailure.fromSocketException(e));
+    } catch (e) {
+      return right(Failure("signOut error : $e"));
     }
   }
 }

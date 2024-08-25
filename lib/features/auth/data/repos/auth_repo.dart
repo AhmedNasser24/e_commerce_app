@@ -10,4 +10,6 @@ abstract class AuthRepo {
   Future<Either<void, Failure>> signOut();
   Future < Either < UserInfoModel? , Failure > > getCustomerInfoModel();
   Future < Either < UserInfoModel? , Failure > > gettraderInfoModel();
+  Future < Either < void , Failure >> setTraderInfoIntoFireStore(UserInfoModel registerModel) ;
+  Future < Either < void , Failure >> setCustomerInfoIntoFireStore(UserInfoModel registerModel) ;
 }

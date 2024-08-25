@@ -24,10 +24,10 @@ class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<MyApp> createState() => MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class MyAppState extends State<MyApp> {
   bool isLogin = false;
   @override
   void initState() {
@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Locale _locale = const Locale('en');
-  void _changeLanguage(Locale newLocale) {
+  void changeLanguage(Locale newLocale) {
     setState(() {
       _locale = newLocale;
     });
@@ -79,8 +79,9 @@ class _MyAppState extends State<MyApp> {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home:
-            const LoginView(), // isLogin ? const RegisterView() : const LoginView(),
+        home: LoginView(
+            changeLanguage:
+                changeLanguage), // isLogin ? const RegisterView() : const LoginView(),
       ),
     );
   }

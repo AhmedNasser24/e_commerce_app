@@ -9,18 +9,19 @@ import '../utils/app_style.dart';
 
 class SignOut extends StatelessWidget {
   const SignOut({
-    super.key,
+    super.key, required this.changeLanguage,
   });
+  final void Function(Locale newLocale) changeLanguage;
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         // loading is in trader view or customer view
-        if (state is AuthSuccess) {
+        if (state is SignOutSuccess) {
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => const LoginView()),
+            MaterialPageRoute(builder: (context) =>  LoginView(changeLanguage: changeLanguage)),
             (route) =>
                 false, // Returning false will remove all previous routes from the stack
           );
