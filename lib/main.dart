@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:e_commerce/core/utils/notification_service.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +28,9 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
-  bool isLogin = false;
   @override
   void initState() {
+    NotificationService().requestPermission();
     NotificationService().getToken();
     super.initState();
   }
@@ -46,7 +45,6 @@ class MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    log('isLogin : $isLogin');
     return MultiBlocProvider(
       providers: [
         BlocProvider(

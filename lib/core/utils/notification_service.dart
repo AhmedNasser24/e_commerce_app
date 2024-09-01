@@ -22,4 +22,30 @@ class NotificationService {
       log("other firebase message error : $e");
     }
   }
+
+  // this method is useless with andriod
+  Future<void> requestPermission() async {
+    try {
+      // these parmeters are used only with ios and web , and doesn't affect on android
+      NotificationSettings settings = await messaging.requestPermission(
+        alert: true,
+        announcement: false,
+        badge: true,
+        carPlay: false,
+        criticalAlert: false,
+        provisional: false,
+        sound: true,
+      );
+
+      log('User granted permission: ${settings.authorizationStatus}');
+    } on FirebaseException catch (e) {
+      String errMessage = FireBaseFailure.fromFireBaseException(e).errMessage;
+      log("firebase message error : $errMessage");
+    } on PlatformException catch (e) {
+      log('PlatformException: ${e.code} - ${e.message}');
+      // Handle platform-specific errors
+    } catch (e) {
+      log("other firebase message error : $e");
+    }
+  }
 }
