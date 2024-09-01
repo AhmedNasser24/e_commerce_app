@@ -1,4 +1,5 @@
 import 'package:e_commerce/features/auth/presentation/views/widgets/account_kind_for_login.dart';
+import 'package:e_commerce/features/moyasar_payment/presentation/views/moyasar_payment_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../../../../../../generated/l10n.dart';
@@ -59,6 +60,8 @@ class _LoginBodyState extends State<LoginBody> {
                 ),
               ),
               const Gap(40),
+
+              // PaymentMethods()
             ],
           ),
         ),

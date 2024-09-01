@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../../moyasar_payment/presentation/views/moyasar_payment_view.dart';
 import '../../../data/models/cart_item_model.dart';
 
 class BuyButton extends StatelessWidget {
@@ -20,7 +21,14 @@ class BuyButton extends StatelessWidget {
           isLoading = true;
         } else if (state is BuyProductSuccess) {
           isLoading = false;
-          showAwesomeDialog(context);
+          // showAwesomeDialog(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MoyasarPaymentView(
+                  amount: getTotalPriceX100(cartItemModelList)),
+            ),
+          );
         } else if (state is BuyProductFailure) {
           isLoading = false;
           showSnackBar(context, state.errMessage);
@@ -50,7 +58,16 @@ class BuyButton extends StatelessWidget {
       btnOkOnPress: () {
         Navigator.pop(context);
       },
-      dismissOnTouchOutside: false ,
+      dismissOnTouchOutside: false,
     ).show();
+  }
+
+  int getTotalPriceX100(List<CartItemModel> cartItemModelList) {
+    double total = 0;
+    for (int i = 0; i < cartItemModelList.length; i++) {
+      total += double.parse(cartItemModelList[i].productItemModel.price!);
+    }
+    total *= 100;
+    return total.toInt();
   }
 }

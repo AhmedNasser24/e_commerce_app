@@ -23,14 +23,14 @@ class TotalPrice extends StatelessWidget {
         ),
         const Gap(6),
         Text(
-          "${addTotalPrice(cartItemModelList)} ${S.of(context).LE}",
+          "${getTotalPrice(cartItemModelList)} ${S.of(context).LE}",
           style: AppStyle.medium18,
         ),
       ],
     );
   }
 
-  addTotalPrice(List<CartItemModel> cartItemModelList) {
+  getTotalPrice(List<CartItemModel> cartItemModelList) {
     double total = 0;
     for (int i = 0; i < cartItemModelList.length; i++) {
       total += double.parse(cartItemModelList[i].productItemModel.price!);
