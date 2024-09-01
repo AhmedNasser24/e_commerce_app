@@ -32,6 +32,7 @@ class MyAppState extends State<MyApp> {
   void initState() {
     NotificationService().requestPermission();
     NotificationService().getToken();
+    NotificationService().getAccessToken();
     super.initState();
   }
 
