@@ -33,7 +33,7 @@ class MyAppState extends State<MyApp> {
     NotificationService().requestPermission();
     NotificationService().getToken();
     NotificationService().getAccessToken();
-    NotificationService().foregroundNotification();
+    NotificationService().foregroundNotificationHandling();
     super.initState();
   }
 

@@ -90,10 +90,12 @@ class NotificationService {
     }
   }
 
-  Future<void> sendMessage({required String accessToken , required String title , required String body}) async {
+  Future<void> sendMessage(
+      {required String accessToken,
+      required String title,
+      required String body}) async {
     var headersList = {
-      // 'Accept': '*/*',
-      // 'User-Agent': 'Thunder Client (https://www.thunderclient.com)',
+      'Accept': '*/*',
       'Content-Type': 'application/json',
       'Authorization':
           'Bearer ya29.c.c0ASRK0GZA6GEiZe-_iOgAKDa7_hA6_PHJawJZM2gWShm2Q7lZofLuGCojuEA3xwk5vNM_6p0hi1N3M35HVa8QUkfZgX_-JTKEC6PURqyLFpr9XJg4zT7IsS4n7fHtizlwP1RumHU5rbuDA3Di44GBLCdMdNUjolLF0QxY7NewOvlgCjy1ZP2ZoStXn7jmo4NZnFQJePfRPWw8pOzLJwWAx7k70qgg_CXgK85DeKPXWPoMDQA6LQi774H_RY3Rgvf6Im6oG6jBiNCBIfrSn4C8sw2--28m80ZNUHNLRoMCdmAWoDRB2q8M83V3zo_6mThvYJexXhcvX6b99j9oo_oI4w0bm1h6-fuGP7ry0io44MSN1to1t_LOGvArN385PO3ocj3qRltJehxy_rFvhkZweImhR0YWFha-kYxhX9gsIS6Qv4_ifi1d0F6muZQr7veZYIh3_2B8i7ee6rBy5bbRcjQXxZqs-h2bS1tlzzae7dl6lJUWX4lu2QsvaeWoWMUhv9IjWhO4VrmSInezvirV0Br4clFhqR7zWjYryyVzdiV-qprnJjiRyXBbsMgYFRO3jdjqnBZQ6r-MjF3M4m9gn5-webx29ZeUtg0F2qa1k1-wMht9F2JdrtBsJfR36luckMg8FW_uoyX9Irq0BImzt8rXoRQQji_J2Qig7epsRn81ixqpge5e5IiJV3bh3yq0j19iv7Xdc7RfUae6pfpFS9ruxQhlj_pZhe4l6RfQ4nidrU_kjBSngp6XvQbIfBV06pyF7wXXVrM84hmquOp72djMvj2ssJdag7IFxd-46qibzaMssxbX6mJ3YjFow0WY5eXkQsXxv_mZhcfaxwUI4vu-UjfdywJxqc7XnzoqnUfOuFSo608tnqdqsxdmczceUYpczS2sc6bria_uizdUfi7SFrfwUcoIRYyMFSZyIie3fS1snQpOrd2rBeIbj9Bb0Ov_VVhQdSspmi4ezR84IRBYzpOWrYRXJrk-3eb96mvUwX_0wjSfSpF'
@@ -138,7 +140,7 @@ class NotificationService {
     }
   }
 
-  void foregroundNotification() {
+  void foregroundNotificationHandling() {
     FirebaseMessaging.onMessage.listen(
       (RemoteMessage message) {
         log('Got a message whilst in the foreground!');
@@ -149,5 +151,15 @@ class NotificationService {
         }
       },
     ).onError((handleError) => log("onError: $handleError"));
+  }
+
+  void backgroundNotificationHandling() {
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  }
+
+  Future<void> _firebaseMessagingBackgroundHandler(
+      RemoteMessage message) async {
+    log("Handling a background message: ${message.notification?.title}");
+    log("Handling a background message: ${message.notification?.body}");
   }
 }
