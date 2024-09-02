@@ -19,9 +19,9 @@ class TraderRepoImpl extends TraderRepo {
       await FirebaseServices().addProduct(productItemModel);
       return left(null);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireBaseException(e));
+      return right(ServerFailure.fromFireBaseException(e));
     } on SocketException catch (e) {
-      return right(FireBaseFailure.fromSocketException(e));
+      return right(ServerFailure.fromSocketException(e));
     } catch (e) {
       return right(Failure(e.toString()));
     }
@@ -34,9 +34,9 @@ class TraderRepoImpl extends TraderRepo {
       await FirebaseServices().editProduct(productItemModel);
       return left(null);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireBaseException(e));
+      return right(ServerFailure.fromFireBaseException(e));
     } on SocketException catch (e) {
-      return right(FireBaseFailure.fromSocketException(e));
+      return right(ServerFailure.fromSocketException(e));
     } catch (e) {
       return right(Failure(e.toString()));
     }
@@ -50,9 +50,9 @@ class TraderRepoImpl extends TraderRepo {
           .fetchCategoryProductsForTrader(category: category);
       return left(productItemModelList);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireBaseException(e));
+      return right(ServerFailure.fromFireBaseException(e));
     } on SocketException catch (e) {
-      return right(FireBaseFailure.fromSocketException(e));
+      return right(ServerFailure.fromSocketException(e));
     } catch (e) {
       return right(Failure(e.toString()));
     }
@@ -67,9 +67,9 @@ class TraderRepoImpl extends TraderRepo {
           await FirebaseServices().fetchNewOrdersforTrader();
       return left(buyProductModelList);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireBaseException(e));
+      return right(ServerFailure.fromFireBaseException(e));
     } on SocketException catch (e) {
-      return right(FireBaseFailure.fromSocketException(e));
+      return right(ServerFailure.fromSocketException(e));
     } catch (e) {
       return right(Failure(e.toString()));
     }
@@ -81,9 +81,9 @@ class TraderRepoImpl extends TraderRepo {
       await FirebaseServices().changeOrderFromNewToOld(buyProductModel: buyProductModel);
       return left(null);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireBaseException(e));
+      return right(ServerFailure.fromFireBaseException(e));
     } on SocketException catch (e) {
-      return right(FireBaseFailure.fromSocketException(e));
+      return right(ServerFailure.fromSocketException(e));
     } catch (e) {
       return right(Failure(e.toString()));
     }

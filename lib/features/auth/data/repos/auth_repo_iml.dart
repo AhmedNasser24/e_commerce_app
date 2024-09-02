@@ -19,9 +19,9 @@ class AuthRepoIml extends AuthRepo {
           email: loginModel.email!, password: loginModel.password!);
       return left(null);
     } on FirebaseAuthException catch (e) {
-      return right(FireBaseFailure.fromFireBaseException(e));
+      return right(ServerFailure.fromFireBaseException(e));
     } on SocketException catch (e) {
-      return right(FireBaseFailure.fromSocketException(e));
+      return right(ServerFailure.fromSocketException(e));
     } catch (e) {
       return right(Failure("login error : $e"));
     }
@@ -39,9 +39,9 @@ class AuthRepoIml extends AuthRepo {
       await credential.user!.sendEmailVerification();
       return left(null);
     } on FirebaseAuthException catch (e) {
-      return right(FireBaseFailure.fromFireBaseException(e));
+      return right(ServerFailure.fromFireBaseException(e));
     } on SocketException catch (e) {
-      return right(FireBaseFailure.fromSocketException(e));
+      return right(ServerFailure.fromSocketException(e));
     } catch (e) {
       return right(Failure("register error : $e"));
     }
@@ -53,9 +53,9 @@ class AuthRepoIml extends AuthRepo {
       await FirebaseAuth.instance.signOut();
       return left(null);
     } on FirebaseAuthException catch (e) {
-      return right(FireBaseFailure.fromFireBaseException(e));
+      return right(ServerFailure.fromFireBaseException(e));
     } on SocketException catch (e) {
-      return right(FireBaseFailure.fromSocketException(e));
+      return right(ServerFailure.fromSocketException(e));
     } catch (e) {
       return right(Failure("signOut error : $e"));
     }
@@ -68,7 +68,7 @@ class AuthRepoIml extends AuthRepo {
           await FirebaseServices().getCustomerInfoModel();
       return left(userInfoModel);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireBaseException(e));
+      return right(ServerFailure.fromFireBaseException(e));
     } catch (e) {
       return right(Failure("getCustomerInfoModel error : $e"));
     }
@@ -81,7 +81,7 @@ class AuthRepoIml extends AuthRepo {
           await FirebaseServices().getTraderInfoModel();
       return left(userInfoModel);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireBaseException(e));
+      return right(ServerFailure.fromFireBaseException(e));
     } catch (e) {
       return right(Failure("getCustomerInfoModel error : $e"));
     }
@@ -94,9 +94,9 @@ class AuthRepoIml extends AuthRepo {
       await FirebaseServices().setTraderInfoIntoFireStore(registerModel);
       return left(null);
     } on FirebaseAuthException catch (e) {
-      return right(FireBaseFailure.fromFireBaseException(e));
+      return right(ServerFailure.fromFireBaseException(e));
     } on SocketException catch (e) {
-      return right(FireBaseFailure.fromSocketException(e));
+      return right(ServerFailure.fromSocketException(e));
     } catch (e) {
       return right(Failure("signOut error : $e"));
     }
@@ -110,9 +110,9 @@ class AuthRepoIml extends AuthRepo {
 
       return left(null);
     } on FirebaseAuthException catch (e) {
-      return right(FireBaseFailure.fromFireBaseException(e));
+      return right(ServerFailure.fromFireBaseException(e));
     } on SocketException catch (e) {
-      return right(FireBaseFailure.fromSocketException(e));
+      return right(ServerFailure.fromSocketException(e));
     } catch (e) {
       return right(Failure("signOut error : $e"));
     }

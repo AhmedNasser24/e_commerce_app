@@ -22,9 +22,9 @@ class CustomerRepoImpl extends CustomerRepo {
           .fetchCategoryProductsForCustomer(category: category);
       return left(productItemModelList);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireBaseException(e));
+      return right(ServerFailure.fromFireBaseException(e));
     } on SocketException catch (e) {
-      return right(FireBaseFailure.fromSocketException(e));
+      return right(ServerFailure.fromSocketException(e));
     } catch (e) {
       return right(Failure(e.toString()));
     }
@@ -36,9 +36,9 @@ class CustomerRepoImpl extends CustomerRepo {
       await FirebaseServices().addToCart(cartItemModel: cartItemModel);
       return left(null);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireBaseException(e) ) ;
+      return right(ServerFailure.fromFireBaseException(e) ) ;
     } on SocketException catch (e) {
-      return right(FireBaseFailure.fromSocketException(e));
+      return right(ServerFailure.fromSocketException(e));
     }catch (e) {
       return right(Failure(e.toString())) ;
     }
@@ -50,9 +50,9 @@ class CustomerRepoImpl extends CustomerRepo {
       List<CartItemModel> cartItemList = await FirebaseServices().fetchCartItems();
       return left(cartItemList);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireBaseException(e) ) ;
+      return right(ServerFailure.fromFireBaseException(e) ) ;
     } on SocketException catch (e) {
-      return right(FireBaseFailure.fromSocketException(e));
+      return right(ServerFailure.fromSocketException(e));
     }catch (e) {
       return right(Failure(e.toString())) ;
     }
@@ -64,9 +64,9 @@ class CustomerRepoImpl extends CustomerRepo {
       await FirebaseServices().removeProductFromCart(cartItemModel: cartItemModel);
       return left(null);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireBaseException(e) ) ;
+      return right(ServerFailure.fromFireBaseException(e) ) ;
     } on SocketException catch (e) {
-      return right(FireBaseFailure.fromSocketException(e));
+      return right(ServerFailure.fromSocketException(e));
     }catch (e) {
       return right(Failure(e.toString())) ;
     }
@@ -78,10 +78,10 @@ class CustomerRepoImpl extends CustomerRepo {
       await FirebaseServices().buyProduct(cartItemModelList: cartItemModelList);
       return left(null);
     } on FirebaseException catch (e) {
-      return right(FireBaseFailure.fromFireBaseException(e) ) ;
+      return right(ServerFailure.fromFireBaseException(e) ) ;
     } 
     on SocketException catch (e) {
-      return right(FireBaseFailure.fromSocketException(e));
+      return right(ServerFailure.fromSocketException(e));
     }catch (e) {
       return right(Failure(e.toString())) ;
     }
