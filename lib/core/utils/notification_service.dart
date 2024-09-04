@@ -190,13 +190,15 @@ class NotificationService {
 
     if (initialMessage != null) {
       // _handleMessage(initialMessage );
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const NotificationView()));
+      log("initialMessage: test click");
+      // Navigator.push(context,
+      //     MaterialPageRoute(builder: (context) => const NotificationView()));
     }
 
     // Also handle any interaction when the app is in the background via a
     // Stream listener
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      log ("onMessageOpenedApp: test click");
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => const NotificationView()));
     });

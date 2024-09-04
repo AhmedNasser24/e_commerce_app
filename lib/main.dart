@@ -16,7 +16,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   
-  log("succeed") ;
+  log("BackgroundHandler succeed") ;
  
 }
 void main() async {
