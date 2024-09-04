@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc_observer.dart';
 import 'features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'features/auth/presentation/views/login_view.dart';
+import 'features/notifications/presentation/views/notification_view.dart';
 import 'features/trader/presentation/manager/fetch_new_orders_cubit/fetch_new_orders_cubit.dart';
 import 'firebase_options.dart';
 import 'generated/l10n.dart';
@@ -43,7 +44,11 @@ class MyAppState extends State<MyApp> {
     NotificationService().getToken();
     NotificationService().getAccessToken();
     NotificationService().foregroundNotificationHandling();
-    NotificationService().setupInteractedMessage(context);
+    //--------------------------------------------------------------------------------------
+                // those functions are in login view initstate because of context issue of navigation
+    // NotificationService().setupInteractedMessageForBackgroundNotification(context);
+    // NotificationService().setupInteractedMessageForTerminatedState(context);
+    //--------------------------------------------------------------------------------------
     super.initState();
   }
 

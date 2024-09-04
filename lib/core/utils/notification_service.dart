@@ -182,25 +182,34 @@ class NotificationService {
 
 // ------------------------------------------------------------------------------------------
 
-  Future<void> setupInteractedMessage(context) async {
+  Future<void> setupInteractedMessageForTerminatedState(BuildContext context) async {
     // Get any messages which caused the application to open from
     // a terminated state.
     RemoteMessage? initialMessage =
         await FirebaseMessaging.instance.getInitialMessage();
 
-    if (initialMessage != null) {
+    if (initialMessage != null ) {
       // _handleMessage(initialMessage );
       log("initialMessage: test click");
-      // Navigator.push(context,
-      //     MaterialPageRoute(builder: (context) => const NotificationView()));
+     
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const NotificationView()));
     }
 
+    
+  }
+
+  void setupInteractedMessageForBackgroundNotification(BuildContext context) {
     // Also handle any interaction when the app is in the background via a
     // Stream listener
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       log ("onMessageOpenedApp: test click");
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const NotificationView()));
+      if (context.mounted) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const NotificationView()),
+        );
+      }
     });
   }
 

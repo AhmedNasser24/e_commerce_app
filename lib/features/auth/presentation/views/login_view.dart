@@ -3,6 +3,7 @@ import 'package:e_commerce/features/auth/presentation/views/widgets/navigate_to_
 import 'package:e_commerce/features/trader/presentation/views/widgets/menu_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import '../../../../core/utils/notification_service.dart';
 import 'widgets/login_body.dart';
 
 class LoginView extends StatefulWidget {
@@ -15,6 +16,12 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  @override
+  void initState() {
+    NotificationService().setupInteractedMessageForBackgroundNotification(context);
+    NotificationService().setupInteractedMessageForTerminatedState(context);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
