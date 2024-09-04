@@ -62,6 +62,7 @@ class ServerFailure extends Failure {
         'No internet connection. Please check your network and try again.');
   }
 
+  // for http package 
   factory ServerFailure.fromHttpClientException (ClientException e) {
     return  ServerFailure(
         "client error : $e");

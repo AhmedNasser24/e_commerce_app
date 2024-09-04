@@ -15,7 +15,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  );
+  );   
+  // NotificationService().backgroundNotificationHandling();
   Bloc.observer = SimpleBlocObserver();
   runApp(const MyApp());
 }
@@ -34,6 +35,7 @@ class MyAppState extends State<MyApp> {
     NotificationService().getToken();
     NotificationService().getAccessToken();
     NotificationService().foregroundNotificationHandling();
+    NotificationService().setupInteractedMessage(context);
     super.initState();
   }
 

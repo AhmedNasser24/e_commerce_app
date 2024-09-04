@@ -62,8 +62,21 @@ class _LoginBodyState extends State<LoginBody> {
               const Gap(40),
 
               TextButton(onPressed: (){
-                NotificationService().sendMessage(accessToken: "accessToken", title: "title", body: "body"); ;
-              }, child: const Text("send message"))
+                NotificationService().sendMessageUsingToken(accessToken: "accessToken", title: "title", body: "body"); 
+              }, child: const Text("send message")),
+            
+              
+              TextButton(onPressed: (){
+                NotificationService().sendMessageUsingTopic(accessToken: "accessToken", title: "title", body: "body"); 
+              }, child: const Text("send message with topic")),
+              
+              TextButton(onPressed: (){
+                NotificationService().unsubscribeFromTopic(); 
+              }, child: const Text("unsubscribe from topic")),
+              
+              TextButton(onPressed: (){
+                NotificationService().subscribeToTopic(); 
+              }, child: const Text("subscribe to topic")),
             ],
           ),
         ),

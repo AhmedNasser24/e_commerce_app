@@ -1,14 +1,17 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:e_commerce/core/errors/failure.dart';
+import 'package:e_commerce/features/notifications/presentation/views/notification_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:http/http.dart' as http;
+
 
 class NotificationService {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
@@ -90,7 +93,7 @@ class NotificationService {
     }
   }
 
-  Future<void> sendMessage(
+  Future<void> sendMessageUsingToken(
       {required String accessToken,
       required String title,
       required String body}) async {
@@ -98,7 +101,7 @@ class NotificationService {
       'Accept': '*/*',
       'Content-Type': 'application/json',
       'Authorization':
-          'Bearer ya29.c.c0ASRK0GZA6GEiZe-_iOgAKDa7_hA6_PHJawJZM2gWShm2Q7lZofLuGCojuEA3xwk5vNM_6p0hi1N3M35HVa8QUkfZgX_-JTKEC6PURqyLFpr9XJg4zT7IsS4n7fHtizlwP1RumHU5rbuDA3Di44GBLCdMdNUjolLF0QxY7NewOvlgCjy1ZP2ZoStXn7jmo4NZnFQJePfRPWw8pOzLJwWAx7k70qgg_CXgK85DeKPXWPoMDQA6LQi774H_RY3Rgvf6Im6oG6jBiNCBIfrSn4C8sw2--28m80ZNUHNLRoMCdmAWoDRB2q8M83V3zo_6mThvYJexXhcvX6b99j9oo_oI4w0bm1h6-fuGP7ry0io44MSN1to1t_LOGvArN385PO3ocj3qRltJehxy_rFvhkZweImhR0YWFha-kYxhX9gsIS6Qv4_ifi1d0F6muZQr7veZYIh3_2B8i7ee6rBy5bbRcjQXxZqs-h2bS1tlzzae7dl6lJUWX4lu2QsvaeWoWMUhv9IjWhO4VrmSInezvirV0Br4clFhqR7zWjYryyVzdiV-qprnJjiRyXBbsMgYFRO3jdjqnBZQ6r-MjF3M4m9gn5-webx29ZeUtg0F2qa1k1-wMht9F2JdrtBsJfR36luckMg8FW_uoyX9Irq0BImzt8rXoRQQji_J2Qig7epsRn81ixqpge5e5IiJV3bh3yq0j19iv7Xdc7RfUae6pfpFS9ruxQhlj_pZhe4l6RfQ4nidrU_kjBSngp6XvQbIfBV06pyF7wXXVrM84hmquOp72djMvj2ssJdag7IFxd-46qibzaMssxbX6mJ3YjFow0WY5eXkQsXxv_mZhcfaxwUI4vu-UjfdywJxqc7XnzoqnUfOuFSo608tnqdqsxdmczceUYpczS2sc6bria_uizdUfi7SFrfwUcoIRYyMFSZyIie3fS1snQpOrd2rBeIbj9Bb0Ov_VVhQdSspmi4ezR84IRBYzpOWrYRXJrk-3eb96mvUwX_0wjSfSpF'
+          'Bearer ya29.c.c0ASRK0GZOXukL6MdgBCjW3qzn5fZrEILmda_O4J6RYU91TJNpgThDNvrBWR7odXn2e1zxCrBJBWQaPc7EXl_mH9NK6JE5iPY8vLNLWuRRb-SRNviEiaynvhqyWQAROH_yeE9fEhAp6QgIS2pkpc5pSNb5o5hK-SfBiYIncAfcOpZUinvUb0EZZiacaVolZ0TfMVFURzaRyHROTT5m28GqM6htL1e3zBTNUZiB74b65ZgaxwaWOc4Mg2uR1PcvCfrflckXc8vaWSGAKsMDHebiCgfqACJtUCsqhe5a6S_BqEY8vnrgEaVE7EFKnfVJlpZu49mjdPuAzsY_RkZkJPYvGYnyEWTDtp8tj-iyORm0zs0RDe16LePpPV7hN385AUdMyktiFfuwikqpVlrV4jweJ87tgeBzbl8Mk4WJO1SYWnym8xS0W8l84JnU482s9Wt_OJU2ivVmFQkgjSM7Iddsct_JUQqQj2mmBofec_rZznY8sFl_vwFsuh34yrho13wZkXknztdo7Iz397J6r-cUqk-Ix4X6q3jn4IVyn_uB5-hess4OzJ6an-Ibw1Qbrurf3t4y0IrVqBhdMOShOU7Rxs2aVRq09SsfQ9aW4OXlZwq4uh40UoX4hbW0u1FUu3t6Rd3McFqOfmeuXWpO3sarccV7UQZ80fhVywBpI67vX3BqxfmWfk0y4i7Bv9ldYpmmn0Y8cyYue6dodRv6FyVf_xM9oR6Rm26sxZ_wy3O4MqZ9B_pzI5l2ynuVl8t1iO_lZu9lwo6ezIXuz4Xtr0UYirs4otoRdlinVhoIXzqs0Zc2giBz-VjajRWSYRvv_OX8uIXyl6lndSQen0dqUUoJeZy1zbR7_9MJpO2s3k-XcljtatOdqSMMMpyW0nZjbxOFk5e1slkd3Yo9-FWZ2050hwtwJoJ-Z1-28oy67nldkgm9yj1gM6x1YZjSFqwtFm-Mw6zWd0yFw6b7jWrmUmBiuIhj1S205bnX_xBm8VSR3Bg89zdoxU_W8Y2'
     };
     var url = Uri.parse(
         'https://fcm.googleapis.com/v1/projects/e-commerce-app-10f7e/messages:send');
@@ -111,7 +114,9 @@ class NotificationService {
           "body": "This is an FCM notification message!",
           "title": "FCM Message"
         },
-        "data": {"story_id": "story_12345"}
+        "data": {
+          "story_id": "story_12345",
+        }
       }
     };
 
@@ -140,6 +145,10 @@ class NotificationService {
     }
   }
 
+  
+  
+
+
   void foregroundNotificationHandling() {
     FirebaseMessaging.onMessage.listen(
       (RemoteMessage message) {
@@ -153,13 +162,100 @@ class NotificationService {
     ).onError((handleError) => log("onError: $handleError"));
   }
 
-  void backgroundNotificationHandling() {
-    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  Future<void> backgroundNotificationHandling() async {
+    
+      FirebaseMessaging.onBackgroundMessage(
+          _firebaseMessagingBackgroundHandler);
+    
   }
 
   Future<void> _firebaseMessagingBackgroundHandler(
       RemoteMessage message) async {
-    log("Handling a background message: ${message.notification?.title}");
-    log("Handling a background message: ${message.notification?.body}");
+     
+    
+      log("Handling a background message: ${message.notification?.title ?? "null"}");
+      log("Handling a background message: ${message.notification?.body ?? "null"}");
+    
+  }
+
+  Future<void> setupInteractedMessage(context) async {
+    // Get any messages which caused the application to open from
+    // a terminated state.
+    RemoteMessage? initialMessage =
+        await FirebaseMessaging.instance.getInitialMessage();
+
+    if (initialMessage != null) {
+      // _handleMessage(initialMessage );
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const NotificationView()));
+    }
+
+    // Also handle any interaction when the app is in the background via a
+    // Stream listener
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const NotificationView()));
+    });
+  }
+  
+
+  // used to send message to many devices 
+  Future<void> sendMessageUsingTopic(
+      {required String accessToken,
+      required String title,
+      required String body}) async {
+    var headersList = {
+      'Accept': '*/*',
+      'Content-Type': 'application/json',
+      'Authorization':
+          'Bearer ya29.c.c0ASRK0GZOXukL6MdgBCjW3qzn5fZrEILmda_O4J6RYU91TJNpgThDNvrBWR7odXn2e1zxCrBJBWQaPc7EXl_mH9NK6JE5iPY8vLNLWuRRb-SRNviEiaynvhqyWQAROH_yeE9fEhAp6QgIS2pkpc5pSNb5o5hK-SfBiYIncAfcOpZUinvUb0EZZiacaVolZ0TfMVFURzaRyHROTT5m28GqM6htL1e3zBTNUZiB74b65ZgaxwaWOc4Mg2uR1PcvCfrflckXc8vaWSGAKsMDHebiCgfqACJtUCsqhe5a6S_BqEY8vnrgEaVE7EFKnfVJlpZu49mjdPuAzsY_RkZkJPYvGYnyEWTDtp8tj-iyORm0zs0RDe16LePpPV7hN385AUdMyktiFfuwikqpVlrV4jweJ87tgeBzbl8Mk4WJO1SYWnym8xS0W8l84JnU482s9Wt_OJU2ivVmFQkgjSM7Iddsct_JUQqQj2mmBofec_rZznY8sFl_vwFsuh34yrho13wZkXknztdo7Iz397J6r-cUqk-Ix4X6q3jn4IVyn_uB5-hess4OzJ6an-Ibw1Qbrurf3t4y0IrVqBhdMOShOU7Rxs2aVRq09SsfQ9aW4OXlZwq4uh40UoX4hbW0u1FUu3t6Rd3McFqOfmeuXWpO3sarccV7UQZ80fhVywBpI67vX3BqxfmWfk0y4i7Bv9ldYpmmn0Y8cyYue6dodRv6FyVf_xM9oR6Rm26sxZ_wy3O4MqZ9B_pzI5l2ynuVl8t1iO_lZu9lwo6ezIXuz4Xtr0UYirs4otoRdlinVhoIXzqs0Zc2giBz-VjajRWSYRvv_OX8uIXyl6lndSQen0dqUUoJeZy1zbR7_9MJpO2s3k-XcljtatOdqSMMMpyW0nZjbxOFk5e1slkd3Yo9-FWZ2050hwtwJoJ-Z1-28oy67nldkgm9yj1gM6x1YZjSFqwtFm-Mw6zWd0yFw6b7jWrmUmBiuIhj1S205bnX_xBm8VSR3Bg89zdoxU_W8Y2'
+    };
+    var url = Uri.parse(
+        'https://fcm.googleapis.com/v1/projects/e-commerce-app-10f7e/messages:send');
+
+    var body = {
+      "message": {
+        "notification": {
+          "body": "This is an FCM notification message!",
+          "title": "FCM Message"
+        },
+        "data": {
+          "story_id": "story_12345",
+        },
+        "topic": "01066505898"
+      }
+    };
+
+    try {
+      var req = http.Request('POST', url);
+      req.headers.addAll(headersList);
+      req.body = json.encode(body);
+
+      var res = await req.send();
+      final resBody = await res.stream.bytesToString();
+
+      if (res.statusCode >= 200 && res.statusCode < 300) {
+        log("resBody: $resBody");
+      } else {
+        log("res.reasonPhrase: ${res.reasonPhrase}");
+      }
+    } on SocketException catch (e) {
+      String errMessage = ServerFailure.fromSocketException(e).errMessage;
+      log("socket error : $errMessage");
+    } on http.ClientException catch (e) {
+      String errMessage = ServerFailure.fromHttpClientException(e).errMessage;
+      log("socket error : $errMessage");
+    } catch (e) {
+      String errMessage = Failure(e.toString()).errMessage;
+      log("error : $errMessage");
+    }
+  }
+
+  Future<void> subscribeToTopic() async {
+    await FirebaseMessaging.instance.subscribeToTopic("01066505898");
+  }
+
+  Future<void> unsubscribeFromTopic() async {
+    await FirebaseMessaging.instance.unsubscribeFromTopic("01066505898");
   }
 }
