@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:e_commerce/core/utils/notification_service.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -11,12 +14,17 @@ import 'firebase_options.dart';
 import 'generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  
+  log("succeed") ;
+ 
+}
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );   
-  // NotificationService().backgroundNotificationHandling();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   Bloc.observer = SimpleBlocObserver();
   runApp(const MyApp());
 }

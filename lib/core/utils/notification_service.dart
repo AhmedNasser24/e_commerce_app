@@ -161,22 +161,26 @@ class NotificationService {
       },
     ).onError((handleError) => log("onError: $handleError"));
   }
+// ------------------------------------------------------------------------------------------
+// background notification handling should be in main 
+// here is code 
 
-  Future<void> backgroundNotificationHandling() async {
+  //   Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     
-      FirebaseMessaging.onBackgroundMessage(
-          _firebaseMessagingBackgroundHandler);
-    
-  }
+  //   log("succeed") ;
+  
+  // }
+  // void main() async {
+  //   WidgetsFlutterBinding.ensureInitialized();
+  //   await Firebase.initializeApp(
+  //     options: DefaultFirebaseOptions.currentPlatform,
+  //   );   
+  //   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  //   Bloc.observer = SimpleBlocObserver();
+  //   runApp(const MyApp());
+  // }
 
-  Future<void> _firebaseMessagingBackgroundHandler(
-      RemoteMessage message) async {
-     
-    
-      log("Handling a background message: ${message.notification?.title ?? "null"}");
-      log("Handling a background message: ${message.notification?.body ?? "null"}");
-    
-  }
+// ------------------------------------------------------------------------------------------
 
   Future<void> setupInteractedMessage(context) async {
     // Get any messages which caused the application to open from
@@ -197,7 +201,7 @@ class NotificationService {
           MaterialPageRoute(builder: (context) => const NotificationView()));
     });
   }
-  
+
 
   // used to send message to many devices 
   Future<void> sendMessageUsingTopic(
