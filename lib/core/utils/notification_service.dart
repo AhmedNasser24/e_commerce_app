@@ -273,4 +273,19 @@ class NotificationService {
   Future<void> unsubscribeFromTopic() async {
     await FirebaseMessaging.instance.unsubscribeFromTopic("01066505898");
   }
+
+  // put in main.dart
+  
+  // void initState() {
+  //   NotificationService().requestPermission();
+  //   NotificationService().getToken();
+  //   NotificationService().getAccessToken();
+  //   NotificationService().foregroundNotificationHandling();
+  //   //--------------------------------------------------------------------------------------
+  //               // those functions are in login view initstate because of context issue of navigation
+  //   // NotificationService().setupInteractedMessageForBackgroundNotification(context);
+  //   // NotificationService().setupInteractedMessageForTerminatedState(context);
+  //   //--------------------------------------------------------------------------------------
+  //   super.initState();
+  // }
 }

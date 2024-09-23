@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/models/product_item_model.dart';
 import '../../manager/add_product_cubit/add_product_cubit.dart';
+import '../../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
 
 class AddProductButtonBlocConsumer extends StatelessWidget {
   const AddProductButtonBlocConsumer({
@@ -34,6 +35,8 @@ class AddProductButtonBlocConsumer extends StatelessWidget {
         } else if (state is AddProductSuccess) {
           isLoading = false;
           showSnackBar(context , S.of(context).product_is_added_successfully);
+          BlocProvider.of<FetchCategoryProductsForTraderCubit>(context).fetchCategoryProductsForTrader();
+          Navigator.pop(context);
         } else if (state is AddProductFailure) {
           showSnackBar(context, state.errMessage);
           isLoading = false;

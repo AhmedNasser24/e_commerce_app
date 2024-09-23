@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:e_commerce/core/utils/notification_service.dart';
+import 'package:e_commerce/features/trader/presentation/manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -40,10 +41,10 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   @override
   void initState() {
-    NotificationService().requestPermission();
-    NotificationService().getToken();
-    NotificationService().getAccessToken();
-    NotificationService().foregroundNotificationHandling();
+    // NotificationService().requestPermission();
+    // NotificationService().getToken();
+    // NotificationService().getAccessToken();
+    // NotificationService().foregroundNotificationHandling();
     //--------------------------------------------------------------------------------------
                 // those functions are in login view initstate because of context issue of navigation
     // NotificationService().setupInteractedMessageForBackgroundNotification(context);
@@ -68,6 +69,9 @@ class MyAppState extends State<MyApp> {
           create: (context) => AuthCubit(),
         ),
         BlocProvider(
+          create: (context) => FetchCategoryProductsForTraderCubit(),
+        ),
+        BlocProvider(
           create: (context) => FetchNewOrdersCubit(),
         ),
       ],
@@ -86,9 +90,7 @@ class MyAppState extends State<MyApp> {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: LoginView(
-            changeLanguage:
-                changeLanguage), // isLogin ? const RegisterView() : const LoginView(),
+        home: LoginView(changeLanguage:changeLanguage), // isLogin ? const RegisterView() : const LoginView(),
       ),
     );
   }
