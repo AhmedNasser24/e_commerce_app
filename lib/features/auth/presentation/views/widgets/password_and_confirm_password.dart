@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../constants.dart';
+import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/register_model.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
@@ -21,7 +23,7 @@ class _PasswordAndConfirmPasswordState
     extends State<PasswordAndConfirmPassword> {
   String password = '';
   String confirmPassword = '';
-  bool isObscure1 = true , isObscure2 = true;
+  bool isObscure1 = true, isObscure2 = true;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -37,7 +39,10 @@ class _PasswordAndConfirmPasswordState
                 isObscure1 = !isObscure1;
               });
             },
-            icon: Icon(isObscure1 ? Icons.visibility_off : Icons.visibility),
+            icon: Icon(
+              isObscure1 ? Icons.visibility_off : Icons.visibility,
+              color: kPurpleColor,
+            ),
           ),
           validator: (value) {
             if (value == null || value.isEmpty) {
@@ -51,7 +56,7 @@ class _PasswordAndConfirmPasswordState
           },
         ),
         const Gap(10),
-        Text(S.of(context).passwordConfirm),
+        Text(S.of(context).passwordConfirm, style: AppStyle.medium14),
         const Gap(5),
         CustomTextFormField(
           suffixIcon: IconButton(
@@ -60,7 +65,10 @@ class _PasswordAndConfirmPasswordState
                 isObscure2 = !isObscure2;
               });
             },
-            icon: Icon(isObscure2 ? Icons.visibility_off : Icons.visibility),
+            icon: Icon(
+              isObscure2 ? Icons.visibility_off : Icons.visibility,
+              color: kPurpleColor,
+            ),
           ),
           obscureText: isObscure2,
           hintText: S.of(context).passwordConfirm,

@@ -22,13 +22,19 @@ class CustomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 40),
+        constraints: const BoxConstraints(minWidth: 20),
+        alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: backGroundColor ?? kButtonColor,
+          color: backGroundColor ?? kPurpleColor,
         ),
         child: isLoading
-            ? const CircularProgressIndicator()
-            : Text(title, style: style ?? AppStyle.medium20),
+            ? const CircularProgressIndicator(color: kWhiteColor)
+            : Text(
+                title,
+                style: style ?? AppStyle.medium20.copyWith(color: kWhiteColor),
+              ),
       ),
     );
   }

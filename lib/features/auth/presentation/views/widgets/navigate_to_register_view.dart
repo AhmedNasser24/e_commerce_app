@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/l10n.dart';
 import '../register_view.dart';
@@ -15,7 +16,7 @@ class NavigateToRegisterView extends StatelessWidget {
       onPressed: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterView())) ;
       },
-      child: Text(S.of(context).register, style: AppStyle.medium20),
+      child: Text(S.of(context).register, style: AppStyle.medium20.copyWith(color: kWhiteColor)),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../constants.dart';
 import '../utils/app_style.dart';
 
 
@@ -38,12 +39,13 @@ class CustomTextFormField extends StatelessWidget {
       onTap: onTap,
       obscureText: obscureText,
       readOnly: readOnly,
+      style: AppStyle.regular16,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: AppStyle.regular12.copyWith(color: Colors.grey),
+        hintStyle: AppStyle.regular12.copyWith(color: kPurpleColor.withOpacity(0.7)),
         suffixIcon: suffixIcon,
         suffix: suffix,
-
+        
         // fillColor: Colors.white,
         // focusColor: Colors.white,
         // hoverColor: Colors.white,
@@ -59,14 +61,14 @@ class CustomTextFormField extends StatelessWidget {
   OutlineInputBorder focusBorderDecoration() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
-      borderSide: const BorderSide(color: Colors.blueGrey, width: 1.5),
+      borderSide: const BorderSide(color: kPurpleColor, width: 1.5),
     );
   }
 
   OutlineInputBorder borderDecoration() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
-      borderSide: const BorderSide(color: Colors.blueGrey, width: 1),
+      borderSide: const BorderSide(color: kPurpleColor, width: 1),
     );
   }
 

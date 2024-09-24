@@ -33,7 +33,7 @@ class _LoginBodyState extends State<LoginBody> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               
-              const Gap(20),
+              const Gap(40),
               Align(
                 alignment: Alignment.center,
                 child: TitleText(title: S.of(context).login),

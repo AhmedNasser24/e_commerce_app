@@ -1,3 +1,4 @@
+import 'package:e_commerce/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../generated/l10n.dart';
@@ -26,7 +27,7 @@ class _AccountKindForRegisterState extends State<AccountKindForRegister> {
       },
       readOnly: true,
       controller: TextEditingController(text: selectedAccountKind),
-      suffixIcon: const Icon(Icons.arrow_drop_down, color: Colors.black),
+      suffixIcon: const Icon(Icons.arrow_drop_down, color: kPurpleColor),
       // suffix: _showPopUpMenu(),
       validator: (_) {
         if (selectedAccountKind == '') {

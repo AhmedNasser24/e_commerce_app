@@ -54,7 +54,7 @@ class _RegisterBodyState extends State<RegisterBody> {
               const Gap(5),
               WhatsAppNumber(registerModel: registerModel),
               const Gap(10),
-              Text(S.of(context).account_kind),
+              Text(S.of(context).account_kind, style: AppStyle.medium14),
               const Gap(5),
               AccountKindForRegister(registerModel: registerModel),
               const Gap(50),

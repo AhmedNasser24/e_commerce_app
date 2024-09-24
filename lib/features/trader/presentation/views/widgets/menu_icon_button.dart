@@ -1,3 +1,4 @@
+import 'package:e_commerce/constants.dart';
 import 'package:flutter/material.dart';
 
 class MenuIconButton extends StatelessWidget {
@@ -15,8 +16,8 @@ class MenuIconButton extends StatelessWidget {
       },
       icon: const Icon(
         Icons.menu,
-        color: Colors.black,
-        size: 30,
+        color: kWhiteColor,
+        size: 26,
       ),
     );
   }

@@ -1,10 +1,10 @@
-import 'package:e_commerce/core/widgets/select_language.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/navigate_to_register_view.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/menu_icon_button.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
-import '../../../../core/utils/notification_service.dart';
+import '../../../../constants.dart';
+// import '../../../../core/utils/notification_service.dart';
 import 'widgets/login_body.dart';
+import 'widgets/login_drawer.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key, required this.changeLanguage});
@@ -26,36 +26,18 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: kOffWhiteColor,
       body:  SafeArea(child: LoginBody(changeLanguage: widget.changeLanguage)),
       appBar: AppBar(
         leading: MenuIconButton(scaffoldKey: scaffoldKey),
         actions: const [NavigateToRegisterView()],
         elevation: 0,
         scrolledUnderElevation: 0,
+        backgroundColor: kPurpleColor,
       ),
       drawer: Drawer(
         child: LoginDrawer(changeLanguage: widget.changeLanguage),
       ),
-    );
-  }
-}
-
-class LoginDrawer extends StatelessWidget {
-  const LoginDrawer({
-    super.key, required this.changeLanguage,
-    
-  });
-
-    final void Function(Locale newLocale) changeLanguage;
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Gap(30),
-        SelectLanguage(changeLanguage: changeLanguage),
-      ],
     );
   }
 }

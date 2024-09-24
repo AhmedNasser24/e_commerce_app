@@ -1,3 +1,4 @@
+import 'package:e_commerce/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../generated/l10n.dart';
@@ -27,7 +28,9 @@ class _LoginPasswordState extends State<LoginPassword> {
             isObscure = !isObscure;
           });
         },
-        icon: Icon(isObscure ? Icons.visibility_off : Icons.visibility),
+        icon: Icon(isObscure ? Icons.visibility_off : Icons.visibility ,
+        color: kPurpleColor,
+        ),
       ),
       hintText: S.of(context).password,
       validator: (value) {
