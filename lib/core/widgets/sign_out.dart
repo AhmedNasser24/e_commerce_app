@@ -4,6 +4,7 @@ import 'package:e_commerce/features/auth/presentation/views/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../constants.dart';
 import '../../generated/l10n.dart';
 import '../utils/app_style.dart';
 
@@ -35,7 +36,7 @@ class SignOut extends StatelessWidget {
           S.of(context).sign_out,
           style: AppStyle.semiBold16,
         ),
-        leading: const Icon(Icons.logout),
+        leading: const Icon(Icons.logout , color : kPurpleColor),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/widgets/select_language.dart';
 import '../../../../../core/widgets/sign_out.dart';
@@ -17,6 +18,7 @@ class CustomTraderDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     String traderName = BlocProvider.of<AuthCubit>(context).userInfo.name! ;
     return  Drawer(
+      backgroundColor : kOffWhiteColor,
       child: Column(
         children: [
           DrawerHeader(

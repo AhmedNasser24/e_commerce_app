@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/l10n.dart';
 import '../new_orders_view.dart';
@@ -36,6 +37,7 @@ class NewOrderListTile extends StatelessWidget {
             )
           : const Icon(
               Icons.notifications,
+              color : kPurpleColor
             ),
       trailing: isActive
           ? Text(

@@ -1,8 +1,8 @@
 import 'package:e_commerce/constants.dart';
 import 'package:flutter/material.dart';
 
-class MenuIconButton extends StatelessWidget {
-  const MenuIconButton({
+class MenuIconButtonForTraderView extends StatelessWidget {
+  const MenuIconButtonForTraderView({
     super.key,
     required this.scaffoldKey,
   });
@@ -16,7 +16,7 @@ class MenuIconButton extends StatelessWidget {
       },
       icon: const Icon(
         Icons.menu,
-        color: kWhiteColor,
+        color: kPurpleColor,
         size: 26,
       ),
     );

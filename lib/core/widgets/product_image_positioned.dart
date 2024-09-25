@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'custom_cached_network_image.dart';
 
 class CustomProductImagePositioned extends StatelessWidget {
   const CustomProductImagePositioned({
@@ -15,14 +15,9 @@ class CustomProductImagePositioned extends StatelessWidget {
       left: 0,
       child: SizedBox(
         height: 150,
-        child: CachedNetworkImage(
-          fit: BoxFit.contain,
-          imageUrl: imageUrl,
-          progressIndicatorBuilder: (context, url, downloadProgress) =>
-              Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
-          errorWidget: (context, url, error) => const Icon(Icons.error),
-        ),
+        child: CustomCachedNetworkImage(imageUrl: imageUrl),
       ),
     );
   }
 }
+

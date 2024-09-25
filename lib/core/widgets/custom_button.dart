@@ -30,7 +30,7 @@ class CustomButton extends StatelessWidget {
           color: backGroundColor ?? kPurpleColor,
         ),
         child: isLoading
-            ? const CircularProgressIndicator(color: kWhiteColor)
+            ? const CircularProgressIndicator(color: kWhiteColor , )
             : Text(
                 title,
                 style: style ?? AppStyle.medium20.copyWith(color: kWhiteColor),

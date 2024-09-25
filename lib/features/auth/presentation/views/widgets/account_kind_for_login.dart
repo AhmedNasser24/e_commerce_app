@@ -53,7 +53,7 @@ class _AccountKindForLoginState extends State<AccountKindForLogin> {
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                title: Text(S.of(context).trader, style : AppStyle.semiBold14),
+                title: Text(S.of(context).trader, style : AppStyle.medium14),
                 
                 onTap: () {
                   setState(() {
@@ -63,7 +63,7 @@ class _AccountKindForLoginState extends State<AccountKindForLogin> {
                 },
               ),
               ListTile(
-                title: Text(S.of(context).customer, style : AppStyle.semiBold14),
+                title: Text(S.of(context).customer, style : AppStyle.medium14),
                 onTap: () {
                   setState(() {
                     selectedAccountKind = S.of(context).customer;

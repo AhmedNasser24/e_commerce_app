@@ -1,3 +1,4 @@
+import 'package:e_commerce/constants.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/models/product_item_model.dart';
 import 'edit_product_view_bloc_provider.dart';
@@ -20,7 +21,7 @@ class EditIconButton extends StatelessWidget {
           ),
         );
       },
-      icon: const Icon(Icons.edit, color: Colors.black),
+      icon: const Icon(Icons.edit, color: kPurpleColor),
     );
   }
 }

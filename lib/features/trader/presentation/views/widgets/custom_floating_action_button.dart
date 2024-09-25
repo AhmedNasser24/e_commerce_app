@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../../../constants.dart';
 import '../add_new_product_view.dart';
 
 class CustomFloatingActionButton extends StatelessWidget {
@@ -11,7 +12,7 @@ class CustomFloatingActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      backgroundColor: Colors.green,
+      backgroundColor: kPurpleColor,
       onPressed: () {
         Navigator.push(
           context,
@@ -20,7 +21,7 @@ class CustomFloatingActionButton extends StatelessWidget {
           ),
         );
       },
-      child: const Icon(Icons.add),
+      child: const Icon(Icons.add , color: kWhiteColor,),
     );
   }
 }

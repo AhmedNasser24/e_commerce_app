@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
-import 'trader_product_card.dart';
+import 'trader_product_item.dart';
 
-class TraderProductCardListView extends StatelessWidget {
-  const TraderProductCardListView({
+class TraderProductItemListView extends StatelessWidget {
+  const TraderProductItemListView({
     super.key,
   });
 
@@ -15,13 +15,22 @@ class TraderProductCardListView extends StatelessWidget {
         FetchCategoryProductsForTraderState>(
       builder: (context, state) {
         if (state is FetchCategoryProductsForTraderSuccess) {
-          return ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            itemCount: state.productItemModelList.length,
-            itemBuilder: (context, i) {
-              return TraderProductCard(
-                  productItemModel: state.productItemModelList[i]);
-            },
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.62,
+                crossAxisSpacing: 15,
+                mainAxisSpacing: 12,
+              ),
+              physics: const BouncingScrollPhysics(),
+              itemCount: state.productItemModelList.length,
+              itemBuilder: (context, i) {
+                return TraderProductItem(
+                    productItemModel: state.productItemModelList[i]);
+              },
+            ),
           );
         } else if (state is FetchCategoryProductsForTraderFailure) {
           return Center(child: Text(state.errMessage));

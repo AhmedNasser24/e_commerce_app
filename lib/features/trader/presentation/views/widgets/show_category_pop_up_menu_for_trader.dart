@@ -1,3 +1,5 @@
+import 'package:e_commerce/constants.dart';
+import 'package:e_commerce/core/utils/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,14 +13,14 @@ Widget showCategoryPopUpMenuForTrader(context) {
   return PopupMenuButton<String>(
     icon: const Icon(
       Icons.arrow_drop_down,
-      color: Colors.black,
+      color: kPurpleColor,
       size: 30,
     ),
     itemBuilder: (BuildContext context) {
       return categoriesList.map((String category) {
         return PopupMenuItem<String>(
           value: category,
-          child: Text(category),
+          child: Text(category , style: AppStyle.medium14),
         );
       }).toList();
     },

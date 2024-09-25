@@ -1,5 +1,5 @@
 import 'package:e_commerce/features/auth/presentation/views/widgets/navigate_to_register_view.dart';
-import 'package:e_commerce/features/trader/presentation/views/widgets/menu_icon_button.dart';
+import 'package:e_commerce/features/trader/presentation/views/widgets/menu_icon_button_for_login.dart';
 import 'package:flutter/material.dart';
 import '../../../../constants.dart';
 // import '../../../../core/utils/notification_service.dart';
@@ -29,7 +29,7 @@ class _LoginViewState extends State<LoginView> {
       backgroundColor: kOffWhiteColor,
       body:  SafeArea(child: LoginBody(changeLanguage: widget.changeLanguage)),
       appBar: AppBar(
-        leading: MenuIconButton(scaffoldKey: scaffoldKey),
+        leading: MenuIconButtonForLogin(scaffoldKey: scaffoldKey),
         actions: const [NavigateToRegisterView()],
         elevation: 0,
         scrolledUnderElevation: 0,
