@@ -1,4 +1,5 @@
 
+import 'package:e_commerce/constants.dart';
 import 'package:flutter/material.dart';
 
 class BackArrowButton extends StatelessWidget {
@@ -12,7 +13,7 @@ class BackArrowButton extends StatelessWidget {
       onPressed: () {
         Navigator.pop(context);
       },
-      icon: const Icon(Icons.arrow_back_ios),
+      icon: const Icon(Icons.arrow_back_ios , color: kPurpleColor),
     );
   }
 }

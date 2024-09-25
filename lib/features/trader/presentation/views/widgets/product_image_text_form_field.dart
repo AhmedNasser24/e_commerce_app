@@ -1,8 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/functions/image_picker.dart';
 import 'package:e_commerce/core/functions/show_snack_bar.dart';
 import 'package:flutter/material.dart';
+import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/models/product_item_model.dart';
@@ -33,7 +35,7 @@ class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
       controller: TextEditingController(text: selectedImage),
       hintText: S.of(context).product_image,
       readOnly: true,
-      suffixIcon: const Icon(Icons.arrow_drop_down, color: Colors.black),
+      suffixIcon: const Icon(Icons.arrow_drop_down, color: kPurpleColor),
       onTap: () async {
         await _showCategoryDialog(context);
       },
@@ -55,13 +57,15 @@ class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(S.of(context).product_image),
+          title: Align(
+            alignment: Alignment.topCenter,
+            child: Text(S.of(context).product_image , style: AppStyle.bold18)),
           content:Column(
             mainAxisSize: MainAxisSize.min,
             children: pickImageFrom
                 .map(
                   (category) => ListTile(
-                    title: Text(category),
+                    title: Text(category , style : AppStyle.medium14),
                     onTap: () async {
                       String? imageUrl;
                       if (category == S.of(context).from_camera) {

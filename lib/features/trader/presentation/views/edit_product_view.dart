@@ -1,5 +1,7 @@
+import 'package:e_commerce/constants.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/utils/app_style.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../core/models/product_item_model.dart';
 import 'widgets/back_arrow_button.dart';
@@ -12,6 +14,7 @@ class EditProductView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kOffWhiteColor,
       body:
           SafeArea(child: EditProductBody(productItemModel: productItemModel)),
       appBar: editProductAppBar(context),
@@ -24,7 +27,7 @@ class EditProductView extends StatelessWidget {
       scrolledUnderElevation: 0,
       backgroundColor: Colors.white,
       leading: const BackArrowButton(),
-      title: Text(S.of(context).edit_product),
+      title: Text(S.of(context).edit_product , style: AppStyle.medium22),
       centerTitle: true,
     );
   }

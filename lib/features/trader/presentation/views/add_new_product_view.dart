@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../constants.dart';
+import '../../../../core/utils/app_style.dart';
 import '../../../../generated/l10n.dart';
 import 'widgets/back_arrow_button.dart';
 
@@ -13,7 +14,7 @@ class AddNewProductView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kScaffoldColor,
+      backgroundColor: kOffWhiteColor,
       body: SafeArea(
         child: BlocProvider(
           create: (context) => AddProductCubit(),
@@ -28,9 +29,9 @@ class AddNewProductView extends StatelessWidget {
     return AppBar(
       elevation: 0,
       scrolledUnderElevation: 0,
-      backgroundColor: Colors.white,
+      backgroundColor: kWhiteColor,
       leading: const BackArrowButton(),
-      title: Text(S.of(context).add_product),
+      title: Text(S.of(context).add_product, style: AppStyle.medium22),
       centerTitle: true,
     );
   }

@@ -12,7 +12,7 @@ AppBar traderAppBar(
     elevation: 0,
     scrolledUnderElevation: 0,
     backgroundColor: Colors.white,
-    title: Text(S.of(context).my_shop , style: AppStyle.medium22,),
+    title: Text(S.of(context).my_shop , style: AppStyle.medium22),
     centerTitle: true,
     leading: MenuIconButtonForTraderView(scaffoldKey: scaffoldKey),
     actions: [
