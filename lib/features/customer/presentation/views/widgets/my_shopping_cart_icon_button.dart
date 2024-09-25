@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../../constants.dart';
 import 'add_to_card_view_bloc_provider.dart';
 
 class MyShoppingCartIconButton extends StatelessWidget {
@@ -10,10 +11,15 @@ class MyShoppingCartIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const AddToCardViewBlocProvider()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const AddToCardViewBlocProvider()));
       },
-      icon: const Icon(Icons.shopping_cart),
+      icon: const Icon(
+        Icons.shopping_cart,
+        color: kPurpleColor,
+      ),
     );
   }
 }

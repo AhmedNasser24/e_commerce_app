@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+import 'custome_refresh_indecator_for_customer.dart';
+
 class CustomerHomeBody extends StatefulWidget {
   const CustomerHomeBody({super.key});
 
@@ -34,7 +36,9 @@ class _CustomerHomeBodyState extends State<CustomerHomeBody> {
       builder: (context, state) {
         return ModalProgressHUD(
           inAsyncCall: isLoading,
-          child: const ListOfCustomerProductCard(),
+          child: const CustomRefreshIndicatorForCustomer(
+            child: ListOfCustomerProductCard(),
+          ),
         );
       },
     );

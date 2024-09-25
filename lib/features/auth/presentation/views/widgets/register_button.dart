@@ -36,6 +36,7 @@ class RegisterButton extends StatelessWidget {
         return CustomButton(
           title: S.of(context).register,
           isLoading: isLoading,
+          horizontalMargin: 40,
           onTap: () {
             if (formKey.currentState!.validate()) {
               BlocProvider.of<AuthCubit>(context)

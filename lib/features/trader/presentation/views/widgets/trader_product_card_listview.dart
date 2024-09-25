@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
-import 'custom_refresh_indicator.dart';
+import 'custom_refresh_indicator_for_trader.dart';
 import 'trader_product_item.dart';
 
 class TraderProductItemListView extends StatelessWidget {
@@ -16,7 +16,7 @@ class TraderProductItemListView extends StatelessWidget {
         FetchCategoryProductsForTraderState>(
       builder: (context, state) {
         if (state is FetchCategoryProductsForTraderSuccess) {
-          return CustomRefreshIndicator(
+          return CustomRefreshIndicatorForTrader(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: GridView.builder(

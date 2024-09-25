@@ -1,26 +1,69 @@
 import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:flutter/material.dart';
-import '../../../../../core/widgets/product_image_positioned.dart';
-import 'customer_product_details.dart';
+import '../../../../../constants.dart';
+import '../../../../../core/utils/app_style.dart';
+import '../../../../../core/widgets/custom_cached_network_image.dart';
+import '../../../../../generated/l10n.dart';
+import 'add_to_cart_icon_button.dart';
 
-class CustomerProductCard extends StatelessWidget {
-  const CustomerProductCard({super.key, required this.productItemModel});
+
+
+class CustomerProductItem extends StatelessWidget {
+  const CustomerProductItem({super.key, required this.productItemModel});
   final ProductItemModel productItemModel;
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 8, left: 8, top: 120),
-      child: Stack(
-        clipBehavior: Clip.none,
+    return Container(
+      padding: const EdgeInsets.all(8),
+      decoration: const BoxDecoration(
+        color: kWhiteColor,
+        borderRadius: BorderRadius.all(
+          Radius.circular(16),
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Card(
-            color: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CustomerProductDetails(productItemModel: productItemModel),
-            ),
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                decoration: const BoxDecoration(
+                  color: kPurpleColor,
+                  borderRadius: BorderRadius.all(Radius.circular(16)),
+                ),
+                child: Text(
+                  '-50%',
+                  style: AppStyle.medium12.copyWith(color: kWhiteColor),
+                ),
+              ),
+            ],
           ),
-          CustomProductImagePositioned(imageUrl: productItemModel.imageUrl!),
+          SizedBox(
+              height: 90,
+              width: double.infinity,
+              child: CustomCachedNetworkImage(
+                  imageUrl: productItemModel.imageUrl!)),
+          Text(
+            productItemModel.name!,
+            style: AppStyle.bold18,
+            overflow: TextOverflow.ellipsis,
+          ),
+          Text(
+            productItemModel.category!,
+            style: AppStyle.medium14,
+            overflow: TextOverflow.ellipsis,
+          ),
+          Row(
+            children: [
+              Text("${productItemModel.price!}${S.of(context).LE}",
+                  style: AppStyle.bold14),
+              const Spacer(),
+              AddToCartIconButton(productItemModel: productItemModel)
+            ],
+          )
         ],
       ),
     );

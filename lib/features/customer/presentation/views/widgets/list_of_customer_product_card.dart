@@ -13,10 +13,19 @@ class ListOfCustomerProductCard extends StatelessWidget {
         FetchCategoryProductForCustomerState>(
       builder: (context, state) {
         if (state is FetchCategoryProductForCustomerSuccess) {
-          return ListView.builder(
-            itemCount: state.productItemModelList.length,
-            itemBuilder: (context, i) => CustomerProductCard(
-                productItemModel: state.productItemModelList[i]),
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.62,
+                crossAxisSpacing: 15,
+                mainAxisSpacing: 12,
+              ),
+              itemCount: state.productItemModelList.length,
+              itemBuilder: (context, i) => CustomerProductItem(
+                  productItemModel: state.productItemModelList[i]),
+            ),
           );
         } else if (state is FetchCategoryProductForCustomerLoading) {
           return const Center(

@@ -1,9 +1,11 @@
 import 'package:e_commerce/core/functions/show_snack_bar.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/customer/presentation/manager/buy%20product_cubit/buy_product_cubit.dart';
+import 'package:e_commerce/features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../moyasar_payment/presentation/views/moyasar_payment_view.dart';
@@ -21,14 +23,17 @@ class BuyButton extends StatelessWidget {
           isLoading = true;
         } else if (state is BuyProductSuccess) {
           isLoading = false;
-          // showAwesomeDialog(context);
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => MoyasarPaymentView(
-                  amount: getTotalPriceX100(cartItemModelList)),
-            ),
-          );
+          showAwesomeDialog(context);
+          BlocProvider.of<CartCubit>(context).removeAllProductFromCart(cartItemModelList: cartItemModelList, context: context);
+          // add those products to customer products ( my orders )
+          
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => MoyasarPaymentView(
+          //         amount: getTotalPriceX100(cartItemModelList)),
+          //   ),
+          // );
         } else if (state is BuyProductFailure) {
           isLoading = false;
           showSnackBar(context, state.errMessage);
@@ -38,7 +43,7 @@ class BuyButton extends StatelessWidget {
         return CustomButton(
           isLoading: isLoading,
           title: S.of(context).buy,
-          style: AppStyle.semiBold20,
+          style: AppStyle.semiBold20.copyWith(color:kWhiteColor),
           onTap: () {
             BlocProvider.of<BuyProductCubit>(context)
                 .buyProduct(cartItemModelList: cartItemModelList);

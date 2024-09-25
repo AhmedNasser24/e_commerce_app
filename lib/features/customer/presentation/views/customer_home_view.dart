@@ -1,6 +1,7 @@
 import 'package:e_commerce/features/customer/presentation/views/widgets/customer_app_bar.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../constants.dart';
 import 'widgets/customer_drawer.dart';
 import 'widgets/customer_home_body.dart';
 
@@ -18,6 +19,7 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
   Widget build(BuildContext context) {
     return  Scaffold(
       key: scaffoldKey,
+      backgroundColor: kOffWhiteColor,
       body: const CustomerHomeBody(),
       drawer: CustomerDrawer(changeLanguage: widget.changeLanguage),
       appBar: customerAppBar(context, scaffoldKey),

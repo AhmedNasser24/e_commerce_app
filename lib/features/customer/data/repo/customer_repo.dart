@@ -9,6 +9,7 @@ abstract class CustomerRepo {
 
   Future <Either<void, Failure>> addToCart({required CartItemModel cartItemModel});
   Future <Either<void, Failure>> removeProductFromCart({required CartItemModel cartItemModel});
+  Future <Either<void, Failure>> removeAllProductFromCart({required List <CartItemModel> cartItemModelList});
   Future< Either <List<CartItemModel> , Failure >> fetchCartItems() ;
   Future <Either < void , Failure >> buyProduct({required List<CartItemModel> cartItemModelList}) ;
 }

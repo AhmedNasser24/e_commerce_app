@@ -1,3 +1,4 @@
+import 'package:e_commerce/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_style.dart';
@@ -13,7 +14,7 @@ class CustomerOrder extends StatelessWidget {
         S.of(context).my_orders,
         style: AppStyle.semiBold16,
       ),
-      leading: const Icon(Icons.shopping_cart),
+      leading: const Icon(Icons.shopping_cart , color : kPurpleColor),
     );
   }
 }

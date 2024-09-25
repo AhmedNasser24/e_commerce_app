@@ -44,11 +44,11 @@ class AuthCubit extends Cubit<AuthState> {
     response.fold(
       (ok) {
         // if (FirebaseAuth.instance.currentUser?.emailVerified ?? false) {
-        // // if (isValid) {
+        if (isValid) {
           emit(LoginSuccess());
-        // // } else {
-        // //   emit(LoginFailure(S.of(context).invalid_email));
-        // // }
+        } else {
+          emit(LoginFailure(S.of(context).invalid_email));
+        }
 
         // } else {
         //   emit(LoginFailure(

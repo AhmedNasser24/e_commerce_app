@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
+import '../../manager/fetch_category_product_for_customer/fetch_category_product_for_customer_cubit.dart';
 
-class CustomRefreshIndicator extends StatelessWidget {
-  const CustomRefreshIndicator({super.key, required this.child});
+class CustomRefreshIndicatorForCustomer extends StatelessWidget {
+  const CustomRefreshIndicatorForCustomer({super.key, required this.child});
   final Widget child;
   @override
   Widget build(BuildContext context) {
@@ -13,9 +13,9 @@ class CustomRefreshIndicator extends StatelessWidget {
       onRefresh: () async {
         // Code to reload the page
         await Future.delayed(const Duration(seconds: 1)); // Simulate a delay
-        BlocProvider.of<FetchCategoryProductsForTraderCubit>(context)
-            .fetchCategoryProductsForTrader();
 
+        BlocProvider.of<FetchCategoryProductForCustomerCubit>(context)
+            .fetchCategoryProductsForCustomer();
         return Future.value(null); // Return null to stop the refresh indicator
       },
     );

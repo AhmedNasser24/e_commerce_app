@@ -89,8 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "product_name": MessageLookupByLibrary.simpleMessage("Product name"),
         "product_price": MessageLookupByLibrary.simpleMessage("Product price"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
-        "remove_from_card":
-            MessageLookupByLibrary.simpleMessage("Remove from card"),
+        "remove_from_card": MessageLookupByLibrary.simpleMessage("Remove"),
         "required_field":
             MessageLookupByLibrary.simpleMessage("required field"),
         "shoes_category": MessageLookupByLibrary.simpleMessage("Shoes"),

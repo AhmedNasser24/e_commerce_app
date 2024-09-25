@@ -55,6 +55,7 @@ class LoginButton extends StatelessWidget {
         return CustomButton(
           title: S.of(context).login,
           isLoading: isLoading,
+          horizontalMargin: 40,
           onTap: () {
             if (formKey.currentState!.validate()) {
               BlocProvider.of<AuthCubit>(context)

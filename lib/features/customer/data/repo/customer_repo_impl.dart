@@ -71,6 +71,21 @@ class CustomerRepoImpl extends CustomerRepo {
       return right(Failure(e.toString())) ;
     }
   }
+
+  
+  @override
+  Future<Either<void, Failure>> removeAllProductFromCart({required List <CartItemModel> cartItemModelList}) async{
+    try {
+      await FirebaseServices().removeAllProductFromCart(cartItemModelList: cartItemModelList);
+      return left(null);
+    } on FirebaseException catch (e) {
+      return right(ServerFailure.fromFireBaseException(e) ) ;
+    } on SocketException catch (e) {
+      return right(ServerFailure.fromSocketException(e));
+    }catch (e) {
+      return right(Failure(e.toString())) ;
+    }
+  }
   
   @override
   Future<Either<void, Failure>> buyProduct({required List<CartItemModel> cartItemModelList}) async{

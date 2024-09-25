@@ -25,7 +25,6 @@ class CustomerDrawer extends StatelessWidget {
             ),
           ),
           const CustomerOrder(),
-          const OldOrdersForCustomer(),
           SelectLanguage(changeLanguage: changeLanguage),
           SignOut(changeLanguage: changeLanguage)
         ],

@@ -17,7 +17,6 @@ class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial());
   final CustomerRepo __customerRepoImpl = CustomerRepoImpl();
 
-
   Future<void> addToCart({
     required ProductItemModel productItemModel,
     required context,
@@ -39,23 +38,21 @@ class CartCubit extends Cubit<CartState> {
     );
   }
 
-
-Future<void> removeProductFromCart({
+  Future<void> removeProductFromCart({
     required CartItemModel cartItemModel,
     required context,
   }) async {
-    
-    Either<void, Failure> result =
-        await __customerRepoImpl.removeProductFromCart(  cartItemModel: cartItemModel);
+    Either<void, Failure> result = await __customerRepoImpl
+        .removeProductFromCart(cartItemModel: cartItemModel);
     result.fold(
       (ok) {
         showSnackBar(context, S.of(context).product_is_removed_from_cart);
       },
       (failure) {
-        showSnackBar(context, S.of(context).error_product_is_not_removed_from_cart);
+        showSnackBar(
+            context, S.of(context).error_product_is_not_removed_from_cart);
       },
     );
-
 
     // fetch without loading after removing product from cart
     Either<List<CartItemModel>, Failure> result1 =
@@ -64,9 +61,16 @@ Future<void> removeProductFromCart({
       (cartItemModelList) {
         emit(CartSuccess(cartItemModelList: cartItemModelList));
       },
-      (fail) {
-      },
+      (fail) {},
     );
+  }
+
+  Future<void> removeAllProductFromCart({
+    required List<CartItemModel> cartItemModelList,
+    required context,
+  }) async {
+    await __customerRepoImpl.removeAllProductFromCart(
+        cartItemModelList: cartItemModelList);
   }
 
   Future<void> fetchCartItem() async {

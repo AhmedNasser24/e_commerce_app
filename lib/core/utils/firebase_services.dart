@@ -169,10 +169,16 @@ class FirebaseServices {
         .delete();
   }
 
+  Future<void> removeAllProductFromCart(
+      {required List<CartItemModel> cartItemModelList}) async {
+    for (int i = 0; i < cartItemModelList.length; i++) {
+      removeProductFromCart(cartItemModel: cartItemModelList[i]);
+    }
+  }
+
   Future<void> buyProduct(
       {required List<CartItemModel> cartItemModelList}) async {
     await __sendOrderToTrader(cartItemModelList: cartItemModelList);
-    await __removeAllProductFromCart(cartItemModelList);
   }
 
   Future<List<BuyProductModel>> fetchNewOrdersforTrader() async {
@@ -208,12 +214,7 @@ class FirebaseServices {
         .set(buyProductModel.toJson(), SetOptions(merge: true));
   }
 
-  Future<void> __removeAllProductFromCart(
-      List<CartItemModel> cartItemModelList) async {
-    for (var cartItemModel in cartItemModelList) {
-      await removeProductFromCart(cartItemModel: cartItemModel);
-    }
-  }
+  
 
   // ignore: unused_element
   Future<void> __sendOrderToTrader(
@@ -262,7 +263,7 @@ class FirebaseServices {
     return UserInfoModel.fromJson(response.data());
   }
 
-   Future<UserInfoModel?> getTraderInfoModel() async {
+  Future<UserInfoModel?> getTraderInfoModel() async {
     String userId = FirebaseAuth.instance.currentUser!.uid;
     var response = await FirebaseFirestore.instance
         .collection(kUsersCollection)
@@ -272,11 +273,11 @@ class FirebaseServices {
         .get();
     if (response.data() == null) {
       return null;
-    }    
+    }
     return UserInfoModel.fromJson(response.data());
   }
 
-    Future<void> setTraderInfoIntoFireStore(UserInfoModel registerModel) async {
+  Future<void> setTraderInfoIntoFireStore(UserInfoModel registerModel) async {
     String traderUidDoc = FirebaseAuth.instance.currentUser!.uid;
     await FirebaseFirestore.instance
         .collection(kUsersCollection)
@@ -286,8 +287,7 @@ class FirebaseServices {
         .set(registerModel.toJson());
   }
 
-  Future<void> setCustomerInfoIntoFireStore(
-      UserInfoModel registerModel) async {
+  Future<void> setCustomerInfoIntoFireStore(UserInfoModel registerModel) async {
     String customerUidDoc = FirebaseAuth.instance.currentUser!.uid;
     await FirebaseFirestore.instance
         .collection(kUsersCollection)

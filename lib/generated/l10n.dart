@@ -450,10 +450,10 @@ class S {
     );
   }
 
-  /// `Remove from card`
+  /// `Remove`
   String get remove_from_card {
     return Intl.message(
-      'Remove from card',
+      'Remove',
       name: 'remove_from_card',
       desc: '',
       args: [],
