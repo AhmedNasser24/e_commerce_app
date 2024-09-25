@@ -3,6 +3,7 @@ import 'package:e_commerce/features/trader/presentation/manager/fetch_new_orders
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../customer/data/models/buy_product_model.dart';
+import 'custom_refresh_indicator.dart';
 import 'order_items_list_view.dart';
 
 class NewOrdersViewBody extends StatelessWidget {
@@ -10,11 +11,8 @@ class NewOrdersViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RefreshIndicator(
-      displacement: 70,
-      onRefresh: () async {
-        BlocProvider.of<FetchNewOrdersCubit>(context).fetchNewOrdersForTrader();
-      },
+    return CustomRefreshIndicator(
+      
       child: BlocBuilder<FetchNewOrdersCubit, FetchNewOrdersState>(
         builder: (context, state) {
           List<BuyProductModel> buyProductModelList =

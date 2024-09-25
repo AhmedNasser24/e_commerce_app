@@ -11,7 +11,7 @@ class ShowOrdersViewBody extends StatelessWidget {
     return ListView.builder(
       itemCount: productItemModelList.length,
       itemBuilder: (context, i) =>
-          OrdersItemCard(productItemModel: productItemModelList[i]),
+          OrderItem(productItemModel: productItemModelList[i]),
     );
   }
 }

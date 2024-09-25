@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
+import 'custom_refresh_indicator.dart';
 import 'trader_product_item.dart';
 
 class TraderProductItemListView extends StatelessWidget {
@@ -15,21 +16,23 @@ class TraderProductItemListView extends StatelessWidget {
         FetchCategoryProductsForTraderState>(
       builder: (context, state) {
         if (state is FetchCategoryProductsForTraderSuccess) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.62,
-                crossAxisSpacing: 15,
-                mainAxisSpacing: 12,
+          return CustomRefreshIndicator(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.62,
+                  crossAxisSpacing: 15,
+                  mainAxisSpacing: 12,
+                ),
+                physics: const BouncingScrollPhysics(),
+                itemCount: state.productItemModelList.length,
+                itemBuilder: (context, i) {
+                  return TraderProductItem(
+                      productItemModel: state.productItemModelList[i]);
+                },
               ),
-              physics: const BouncingScrollPhysics(),
-              itemCount: state.productItemModelList.length,
-              itemBuilder: (context, i) {
-                return TraderProductItem(
-                    productItemModel: state.productItemModelList[i]);
-              },
             ),
           );
         } else if (state is FetchCategoryProductsForTraderFailure) {

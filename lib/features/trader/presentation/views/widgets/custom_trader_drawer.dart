@@ -6,7 +6,6 @@ import '../../../../../core/widgets/select_language.dart';
 import '../../../../../core/widgets/sign_out.dart';
 import '../../../../auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'new_orders_for_trader.dart';
-import 'old_orders_for_trader.dart';
 
 class CustomTraderDrawer extends StatelessWidget {
   const CustomTraderDrawer({
@@ -28,7 +27,7 @@ class CustomTraderDrawer extends StatelessWidget {
             ),
           ),
           const NewOrdersForTrader(),
-          const OldOrdersForTrader(),
+          // const OldOrdersForTrader(),
           SelectLanguage(changeLanguage: changeLanguage),
           SignOut(changeLanguage: changeLanguage),
         ],

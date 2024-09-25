@@ -3,8 +3,6 @@ import '../../../../../core/utils/app_style.dart';
 import 'menu_icon_button_for_trader_view.dart';
 import 'show_category_pop_up_menu_for_trader.dart';
 import '../../../../../generated/l10n.dart';
-import 'menu_icon_button_for_login.dart';
-import 'reload_icon_button_for_trader.dart';
 
 AppBar traderAppBar(
     BuildContext context, GlobalKey<ScaffoldState> scaffoldKey) {
@@ -16,7 +14,6 @@ AppBar traderAppBar(
     centerTitle: true,
     leading: MenuIconButtonForTraderView(scaffoldKey: scaffoldKey),
     actions: [
-      const ReloadIconButtonForTrader(),
       showCategoryPopUpMenuForTrader(context),
     ],
   );

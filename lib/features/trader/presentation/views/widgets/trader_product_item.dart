@@ -3,34 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/widgets/custom_cached_network_image.dart';
-import '../../../../../core/widgets/product_image_positioned.dart';
 import '../../../../../generated/l10n.dart';
 import 'edit_icon_button.dart';
-import 'trader_product_details.dart';
 
-// class TraderProductItem extends StatelessWidget {
-//   const TraderProductItem({super.key, required this.productItemModel});
-//   final ProductItemModel productItemModel;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.only(right: 8, left: 8, top: 120),
-//       child: Stack(
-//         clipBehavior: Clip.none,
-//         children: [
-//           Card(
-//             color: Colors.white,
-//             child: Padding(
-//               padding: const EdgeInsets.all(8.0),
-              // child: TraderProductDetails(productItemModel: productItemModel),
-//             ),
-//           ),
-// CustomProductImagePositioned(imageUrl: productItemModel.imageUrl!),
-//         ],
-//       ),
-//     );
-//   }
-// }
+
 
 class TraderProductItem extends StatelessWidget {
   const TraderProductItem({super.key, required this.productItemModel});
@@ -63,12 +39,7 @@ class TraderProductItem extends StatelessWidget {
                   style: AppStyle.medium12.copyWith(color: kWhiteColor),
                 ),
               ),
-              // const Spacer(),
-              // const Icon(
-              //   CupertinoIcons.heart,
-              //   color: kPurpleColor,
-              //   size: 24,
-              // ),
+              
             ],
           ),
           SizedBox(

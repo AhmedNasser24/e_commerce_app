@@ -3,6 +3,7 @@ import 'package:e_commerce/features/trader/presentation/views/widgets/back_arrow
 import 'package:e_commerce/features/trader/presentation/views/widgets/new_orders_view_body.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/utils/app_style.dart';
 import '../../../../generated/l10n.dart';
 
 class NewOrdersView extends StatelessWidget {
@@ -11,14 +12,15 @@ class NewOrdersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kScaffoldColor,
+      backgroundColor: kOffWhiteColor,
       body: const SafeArea(child: NewOrdersViewBody()),
       appBar: AppBar(
-        title: Text(S.of(context).new_orders),
+        title: Text(S.of(context).new_orders , style: AppStyle.medium22),
         centerTitle: true,
         elevation: 0,
         scrolledUnderElevation: 0,
         leading: const BackArrowButton(),
+        backgroundColor: kWhiteColor,
       ),
     );
   }

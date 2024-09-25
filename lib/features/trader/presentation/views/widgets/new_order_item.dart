@@ -1,3 +1,4 @@
+import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:e_commerce/features/customer/data/models/buy_product_model.dart';
 import 'package:flutter/material.dart';
@@ -25,8 +26,8 @@ class NewOrderItem extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Card(
-          // color: isNew ? Colors.lightGreen : Colors.white,
-          elevation: 5,
+          color:  kWhiteColor,
+          elevation: 0,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
