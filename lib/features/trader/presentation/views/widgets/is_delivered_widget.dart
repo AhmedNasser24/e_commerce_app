@@ -75,10 +75,12 @@ class _IsDeliveredWidgetState extends State<IsDeliveredWidget> {
                   widget.buyProductModel.isDelivered = true;
                   isDelivered = true;
                   setState(() {});
+                  //---------------------------------------------------------------------------
+                  //this feature is also remove my orders items for customer
                   BlocProvider.of<FetchNewOrdersCubit>(context)
                       .changeOrderFromNotDeliveredToDelivered(
                           buyProductModel: widget.buyProductModel);
-                  // delete all products that this customer has in his "my order"
+                  //---------------------------------------------------------------------------
                   Navigator.pop(context);
                 },
               ),

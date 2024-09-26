@@ -7,13 +7,15 @@ class BuyProductModel {
   final UserInfoModel userInfoModel;
   final String orderId ;
   final String buyingDate ;
+  final String customerId ;
   bool isDelivered ;
   bool isNew ;
-  BuyProductModel({
+  BuyProductModel( {
     required this.productItemModelList,
     required this.userInfoModel,
     required this.orderId,
     required this.buyingDate,
+    required this.customerId,
     this.isNew = true,
     this.isDelivered = false,
   });
@@ -30,6 +32,7 @@ class BuyProductModel {
       kBuyingDateKey : buyingDate,
       kIsNewKey : isNew ,
       kIsDelivered : isDelivered,
+      kCustomerIdKey : customerId,
     };
   }
 
@@ -43,6 +46,7 @@ class BuyProductModel {
       userInfoModel: UserInfoModel.fromJson(json[kUserInfoKey]),
       orderId: json[kOrderIdKey],
       buyingDate: json[kBuyingDateKey],
+      customerId: json[kCustomerIdKey],
       isNew: json[kIsNewKey] ,
       isDelivered: json[kIsDelivered] ?? false,
     );

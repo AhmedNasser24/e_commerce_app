@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:e_commerce/features/customer/data/models/buy_product_model.dart';
+import 'package:e_commerce/features/customer/data/models/my_order_item_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
@@ -179,6 +180,7 @@ class FirebaseServices {
   Future<void> buyProduct(
       {required List<CartItemModel> cartItemModelList}) async {
     await __sendOrderToTrader(cartItemModelList: cartItemModelList);
+    await __addToMyOrder(cartItemModelList: cartItemModelList) ;
   }
 
   Future<List<BuyProductModel>> fetchNewOrdersforTrader() async {
@@ -216,6 +218,11 @@ class FirebaseServices {
 
   Future<void> changeOrderFromNotDeliveredToDelivered(
       {required BuyProductModel buyProductModel}) async {
+    await __updateOrderFromNotDeliveredToDelivered(buyProductModel);
+    await __removeitemsFromMyOrdersForCustomer(buyProductModel: buyProductModel) ;
+  }
+
+  Future<void> __updateOrderFromNotDeliveredToDelivered(BuyProductModel buyProductModel) async {
     buyProductModel.isDelivered = true;
     String traderId = FirebaseAuth.instance.currentUser!.uid;
     String orderId = buyProductModel.orderId;
@@ -229,8 +236,6 @@ class FirebaseServices {
         .set(buyProductModel.toJson(), SetOptions(merge: true));
   }
 
-  
-
   // ignore: unused_element
   Future<void> __sendOrderToTrader(
       {required List<CartItemModel> cartItemModelList}) async {
@@ -240,12 +245,13 @@ class FirebaseServices {
     for (var cartItemModel in cartItemModelList) {
       productItemModelList.add(cartItemModel.productItemModel);
     }
-
+    String customerId = FirebaseAuth.instance.currentUser!.uid;
     BuyProductModel buyProductModel = BuyProductModel(
       productItemModelList: productItemModelList,
       userInfoModel: userInfo!,
       orderId: Random().nextDouble().toString(),
       buyingDate: DateTime.now().toString(),
+      customerId: customerId ,
     );
 
     await __sendOrder(buyProductModel);
@@ -310,5 +316,59 @@ class FirebaseServices {
         .collection(kCustomerCollection)
         .doc(kCustomerInfoDoc)
         .set(registerModel.toJson());
+  }
+
+  Future<List<MyOrderItemModel>> fetchMyOrderItems() async {
+    String userId = FirebaseAuth.instance.currentUser!.uid;
+    List<MyOrderItemModel> myOrderItemModelList = [];
+    QuerySnapshot<Map<String, dynamic>> response = await FirebaseFirestore
+        .instance
+        .collection(kUsersCollection)
+        .doc(userId)
+        .collection(kCustomerCollection)
+        .doc(kMyOrdersDocOrCollection)
+        .collection(kMyOrdersDocOrCollection)
+        .orderBy(kMyOrderDate, descending: true)
+        .get();
+    for (var doc in response.docs) {
+      myOrderItemModelList.add(MyOrderItemModel.fromJson(doc.data()));
+    }
+    return myOrderItemModelList;
+  }
+
+  Future<void> __addToMyOrder(
+      {required List<CartItemModel> cartItemModelList}) async {
+    String userId = FirebaseAuth.instance.currentUser!.uid;
+    for (var cartItemModel in cartItemModelList) {
+      String productId = cartItemModel.productItemModel.productId!;
+      MyOrderItemModel myOrderItemModel = MyOrderItemModel(
+        cartItemModel: cartItemModel,
+        myOrderDate: DateTime.now().toString(),
+      );
+      await FirebaseFirestore.instance
+          .collection(kUsersCollection)
+          .doc(userId)
+          .collection(kCustomerCollection)
+          .doc(kCartDocOrCollection)
+          .collection(kCartDocOrCollection)
+          .doc(productId)
+          .set(myOrderItemModel.toJson());
+    }
+  }
+
+  Future<void> __removeitemsFromMyOrdersForCustomer(
+      {required BuyProductModel buyProductModel}) async {
+    String userId = buyProductModel.customerId;
+    for (var productItemModel in buyProductModel.productItemModelList) {
+      String productId = productItemModel.productId!;
+      await FirebaseFirestore.instance
+          .collection(kUsersCollection)
+          .doc(userId)
+          .collection(kCustomerCollection)
+          .doc(kMyOrdersDocOrCollection)
+          .collection(kMyOrdersDocOrCollection)
+          .doc(productId)
+          .delete();
+    }
   }
 }
