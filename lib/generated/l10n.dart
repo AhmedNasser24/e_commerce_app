@@ -619,6 +619,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Is it delivered ?`
+  String get is_it_delivered {
+    return Intl.message(
+      'Is it delivered ?',
+      name: 'is_it_delivered',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivered`
+  String get delivered {
+    return Intl.message(
+      'Delivered',
+      name: 'delivered',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes`
+  String get yes {
+    return Intl.message(
+      'Yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not yet`
+  String get not_yet {
+    return Intl.message(
+      'Not yet',
+      name: 'not_yet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Did you sent orders to`
+  String get did_you_sent_orders_to {
+    return Intl.message(
+      'Did you sent orders to',
+      name: 'did_you_sent_orders_to',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

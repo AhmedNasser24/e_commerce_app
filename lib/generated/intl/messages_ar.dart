@@ -34,6 +34,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
         "clothes_category": MessageLookupByLibrary.simpleMessage("الملابس"),
         "customer": MessageLookupByLibrary.simpleMessage("عميل"),
+        "delivered": MessageLookupByLibrary.simpleMessage("تم التسليم"),
+        "did_you_sent_orders_to":
+            MessageLookupByLibrary.simpleMessage("هل تم ارسال الطلبات الى"),
         "edit_product": MessageLookupByLibrary.simpleMessage("تعديل المنتج"),
         "electronics_category":
             MessageLookupByLibrary.simpleMessage("الكترونيات"),
@@ -53,6 +56,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لم تتم اضافة الصورة"),
         "invalid_email":
             MessageLookupByLibrary.simpleMessage("بريد الالكتروني خطأ"),
+        "is_it_delivered":
+            MessageLookupByLibrary.simpleMessage("هل تم التسليم؟"),
         "jewellary_category": MessageLookupByLibrary.simpleMessage("المجوهرات"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
@@ -62,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "new_orders": MessageLookupByLibrary.simpleMessage("الطلبات الجديدة"),
         "news": MessageLookupByLibrary.simpleMessage("جديد"),
+        "not_yet": MessageLookupByLibrary.simpleMessage("ليس بعد"),
         "num_of_products": MessageLookupByLibrary.simpleMessage("عدد المنتجات"),
         "ok": MessageLookupByLibrary.simpleMessage("موافق"),
         "old_orders": MessageLookupByLibrary.simpleMessage("الطلبات السابقة"),
@@ -99,6 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "we_will_contact_you_within_24_hours":
             MessageLookupByLibrary.simpleMessage(
                 "سوف يتم التوصل معك خلال 24 ساعة"),
-        "whatsapp_number": MessageLookupByLibrary.simpleMessage("رقم الواتساب")
+        "whatsapp_number": MessageLookupByLibrary.simpleMessage("رقم الواتساب"),
+        "yes": MessageLookupByLibrary.simpleMessage("نعم")
       };
 }

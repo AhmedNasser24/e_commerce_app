@@ -7,6 +7,7 @@ class BuyProductModel {
   final UserInfoModel userInfoModel;
   final String orderId ;
   final String buyingDate ;
+  bool isDelivered ;
   bool isNew ;
   BuyProductModel({
     required this.productItemModelList,
@@ -14,6 +15,7 @@ class BuyProductModel {
     required this.orderId,
     required this.buyingDate,
     this.isNew = true,
+    this.isDelivered = false,
   });
 
   toJson(){
@@ -27,6 +29,7 @@ class BuyProductModel {
       kOrderIdKey : orderId,
       kBuyingDateKey : buyingDate,
       kIsNewKey : isNew ,
+      kIsDelivered : isDelivered,
     };
   }
 
@@ -41,6 +44,7 @@ class BuyProductModel {
       orderId: json[kOrderIdKey],
       buyingDate: json[kBuyingDateKey],
       isNew: json[kIsNewKey] ,
+      isDelivered: json[kIsDelivered] ?? false,
     );
   }
 }

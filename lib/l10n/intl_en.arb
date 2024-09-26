@@ -55,5 +55,10 @@
     "ok" : "Ok",
     "cancel" : "Cancel" ,
     "are_you_sure_you_want_to_signOut" : "Are you sure you want to signOut",
-    "invalid_email" : "Invalid email"
+    "invalid_email" : "Invalid email",
+    "is_it_delivered" : "Is it delivered ?",
+    "delivered" : "Delivered",
+    "yes" : "Yes",
+    "not_yet" : "Not yet",
+    "did_you_sent_orders_to" : "Did you sent orders to"
 }

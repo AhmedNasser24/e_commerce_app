@@ -68,8 +68,8 @@ class OrderItem extends StatelessWidget {
             children: [
               Text("${productItemModel.price!}${S.of(context).LE}",
                   style: AppStyle.bold14),
-              const Spacer(),
-              const Text("quantity : 2", style: AppStyle.bold14),
+              // const Spacer(),
+              // const Text("quantity : 2", style: AppStyle.bold14),
             ],
           )
         ],

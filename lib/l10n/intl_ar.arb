@@ -55,5 +55,10 @@
    "ok" : "موافق",
    "cancel" : "الغاء",
    "are_you_sure_you_want_to_signOut" : "هل تريد حقا تسجيل الخروج",
-   "invalid_email" : "بريد الالكتروني خطأ"
+   "invalid_email" : "بريد الالكتروني خطأ",
+   "is_it_delivered" : "هل تم التسليم؟",
+   "delivered" : "تم التسليم",
+   "yes" : "نعم",
+   "not_yet" : "ليس بعد",
+   "did_you_sent_orders_to" : "هل تم ارسال الطلبات الى"
 }

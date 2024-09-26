@@ -214,6 +214,21 @@ class FirebaseServices {
         .set(buyProductModel.toJson(), SetOptions(merge: true));
   }
 
+  Future<void> changeOrderFromNotDeliveredToDelivered(
+      {required BuyProductModel buyProductModel}) async {
+    buyProductModel.isDelivered = true;
+    String traderId = FirebaseAuth.instance.currentUser!.uid;
+    String orderId = buyProductModel.orderId;
+    await FirebaseFirestore.instance
+        .collection(kUsersCollection)
+        .doc(traderId)
+        .collection(kTraderCollection)
+        .doc(kTraderNewOrderCollectionAndDoc)
+        .collection(kTraderNewOrderCollectionAndDoc)
+        .doc(orderId)
+        .set(buyProductModel.toJson(), SetOptions(merge: true));
+  }
+
   
 
   // ignore: unused_element

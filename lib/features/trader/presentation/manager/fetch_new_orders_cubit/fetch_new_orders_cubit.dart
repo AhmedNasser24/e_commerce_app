@@ -41,4 +41,12 @@ class FetchNewOrdersCubit extends Cubit<FetchNewOrdersState> {
         buyProductModel: buyProductModel);
     await fetchNewOrdersForTrader();
   }
+
+  Future<void> changeOrderFromNotDeliveredToDelivered(
+      {required BuyProductModel buyProductModel}) async {
+    // ignore: unused_local_variable
+    Either<void, Failure> result = await __traderRepo.changeOrderFromNotDeliveredToDelivered(
+        buyProductModel: buyProductModel);
+    await fetchNewOrdersForTrader();
+  }
 }

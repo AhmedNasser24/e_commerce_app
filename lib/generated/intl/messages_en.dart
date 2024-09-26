@@ -35,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "clothes_category": MessageLookupByLibrary.simpleMessage("Clothes"),
         "customer": MessageLookupByLibrary.simpleMessage("Customer"),
+        "delivered": MessageLookupByLibrary.simpleMessage("Delivered"),
+        "did_you_sent_orders_to":
+            MessageLookupByLibrary.simpleMessage("Did you sent orders to"),
         "edit_product": MessageLookupByLibrary.simpleMessage("Edit product"),
         "electronics_category":
             MessageLookupByLibrary.simpleMessage("Electronics"),
@@ -53,6 +56,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "image_is_not_added":
             MessageLookupByLibrary.simpleMessage("image is not added"),
         "invalid_email": MessageLookupByLibrary.simpleMessage("Invalid email"),
+        "is_it_delivered":
+            MessageLookupByLibrary.simpleMessage("Is it delivered ?"),
         "jewellary_category": MessageLookupByLibrary.simpleMessage("Jewellary"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
@@ -62,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("name"),
         "new_orders": MessageLookupByLibrary.simpleMessage("New orders"),
         "news": MessageLookupByLibrary.simpleMessage("New"),
+        "not_yet": MessageLookupByLibrary.simpleMessage("Not yet"),
         "num_of_products":
             MessageLookupByLibrary.simpleMessage("Number of products"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
@@ -102,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "We will contact you within 24 hours"),
         "whatsapp_number":
-            MessageLookupByLibrary.simpleMessage("Whatsapp number")
+            MessageLookupByLibrary.simpleMessage("Whatsapp number"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

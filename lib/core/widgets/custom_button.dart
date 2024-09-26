@@ -13,6 +13,8 @@ class CustomButton extends StatelessWidget {
     this.backGroundColor,
     this.horizontalMargin = 0,
     this.verticalMargin = 0,
+    this.horizontalPadding = 20,
+    this.verticalPadding = 10,
   });
   final bool isLoading;
   final String title;
@@ -20,12 +22,13 @@ class CustomButton extends StatelessWidget {
   final TextStyle? style;
   final Color? backGroundColor;
   final double horizontalMargin, verticalMargin;
+  final double horizontalPadding, verticalPadding;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding:  EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
         margin: EdgeInsets.symmetric(
             horizontal: horizontalMargin, vertical: verticalMargin),
         constraints: const BoxConstraints(minWidth: 30),

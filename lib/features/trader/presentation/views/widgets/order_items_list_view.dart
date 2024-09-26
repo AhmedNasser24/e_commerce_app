@@ -23,7 +23,7 @@ class OrderItemsListView extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) =>
-                  ShowOrdersView(buyProdcutModel: buyProductModelList[i]),
+                  ShowOrdersView(buyProductModel: buyProductModelList[i]),
             ),
           );
           BlocProvider.of<FetchNewOrdersCubit>(context)

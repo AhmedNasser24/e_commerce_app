@@ -32,7 +32,7 @@ class _TraderHomeViewState extends State<TraderHomeView> {
       
       appBar: traderAppBar(context, scaffoldKey),
       floatingActionButton: const CustomFloatingActionButton(),
-      drawer:  CustomTraderDrawer(changeLanguage: widget.changeLanguage),
+      drawer:  SafeArea(child: CustomTraderDrawer(changeLanguage: widget.changeLanguage)),
     );
   }
 }

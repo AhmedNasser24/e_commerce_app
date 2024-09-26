@@ -88,4 +88,18 @@ class TraderRepoImpl extends TraderRepo {
       return right(Failure(e.toString()));
     }
   }
+
+  @override
+  Future < Either < void , Failure >> changeOrderFromNotDeliveredToDelivered({required BuyProductModel buyProductModel}) async {
+    try {
+      await FirebaseServices().changeOrderFromNotDeliveredToDelivered(buyProductModel: buyProductModel);
+      return left(null);
+    } on FirebaseException catch (e) {
+      return right(ServerFailure.fromFireBaseException(e));
+    } on SocketException catch (e) {
+      return right(ServerFailure.fromSocketException(e));
+    } catch (e) {
+      return right(Failure(e.toString()));
+    }
+  }
 }
