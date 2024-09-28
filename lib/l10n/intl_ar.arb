@@ -58,6 +58,7 @@
    "invalid_email" : "بريد الالكتروني خطأ",
    "is_it_delivered" : "هل تم التسليم؟",
    "delivered" : "تم التسليم",
+   "not_delivered" : "لم يتم التسليم بعد",
    "yes" : "نعم",
    "not_yet" : "ليس بعد",
    "did_you_sent_orders_to" : "هل تم ارسال الطلبات الى"

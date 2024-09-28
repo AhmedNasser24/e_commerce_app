@@ -17,11 +17,11 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       key: scaffoldKey,
       backgroundColor: kOffWhiteColor,
       body: const CustomerHomeBody(),
-      drawer: CustomerDrawer(changeLanguage: widget.changeLanguage),
+      drawer: SafeArea(child: CustomerDrawer(changeLanguage: widget.changeLanguage)),
       appBar: customerAppBar(context, scaffoldKey),
     );
   }

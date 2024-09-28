@@ -328,11 +328,13 @@ class FirebaseServices {
         .collection(kCustomerCollection)
         .doc(kMyOrdersDocOrCollection)
         .collection(kMyOrdersDocOrCollection)
-        .orderBy(kMyOrderDate, descending: true)
+        // .doc()
+        // .orderBy(kMyOrderDate, descending: true)
         .get();
     for (var doc in response.docs) {
       myOrderItemModelList.add(MyOrderItemModel.fromJson(doc.data()));
     }
+
     return myOrderItemModelList;
   }
 
@@ -349,8 +351,8 @@ class FirebaseServices {
           .collection(kUsersCollection)
           .doc(userId)
           .collection(kCustomerCollection)
-          .doc(kCartDocOrCollection)
-          .collection(kCartDocOrCollection)
+          .doc(kMyOrdersDocOrCollection)
+          .collection(kMyOrdersDocOrCollection)
           .doc(productId)
           .set(myOrderItemModel.toJson());
     }

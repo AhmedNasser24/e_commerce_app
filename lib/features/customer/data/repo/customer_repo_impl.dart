@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 
 import 'package:e_commerce/core/errors/failure.dart';
 import 'package:e_commerce/core/utils/firebase_services.dart';
+import 'package:e_commerce/features/customer/data/models/my_order_item_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 
@@ -49,6 +50,20 @@ class CustomerRepoImpl extends CustomerRepo {
     try {
       List<CartItemModel> cartItemList = await FirebaseServices().fetchCartItems();
       return left(cartItemList);
+    } on FirebaseException catch (e) {
+      return right(ServerFailure.fromFireBaseException(e) ) ;
+    } on SocketException catch (e) {
+      return right(ServerFailure.fromSocketException(e));
+    }catch (e) {
+      return right(Failure(e.toString())) ;
+    }
+  }
+
+   @override
+  Future<Either<List<MyOrderItemModel>, Failure>> fetchMyOrderItems() async{
+    try {
+      List<MyOrderItemModel> myOrderItemList = await FirebaseServices().fetchMyOrderItems();
+      return left(myOrderItemList);
     } on FirebaseException catch (e) {
       return right(ServerFailure.fromFireBaseException(e) ) ;
     } on SocketException catch (e) {

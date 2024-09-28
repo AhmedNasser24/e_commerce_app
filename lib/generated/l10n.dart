@@ -640,6 +640,16 @@ class S {
     );
   }
 
+  /// `Not delivered`
+  String get not_delivered {
+    return Intl.message(
+      'Not delivered',
+      name: 'not_delivered',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Yes`
   String get yes {
     return Intl.message(

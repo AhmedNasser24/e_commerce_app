@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/errors/failure.dart';
 import '../../../../core/models/product_item_model.dart';
 import '../models/cart_item_model.dart';
+import '../models/my_order_item_model.dart';
 
 abstract class CustomerRepo {
   Future<Either<List<ProductItemModel>, Failure>> fetchCategoryProductsForCustomer({required String category});
@@ -11,5 +12,6 @@ abstract class CustomerRepo {
   Future <Either<void, Failure>> removeProductFromCart({required CartItemModel cartItemModel});
   Future <Either<void, Failure>> removeAllProductFromCart({required List <CartItemModel> cartItemModelList});
   Future< Either <List<CartItemModel> , Failure >> fetchCartItems() ;
+  Future< Either <List<MyOrderItemModel> , Failure >> fetchMyOrderItems() ;
   Future <Either < void , Failure >> buyProduct({required List<CartItemModel> cartItemModelList}) ;
 }

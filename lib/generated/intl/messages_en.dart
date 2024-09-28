@@ -67,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("name"),
         "new_orders": MessageLookupByLibrary.simpleMessage("New orders"),
         "news": MessageLookupByLibrary.simpleMessage("New"),
+        "not_delivered": MessageLookupByLibrary.simpleMessage("Not delivered"),
         "not_yet": MessageLookupByLibrary.simpleMessage("Not yet"),
         "num_of_products":
             MessageLookupByLibrary.simpleMessage("Number of products"),

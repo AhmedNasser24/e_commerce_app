@@ -67,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "new_orders": MessageLookupByLibrary.simpleMessage("الطلبات الجديدة"),
         "news": MessageLookupByLibrary.simpleMessage("جديد"),
+        "not_delivered":
+            MessageLookupByLibrary.simpleMessage("لم يتم التسليم بعد"),
         "not_yet": MessageLookupByLibrary.simpleMessage("ليس بعد"),
         "num_of_products": MessageLookupByLibrary.simpleMessage("عدد المنتجات"),
         "ok": MessageLookupByLibrary.simpleMessage("موافق"),

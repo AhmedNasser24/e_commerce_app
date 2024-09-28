@@ -24,7 +24,7 @@ class CustomerDrawer extends StatelessWidget {
               style: AppStyle.semiBold22,
             ),
           ),
-          const CustomerOrder(),
+          const MyOrders(),
           SelectLanguage(changeLanguage: changeLanguage),
           SignOut(changeLanguage: changeLanguage)
         ],
