@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,13 +17,12 @@ class MyOrderView extends StatelessWidget {
     return BlocBuilder<MyOrderCubit, MyOrderState>(
       builder: (context, state) {
         if (state is MyOrderSuccess) {
-          log("${state.myOrderItemModelList}");
           return Scaffold(
             body: SafeArea(
                 child: MyOrderViewBody(
                     myOrderItemModelList: state.myOrderItemModelList)),
             appBar: myOrderAppBar(context),
-            bottomNavigationBar: const CustomBottomAppBar(),
+            bottomNavigationBar: state.myOrderItemModelList.isEmpty? null : const CustomBottomAppBar(),
           );
         } else if (state is MyOrderFailure) {
           return Scaffold(

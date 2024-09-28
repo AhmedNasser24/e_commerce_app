@@ -679,6 +679,26 @@ class S {
       args: [],
     );
   }
+
+  /// `No orders yet`
+  String get no_orders_yet {
+    return Intl.message(
+      'No orders yet',
+      name: 'no_orders_yet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All last orders have been delivered to you`
+  String get all_last_orders_have_been_delivered_to_you {
+    return Intl.message(
+      'All last orders have been delivered to you',
+      name: 'all_last_orders_have_been_delivered_to_you',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

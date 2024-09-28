@@ -3,6 +3,7 @@ import 'package:e_commerce/features/customer/data/models/my_order_item_model.dar
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_style.dart';
+import '../../../../../core/widgets/custom_cached_network_image.dart';
 import '../../../../../generated/l10n.dart';
 
 class MyOrderItem extends StatelessWidget {
@@ -12,14 +13,25 @@ class MyOrderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     String productName = myOrderItemModel.cartItemModel.productItemModel.name!;
     String productPrice = myOrderItemModel.cartItemModel.productItemModel.price!;
+    String productImage = myOrderItemModel.cartItemModel.productItemModel.imageUrl!;
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(12.0),
       child: ListTile(
+        tileColor: kWhiteColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
         leading: Radio(
           activeColor: kPurpleColor,
-          value: '0', groupValue: 0, onChanged: (value){}),
+          value: '0', groupValue: "0", onChanged: (value){}),
         title: Text(productName, style: AppStyle.medium16),
-        subtitle: Text("$productPrice ${S.of(context).LE}", style: AppStyle.semiBold16)
+        subtitle: Text("$productPrice ${S.of(context).LE}", style: AppStyle.semiBold16),
+        trailing: SizedBox(
+          height: 60,
+          width:60,
+          child : CustomCachedNetworkImage(imageUrl: productImage ),
+        )
+
       ),
     );
   }

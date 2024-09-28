@@ -328,8 +328,7 @@ class FirebaseServices {
         .collection(kCustomerCollection)
         .doc(kMyOrdersDocOrCollection)
         .collection(kMyOrdersDocOrCollection)
-        // .doc()
-        // .orderBy(kMyOrderDate, descending: true)
+        .orderBy(kMyOrderDate, descending: true)
         .get();
     for (var doc in response.docs) {
       myOrderItemModelList.add(MyOrderItemModel.fromJson(doc.data()));

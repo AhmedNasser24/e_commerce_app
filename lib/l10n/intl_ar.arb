@@ -61,5 +61,7 @@
    "not_delivered" : "لم يتم التسليم بعد",
    "yes" : "نعم",
    "not_yet" : "ليس بعد",
-   "did_you_sent_orders_to" : "هل تم ارسال الطلبات الى"
+   "did_you_sent_orders_to" : "هل تم ارسال الطلبات الى",
+   "no_orders_yet" : "ليس لديك طلبات حتى الان",
+   "all_last_orders_have_been_delivered_to_you" : "كل المنتجات السابقة تم تسليمها لك بنجاح"
 }

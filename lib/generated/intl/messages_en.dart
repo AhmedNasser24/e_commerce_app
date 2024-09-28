@@ -27,6 +27,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_product": MessageLookupByLibrary.simpleMessage("Add product"),
         "add_to_card": MessageLookupByLibrary.simpleMessage("Add to card"),
         "all_category": MessageLookupByLibrary.simpleMessage("All"),
+        "all_last_orders_have_been_delivered_to_you":
+            MessageLookupByLibrary.simpleMessage(
+                "All last orders have been delivered to you"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
         "are_you_sure_you_want_to_signOut":
             MessageLookupByLibrary.simpleMessage(
@@ -67,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("name"),
         "new_orders": MessageLookupByLibrary.simpleMessage("New orders"),
         "news": MessageLookupByLibrary.simpleMessage("New"),
+        "no_orders_yet": MessageLookupByLibrary.simpleMessage("No orders yet"),
         "not_delivered": MessageLookupByLibrary.simpleMessage("Not delivered"),
         "not_yet": MessageLookupByLibrary.simpleMessage("Not yet"),
         "num_of_products":

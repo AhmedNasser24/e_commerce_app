@@ -14,8 +14,11 @@ class MyOrderCubit extends Cubit<MyOrderState> {
   }
   final CustomerRepo __customerRepoImpl = CustomerRepoImpl();
   double totPrice = 0.0;
+  bool __isFetchingOnceBefore = false;
   Future<void> fetchMyOrderItems() async {
-    emit(MyOrderLoading());
+    !__isFetchingOnceBefore ? emit(MyOrderLoading()) :null;
+    __isFetchingOnceBefore = true;
+    
     Either<List<MyOrderItemModel>, Failure> myOrderItemsOrFailure =
         await __customerRepoImpl.fetchMyOrderItems();
     myOrderItemsOrFailure.fold(

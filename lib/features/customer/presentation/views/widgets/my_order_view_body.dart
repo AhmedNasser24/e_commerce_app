@@ -3,6 +3,8 @@ import 'package:e_commerce/features/customer/presentation/views/widgets/my_order
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/utils/app_style.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/models/my_order_item_model.dart';
 
 class MyOrderViewBody extends StatelessWidget {
@@ -13,16 +15,24 @@ class MyOrderViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: () async {
-        // Code to reload the page
-        await Future.delayed(const Duration(seconds: 1)); // Simulate a delay
-        BlocProvider.of<MyOrderCubit>(context).fetchMyOrderItems();
-        return Future.value(null); // Return null to stop the refresh indicator
+        await BlocProvider.of<MyOrderCubit>(context).fetchMyOrderItems();
       },
-      child: ListView.builder(
-        itemCount: myOrderItemModelList.length,
-        itemBuilder: (context, i) =>
-            MyOrderItem(myOrderItemModel: myOrderItemModelList[i]),
-      ),
+      child: myOrderItemModelList.isNotEmpty
+          ? ListView.builder(
+              itemCount: myOrderItemModelList.length,
+              itemBuilder: (context, i) =>
+                  MyOrderItem(myOrderItemModel: myOrderItemModelList[i]),
+            )
+          : Center(
+              child: Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Text(
+                  S.of(context).all_last_orders_have_been_delivered_to_you,
+                  style: AppStyle.medium16,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
     );
   }
 }

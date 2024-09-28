@@ -61,5 +61,7 @@
     "not_delivered" : "Not delivered",
     "yes" : "Yes",
     "not_yet" : "Not yet",
-    "did_you_sent_orders_to" : "Did you sent orders to"
+    "did_you_sent_orders_to" : "Did you sent orders to",
+    "no_orders_yet" : "No orders yet",
+    "all_last_orders_have_been_delivered_to_you" : "All last orders have been delivered to you"
 }
