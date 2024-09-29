@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/trader/presentation/views/widgets/reload_icon_button_for_trader.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/app_style.dart';
 import 'menu_icon_button_for_trader_view.dart';
@@ -14,6 +15,7 @@ AppBar traderAppBar(
     centerTitle: true,
     leading: MenuIconButtonForTraderView(scaffoldKey: scaffoldKey),
     actions: [
+      const ReloadIconButtonForTrader(),
       showCategoryPopUpMenuForTrader(context),
     ],
   );

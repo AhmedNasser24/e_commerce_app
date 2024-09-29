@@ -3,7 +3,7 @@ import 'package:e_commerce/features/customer/presentation/views/widgets/my_order
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/utils/app_style.dart';
+import '../../../../../core/widgets/message_widget.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/my_order_item_model.dart';
 
@@ -23,18 +23,8 @@ class MyOrderViewBody extends StatelessWidget {
               itemBuilder: (context, i) =>
                   MyOrderItem(myOrderItemModel: myOrderItemModelList[i]),
             )
-          : Center(
-              child: Padding(
-                padding: const EdgeInsets.all(30.0),
-                child: Text(
-                  
-                  S.of(context).all_last_orders_have_been_delivered_to_you,
-                  style: AppStyle.medium16,
-                  textAlign: TextAlign.center,
-                  
-                ),
-              ),
-            ),
+          : MessageWidget(S.of(context).all_last_orders_have_been_delivered_to_you),
     );
   }
 }
+

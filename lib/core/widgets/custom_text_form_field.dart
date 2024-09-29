@@ -47,9 +47,9 @@ class CustomTextFormField extends StatelessWidget {
         suffix: suffix,
         
         // fillColor: Colors.white,
+        // filled: true,
         // focusColor: Colors.white,
         // hoverColor: Colors.white,
-
         focusedBorder: focusBorderDecoration(),
         enabledBorder: borderDecoration(),
         errorBorder: errorBorderDecoration(),

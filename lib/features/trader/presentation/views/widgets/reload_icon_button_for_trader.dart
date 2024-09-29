@@ -1,3 +1,4 @@
+import 'package:e_commerce/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,7 +16,11 @@ class ReloadIconButtonForTrader extends StatelessWidget {
         BlocProvider.of<FetchCategoryProductsForTraderCubit>(context)
             .fetchCategoryProductsForTrader();
       },
-      icon: const Icon(Icons.refresh),
+      icon: const Icon(
+        Icons.refresh,
+        color: kPurpleColor,
+        size: 25,
+      ),
     );
   }
 }

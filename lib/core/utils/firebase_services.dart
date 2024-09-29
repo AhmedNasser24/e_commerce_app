@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -33,8 +34,7 @@ class FirebaseServices {
   }
   Future<void> deleteProduct(ProductItemModel productItemModel) async {
     String productId = productItemModel.productId!;
-    // productItemModel.category =
-    //     __handleProductCategoryBeforePush(productItemModel);
+    
     await FirebaseFirestore.instance
         .collection(kShopCollection)
         .doc(productId)

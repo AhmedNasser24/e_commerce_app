@@ -13,7 +13,11 @@ class ServerFailure extends Failure {
   const ServerFailure(super.errMessage);
 
   factory ServerFailure.fromFireBaseException(FirebaseException e) {
-    if (e.code == 'invalid-email') {
+    if (e.code == 'network-request-failed') {
+      debugPrint(e.code);
+      return const ServerFailure('please check your internet connection');
+    }
+    else if (e.code == 'invalid-email') {
       debugPrint(e.code);
       return const ServerFailure(
           'Invalid email , email should be : email_name@*****.com');
@@ -23,9 +27,6 @@ class ServerFailure extends Failure {
     } else if (e.code == 'email-already-in-use') {
       debugPrint(e.code);
       return const ServerFailure('This email is already exist');
-    } else if (e.code == 'network-request-failed') {
-      debugPrint(e.code);
-      return const ServerFailure('please check your internet connection');
     } else if (e.code == 'invalid-credential') {
       debugPrint(e.code);
       return const ServerFailure('Email Not Found');

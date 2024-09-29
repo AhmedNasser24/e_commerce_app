@@ -1,6 +1,9 @@
+import 'package:e_commerce/core/models/product_item_model.dart';
+import 'package:e_commerce/core/widgets/message_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../customer/presentation/views/widgets/add_to_cart_view_body.dart';
 import '../../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
 import 'custom_refresh_indicator_for_trader.dart';
@@ -17,7 +20,8 @@ class TraderProductItemListView extends StatelessWidget {
         FetchCategoryProductsForTraderState>(
       builder: (context, state) {
         if (state is FetchCategoryProductsForTraderSuccess) {
-          return CustomRefreshIndicatorForTrader(
+          List < ProductItemModel> productItemModelList = state.productItemModelList;
+          return productItemModelList.isNotEmpty? CustomRefreshIndicatorForTrader(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: GridView.builder(
@@ -31,11 +35,11 @@ class TraderProductItemListView extends StatelessWidget {
                 itemCount: state.productItemModelList.length,
                 itemBuilder: (context, i) {
                   return TraderProductItem(
-                      productItemModel: state.productItemModelList[i]);
+                      productItemModel: productItemModelList[i]);
                 },
               ),
             ),
-          );
+          ) : MessageWidget(S.of(context).no_product_found) ;
         } else if (state is FetchCategoryProductsForTraderFailure) {
           // return Center(child: Text(state.errMessage));
           return ErrorMessageWidget(errMessage: state.errMessage);

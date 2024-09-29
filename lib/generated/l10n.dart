@@ -729,6 +729,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Are you sure you want to edit this product?`
+  String get are_you_sure_you_want_to_edit_this_product {
+    return Intl.message(
+      'Are you sure you want to edit this product?',
+      name: 'are_you_sure_you_want_to_edit_this_product',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No product found`
+  String get no_product_found {
+    return Intl.message(
+      'No product found',
+      name: 'no_product_found',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

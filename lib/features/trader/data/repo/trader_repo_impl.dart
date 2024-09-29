@@ -9,6 +9,7 @@ import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:e_commerce/features/customer/data/models/buy_product_model.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import '../../../../core/functions/has_network.dart';
 import 'trader_repo.dart';
 
 class TraderRepoImpl extends TraderRepo {
@@ -31,6 +32,9 @@ class TraderRepoImpl extends TraderRepo {
   Future<Either<void, Failure>> editProduct(
       {required ProductItemModel productItemModel}) async {
     try {
+      if (! await hasNetWork()) {
+        return right(const Failure("لا يوجد اتصال بالانترنت"));
+      }
       await FirebaseServices().editProduct(productItemModel);
       return left(null);
     } on FirebaseException catch (e) {
@@ -46,12 +50,15 @@ class TraderRepoImpl extends TraderRepo {
   Future<Either<void, Failure>> deleteProduct(
       {required ProductItemModel productItemModel}) async {
     try {
+      if (! await hasNetWork()) {
+        return right(const Failure("لا يوجد اتصال بالانترنت"));
+      }
       await FirebaseServices().deleteProduct(productItemModel);
       return left(null);
-    } on FirebaseException catch (e) {
-      return right(ServerFailure.fromFireBaseException(e));
     } on SocketException catch (e) {
       return right(ServerFailure.fromSocketException(e));
+    } on FirebaseException catch (e) {
+      return right(ServerFailure.fromFireBaseException(e));
     } catch (e) {
       return right(Failure(e.toString()));
     }
@@ -73,7 +80,6 @@ class TraderRepoImpl extends TraderRepo {
     }
   }
 
-
   @override
   Future<Either<List<BuyProductModel>, Failure>>
       fetchNewOrdersforTrader() async {
@@ -89,11 +95,13 @@ class TraderRepoImpl extends TraderRepo {
       return right(Failure(e.toString()));
     }
   }
-  
+
   @override
-  Future < Either < void , Failure >> changeOrderFromNewToOld({required BuyProductModel buyProductModel}) async {
+  Future<Either<void, Failure>> changeOrderFromNewToOld(
+      {required BuyProductModel buyProductModel}) async {
     try {
-      await FirebaseServices().changeOrderFromNewToOld(buyProductModel: buyProductModel);
+      await FirebaseServices()
+          .changeOrderFromNewToOld(buyProductModel: buyProductModel);
       return left(null);
     } on FirebaseException catch (e) {
       return right(ServerFailure.fromFireBaseException(e));
@@ -105,9 +113,11 @@ class TraderRepoImpl extends TraderRepo {
   }
 
   @override
-  Future < Either < void , Failure >> changeOrderFromNotDeliveredToDelivered({required BuyProductModel buyProductModel}) async {
+  Future<Either<void, Failure>> changeOrderFromNotDeliveredToDelivered(
+      {required BuyProductModel buyProductModel}) async {
     try {
-      await FirebaseServices().changeOrderFromNotDeliveredToDelivered(buyProductModel: buyProductModel);
+      await FirebaseServices().changeOrderFromNotDeliveredToDelivered(
+          buyProductModel: buyProductModel);
       return left(null);
     } on FirebaseException catch (e) {
       return right(ServerFailure.fromFireBaseException(e));

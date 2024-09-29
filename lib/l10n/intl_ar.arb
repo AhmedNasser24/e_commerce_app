@@ -66,5 +66,7 @@
    "all_last_orders_have_been_delivered_to_you" : "كل المنتجات السابقة تم تسليمها لك بنجاح",
    "confirm_order" : "تاكيد الطلب",
    "do_you_want_to_confirm_your_order_purchase" : "هل تريد تأكيد شراء الطلب",
-   "are_you_sure_you_want_to_delete_this_product" : "هل تريد حذف هذا المنتج"
+   "are_you_sure_you_want_to_delete_this_product" : "هل تريد حذف هذا المنتج",
+   "are_you_sure_you_want_to_edit_this_product" : "هل تريد تعديل هذا المنتج",
+   "no_product_found" : "لا يوجد منتجات"
 }

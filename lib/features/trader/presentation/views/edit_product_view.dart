@@ -25,9 +25,9 @@ class EditProductView extends StatelessWidget {
     return AppBar(
       elevation: 0,
       scrolledUnderElevation: 0,
-      backgroundColor: Colors.white,
-      leading: const BackArrowButton(),
-      title: Text(S.of(context).edit_product , style: AppStyle.medium22),
+      backgroundColor: kPurpleColor,
+      leading: const BackArrowButton(color: kWhiteColor),
+      title: Text(S.of(context).edit_product , style: AppStyle.medium22.copyWith(color:kWhiteColor)),
       centerTitle: true,
     );
   }

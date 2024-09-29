@@ -33,6 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
         "are_you_sure_you_want_to_delete_this_product":
             MessageLookupByLibrary.simpleMessage("هل تريد حذف هذا المنتج"),
+        "are_you_sure_you_want_to_edit_this_product":
+            MessageLookupByLibrary.simpleMessage("هل تريد تعديل هذا المنتج"),
         "are_you_sure_you_want_to_signOut":
             MessageLookupByLibrary.simpleMessage("هل تريد حقا تسجيل الخروج"),
         "buy": MessageLookupByLibrary.simpleMessage("شراء"),
@@ -77,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "news": MessageLookupByLibrary.simpleMessage("جديد"),
         "no_orders_yet":
             MessageLookupByLibrary.simpleMessage("ليس لديك طلبات حتى الان"),
+        "no_product_found":
+            MessageLookupByLibrary.simpleMessage("لا يوجد منتجات"),
         "not_delivered":
             MessageLookupByLibrary.simpleMessage("لم يتم التسليم بعد"),
         "not_yet": MessageLookupByLibrary.simpleMessage("ليس بعد"),

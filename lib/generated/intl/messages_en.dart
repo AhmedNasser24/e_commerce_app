@@ -34,6 +34,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "are_you_sure_you_want_to_delete_this_product":
             MessageLookupByLibrary.simpleMessage(
                 "Are you sure you want to delete this product?"),
+        "are_you_sure_you_want_to_edit_this_product":
+            MessageLookupByLibrary.simpleMessage(
+                "Are you sure you want to edit this product?"),
         "are_you_sure_you_want_to_signOut":
             MessageLookupByLibrary.simpleMessage(
                 "Are you sure you want to signOut"),
@@ -78,6 +81,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "new_orders": MessageLookupByLibrary.simpleMessage("New orders"),
         "news": MessageLookupByLibrary.simpleMessage("New"),
         "no_orders_yet": MessageLookupByLibrary.simpleMessage("No orders yet"),
+        "no_product_found":
+            MessageLookupByLibrary.simpleMessage("No product found"),
         "not_delivered": MessageLookupByLibrary.simpleMessage("Not delivered"),
         "not_yet": MessageLookupByLibrary.simpleMessage("Not yet"),
         "num_of_products":
