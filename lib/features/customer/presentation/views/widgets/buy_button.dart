@@ -1,14 +1,11 @@
-import 'package:e_commerce/core/functions/show_snack_bar.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/customer/presentation/manager/buy%20product_cubit/buy_product_cubit.dart';
-import 'package:e_commerce/features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../moyasar_payment/presentation/views/moyasar_payment_view.dart';
 import '../../../data/models/cart_item_model.dart';
 
 class BuyButton extends StatelessWidget {
@@ -16,32 +13,9 @@ class BuyButton extends StatelessWidget {
   final List<CartItemModel> cartItemModelList;
   @override
   Widget build(BuildContext context) {
-    bool isLoading = false;
-    return BlocConsumer<BuyProductCubit, BuyProductState>(
-      listener: (context, state) {
-        if (state is BuyProductLoading) {
-          isLoading = true;
-        } else if (state is BuyProductSuccess) {
-          isLoading = false;
-          showThankYouAwesomeDialog(context);
-          BlocProvider.of<CartCubit>(context).removeAllProductFromCart(cartItemModelList: cartItemModelList, context: context);
-          // add those products to customer products ( my orders )
-          
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => MoyasarPaymentView(
-          //         amount: getTotalPriceX100(cartItemModelList)),
-          //   ),
-          // );
-        } else if (state is BuyProductFailure) {
-          isLoading = false;
-          showSnackBar(context, state.errMessage);
-        }
-      },
-      builder: (context, state) {
+    
         return CustomButton(
-          isLoading: isLoading,
+          isLoading: BlocProvider.of<BuyProductCubit>(context).isLoading,
           title: S.of(context).buy,
           style: AppStyle.semiBold20.copyWith(color:kWhiteColor),
           horizontalMargin: 50,
@@ -51,25 +25,10 @@ class BuyButton extends StatelessWidget {
             
           },
         );
-      },
-    );
+      
   }
 
-  void showThankYouAwesomeDialog(context) {
-    AwesomeDialog(
-      
-      context: context,
-      dialogType: DialogType.success,
-      animType: AnimType.topSlide,
-      title: S.of(context).thank_you,
-      desc: S.of(context).we_will_contact_you_within_24_hours,
-      btnOkText: S.of(context).ok,
-      btnOkOnPress: () {
-        Navigator.pop(context);
-      },
-      dismissOnTouchOutside: false,
-    ).show();
-  }
+ 
 
   void showSubmitAwesomeDialog(context) {
     AwesomeDialog(
@@ -88,13 +47,5 @@ class BuyButton extends StatelessWidget {
       btnCancelOnPress: () {},
     ).show();
   }
-
-  int getTotalPriceX100(List<CartItemModel> cartItemModelList) {
-    double total = 0;
-    for (int i = 0; i < cartItemModelList.length; i++) {
-      total += double.parse(cartItemModelList[i].productItemModel.price!);
-    }
-    total *= 100;
-    return total.toInt();
-  }
+ 
 }

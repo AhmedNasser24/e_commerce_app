@@ -9,6 +9,7 @@ import 'package:e_commerce/features/customer/data/models/my_order_item_model.dar
 import 'package:firebase_auth/firebase_auth.dart';
 
 
+import '../../../../core/functions/has_network.dart';
 import '../../../../core/models/product_item_model.dart';
 import '../models/cart_item_model.dart';
 import 'customer_repo.dart';
@@ -76,6 +77,9 @@ class CustomerRepoImpl extends CustomerRepo {
   @override
   Future<Either<void, Failure>> removeProductFromCart({required CartItemModel cartItemModel}) async{
     try {
+      if (!await hasNetwork()) {
+        return right(const Failure("No Internet Connection"));
+      }
       await FirebaseServices().removeProductFromCart(cartItemModel: cartItemModel);
       return left(null);
     } on FirebaseException catch (e) {
@@ -91,6 +95,9 @@ class CustomerRepoImpl extends CustomerRepo {
   @override
   Future<Either<void, Failure>> removeAllProductFromCart({required List <CartItemModel> cartItemModelList}) async{
     try {
+      if (!await hasNetwork()) {
+        return right(const Failure("No Internet Connection"));
+      }
       await FirebaseServices().removeAllProductFromCart(cartItemModelList: cartItemModelList);
       return left(null);
     } on FirebaseException catch (e) {
@@ -105,6 +112,9 @@ class CustomerRepoImpl extends CustomerRepo {
   @override
   Future<Either<void, Failure>> buyProduct({required List<CartItemModel> cartItemModelList}) async{
     try {
+      if (!await hasNetwork()) {
+        return right(const Failure("No Internet Connection"));
+      }
       await FirebaseServices().buyProduct(cartItemModelList: cartItemModelList);
       return left(null);
     } on FirebaseException catch (e) {

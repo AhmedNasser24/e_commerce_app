@@ -190,6 +190,7 @@ class FirebaseServices {
       {required List<CartItemModel> cartItemModelList}) async {
     await __sendOrderToTrader(cartItemModelList: cartItemModelList);
     await __addToMyOrder(cartItemModelList: cartItemModelList) ;
+    await removeAllProductFromCart(cartItemModelList: cartItemModelList);
   }
 
   Future<List<BuyProductModel>> fetchNewOrdersforTrader() async {

@@ -51,12 +51,14 @@ class MyOrderView extends StatelessWidget {
 
   AppBar myOrderAppBar(BuildContext context) {
     return AppBar(
-      leading: const BackArrowButton(),
-      title: Text(S.of(context).my_orders, style: AppStyle.medium22),
+      leading: const BackArrowButton(
+        color: kWhiteColor,
+      ),
+      title: Text(S.of(context).my_orders, style: AppStyle.medium22.copyWith(color: kWhiteColor)),
       centerTitle: true,
       elevation: 0,
       scrolledUnderElevation: 0,
-      backgroundColor: kWhiteColor,
+      backgroundColor: kPurpleColor,
     );
   }
 }

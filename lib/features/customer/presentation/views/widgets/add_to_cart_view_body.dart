@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'custom_cart_Item_list_view.dart';
 
 class AddToCartViewBody extends StatefulWidget {
-  const AddToCartViewBody({super.key});
-
+  const AddToCartViewBody({super.key, required this.isLoading});
+  final bool isLoading ;
   @override
   State<AddToCartViewBody> createState() => _AddToCartViewBodyState();
 }
@@ -23,7 +23,9 @@ class _AddToCartViewBodyState extends State<AddToCartViewBody> {
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
         if (state is CartSuccess) {
-          return  CustomCartItemListView(cartItemModelList: state.cartItemModelList);
+          return  AbsorbPointer(
+            absorbing: widget.isLoading,
+            child: CustomCartItemListView(cartItemModelList: state.cartItemModelList));
         } else if (state is CartFailure) {
           return ErrorMessageWidget(errMessage: state.errMessage);
         } else {

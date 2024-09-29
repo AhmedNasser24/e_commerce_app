@@ -1,4 +1,5 @@
 import 'package:e_commerce/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
+import 'package:e_commerce/features/trader/presentation/views/widgets/custom_refresh_indicator_for_trader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -9,19 +10,23 @@ class TraderHomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isLoading = false ;
-    return  BlocConsumer<AuthCubit, AuthState>(
+    bool isLoading = false;
+    return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is SignOutLoading){
-          isLoading = true ;
-        }else {
-          isLoading = false ;
+        if (state is SignOutLoading) {
+          isLoading = true;
+        } else {
+          isLoading = false;
         }
       },
       builder: (context, state) {
         return ModalProgressHUD(
           inAsyncCall: isLoading,
-          child: const TraderProductItemListView());
+          
+          child: const CustomRefreshIndicatorForTrader(
+            child: TraderProductItemListView(),
+          ),
+        );
       },
     );
   }

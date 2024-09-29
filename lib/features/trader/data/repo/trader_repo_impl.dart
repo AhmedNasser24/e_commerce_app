@@ -17,7 +17,7 @@ class TraderRepoImpl extends TraderRepo {
   Future<Either<void, Failure>> addProduct(
       {required ProductItemModel productItemModel}) async {
     try {
-      if (! await hasNetWork()) {
+      if (! await hasNetwork()) {
         return right(const Failure("لا يوجد اتصال بالانترنت"));
       }
       await FirebaseServices().addProduct(productItemModel);
@@ -35,7 +35,7 @@ class TraderRepoImpl extends TraderRepo {
   Future<Either<void, Failure>> editProduct(
       {required ProductItemModel productItemModel}) async {
     try {
-      if (! await hasNetWork()) {
+      if (! await hasNetwork()) {
         return right(const Failure("لا يوجد اتصال بالانترنت"));
       }
       await FirebaseServices().editProduct(productItemModel);
@@ -53,7 +53,7 @@ class TraderRepoImpl extends TraderRepo {
   Future<Either<void, Failure>> deleteProduct(
       {required ProductItemModel productItemModel}) async {
     try {
-      if (! await hasNetWork()) {
+      if (! await hasNetwork()) {
         return right(const Failure("لا يوجد اتصال بالانترنت"));
       }
       await FirebaseServices().deleteProduct(productItemModel);
