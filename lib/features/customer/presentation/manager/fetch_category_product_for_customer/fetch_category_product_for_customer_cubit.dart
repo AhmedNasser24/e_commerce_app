@@ -16,9 +16,13 @@ class FetchCategoryProductForCustomerCubit
       
   final CustomerRepo __customerRepoImpl = CustomerRepoImpl();
   String __selectedCategory = kAllCategory;
+  bool __isFetchedBefore = false;
   Future<void> fetchCategoryProductsForCustomer(
       { String? category}) async {
-    emit(FetchCategoryProductForCustomerLoading());
+        
+    __isFetchedBefore ? null : emit(FetchCategoryProductForCustomerLoading());
+
+    __isFetchedBefore = true;
     __selectedCategory = category ?? __selectedCategory;
     Either<List<ProductItemModel>, Failure> result = await __customerRepoImpl
         .fetchCategoryProductsForCustomer(category: __selectedCategory);

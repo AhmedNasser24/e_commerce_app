@@ -43,6 +43,21 @@ class TraderRepoImpl extends TraderRepo {
   }
 
   @override
+  Future<Either<void, Failure>> deleteProduct(
+      {required ProductItemModel productItemModel}) async {
+    try {
+      await FirebaseServices().deleteProduct(productItemModel);
+      return left(null);
+    } on FirebaseException catch (e) {
+      return right(ServerFailure.fromFireBaseException(e));
+    } on SocketException catch (e) {
+      return right(ServerFailure.fromSocketException(e));
+    } catch (e) {
+      return right(Failure(e.toString()));
+    }
+  }
+
+  @override
   Future<Either<List<ProductItemModel>, Failure>>
       fetchCategoryProductsForTrader({required String category}) async {
     try {

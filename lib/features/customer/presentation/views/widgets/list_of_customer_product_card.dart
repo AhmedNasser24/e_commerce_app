@@ -32,7 +32,7 @@ class ListOfCustomerProductCard extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         } else if (state is FetchCategoryProductForCustomerFailure) {
-          return ShowErrorMessage(errMessage: state.errMessage);
+          return ErrorMessageWidget(errMessage: state.errMessage);
         } else {
           return const SizedBox();
         }

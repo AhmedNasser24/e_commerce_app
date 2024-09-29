@@ -27,9 +27,11 @@ class MyOrderViewBody extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(30.0),
                 child: Text(
+                  
                   S.of(context).all_last_orders_have_been_delivered_to_you,
                   style: AppStyle.medium16,
                   textAlign: TextAlign.center,
+                  
                 ),
               ),
             ),

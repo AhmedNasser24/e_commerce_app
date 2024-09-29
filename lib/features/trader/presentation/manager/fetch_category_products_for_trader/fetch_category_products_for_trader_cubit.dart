@@ -12,17 +12,18 @@ part 'fetch_category_products_for_trader_state.dart';
 class FetchCategoryProductsForTraderCubit
     extends Cubit<FetchCategoryProductsForTraderState> {
   FetchCategoryProductsForTraderCubit()
-      : super(FetchCategoryProductsForTraderInitial()){
-        fetchCategoryProductsForTrader(category: kAllCategory);
-      }
+      : super(FetchCategoryProductsForTraderInitial()) {
+    fetchCategoryProductsForTrader(category: kAllCategory);
+  }
 
   final TraderRepo __traderRepoImpl = TraderRepoImpl();
-  String __selectedCategory = kAllCategory ;
-  Future<void> fetchCategoryProductsForTrader(
-      { String? category}) async {
+  String __selectedCategory = kAllCategory;
+  bool __isFetchedBefore = false;
+  Future<void> fetchCategoryProductsForTrader({String? category}) async {
 
-    emit(FetchCategoryProductsForTraderLoading());
-    __selectedCategory = category ?? __selectedCategory ;
+    !__isFetchedBefore ? emit(FetchCategoryProductsForTraderLoading()) : null;
+    __isFetchedBefore = true ;
+    __selectedCategory = category ?? __selectedCategory;
     Either<List<ProductItemModel>, Failure> response = await __traderRepoImpl
         .fetchCategoryProductsForTrader(category: __selectedCategory);
 
@@ -34,6 +35,16 @@ class FetchCategoryProductsForTraderCubit
       (failure) {
         emit(FetchCategoryProductsForTraderFailure(failure.errMessage));
       },
+    );
+  }
+
+  Future<void> deleteProduct({required ProductItemModel productItemModel}) async {
+    emit(FetchCategoryProductsForTraderLoading()) ;
+    Either<void, Failure> result =
+        await __traderRepoImpl.deleteProduct(productItemModel: productItemModel);
+    result.fold(
+      (value) => fetchCategoryProductsForTrader(category: __selectedCategory),
+      (fail) => emit(FetchCategoryProductsForTraderFailure(fail.errMessage)),
     );
   }
 }

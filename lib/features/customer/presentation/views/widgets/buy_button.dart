@@ -23,7 +23,7 @@ class BuyButton extends StatelessWidget {
           isLoading = true;
         } else if (state is BuyProductSuccess) {
           isLoading = false;
-          showAwesomeDialog(context);
+          showThankYouAwesomeDialog(context);
           BlocProvider.of<CartCubit>(context).removeAllProductFromCart(cartItemModelList: cartItemModelList, context: context);
           // add those products to customer products ( my orders )
           
@@ -44,26 +44,48 @@ class BuyButton extends StatelessWidget {
           isLoading: isLoading,
           title: S.of(context).buy,
           style: AppStyle.semiBold20.copyWith(color:kWhiteColor),
+          horizontalMargin: 50,
+          verticalMargin: 0,
           onTap: () {
-            BlocProvider.of<BuyProductCubit>(context)
-                .buyProduct(cartItemModelList: cartItemModelList);
+            showSubmitAwesomeDialog(context);
+            
           },
         );
       },
     );
   }
 
-  void showAwesomeDialog(context) {
+  void showThankYouAwesomeDialog(context) {
     AwesomeDialog(
+      
       context: context,
       dialogType: DialogType.success,
       animType: AnimType.topSlide,
       title: S.of(context).thank_you,
       desc: S.of(context).we_will_contact_you_within_24_hours,
+      btnOkText: S.of(context).ok,
       btnOkOnPress: () {
         Navigator.pop(context);
       },
       dismissOnTouchOutside: false,
+    ).show();
+  }
+
+  void showSubmitAwesomeDialog(context) {
+    AwesomeDialog(
+      context: context,
+      dismissOnTouchOutside: false,
+      dialogType: DialogType.question,
+      animType: AnimType.topSlide,
+      title: S.of(context).confirm_order,
+      desc: S.of(context).do_you_want_to_confirm_your_order_purchase,
+      btnOkText: S.of(context).ok,
+      btnCancelText: S.of(context).cancel,
+      btnOkOnPress: () {
+        BlocProvider.of<BuyProductCubit>(context)
+                .buyProduct(cartItemModelList: cartItemModelList);
+      },
+      btnCancelOnPress: () {},
     ).show();
   }
 

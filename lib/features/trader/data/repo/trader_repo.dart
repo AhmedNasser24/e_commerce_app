@@ -7,6 +7,7 @@ import '../../../customer/data/models/buy_product_model.dart';
 abstract class TraderRepo {
   Future<Either<void, Failure>> addProduct({required ProductItemModel productItemModel});
   Future<Either<void, Failure>> editProduct({required ProductItemModel productItemModel});
+  Future<Either<void, Failure>> deleteProduct({required ProductItemModel productItemModel});
   Future<Either<List<ProductItemModel>, Failure>> fetchCategoryProductsForTrader({required String category});
   Future < Either < List < BuyProductModel > , Failure >> fetchNewOrdersforTrader(); 
   Future <Either < void , Failure >> changeOrderFromNewToOld({required BuyProductModel buyProductModel}) ;

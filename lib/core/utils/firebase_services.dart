@@ -31,6 +31,15 @@ class FirebaseServices {
         .doc(productId)
         .set(productItemModel.toJson(), SetOptions(merge: true));
   }
+  Future<void> deleteProduct(ProductItemModel productItemModel) async {
+    String productId = productItemModel.productId!;
+    // productItemModel.category =
+    //     __handleProductCategoryBeforePush(productItemModel);
+    await FirebaseFirestore.instance
+        .collection(kShopCollection)
+        .doc(productId)
+        .delete();
+  }
 
   Future<List<ProductItemModel>> fetchCategoryProductsForTrader(
       {required String category}) async {

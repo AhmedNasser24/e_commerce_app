@@ -29,6 +29,7 @@ class RemoveItemCartButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(8),
         alignment: Alignment.center,
+        constraints: const BoxConstraints(minWidth: 30),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: kPurpleColor,

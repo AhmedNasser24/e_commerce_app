@@ -699,6 +699,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Confirm order`
+  String get confirm_order {
+    return Intl.message(
+      'Confirm order',
+      name: 'confirm_order',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to confirm your order purchase?`
+  String get do_you_want_to_confirm_your_order_purchase {
+    return Intl.message(
+      'Do you want to confirm your order purchase?',
+      name: 'do_you_want_to_confirm_your_order_purchase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this product?`
+  String get are_you_sure_you_want_to_delete_this_product {
+    return Intl.message(
+      'Are you sure you want to delete this product?',
+      name: 'are_you_sure_you_want_to_delete_this_product',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

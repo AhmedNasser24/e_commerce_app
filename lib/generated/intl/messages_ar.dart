@@ -31,15 +31,20 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "كل المنتجات السابقة تم تسليمها لك بنجاح"),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "are_you_sure_you_want_to_delete_this_product":
+            MessageLookupByLibrary.simpleMessage("هل تريد حذف هذا المنتج"),
         "are_you_sure_you_want_to_signOut":
             MessageLookupByLibrary.simpleMessage("هل تريد حقا تسجيل الخروج"),
         "buy": MessageLookupByLibrary.simpleMessage("شراء"),
         "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
         "clothes_category": MessageLookupByLibrary.simpleMessage("الملابس"),
+        "confirm_order": MessageLookupByLibrary.simpleMessage("تاكيد الطلب"),
         "customer": MessageLookupByLibrary.simpleMessage("عميل"),
         "delivered": MessageLookupByLibrary.simpleMessage("تم التسليم"),
         "did_you_sent_orders_to":
             MessageLookupByLibrary.simpleMessage("هل تم ارسال الطلبات الى"),
+        "do_you_want_to_confirm_your_order_purchase":
+            MessageLookupByLibrary.simpleMessage("هل تريد تأكيد شراء الطلب"),
         "edit_product": MessageLookupByLibrary.simpleMessage("تعديل المنتج"),
         "electronics_category":
             MessageLookupByLibrary.simpleMessage("الكترونيات"),

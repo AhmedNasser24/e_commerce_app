@@ -31,16 +31,23 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "All last orders have been delivered to you"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+        "are_you_sure_you_want_to_delete_this_product":
+            MessageLookupByLibrary.simpleMessage(
+                "Are you sure you want to delete this product?"),
         "are_you_sure_you_want_to_signOut":
             MessageLookupByLibrary.simpleMessage(
                 "Are you sure you want to signOut"),
         "buy": MessageLookupByLibrary.simpleMessage("Buy"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "clothes_category": MessageLookupByLibrary.simpleMessage("Clothes"),
+        "confirm_order": MessageLookupByLibrary.simpleMessage("Confirm order"),
         "customer": MessageLookupByLibrary.simpleMessage("Customer"),
         "delivered": MessageLookupByLibrary.simpleMessage("Delivered"),
         "did_you_sent_orders_to":
             MessageLookupByLibrary.simpleMessage("Did you sent orders to"),
+        "do_you_want_to_confirm_your_order_purchase":
+            MessageLookupByLibrary.simpleMessage(
+                "Do you want to confirm your order purchase?"),
         "edit_product": MessageLookupByLibrary.simpleMessage("Edit product"),
         "electronics_category":
             MessageLookupByLibrary.simpleMessage("Electronics"),

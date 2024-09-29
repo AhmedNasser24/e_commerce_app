@@ -63,5 +63,8 @@
    "not_yet" : "ليس بعد",
    "did_you_sent_orders_to" : "هل تم ارسال الطلبات الى",
    "no_orders_yet" : "ليس لديك طلبات حتى الان",
-   "all_last_orders_have_been_delivered_to_you" : "كل المنتجات السابقة تم تسليمها لك بنجاح"
+   "all_last_orders_have_been_delivered_to_you" : "كل المنتجات السابقة تم تسليمها لك بنجاح",
+   "confirm_order" : "تاكيد الطلب",
+   "do_you_want_to_confirm_your_order_purchase" : "هل تريد تأكيد شراء الطلب",
+   "are_you_sure_you_want_to_delete_this_product" : "هل تريد حذف هذا المنتج"
 }
