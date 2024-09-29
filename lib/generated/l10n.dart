@@ -749,6 +749,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Product is edited successfully`
+  String get product_is_edited_successfully {
+    return Intl.message(
+      'Product is edited successfully',
+      name: 'product_is_edited_successfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

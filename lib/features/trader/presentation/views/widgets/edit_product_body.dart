@@ -14,9 +14,9 @@ import 'product_name_text_form_field.dart';
 import 'product_price_text_form_field.dart';
 
 class EditProductBody extends StatefulWidget {
-  const EditProductBody({super.key, required this.productItemModel});
+  const EditProductBody({super.key, required this.productItemModel, required this.isLoading});
   final ProductItemModel productItemModel;
-
+  final bool isLoading ;
   @override
   State<EditProductBody> createState() => _EditProductBodyState();
 }
@@ -25,27 +25,10 @@ class _EditProductBodyState extends State<EditProductBody> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    bool isLoading = false;
-    return BlocConsumer<EditProductCubit, EditProductState>(
-      listener: (context, state) {
-        if (state is EditProductFailure) {
-          isLoading = false;
-          showSnackBar(context, state.errMessage);
-        } else if (state is EditProductSuccess) {
-          isLoading = false;
-          BlocProvider.of<FetchCategoryProductsForTraderCubit>(context).fetchCategoryProductsForTrader();
-          Navigator.pop(context);
-        } else if (state is EditProductLoading) {
-          isLoading = true;
-        }else{
-          isLoading = false ;
-        }
-      },
-      builder: (context, state) {
-        return Form(
+    return Form(
           key: formKey,
           child: AbsorbPointer(
-            absorbing: isLoading,
+            absorbing: widget.isLoading,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: SingleChildScrollView(
@@ -80,7 +63,7 @@ class _EditProductBodyState extends State<EditProductBody> {
                     Align(
                       alignment: Alignment.center,
                       child: EditProductButton(
-                          isLoading: isLoading,
+                          isLoading: widget.isLoading,
                           formKey: formKey,
                           productItemModel: widget.productItemModel),
                     ),
@@ -90,8 +73,7 @@ class _EditProductBodyState extends State<EditProductBody> {
               ),
             ),
           ),
-        );
-      },
+        
     );
   }
 }

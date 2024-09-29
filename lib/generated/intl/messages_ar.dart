@@ -104,6 +104,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تمت اضافة المنتج بنجاح"),
         "product_is_added_to_cart": MessageLookupByLibrary.simpleMessage(
             "تمت اضافة المنتج للسلة بنجاح"),
+        "product_is_edited_successfully":
+            MessageLookupByLibrary.simpleMessage("تم تعديل المنتج بنجاح"),
         "product_is_removed_from_cart": MessageLookupByLibrary.simpleMessage(
             "تمت ازالة المنتج من السلة بنجاح"),
         "product_name": MessageLookupByLibrary.simpleMessage("اسم المنتج"),

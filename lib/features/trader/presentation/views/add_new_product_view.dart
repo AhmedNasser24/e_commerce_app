@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:e_commerce/features/trader/presentation/manager/add_product_cubit/add_product_cubit.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/add_new_product_body.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +22,7 @@ class AddNewProductView extends StatelessWidget {
           isLoading = true;
         } else if (state is AddProductSuccess) {
           isLoading = false;
-          showSnackBar(context, S.of(context).product_is_added_successfully);
-          BlocProvider.of<FetchCategoryProductsForTraderCubit>(context)
-              .fetchCategoryProductsForTrader();
-          Navigator.pop(context);
+          __showSuccessAwesomeDialog(context);
         } else if (state is AddProductFailure) {
           showSnackBar(context, state.errMessage);
           isLoading = false;
@@ -55,5 +53,21 @@ class AddNewProductView extends StatelessWidget {
           style: AppStyle.medium22.copyWith(color: kWhiteColor)),
       centerTitle: true,
     );
+  }
+
+  void __showSuccessAwesomeDialog(context) {
+    AwesomeDialog(
+      context: context,
+      dismissOnTouchOutside: false,
+      dialogType: DialogType.success,
+      animType: AnimType.topSlide,
+      desc: S.of(context).product_is_added_successfully,
+      btnOkText: S.of(context).ok,
+      btnOkOnPress: () {
+        BlocProvider.of<FetchCategoryProductsForTraderCubit>(context)
+            .fetchCategoryProductsForTrader();
+        Navigator.pop(context);
+      },
+    ).show();
   }
 }
