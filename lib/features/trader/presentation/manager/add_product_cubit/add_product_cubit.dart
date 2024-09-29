@@ -11,7 +11,9 @@ part 'add_product_state.dart';
 class AddProductCubit extends Cubit<AddProductState> {
   AddProductCubit() : super(AddProductInitial());
   final TraderRepo __traderRepoImpl = TraderRepoImpl();
+  bool isLoading = false ;
   Future<void> addProduct({required ProductItemModel productItemModel}) async {
+    isLoading = true ;
     emit(AddProductLoading());
     Either<void, Failure> result =
         await __traderRepoImpl.addProduct(productItemModel: productItemModel);

@@ -2,10 +2,11 @@ import 'package:e_commerce/features/trader/presentation/manager/add_product_cubi
 import 'package:e_commerce/features/trader/presentation/views/widgets/add_new_product_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../constants.dart';
+import '../../../../core/functions/show_snack_bar.dart';
 import '../../../../core/utils/app_style.dart';
 import '../../../../generated/l10n.dart';
+import '../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
 import 'widgets/back_arrow_button.dart';
 
 class AddNewProductView extends StatelessWidget {
@@ -13,25 +14,45 @@ class AddNewProductView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kOffWhiteColor,
-      body: SafeArea(
-        child: BlocProvider(
-          create: (context) => AddProductCubit(),
-          child: const AddNewProductBody(),
-        ),
-      ),
-      appBar: addNewProductAppBar(context),
+    bool isLoading = false;
+    return BlocConsumer<AddProductCubit, AddProductState>(
+      listener: (context, state) {
+        if (state is AddProductLoading) {
+          isLoading = true;
+        } else if (state is AddProductSuccess) {
+          isLoading = false;
+          showSnackBar(context, S.of(context).product_is_added_successfully);
+          BlocProvider.of<FetchCategoryProductsForTraderCubit>(context)
+              .fetchCategoryProductsForTrader();
+          Navigator.pop(context);
+        } else if (state is AddProductFailure) {
+          showSnackBar(context, state.errMessage);
+          isLoading = false;
+        }
+      },
+      builder: (context, state) {
+        return Scaffold(
+          backgroundColor: kOffWhiteColor,
+          body: SafeArea(
+            child: AddNewProductBody(isLoading: isLoading),
+          ),
+          appBar: addNewProductAppBar(context, isLoading),
+        );
+      },
     );
   }
 
-  AppBar addNewProductAppBar(BuildContext context) {
+  AppBar addNewProductAppBar(BuildContext context, bool isLoading) {
     return AppBar(
       elevation: 0,
       scrolledUnderElevation: 0,
-      backgroundColor: kWhiteColor,
-      leading: const BackArrowButton(),
-      title: Text(S.of(context).add_product, style: AppStyle.medium22),
+      backgroundColor: kPurpleColor,
+      leading: BackArrowButton(
+        color: kWhiteColor,
+        dismissAction: isLoading ? true : false,
+      ),
+      title: Text(S.of(context).add_product,
+          style: AppStyle.medium22.copyWith(color: kWhiteColor)),
       centerTitle: true,
     );
   }

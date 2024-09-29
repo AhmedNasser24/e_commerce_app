@@ -17,6 +17,9 @@ class TraderRepoImpl extends TraderRepo {
   Future<Either<void, Failure>> addProduct(
       {required ProductItemModel productItemModel}) async {
     try {
+      if (! await hasNetWork()) {
+        return right(const Failure("لا يوجد اتصال بالانترنت"));
+      }
       await FirebaseServices().addProduct(productItemModel);
       return left(null);
     } on FirebaseException catch (e) {

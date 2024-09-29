@@ -1,8 +1,4 @@
 import 'dart:math';
-
-import 'dart:developer' as dv;
-
-import 'package:e_commerce/core/functions/show_snack_bar.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -11,51 +7,31 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/models/product_item_model.dart';
 import '../../manager/add_product_cubit/add_product_cubit.dart';
-import '../../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
 
-class AddProductButtonBlocConsumer extends StatelessWidget {
-  const AddProductButtonBlocConsumer({
+class AddProductButton extends StatelessWidget {
+  const AddProductButton({
     super.key,
     required this.formKey,
-    required this.productItemModel,
+    required this.productItemModel, required this.isLoading,
   });
-  
 
   final GlobalKey<FormState> formKey;
   final ProductItemModel productItemModel;
-
+  final bool isLoading ;
   @override
   Widget build(BuildContext context) {
-    bool isLoading = false;
-    return BlocConsumer<AddProductCubit, AddProductState>(
-      listener: (context, state) {
-        if (state is AddProductLoading) {
-          isLoading = true;
-          dv.log("$isLoading") ;
-        } else if (state is AddProductSuccess) {
-          isLoading = false;
-          showSnackBar(context , S.of(context).product_is_added_successfully);
-          BlocProvider.of<FetchCategoryProductsForTraderCubit>(context).fetchCategoryProductsForTrader();
-          Navigator.pop(context);
-        } else if (state is AddProductFailure) {
-          showSnackBar(context, state.errMessage);
-          isLoading = false;
+    return CustomButton(
+      title: S.of(context).add_product,
+      isLoading: isLoading,
+      horizontalMargin: 50,
+      onTap: () {
+        if (formKey.currentState!.validate()) {
+          setProductIdAndTraderIdAndDate();
+          BlocProvider.of<AddProductCubit>(context)
+              .addProduct(productItemModel: productItemModel);
+        } else {
+          formKey.currentState!.save();
         }
-      },
-      builder: (context, state) {
-        return CustomButton(
-          title: S.of(context).add_product,
-          isLoading: isLoading,
-          onTap: ()  {
-            if (formKey.currentState!.validate()) {
-              setProductIdAndTraderIdAndDate();
-               BlocProvider.of<AddProductCubit>(context)
-                  .addProduct(productItemModel: productItemModel);
-            } else {
-              formKey.currentState!.save();
-            }
-          },
-        );
       },
     );
   }

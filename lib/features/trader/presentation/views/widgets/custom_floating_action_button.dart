@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../constants.dart';
-import '../add_new_product_view.dart';
+import 'add_new_product_view_bloc_provider.dart';
 
 class CustomFloatingActionButton extends StatelessWidget {
   const CustomFloatingActionButton({
@@ -17,7 +17,7 @@ class CustomFloatingActionButton extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const AddNewProductView(),
+            builder: (context) => const AddNewProductViewBlocProvider()
           ),
         );
       },
