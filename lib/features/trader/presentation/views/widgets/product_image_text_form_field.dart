@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:e_commerce/constants.dart';
-import 'package:e_commerce/core/functions/image_picker.dart';
+import 'package:e_commerce/core/utils/image_picker_services.dart';
 import 'package:e_commerce/core/functions/show_snack_bar.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/app_style.dart';
@@ -69,9 +69,9 @@ class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
                     onTap: () async {
                       String? imageUrl;
                       if (category == S.of(context).from_camera) {
-                        imageUrl = await imagePickerFromCamera();
+                        // imageUrl = await imagePickerFromCamera();
                       } else {
-                        imageUrl = await imagePickerFromGallery();
+                        // imageUrl = await imagePickerFromGallery();
                       }
                       if (imageUrl != null) {
                         widget.productItemModel.imageUrl = imageUrl;

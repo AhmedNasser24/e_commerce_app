@@ -8,43 +8,31 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart';
 
-Future<String?> imagePickerFromGallery() async {
-  String? imageUrl ; 
-  try {
+class ImagePickerService {
+  Future<String> imagePickerFromGallery() async {
     File file;
     var pickedImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
 
-    if (pickedImage == null) return null;
-    file = File(pickedImage.path);
+    file = File(pickedImage!.path);
     int rand = Random().nextInt(10000000);
     String imageName = "$rand$basename(pickedImage.path)";
-    var storage =  FirebaseStorage.instance.ref('image').child(imageName);
-    // var ref = FireBaseStorage()
+    var storage = FirebaseStorage.instance.ref('image').child(imageName);
     await storage.putFile(file);
-    imageUrl = await storage.getDownloadURL();
-  } catch (e) {
-    dv.log(e.toString());
+    String imageUrl = await storage.getDownloadURL();
+    return imageUrl;
   }
-  return imageUrl;
-}
 
-Future<String?> imagePickerFromCamera() async {
-  String? imageUrl ;
-  try {
+  Future<String> imagePickerFromCamera() async {
     File file;
     var pickedImage = await ImagePicker().pickImage(source: ImageSource.camera);
 
-    if (pickedImage == null) return null;
-    file = File(pickedImage.path);
+    file = File(pickedImage!.path);
     int rand = Random().nextInt(1000000000);
     String imageName = "$rand$basename(pickedImage.path)";
     var storage = FirebaseStorage.instance.ref('image').child(imageName);
-    // var ref = FireBaseStorage()
     await storage.putFile(file);
-    imageUrl = await storage.getDownloadURL();
-  } catch (e) {
-    debugPrint(e.toString());
+    String imageUrl = await storage.getDownloadURL();
+    return imageUrl;
   }
-  return imageUrl;
 }

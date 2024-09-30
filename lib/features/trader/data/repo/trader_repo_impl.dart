@@ -10,6 +10,7 @@ import 'package:e_commerce/features/customer/data/models/buy_product_model.dart'
 import 'package:firebase_core/firebase_core.dart';
 
 import '../../../../core/functions/has_network.dart';
+import '../../../../core/utils/image_picker_services.dart';
 import 'trader_repo.dart';
 
 class TraderRepoImpl extends TraderRepo {
@@ -17,7 +18,7 @@ class TraderRepoImpl extends TraderRepo {
   Future<Either<void, Failure>> addProduct(
       {required ProductItemModel productItemModel}) async {
     try {
-      if (! await hasNetwork()) {
+      if (!await hasNetwork()) {
         return right(const Failure("لا يوجد اتصال بالانترنت"));
       }
       await FirebaseServices().addProduct(productItemModel);
@@ -35,7 +36,7 @@ class TraderRepoImpl extends TraderRepo {
   Future<Either<void, Failure>> editProduct(
       {required ProductItemModel productItemModel}) async {
     try {
-      if (! await hasNetwork()) {
+      if (!await hasNetwork()) {
         return right(const Failure("لا يوجد اتصال بالانترنت"));
       }
       await FirebaseServices().editProduct(productItemModel);
@@ -53,7 +54,7 @@ class TraderRepoImpl extends TraderRepo {
   Future<Either<void, Failure>> deleteProduct(
       {required ProductItemModel productItemModel}) async {
     try {
-      if (! await hasNetwork()) {
+      if (!await hasNetwork()) {
         return right(const Failure("لا يوجد اتصال بالانترنت"));
       }
       await FirebaseServices().deleteProduct(productItemModel);
@@ -122,6 +123,40 @@ class TraderRepoImpl extends TraderRepo {
       await FirebaseServices().changeOrderFromNotDeliveredToDelivered(
           buyProductModel: buyProductModel);
       return left(null);
+    } on FirebaseException catch (e) {
+      return right(ServerFailure.fromFireBaseException(e));
+    } on SocketException catch (e) {
+      return right(ServerFailure.fromSocketException(e));
+    } catch (e) {
+      return right(Failure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<String, Failure>> imagePickerFromCamera() async {
+    try {
+      if (!await hasNetwork()) {
+        return right(const Failure("لا يوجد اتصال بالانترنت"));
+      }
+      String imageUrl = await ImagePickerService().imagePickerFromCamera();
+      return left(imageUrl);
+    } on FirebaseException catch (e) {
+      return right(ServerFailure.fromFireBaseException(e));
+    } on SocketException catch (e) {
+      return right(ServerFailure.fromSocketException(e));
+    } catch (e) {
+      return right(Failure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<String, Failure>> imagePickerFromGallery() async {
+    try {
+      if (!await hasNetwork()) {
+        return right(const Failure("لا يوجد اتصال بالانترنت"));
+      }
+      String imageUrl = await ImagePickerService().imagePickerFromGallery();
+      return left(imageUrl);
     } on FirebaseException catch (e) {
       return right(ServerFailure.fromFireBaseException(e));
     } on SocketException catch (e) {
