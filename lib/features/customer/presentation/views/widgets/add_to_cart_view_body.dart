@@ -2,11 +2,12 @@ import 'package:e_commerce/core/utils/app_style.dart';
 import 'package:e_commerce/features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../constants.dart';
 import 'custom_cart_Item_list_view.dart';
 
 class AddToCartViewBody extends StatefulWidget {
   const AddToCartViewBody({super.key, required this.isLoading});
-  final bool isLoading ;
+  final bool isLoading;
   @override
   State<AddToCartViewBody> createState() => _AddToCartViewBodyState();
 }
@@ -23,9 +24,17 @@ class _AddToCartViewBodyState extends State<AddToCartViewBody> {
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
         if (state is CartSuccess) {
-          return  AbsorbPointer(
+          return AbsorbPointer(
             absorbing: widget.isLoading,
-            child: CustomCartItemListView(cartItemModelList: state.cartItemModelList));
+            child: RefreshIndicator(
+              color: kPurpleColor,
+              onRefresh: () async {
+                await BlocProvider.of<CartCubit>(context).fetchCartItem();
+              },
+              child: CustomCartItemListView(
+                  cartItemModelList: state.cartItemModelList),
+            ),
+          );
         } else if (state is CartFailure) {
           return ErrorMessageWidget(errMessage: state.errMessage);
         } else {
@@ -35,9 +44,6 @@ class _AddToCartViewBodyState extends State<AddToCartViewBody> {
     );
   }
 }
-
-
-
 
 class ErrorMessageWidget extends StatelessWidget {
   const ErrorMessageWidget({
@@ -53,7 +59,7 @@ class ErrorMessageWidget extends StatelessWidget {
         child: Text(
           errMessage,
           style: AppStyle.medium14.copyWith(color: Colors.red),
-          textAlign: TextAlign.center ,
+          textAlign: TextAlign.center,
         ),
       ),
     );

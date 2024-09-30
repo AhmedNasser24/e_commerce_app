@@ -16,7 +16,7 @@ part 'cart_state.dart';
 class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial());
   final CustomerRepo __customerRepoImpl = CustomerRepoImpl();
-
+  bool __isFetchingBefore = false;
   Future<void> addToCart({
     required ProductItemModel productItemModel,
     required context,
@@ -74,7 +74,9 @@ class CartCubit extends Cubit<CartState> {
   }
 
   Future<void> fetchCartItem() async {
-    emit(CartLoading());
+    
+    __isFetchingBefore == true ? null : emit(CartLoading());
+    __isFetchingBefore = true;
     Either<List<CartItemModel>, Failure> result =
         await __customerRepoImpl.fetchCartItems();
     result.fold(
