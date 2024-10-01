@@ -15,7 +15,7 @@ AppBar traderAppBar(
     centerTitle: true,
     leading: MenuIconButtonForTraderView(scaffoldKey: scaffoldKey),
     actions: [
-      const ReloadIconButtonForTrader(),
+      // const ReloadIconButtonForTrader(),
       showCategoryPopUpMenuForTrader(context),
     ],
   );

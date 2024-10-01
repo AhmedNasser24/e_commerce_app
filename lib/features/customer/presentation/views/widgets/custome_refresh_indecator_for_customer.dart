@@ -11,7 +11,6 @@ class CustomRefreshIndicatorForCustomer extends StatelessWidget {
     return RefreshIndicator(
       child: child,
       onRefresh: () async {
-        // Code to reload the page
         // await Future.delayed(const Duration(seconds: 1)); // Simulate a delay
 
         await BlocProvider.of<FetchCategoryProductForCustomerCubit>(context)

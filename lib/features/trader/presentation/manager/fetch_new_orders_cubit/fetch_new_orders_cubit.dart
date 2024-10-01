@@ -13,8 +13,10 @@ class FetchNewOrdersCubit extends Cubit<FetchNewOrdersState> {
   final TraderRepo __traderRepo = TraderRepoImpl();
   List<BuyProductModel> buyProductModelList = [];
   bool isthereNewOrder = false;
+  bool isFetchedBefore = false ;
   Future<void> fetchNewOrdersForTrader() async {
-    emit(FetchNewOrdersLoading());
+    !isFetchedBefore ? emit(FetchNewOrdersLoading()) : null;
+    isFetchedBefore = true ;
     Either<List<BuyProductModel>, Failure> result =
         await __traderRepo.fetchNewOrdersforTrader();
 

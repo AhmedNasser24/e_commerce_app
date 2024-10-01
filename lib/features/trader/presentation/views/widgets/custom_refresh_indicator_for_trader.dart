@@ -11,12 +11,8 @@ class CustomRefreshIndicatorForTrader extends StatelessWidget {
     return RefreshIndicator(
       child: child,
       onRefresh: () async {
-        // Code to reload the page
-        await Future.delayed(const Duration(seconds: 1)); // Simulate a delay
-        BlocProvider.of<FetchCategoryProductsForTraderCubit>(context)
+        await BlocProvider.of<FetchCategoryProductsForTraderCubit>(context)
             .fetchCategoryProductsForTrader();
-
-        return Future.value(null); // Return null to stop the refresh indicator
       },
     );
   }

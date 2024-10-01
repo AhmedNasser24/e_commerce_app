@@ -14,21 +14,27 @@ class OrderItemsListView extends StatelessWidget {
   final List<BuyProductModel> buyProductModelList;
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: buyProductModelList.length,
-      itemBuilder: (context, i) => NewOrderItem(
-        buyProductModel: buyProductModelList[i],
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) =>
-                  ShowOrdersView(buyProductModel: buyProductModelList[i]),
-            ),
-          );
-          BlocProvider.of<FetchNewOrdersCubit>(context)
-              .changeOrderFromNewToOld(buyProductModel: buyProductModelList[i]);
-        },
+    return RefreshIndicator(
+      onRefresh: () async {
+        await BlocProvider.of<FetchNewOrdersCubit>(context)
+            .fetchNewOrdersForTrader();
+      },
+      child: ListView.builder(
+        itemCount: buyProductModelList.length,
+        itemBuilder: (context, i) => NewOrderItem(
+          buyProductModel: buyProductModelList[i],
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    ShowOrdersView(buyProductModel: buyProductModelList[i]),
+              ),
+            );
+            BlocProvider.of<FetchNewOrdersCubit>(context)
+                .changeOrderFromNewToOld(buyProductModel: buyProductModelList[i]);
+          },
+        ),
       ),
     );
   }

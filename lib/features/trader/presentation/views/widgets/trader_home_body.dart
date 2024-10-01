@@ -23,9 +23,7 @@ class TraderHomeViewBody extends StatelessWidget {
         return ModalProgressHUD(
           inAsyncCall: isLoading,
           
-          child: const CustomRefreshIndicatorForTrader(
-            child: TraderProductItemListView(),
-          ),
+          child: const CustomRefreshIndicatorForTrader(child: TraderProductItemListView()),
         );
       },
     );

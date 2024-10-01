@@ -20,26 +20,27 @@ class TraderProductItemListView extends StatelessWidget {
         FetchCategoryProductsForTraderState>(
       builder: (context, state) {
         if (state is FetchCategoryProductsForTraderSuccess) {
-          List < ProductItemModel> productItemModelList = state.productItemModelList;
-          return productItemModelList.isNotEmpty? CustomRefreshIndicatorForTrader(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 0.62,
-                  crossAxisSpacing: 15,
-                  mainAxisSpacing: 12,
+          List<ProductItemModel> productItemModelList =
+              state.productItemModelList;
+          return productItemModelList.isNotEmpty ? Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GridView.builder(
+                  gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.62,
+                    crossAxisSpacing: 15,
+                    mainAxisSpacing: 12,
+                  ),
+                  // physics: const BouncingScrollPhysics(),
+                  itemCount: state.productItemModelList.length,
+                  itemBuilder: (context, i) {
+                    return TraderProductItem(
+                        productItemModel: productItemModelList[i]);
+                  },
                 ),
-                physics: const BouncingScrollPhysics(),
-                itemCount: state.productItemModelList.length,
-                itemBuilder: (context, i) {
-                  return TraderProductItem(
-                      productItemModel: productItemModelList[i]);
-                },
-              ),
-            ),
-          ) : MessageWidget(S.of(context).no_product_found) ;
+              )
+              : MessageWidget(S.of(context).no_product_found);
         } else if (state is FetchCategoryProductsForTraderFailure) {
           // return Center(child: Text(state.errMessage));
           return ErrorMessageWidget(errMessage: state.errMessage);
