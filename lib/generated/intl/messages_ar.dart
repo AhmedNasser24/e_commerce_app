@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "كل المنتجات السابقة تم تسليمها لك بنجاح"),
         "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+        "are_you_sure_you_want_to_add_this_product":
+            MessageLookupByLibrary.simpleMessage("هل تريد اضافة هذا المنتج"),
         "are_you_sure_you_want_to_delete_this_product":
             MessageLookupByLibrary.simpleMessage("هل تريد حذف هذا المنتج"),
         "are_you_sure_you_want_to_edit_this_product":
@@ -61,9 +63,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "from_camera": MessageLookupByLibrary.simpleMessage("من الكاميرا"),
         "from_gallery": MessageLookupByLibrary.simpleMessage("من المعرض"),
         "image_is_added":
-            MessageLookupByLibrary.simpleMessage("تمت اضافة الصورة"),
+            MessageLookupByLibrary.simpleMessage("تمت اضافة الصورة بنجاح"),
         "image_is_not_added":
-            MessageLookupByLibrary.simpleMessage("لم تتم اضافة الصورة"),
+            MessageLookupByLibrary.simpleMessage("خطأ: لم تتم اضافة الصورة"),
         "invalid_email":
             MessageLookupByLibrary.simpleMessage("بريد الالكتروني خطأ"),
         "is_it_delivered":

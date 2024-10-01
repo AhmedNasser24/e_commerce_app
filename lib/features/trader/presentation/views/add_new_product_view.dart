@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:e_commerce/features/trader/presentation/manager/add_product_cubit/add_product_cubit.dart';
+import 'package:e_commerce/features/trader/presentation/manager/image_picker_cubit/image_picker_cubit.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/add_new_product_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,25 +17,40 @@ class AddNewProductView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isLoading = false;
-    return BlocConsumer<AddProductCubit, AddProductState>(
+    return BlocConsumer<ImagePickerCubit, ImagePickerState>(
       listener: (context, state) {
-        if (state is AddProductLoading) {
-          isLoading = true;
-        } else if (state is AddProductSuccess) {
-          isLoading = false;
-          __showSuccessAwesomeDialog(context);
-        } else if (state is AddProductFailure) {
-          showSnackBar(context, state.errMessage);
-          isLoading = false;
-        }
+        if (state is ImagePickerLoading) {
+              isLoading = true;
+            } else if (state is ImagePickerSuccess) {
+              isLoading = false;
+              showSnackBar(context, S.of(context).image_is_added);
+            } else if (state is ImagePickerFailure) {
+              showSnackBar(context, state.errMessage);
+              isLoading = false;
+            }
       },
       builder: (context, state) {
-        return Scaffold(
-          backgroundColor: kOffWhiteColor,
-          body: SafeArea(
-            child: AddNewProductBody(isLoading: isLoading),
-          ),
-          appBar: addNewProductAppBar(context, isLoading),
+        return BlocConsumer<AddProductCubit, AddProductState>(
+          listener: (context, state) {
+            if (state is AddProductLoading) {
+              isLoading = true;
+            } else if (state is AddProductSuccess) {
+              isLoading = false;
+              __showSuccessAwesomeDialog(context);
+            } else if (state is AddProductFailure) {
+              showSnackBar(context, state.errMessage);
+              isLoading = false;
+            }
+          },
+          builder: (context, state) {
+            return Scaffold(
+              backgroundColor: kOffWhiteColor,
+              body: SafeArea(
+                child: AddNewProductBody(isLoading: isLoading),
+              ),
+              appBar: addNewProductAppBar(context, isLoading),
+            );
+          },
         );
       },
     );

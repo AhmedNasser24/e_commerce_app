@@ -12,14 +12,12 @@ class EditProductButton extends StatelessWidget {
       {super.key,
       required this.formKey,
       required this.productItemModel,
-      required this.isLoading});
+      });
   final GlobalKey<FormState> formKey;
   final ProductItemModel productItemModel;
-  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return CustomButton(
-      isLoading: isLoading,
       title: S.of(context).edit_product,
       horizontalMargin: 50,
       onTap: () async {

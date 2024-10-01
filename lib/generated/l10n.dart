@@ -320,20 +320,20 @@ class S {
     );
   }
 
-  /// `image is added`
+  /// `image is added successfully`
   String get image_is_added {
     return Intl.message(
-      'image is added',
+      'image is added successfully',
       name: 'image_is_added',
       desc: '',
       args: [],
     );
   }
 
-  /// `image is not added`
+  /// `Error : image is not added`
   String get image_is_not_added {
     return Intl.message(
-      'image is not added',
+      'Error : image is not added',
       name: 'image_is_not_added',
       desc: '',
       args: [],
@@ -735,6 +735,16 @@ class S {
     return Intl.message(
       'Are you sure you want to edit this product?',
       name: 'are_you_sure_you_want_to_edit_this_product',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to add this product?`
+  String get are_you_sure_you_want_to_add_this_product {
+    return Intl.message(
+      'Are you sure you want to add this product?',
+      name: 'are_you_sure_you_want_to_add_this_product',
       desc: '',
       args: [],
     );

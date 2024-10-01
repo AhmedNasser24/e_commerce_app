@@ -26,8 +26,8 @@
     "product_image" : "Product image",
     "from_camera" : "From Camera",
     "from_gallery" : "From Gallery",
-    "image_is_added" : "image is added",
-    "image_is_not_added" : "image is not added",
+    "image_is_added" : "image is added successfully",
+    "image_is_not_added" : "Error : image is not added",
     "add_product" : "Add product",
     "edit_product" : "Edit product",
     "LE" : "LE" ,
@@ -68,6 +68,7 @@
     "do_you_want_to_confirm_your_order_purchase" : "Do you want to confirm your order purchase?",
     "are_you_sure_you_want_to_delete_this_product" : "Are you sure you want to delete this product?",
     "are_you_sure_you_want_to_edit_this_product" : "Are you sure you want to edit this product?",
+    "are_you_sure_you_want_to_add_this_product" : "Are you sure you want to add this product?",
     "no_product_found" : "No product found",
     "product_is_edited_successfully" : "Product is edited successfully"
 }

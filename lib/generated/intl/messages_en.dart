@@ -31,6 +31,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "All last orders have been delivered to you"),
         "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+        "are_you_sure_you_want_to_add_this_product":
+            MessageLookupByLibrary.simpleMessage(
+                "Are you sure you want to add this product?"),
         "are_you_sure_you_want_to_delete_this_product":
             MessageLookupByLibrary.simpleMessage(
                 "Are you sure you want to delete this product?"),
@@ -65,9 +68,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "from_camera": MessageLookupByLibrary.simpleMessage("From Camera"),
         "from_gallery": MessageLookupByLibrary.simpleMessage("From Gallery"),
         "image_is_added":
-            MessageLookupByLibrary.simpleMessage("image is added"),
+            MessageLookupByLibrary.simpleMessage("image is added successfully"),
         "image_is_not_added":
-            MessageLookupByLibrary.simpleMessage("image is not added"),
+            MessageLookupByLibrary.simpleMessage("Error : image is not added"),
         "invalid_email": MessageLookupByLibrary.simpleMessage("Invalid email"),
         "is_it_delivered":
             MessageLookupByLibrary.simpleMessage("Is it delivered ?"),

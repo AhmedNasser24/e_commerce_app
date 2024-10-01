@@ -14,6 +14,7 @@ import 'features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'features/auth/presentation/views/login_view.dart';
 // import 'features/notifications/presentation/views/notification_view.dart';
 import 'features/trader/presentation/manager/fetch_new_orders_cubit/fetch_new_orders_cubit.dart';
+import 'features/trader/presentation/manager/image_picker_cubit/image_picker_cubit.dart';
 import 'firebase_options.dart';
 import 'generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -89,6 +90,9 @@ class MyAppState extends State<MyApp> {
         ),
         BlocProvider(
           create: (context) => FetchNewOrdersCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ImagePickerCubit(),
         ),
       ],
       child: MaterialApp(

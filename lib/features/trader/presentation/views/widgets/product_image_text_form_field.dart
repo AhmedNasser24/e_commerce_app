@@ -1,9 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:e_commerce/constants.dart';
-import 'package:e_commerce/core/utils/image_picker_services.dart';
-import 'package:e_commerce/core/functions/show_snack_bar.dart';
+import 'package:e_commerce/features/trader/presentation/manager/image_picker_cubit/image_picker_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../../generated/l10n.dart';
@@ -31,19 +31,29 @@ class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomTextFormField(
-      controller: TextEditingController(text: selectedImage),
-      hintText: S.of(context).product_image,
-      readOnly: true,
-      suffixIcon: const Icon(Icons.arrow_drop_down, color: kPurpleColor),
-      onTap: () async {
-        await _showCategoryDialog(context);
-      },
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return S.of(context).required_field;
+    return BlocConsumer<ImagePickerCubit, ImagePickerState>(
+      listener: (context, state) {
+        if (state is ImagePickerSuccess) {
+          selectedImage = state.imageUrl;
+          widget.productItemModel.imageUrl = selectedImage;
         }
-        return null;
+      },
+      builder: (context, state) {
+        return CustomTextFormField(
+          controller: TextEditingController(text: selectedImage),
+          hintText: S.of(context).product_image,
+          readOnly: true,
+          suffixIcon: const Icon(Icons.arrow_drop_down, color: kPurpleColor),
+          onTap: () async {
+            await _showCategoryDialog(context);
+          },
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return S.of(context).required_field;
+            }
+            return null;
+          },
+        );
       },
     );
   }
@@ -58,29 +68,21 @@ class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Align(
-            alignment: Alignment.topCenter,
-            child: Text(S.of(context).product_image , style: AppStyle.bold18)),
-          content:Column(
+              alignment: Alignment.topCenter,
+              child: Text(S.of(context).product_image, style: AppStyle.bold18)),
+          content: Column(
             mainAxisSize: MainAxisSize.min,
             children: pickImageFrom
                 .map(
                   (category) => ListTile(
-                    title: Text(category , style : AppStyle.medium14),
-                    onTap: () async {
-                      String? imageUrl;
+                    title: Text(category, style: AppStyle.medium14),
+                    onTap: () {
                       if (category == S.of(context).from_camera) {
-                        // imageUrl = await imagePickerFromCamera();
+                        BlocProvider.of<ImagePickerCubit>(context)
+                            .imagePickerFromCamera();
                       } else {
-                        // imageUrl = await imagePickerFromGallery();
-                      }
-                      if (imageUrl != null) {
-                        widget.productItemModel.imageUrl = imageUrl;
-                        setState(() {
-                          selectedImage = imageUrl!;
-                        });
-                        showSnackBar(context, S.of(context).image_is_added);
-                      } else {
-                        showSnackBar(context, S.of(context).image_is_not_added);
+                        BlocProvider.of<ImagePickerCubit>(context)
+                            .imagePickerFromGallery();
                       }
                       Navigator.pop(context);
                     },
