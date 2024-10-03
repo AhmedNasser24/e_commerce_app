@@ -13,6 +13,7 @@ import 'package:http/http.dart' as http;
 
 import '../../constants.dart';
 import '../../features/notifications/data/model/notification_model.dart';
+import '../../features/trader/presentation/views/product_details_view.dart';
 
 class NotificationService {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
@@ -149,6 +150,7 @@ class NotificationService {
   //   log("succeed") ;
 
   // }
+
   // void main() async {
   //   WidgetsFlutterBinding.ensureInitialized();
   //   await Firebase.initializeApp(
@@ -173,7 +175,7 @@ class NotificationService {
       log("initialMessage: test click");
 
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const TestView()));
+          context, MaterialPageRoute(builder: (context) => const ProductDetailsView()));
     }
   }
 
@@ -181,13 +183,12 @@ class NotificationService {
     // Also handle any interaction when the app is in the background via a
     // Stream listener
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      
       log("onMessageOpenedApp: test click");
-      if (context.mounted) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const TestView()),
+          MaterialPageRoute(builder: (context) => const ProductDetailsView()),
         );
-      }
     });
   }
 
@@ -228,6 +229,8 @@ class NotificationService {
     }
   }
 
+
+
   Future<void> subscribeToTopic() async {
     await FirebaseMessaging.instance.subscribeToTopic(
       kNotificationTopic,
@@ -247,11 +250,14 @@ class NotificationService {
   //   NotificationService().getToken();
   //   NotificationService().getAccessToken();
   //   NotificationService().foregroundNotificationHandling();
-  //   //--------------------------------------------------------------------------------------
-  //               // those functions are in login view initstate because of context issue of navigation
-  //   // NotificationService().setupInteractedMessageForBackgroundNotification(context);
-  //   // NotificationService().setupInteractedMessageForTerminatedState(context);
-  //   //--------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------
+    //             those functions are in login view initstate because of context issue of navigation
+    // NotificationService().setupInteractedMessageForBackgroundNotification(context);
+    // NotificationService().setupInteractedMessageForTerminatedState(context);
+    // --------------------------------------------------------------------------------------
   //   super.initState();
   // }
+
+
+
 }
