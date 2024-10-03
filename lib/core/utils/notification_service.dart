@@ -1,7 +1,6 @@
 import 'dart:developer';
-import 'dart:io';
 import 'package:e_commerce/core/errors/failure.dart';
-import 'package:e_commerce/features/notifications/presentation/views/notification_view.dart';
+import 'package:e_commerce/features/notifications/presentation/views/test.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -12,22 +11,27 @@ import 'package:flutter/services.dart';
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:http/http.dart' as http;
 
+import '../../constants.dart';
+import '../../features/notifications/data/model/notification_model.dart';
 
 class NotificationService {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
 
-  Future<void> getToken() async {
+  Future<String> getToken() async {
     try {
       String? token = await messaging.getToken();
       log('$token');
+      return token!;
     } on FirebaseException catch (e) {
       String errMessage = ServerFailure.fromFireBaseException(e).errMessage;
       log("firebase message error : $errMessage");
+      rethrow;
     } on PlatformException catch (e) {
       log('PlatformException: ${e.code} - ${e.message}');
-      // Handle platform-specific errors
+      rethrow;
     } catch (e) {
       log("other firebase message error : $e");
+      rethrow;
     }
   }
 
@@ -57,8 +61,8 @@ class NotificationService {
     }
   }
 
-  Future<void> getAccessToken() async {
-    try {
+  Future<String> getAccessToken() async {
+    
       String accessToken = '';
       final serviceAccountJson = await rootBundle.loadString(
           'assets/json/e-commerce-app-10f7e-firebase-adminsdk-qe1nn-2f413b61c7.json');
@@ -77,77 +81,52 @@ class NotificationService {
           scopes,
           client,
         );
-
-        // setState(() {
         accessToken = accessCredentials.accessToken.data;
-        // });
 
         log('Access Token: $accessToken');
-      } catch (e) {
-        log('Error obtaining access token: $e');
+        return accessToken;
+       
       } finally {
         client.close();
       }
-    } catch (e) {
-      log('Error loading service account JSON: $e');
-    }
-  }
+    } 
+  
 
   Future<void> sendMessageUsingToken(
-      {required String accessToken,
-      required String title,
-      required String body}) async {
+      {required NotificationModel notificationModel}) async {
     var headersList = {
       'Accept': '*/*',
       'Content-Type': 'application/json',
-      'Authorization':
-          'Bearer ya29.c.c0ASRK0GZOXukL6MdgBCjW3qzn5fZrEILmda_O4J6RYU91TJNpgThDNvrBWR7odXn2e1zxCrBJBWQaPc7EXl_mH9NK6JE5iPY8vLNLWuRRb-SRNviEiaynvhqyWQAROH_yeE9fEhAp6QgIS2pkpc5pSNb5o5hK-SfBiYIncAfcOpZUinvUb0EZZiacaVolZ0TfMVFURzaRyHROTT5m28GqM6htL1e3zBTNUZiB74b65ZgaxwaWOc4Mg2uR1PcvCfrflckXc8vaWSGAKsMDHebiCgfqACJtUCsqhe5a6S_BqEY8vnrgEaVE7EFKnfVJlpZu49mjdPuAzsY_RkZkJPYvGYnyEWTDtp8tj-iyORm0zs0RDe16LePpPV7hN385AUdMyktiFfuwikqpVlrV4jweJ87tgeBzbl8Mk4WJO1SYWnym8xS0W8l84JnU482s9Wt_OJU2ivVmFQkgjSM7Iddsct_JUQqQj2mmBofec_rZznY8sFl_vwFsuh34yrho13wZkXknztdo7Iz397J6r-cUqk-Ix4X6q3jn4IVyn_uB5-hess4OzJ6an-Ibw1Qbrurf3t4y0IrVqBhdMOShOU7Rxs2aVRq09SsfQ9aW4OXlZwq4uh40UoX4hbW0u1FUu3t6Rd3McFqOfmeuXWpO3sarccV7UQZ80fhVywBpI67vX3BqxfmWfk0y4i7Bv9ldYpmmn0Y8cyYue6dodRv6FyVf_xM9oR6Rm26sxZ_wy3O4MqZ9B_pzI5l2ynuVl8t1iO_lZu9lwo6ezIXuz4Xtr0UYirs4otoRdlinVhoIXzqs0Zc2giBz-VjajRWSYRvv_OX8uIXyl6lndSQen0dqUUoJeZy1zbR7_9MJpO2s3k-XcljtatOdqSMMMpyW0nZjbxOFk5e1slkd3Yo9-FWZ2050hwtwJoJ-Z1-28oy67nldkgm9yj1gM6x1YZjSFqwtFm-Mw6zWd0yFw6b7jWrmUmBiuIhj1S205bnX_xBm8VSR3Bg89zdoxU_W8Y2'
+      'Authorization': 'Bearer ${notificationModel.accessToken}',
     };
     var url = Uri.parse(
         'https://fcm.googleapis.com/v1/projects/e-commerce-app-10f7e/messages:send');
 
     var body = {
       "message": {
-        "token":
-            "cqZVkLmvQaKR_rp6KcSEj2:APA91bEv_L_XJ3CdZaNfFpN9YscuoeXj1rSLLaWKYMZuwHdrYo1SoVhREJVQweVOANTtG4furPp0bQGTbVKvHcol3YwDsFARDmXXRhWuTsNFqbKFlVQdAUoKYbdNjGAyVavfhdkl5FMP",
+        // token ony change when you reinstall the app or change the device
+        "token": notificationModel.token,
         "notification": {
-          "body": "This is an FCM notification message!",
-          "title": "FCM Message"
+          "title": notificationModel.title,
+          "body": notificationModel.body,
         },
-        "data": {
-          "story_id": "story_12345",
-        }
+        "data": notificationModel.productItemModel?.toJson() ?? {},
       }
     };
 
-    try {
-      var req = http.Request('POST', url);
-      req.headers.addAll(headersList);
-      req.body = json.encode(body);
+    var req = http.Request('POST', url);
+    req.headers.addAll(headersList);
+    req.body = json.encode(body);
 
-      var res = await req.send();
-      final resBody = await res.stream.bytesToString();
+    var res = await req.send();
+    final resBody = await res.stream.bytesToString();
 
-      if (res.statusCode >= 200 && res.statusCode < 300) {
-        log("resBody: $resBody");
-      } else {
-        log("res.reasonPhrase: ${res.reasonPhrase}");
-      }
-    } on SocketException catch (e) {
-      String errMessage = ServerFailure.fromSocketException(e).errMessage;
-      log("socket error : $errMessage");
-    } on http.ClientException catch (e) {
-      String errMessage = ServerFailure.fromHttpClientException(e).errMessage;
-      log("socket error : $errMessage");
-    } catch (e) {
-      String errMessage = Failure(e.toString()).errMessage;
-      log("error : $errMessage");
+    if (res.statusCode >= 200 && res.statusCode < 300) {
+      log("resBody: $resBody");
+    } else {
+      log("res.reasonPhrase: ${res.reasonPhrase}");
     }
   }
-
-  
-  
-
 
   void foregroundNotificationHandling() {
     FirebaseMessaging.onMessage.listen(
@@ -162,19 +141,19 @@ class NotificationService {
     ).onError((handleError) => log("onError: $handleError"));
   }
 // ------------------------------------------------------------------------------------------
-// background notification handling should be in main 
-// here is code 
+// background notification handling should be in main
+// here is code
 
   //   Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-    
+
   //   log("succeed") ;
-  
+
   // }
   // void main() async {
   //   WidgetsFlutterBinding.ensureInitialized();
   //   await Firebase.initializeApp(
   //     options: DefaultFirebaseOptions.currentPlatform,
-  //   );   
+  //   );
   //   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   //   Bloc.observer = SimpleBlocObserver();
   //   runApp(const MyApp());
@@ -182,48 +161,44 @@ class NotificationService {
 
 // ------------------------------------------------------------------------------------------
 
-  Future<void> setupInteractedMessageForTerminatedState(BuildContext context) async {
+  Future<void> setupInteractedMessageForTerminatedState(
+      BuildContext context) async {
     // Get any messages which caused the application to open from
     // a terminated state.
     RemoteMessage? initialMessage =
         await FirebaseMessaging.instance.getInitialMessage();
 
-    if (initialMessage != null ) {
+    if (initialMessage != null) {
       // _handleMessage(initialMessage );
       log("initialMessage: test click");
-     
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const NotificationView()));
-    }
 
-    
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const TestView()));
+    }
   }
 
   void setupInteractedMessageForBackgroundNotification(BuildContext context) {
     // Also handle any interaction when the app is in the background via a
     // Stream listener
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      log ("onMessageOpenedApp: test click");
+      log("onMessageOpenedApp: test click");
       if (context.mounted) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const NotificationView()),
+          MaterialPageRoute(builder: (context) => const TestView()),
         );
       }
     });
   }
 
-
-  // used to send message to many devices 
-  Future<void> sendMessageUsingTopic(
-      {required String accessToken,
-      required String title,
-      required String body}) async {
+  // used to send message to many devices
+  Future<void> sendMessageUsingTopic({
+    required NotificationModel notificationModel,
+  }) async {
     var headersList = {
       'Accept': '*/*',
       'Content-Type': 'application/json',
-      'Authorization':
-          'Bearer ya29.c.c0ASRK0GZOXukL6MdgBCjW3qzn5fZrEILmda_O4J6RYU91TJNpgThDNvrBWR7odXn2e1zxCrBJBWQaPc7EXl_mH9NK6JE5iPY8vLNLWuRRb-SRNviEiaynvhqyWQAROH_yeE9fEhAp6QgIS2pkpc5pSNb5o5hK-SfBiYIncAfcOpZUinvUb0EZZiacaVolZ0TfMVFURzaRyHROTT5m28GqM6htL1e3zBTNUZiB74b65ZgaxwaWOc4Mg2uR1PcvCfrflckXc8vaWSGAKsMDHebiCgfqACJtUCsqhe5a6S_BqEY8vnrgEaVE7EFKnfVJlpZu49mjdPuAzsY_RkZkJPYvGYnyEWTDtp8tj-iyORm0zs0RDe16LePpPV7hN385AUdMyktiFfuwikqpVlrV4jweJ87tgeBzbl8Mk4WJO1SYWnym8xS0W8l84JnU482s9Wt_OJU2ivVmFQkgjSM7Iddsct_JUQqQj2mmBofec_rZznY8sFl_vwFsuh34yrho13wZkXknztdo7Iz397J6r-cUqk-Ix4X6q3jn4IVyn_uB5-hess4OzJ6an-Ibw1Qbrurf3t4y0IrVqBhdMOShOU7Rxs2aVRq09SsfQ9aW4OXlZwq4uh40UoX4hbW0u1FUu3t6Rd3McFqOfmeuXWpO3sarccV7UQZ80fhVywBpI67vX3BqxfmWfk0y4i7Bv9ldYpmmn0Y8cyYue6dodRv6FyVf_xM9oR6Rm26sxZ_wy3O4MqZ9B_pzI5l2ynuVl8t1iO_lZu9lwo6ezIXuz4Xtr0UYirs4otoRdlinVhoIXzqs0Zc2giBz-VjajRWSYRvv_OX8uIXyl6lndSQen0dqUUoJeZy1zbR7_9MJpO2s3k-XcljtatOdqSMMMpyW0nZjbxOFk5e1slkd3Yo9-FWZ2050hwtwJoJ-Z1-28oy67nldkgm9yj1gM6x1YZjSFqwtFm-Mw6zWd0yFw6b7jWrmUmBiuIhj1S205bnX_xBm8VSR3Bg89zdoxU_W8Y2'
+      'Authorization': 'Bearer ${notificationModel.accessToken}',
     };
     var url = Uri.parse(
         'https://fcm.googleapis.com/v1/projects/e-commerce-app-10f7e/messages:send');
@@ -231,51 +206,42 @@ class NotificationService {
     var body = {
       "message": {
         "notification": {
-          "body": "This is an FCM notification message!",
-          "title": "FCM Message"
+          "title": notificationModel.title,
+          "body": notificationModel.body,
         },
-        "data": {
-          "story_id": "story_12345",
-        },
-        "topic": "01066505898"
+        "data": notificationModel.productItemModel?.toJson() ?? {},
+        "topic": kNotificationTopic,
       }
     };
 
-    try {
-      var req = http.Request('POST', url);
-      req.headers.addAll(headersList);
-      req.body = json.encode(body);
+    var req = http.Request('POST', url);
+    req.headers.addAll(headersList);
+    req.body = json.encode(body);
 
-      var res = await req.send();
-      final resBody = await res.stream.bytesToString();
+    var res = await req.send();
+    final resBody = await res.stream.bytesToString();
 
-      if (res.statusCode >= 200 && res.statusCode < 300) {
-        log("resBody: $resBody");
-      } else {
-        log("res.reasonPhrase: ${res.reasonPhrase}");
-      }
-    } on SocketException catch (e) {
-      String errMessage = ServerFailure.fromSocketException(e).errMessage;
-      log("socket error : $errMessage");
-    } on http.ClientException catch (e) {
-      String errMessage = ServerFailure.fromHttpClientException(e).errMessage;
-      log("socket error : $errMessage");
-    } catch (e) {
-      String errMessage = Failure(e.toString()).errMessage;
-      log("error : $errMessage");
+    if (res.statusCode >= 200 && res.statusCode < 300) {
+      log("resBody: $resBody");
+    } else {
+      log("res.reasonPhrase: ${res.reasonPhrase}");
     }
   }
 
   Future<void> subscribeToTopic() async {
-    await FirebaseMessaging.instance.subscribeToTopic("01066505898");
+    await FirebaseMessaging.instance.subscribeToTopic(
+      kNotificationTopic,
+    );
   }
 
   Future<void> unsubscribeFromTopic() async {
-    await FirebaseMessaging.instance.unsubscribeFromTopic("01066505898");
+    await FirebaseMessaging.instance.unsubscribeFromTopic(
+      kNotificationTopic,
+    );
   }
 
   // put in main.dart
-  
+
   // void initState() {
   //   NotificationService().requestPermission();
   //   NotificationService().getToken();

@@ -2,7 +2,8 @@ import 'package:e_commerce/features/auth/presentation/views/widgets/navigate_to_
 import 'package:e_commerce/features/trader/presentation/views/widgets/menu_icon_button_for_login.dart';
 import 'package:flutter/material.dart';
 import '../../../../constants.dart';
-// import '../../../../core/utils/notification_service.dart';
+import '../../../../core/utils/notification_service.dart';
+import '../../../../core/utils/notification_service.dart';
 import 'widgets/login_body.dart';
 import 'widgets/login_drawer.dart';
 
@@ -18,8 +19,9 @@ class _LoginViewState extends State<LoginView> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   void initState() {
-    // NotificationService().setupInteractedMessageForBackgroundNotification(context);
-    // NotificationService().setupInteractedMessageForTerminatedState(context);
+    NotificationService().setupInteractedMessageForBackgroundNotification(context);
+    NotificationService().setupInteractedMessageForTerminatedState(context);
+    NotificationService().subscribeToTopic();
     super.initState();
   }
   @override

@@ -54,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الكترونيات"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
         "english": MessageLookupByLibrary.simpleMessage("الانجليزية"),
+        "error_new_product_is_not_added":
+            MessageLookupByLibrary.simpleMessage("خطأ في اضافة المنتج الجديد"),
         "error_product_is_not_added_to_cart":
             MessageLookupByLibrary.simpleMessage(
                 "حدث خطأ: لم يتم اضافة المنتج للسلة"),
@@ -78,6 +80,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "my_shop": MessageLookupByLibrary.simpleMessage("متجري"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "new_orders": MessageLookupByLibrary.simpleMessage("الطلبات الجديدة"),
+        "new_product_is_added":
+            MessageLookupByLibrary.simpleMessage("تمت اضافة المنتج الجديد"),
         "news": MessageLookupByLibrary.simpleMessage("جديد"),
         "no_orders_yet":
             MessageLookupByLibrary.simpleMessage("ليس لديك طلبات حتى الان"),

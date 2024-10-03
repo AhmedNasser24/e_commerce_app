@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:e_commerce/core/utils/notification_service.dart';
 import 'package:e_commerce/features/auth/presentation/views/register_view.dart';
 import 'package:e_commerce/features/trader/presentation/manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
@@ -13,6 +12,8 @@ import 'bloc_observer.dart';
 import 'features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'features/auth/presentation/views/login_view.dart';
 // import 'features/notifications/presentation/views/notification_view.dart';
+import 'features/notifications/presentation/manager/notification_cubit/notification_cubit.dart';
+import 'features/notifications/presentation/views/notification_view.dart';
 import 'features/trader/presentation/manager/fetch_new_orders_cubit/fetch_new_orders_cubit.dart';
 import 'features/trader/presentation/manager/image_picker_cubit/image_picker_cubit.dart';
 import 'firebase_options.dart';
@@ -31,7 +32,9 @@ void main() async {
   );
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   Bloc.observer = SimpleBlocObserver();
-
+  // NotificationService().requestPermission();
+  // await NotificationService().getToken();
+  // await NotificationService().getAccessToken();
   if (kReleaseMode) {
     await SentryFlutter.init(
       (options) {
@@ -57,10 +60,8 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   @override
   void initState() {
-    // NotificationService().requestPermission();
-    // NotificationService().getToken();
-    // NotificationService().getAccessToken();
-    // NotificationService().foregroundNotificationHandling();
+    NotificationService().foregroundNotificationHandling();
+    
     //--------------------------------------------------------------------------------------
     // those functions are in login view initstate because of context issue of navigation
     // NotificationService().setupInteractedMessageForBackgroundNotification(context);
@@ -94,6 +95,10 @@ class MyAppState extends State<MyApp> {
         BlocProvider(
           create: (context) => ImagePickerCubit(),
         ),
+        BlocProvider(
+          create: (context) => NotificationCubit(),
+        ),
+        
       ],
       child: MaterialApp(
         locale: _locale,
@@ -110,6 +115,7 @@ class MyAppState extends State<MyApp> {
           useMaterial3: true,
         ),
         home: 
+        // const NotificationView()
              LoginView(changeLanguage: changeLanguage)
              // isLogin ? const RegisterView() : const LoginView(),
       ),

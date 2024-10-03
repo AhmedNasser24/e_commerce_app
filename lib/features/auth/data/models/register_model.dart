@@ -3,6 +3,7 @@ import '../../../../constants.dart';
 class UserInfoModel {
    String? email, password;
    String? name, whatsappNumber, accountKind;
+   String? notificationToken;
 
    UserInfoModel({
     this.email,
@@ -10,6 +11,7 @@ class UserInfoModel {
     this.name,
     this.whatsappNumber,
     this.accountKind,
+    this.notificationToken,
   });
 
   toJson(){
@@ -19,6 +21,7 @@ class UserInfoModel {
       kName : name ,
       kWhatsAppNumber: whatsappNumber ,
       kAccountKind : accountKind,
+      kNotificationToken : notificationToken,
     };
   }
   factory UserInfoModel.fromJson(json){
@@ -28,6 +31,7 @@ class UserInfoModel {
       name: json[kName],
       whatsappNumber: json[kWhatsAppNumber],
       accountKind: json[kAccountKind],  
+      notificationToken: json[kNotificationToken],
     );
   }
 }

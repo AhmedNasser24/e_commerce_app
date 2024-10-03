@@ -59,6 +59,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Electronics"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
+        "error_new_product_is_not_added": MessageLookupByLibrary.simpleMessage(
+            "Error: New Product is not added"),
         "error_product_is_not_added_to_cart":
             MessageLookupByLibrary.simpleMessage(
                 "Error: Product isn\'t added to cart"),
@@ -82,6 +84,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "my_shop": MessageLookupByLibrary.simpleMessage("My Shop"),
         "name": MessageLookupByLibrary.simpleMessage("name"),
         "new_orders": MessageLookupByLibrary.simpleMessage("New orders"),
+        "new_product_is_added":
+            MessageLookupByLibrary.simpleMessage("New product is added"),
         "news": MessageLookupByLibrary.simpleMessage("New"),
         "no_orders_yet": MessageLookupByLibrary.simpleMessage("No orders yet"),
         "no_product_found":

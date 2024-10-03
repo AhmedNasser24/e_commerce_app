@@ -769,6 +769,26 @@ class S {
       args: [],
     );
   }
+
+  /// `New product is added`
+  String get new_product_is_added {
+    return Intl.message(
+      'New product is added',
+      name: 'new_product_is_added',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error: New Product is not added`
+  String get error_new_product_is_not_added {
+    return Intl.message(
+      'Error: New Product is not added',
+      name: 'error_new_product_is_not_added',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

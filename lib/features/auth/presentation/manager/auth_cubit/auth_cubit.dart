@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../constants.dart';
 // import '../../../../../generated/l10n.dart';
 import '../../../../../core/errors/failure.dart';
+import '../../../../../core/utils/notification_service.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../data/models/login_model.dart';
 import '../../../data/repos/auth_repo_iml.dart';
@@ -15,6 +16,7 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
   final AuthRepo _authRepoImpl = AuthRepoIml();
   late UserInfoModel userInfo;
+  late String notificationToken ;
   Future<void> login(context, {required LoginModel loginModel}) async {
     emit(LoginLoading());
     Either<void, Failure> response =
@@ -22,29 +24,41 @@ class AuthCubit extends Cubit<AuthState> {
 
     // check if account kind is right for this email ?
     bool isValid = true;
+    late String kind ;
     late Either<UserInfoModel?, Failure> userResponse;
     if (loginModel.accountKind == kTraderAccountKindEnglish ||
         loginModel.accountKind == kTraderAccountKindArabic) {
       userResponse = await _authRepoImpl.gettraderInfoModel();
+      kind = "Trader" ;
     } else {
       userResponse = await _authRepoImpl.getCustomerInfoModel();
+      kind = "Customer" ;
     }
     userResponse.fold(
-      (userInfoModel) {
+      (userInfoModel) async{
         if (userInfoModel == null) {
           isValid = false;
         } else {
           userInfo = userInfoModel;
+          if (userInfo.notificationToken == null ) {
+            // && kind == "Customer"
+            userInfo.notificationToken = await NotificationService().getToken() ;
+            await _authRepoImpl.setCustomerInfoIntoFireStore(userInfo);
+          }
+          notificationToken = userInfo.notificationToken!;
         }
       },
       (fail) => isValid = false,
     );
     // --------------------------------------------------------------------
 
+    
+
     response.fold(
       (ok) {
         // if (FirebaseAuth.instance.currentUser?.emailVerified ?? false) {
         if (isValid) {
+          NotificationService().subscribeToTopic();
           emit(LoginSuccess());
         } else {
           emit(LoginFailure(S.of(context).invalid_email));
@@ -77,6 +91,7 @@ class AuthCubit extends Cubit<AuthState> {
             userInfo.accountKind == kTraderAccountKindArabic) {
           response1 = await _authRepoImpl.setTraderInfoIntoFireStore(userInfo);
         } else {
+          userInfo.notificationToken =  await NotificationService().getToken();
           response1 =
               await _authRepoImpl.setCustomerInfoIntoFireStore(userInfo);
         }

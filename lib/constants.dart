@@ -44,6 +44,9 @@ const String kMyOrdersDocOrCollection = "my_orders" ;
 const String kMyOrderDate = "my_order_date" ;
 const String kCartItemModelKey = "cart_item_model" ;
 const String kCustomerIdKey = "customer_id" ;
+const String kNotificationTopic = "21235488";
+const String kNotificationToken = "token";
 const Color kPurpleColor = Color(0xFF4C53A4) ;
 const Color kWhiteColor = Colors.white ;
 const Color kOffWhiteColor = Color(0xFFEDECF1);
+

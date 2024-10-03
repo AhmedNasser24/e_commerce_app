@@ -19,7 +19,7 @@ class AddProductCubit extends Cubit<AddProductState> {
         await __traderRepoImpl.addProduct(productItemModel: productItemModel);
 
     result.fold(
-      (success) => emit(AddProductSuccess()),
+      (success) => emit(AddProductSuccess(productItemModel)),
       (fail) => emit(AddProductFailure(fail.errMessage)),
     );
   }
