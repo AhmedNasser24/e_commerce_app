@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 class CustomCachedNetworkImage extends StatelessWidget {
   const CustomCachedNetworkImage({
     super.key,
-    required this.imageUrl,
+    required this.imageUrl,this.fit,
   });
 
   final String imageUrl;
-
+  final BoxFit? fit ;
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      fit: BoxFit.contain,
+      fit: fit ?? BoxFit.contain,
       imageUrl: imageUrl,
       progressIndicatorBuilder: (context, url, downloadProgress) =>
           Center(child: CircularProgressIndicator(value: downloadProgress.progress)),

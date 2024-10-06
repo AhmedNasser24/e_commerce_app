@@ -23,11 +23,11 @@ class ShowOrdersView extends StatelessWidget {
           child: ShowOrdersViewBody(
               productItemModelList: buyProductModel.productItemModelList)),
       appBar: showOrdersViewAppBar(),
-      bottomNavigationBar: custombuttonAppBar(context),
+      bottomNavigationBar: custombottomAppBar(context),
     );
   }
 
-  BottomAppBar custombuttonAppBar(BuildContext context) {
+  BottomAppBar custombottomAppBar(BuildContext context) {
     return BottomAppBar(
       color: kPurpleColor,
       elevation: 0,

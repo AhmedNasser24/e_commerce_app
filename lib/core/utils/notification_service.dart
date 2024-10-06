@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'package:e_commerce/core/errors/failure.dart';
-import 'package:e_commerce/features/notifications/presentation/views/test.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -13,7 +12,8 @@ import 'package:http/http.dart' as http;
 
 import '../../constants.dart';
 import '../../features/notifications/data/model/notification_model.dart';
-import '../../features/trader/presentation/views/product_details_view.dart';
+import '../../features/trader/presentation/views/product_details_view_for_customer.dart';
+import '../models/product_item_model.dart';
 
 class NotificationService {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
@@ -63,35 +63,31 @@ class NotificationService {
   }
 
   Future<String> getAccessToken() async {
-    
-      String accessToken = '';
-      final serviceAccountJson = await rootBundle.loadString(
-          'assets/json/e-commerce-app-10f7e-firebase-adminsdk-qe1nn-2f413b61c7.json');
+    String accessToken = '';
+    final serviceAccountJson = await rootBundle.loadString(
+        'assets/json/e-commerce-app-10f7e-firebase-adminsdk-qe1nn-2f413b61c7.json');
 
-      final accountCredentials = ServiceAccountCredentials.fromJson(
-        json.decode(serviceAccountJson),
+    final accountCredentials = ServiceAccountCredentials.fromJson(
+      json.decode(serviceAccountJson),
+    );
+
+    const scopes = ['https://www.googleapis.com/auth/firebase.messaging'];
+
+    final client = http.Client();
+    try {
+      final accessCredentials = await obtainAccessCredentialsViaServiceAccount(
+        accountCredentials,
+        scopes,
+        client,
       );
+      accessToken = accessCredentials.accessToken.data;
 
-      const scopes = ['https://www.googleapis.com/auth/firebase.messaging'];
-
-      final client = http.Client();
-      try {
-        final accessCredentials =
-            await obtainAccessCredentialsViaServiceAccount(
-          accountCredentials,
-          scopes,
-          client,
-        );
-        accessToken = accessCredentials.accessToken.data;
-
-        log('Access Token: $accessToken');
-        return accessToken;
-       
-      } finally {
-        client.close();
-      }
-    } 
-  
+      log('Access Token: $accessToken');
+      return accessToken;
+    } finally {
+      client.close();
+    }
+  }
 
   Future<void> sendMessageUsingToken(
       {required NotificationModel notificationModel}) async {
@@ -173,9 +169,13 @@ class NotificationService {
     if (initialMessage != null) {
       // _handleMessage(initialMessage );
       log("initialMessage: test click");
-
+      ProductItemModel productItemModel =
+          ProductItemModel.fromJson(initialMessage.data);
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const ProductDetailsView()));
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  ProductDetailsViewForCustomer(productItemModel: productItemModel)));
     }
   }
 
@@ -183,12 +183,15 @@ class NotificationService {
     // Also handle any interaction when the app is in the background via a
     // Stream listener
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      
+      ProductItemModel productItemModel =
+          ProductItemModel.fromJson(message.data);
       log("onMessageOpenedApp: test click");
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ProductDetailsView()),
-        );
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                ProductDetailsViewForCustomer(productItemModel: productItemModel)),
+      );
     });
   }
 
@@ -229,8 +232,6 @@ class NotificationService {
     }
   }
 
-
-
   Future<void> subscribeToTopic() async {
     await FirebaseMessaging.instance.subscribeToTopic(
       kNotificationTopic,
@@ -250,14 +251,11 @@ class NotificationService {
   //   NotificationService().getToken();
   //   NotificationService().getAccessToken();
   //   NotificationService().foregroundNotificationHandling();
-    // --------------------------------------------------------------------------------------
-    //             those functions are in login view initstate because of context issue of navigation
-    // NotificationService().setupInteractedMessageForBackgroundNotification(context);
-    // NotificationService().setupInteractedMessageForTerminatedState(context);
-    // --------------------------------------------------------------------------------------
+  // --------------------------------------------------------------------------------------
+  //             those functions are in login view initstate because of context issue of navigation
+  // NotificationService().setupInteractedMessageForBackgroundNotification(context);
+  // NotificationService().setupInteractedMessageForTerminatedState(context);
+  // --------------------------------------------------------------------------------------
   //   super.initState();
   // }
-
-
-
 }

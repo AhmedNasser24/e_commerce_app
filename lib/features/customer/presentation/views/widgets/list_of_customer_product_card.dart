@@ -1,6 +1,7 @@
 import 'package:e_commerce/features/customer/presentation/manager/fetch_category_product_for_customer/fetch_category_product_for_customer_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../trader/presentation/views/product_details_view_for_customer.dart';
 import 'add_to_cart_view_body.dart';
 import 'customer_product_card.dart';
 
@@ -23,8 +24,18 @@ class ListOfCustomerProductCard extends StatelessWidget {
                 mainAxisSpacing: 12,
               ),
               itemCount: state.productItemModelList.length,
-              itemBuilder: (context, i) => CustomerProductItem(
-                  productItemModel: state.productItemModelList[i]),
+              itemBuilder: (context, i) => GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductDetailsViewForCustomer(
+                      productItemModel: state.productItemModelList[i],
+                    ),
+                  ),
+                ),
+                child: CustomerProductItem(
+                    productItemModel: state.productItemModelList[i]),
+              ),
             ),
           );
         } else if (state is FetchCategoryProductForCustomerLoading) {

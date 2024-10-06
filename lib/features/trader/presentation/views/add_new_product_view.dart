@@ -8,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../constants.dart';
 import '../../../../core/functions/show_snack_bar.dart';
 import '../../../../core/utils/app_style.dart';
-import '../../../../core/utils/notification_service.dart';
 import '../../../../generated/l10n.dart';
 import '../../../notifications/data/model/notification_model.dart';
 import '../../../notifications/presentation/manager/notification_cubit/notification_cubit.dart';

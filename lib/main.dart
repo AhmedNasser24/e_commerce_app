@@ -12,6 +12,7 @@ import 'bloc_observer.dart';
 import 'features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'features/auth/presentation/views/login_view.dart';
 // import 'features/notifications/presentation/views/notification_view.dart';
+import 'features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'features/notifications/presentation/manager/notification_cubit/notification_cubit.dart';
 import 'features/notifications/presentation/views/notification_view.dart';
 import 'features/trader/presentation/manager/fetch_new_orders_cubit/fetch_new_orders_cubit.dart';
@@ -98,7 +99,9 @@ class MyAppState extends State<MyApp> {
         BlocProvider(
           create: (context) => NotificationCubit(),
         ),
-        
+        BlocProvider(
+          create: (context) => CartCubit(),
+        ),
       ],
       child: MaterialApp(
         locale: _locale,

@@ -15,9 +15,7 @@ class CustomerHomeViewBlocProvider extends StatelessWidget {
         BlocProvider(
           create: (context) => FetchCategoryProductForCustomerCubit(),
         ),
-        BlocProvider(
-          create: (context) => CartCubit(),
-        ),
+        
       ],
       child:  CustomerHomeView(changeLanguage: changeLanguage),
     );

@@ -11,7 +11,7 @@ class AccountKindForLogin extends StatefulWidget {
     required this.loginModel,
   });
   final LoginModel loginModel;
-
+  
   @override
   State<AccountKindForLogin> createState() => _AccountKindForLoginState();
 }
