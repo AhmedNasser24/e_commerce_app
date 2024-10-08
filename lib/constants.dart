@@ -19,6 +19,7 @@ const Color kScaffoldColor = Color(0XFFFAF7FA) ;
 const Color kButtonColor = Color.fromARGB(218, 182, 71, 71);
 const String kProductId = "product_id" ;
 const String kProductName = "product_name" ;
+const String kProductDescription = "product_description" ;
 const String kProductCategory = "product_category" ;
 const String kProductPrice = "product_price" ;
 const String kProductImageUrl = "product_image_url" ;

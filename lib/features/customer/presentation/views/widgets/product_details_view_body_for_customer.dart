@@ -1,0 +1,53 @@
+import 'package:e_commerce/core/models/product_item_model.dart';
+import 'package:e_commerce/core/widgets/custom_cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:clippy_flutter/clippy_flutter.dart';
+import 'package:gap/gap.dart';
+
+import '../../../../../constants.dart';
+import '../../../../../core/utils/app_style.dart';
+
+class ProductDetailsViewBodyForCustomer extends StatelessWidget {
+  const ProductDetailsViewBodyForCustomer ({super.key, required this.productItemModel});
+  final ProductItemModel productItemModel;
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Arc(
+            edge: Edge.BOTTOM,
+            height: 50,
+            arcType: ArcType.CONVEX,
+            child: Container(
+              width: double.infinity,
+              color: kOffWhiteColor,
+              height: 300,
+              child: CustomCachedNetworkImage(
+                imageUrl: productItemModel.imageUrl!,
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+          const Gap(30),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(productItemModel.name!, style: AppStyle.medium18),
+                const Gap(20),
+                Text(
+                  productItemModel.desc ?? "",
+                  style: AppStyle.semiBold16,
+                  textAlign: TextAlign.start,
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}

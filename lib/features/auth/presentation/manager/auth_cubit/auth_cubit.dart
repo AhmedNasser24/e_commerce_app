@@ -16,7 +16,7 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
   final AuthRepo _authRepoImpl = AuthRepoIml();
   late UserInfoModel userInfo;
-  late String notificationToken ;
+  // late String notificationToken ;
   Future<void> login(context, {required LoginModel loginModel}) async {
     emit(LoginLoading());
     Either<void, Failure> response =
@@ -40,12 +40,11 @@ class AuthCubit extends Cubit<AuthState> {
           isValid = false;
         } else {
           userInfo = userInfoModel;
-          if (userInfo.notificationToken == null ) {
-            // && kind == "Customer"
+          if (userInfo.notificationToken == null && kind == "Customer" ) {
             userInfo.notificationToken = await NotificationService().getToken() ;
             await _authRepoImpl.setCustomerInfoIntoFireStore(userInfo);
+            // notificationToken = userInfo.notificationToken!;
           }
-          notificationToken = userInfo.notificationToken!;
         }
       },
       (fail) => isValid = false,

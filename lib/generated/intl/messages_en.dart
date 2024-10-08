@@ -48,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "clothes_category": MessageLookupByLibrary.simpleMessage("Clothes"),
         "confirm_order": MessageLookupByLibrary.simpleMessage("Confirm order"),
         "customer": MessageLookupByLibrary.simpleMessage("Customer"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "delivered": MessageLookupByLibrary.simpleMessage("Delivered"),
         "did_you_sent_orders_to":
             MessageLookupByLibrary.simpleMessage("Did you sent orders to"),
@@ -64,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "error_product_is_not_added_to_cart":
             MessageLookupByLibrary.simpleMessage(
                 "Error: Product isn\'t added to cart"),
+        "error_product_is_not_edited": MessageLookupByLibrary.simpleMessage(
+            "Error: Product is not edited"),
         "error_product_is_not_removed_from_cart":
             MessageLookupByLibrary.simpleMessage(
                 "Error: Product isn\'t removed from cart"),
@@ -109,6 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "please check your email for verification"),
         "product_category":
             MessageLookupByLibrary.simpleMessage("Product category"),
+        "product_desc":
+            MessageLookupByLibrary.simpleMessage("Product description"),
         "product_image": MessageLookupByLibrary.simpleMessage("Product image"),
         "product_is_added_successfully": MessageLookupByLibrary.simpleMessage(
             "Product is added successfully"),

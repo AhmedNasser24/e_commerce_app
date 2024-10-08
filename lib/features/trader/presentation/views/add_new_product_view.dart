@@ -1,5 +1,4 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:e_commerce/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:e_commerce/features/trader/presentation/manager/add_product_cubit/add_product_cubit.dart';
 import 'package:e_commerce/features/trader/presentation/manager/image_picker_cubit/image_picker_cubit.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/add_new_product_body.dart';
@@ -43,7 +42,6 @@ class AddNewProductView extends StatelessWidget {
                 title: "E Commerce",
                 body: S.of(context).new_product_is_added,
                 productItemModel: state.productItemModel,
-                token: BlocProvider.of<AuthCubit>(context).notificationToken,
               );
               BlocProvider.of<NotificationCubit>(context)
                   .sendMessageUsingTopic(notificationModel: notificationModel);

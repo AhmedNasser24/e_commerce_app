@@ -1,7 +1,7 @@
 import 'package:e_commerce/features/customer/presentation/manager/fetch_category_product_for_customer/fetch_category_product_for_customer_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../trader/presentation/views/product_details_view_for_customer.dart';
+import '../product_details_view_for_customer.dart';
 import 'add_to_cart_view_body.dart';
 import 'customer_product_card.dart';
 

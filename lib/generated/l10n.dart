@@ -789,6 +789,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Error: Product is not edited`
+  String get error_product_is_not_edited {
+    return Intl.message(
+      'Error: Product is not edited',
+      name: 'error_product_is_not_edited',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product description`
+  String get product_desc {
+    return Intl.message(
+      'Product description',
+      name: 'product_desc',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

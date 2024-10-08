@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "clothes_category": MessageLookupByLibrary.simpleMessage("الملابس"),
         "confirm_order": MessageLookupByLibrary.simpleMessage("تاكيد الطلب"),
         "customer": MessageLookupByLibrary.simpleMessage("عميل"),
+        "delete": MessageLookupByLibrary.simpleMessage("ازالة"),
         "delivered": MessageLookupByLibrary.simpleMessage("تم التسليم"),
         "did_you_sent_orders_to":
             MessageLookupByLibrary.simpleMessage("هل تم ارسال الطلبات الى"),
@@ -59,6 +60,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "error_product_is_not_added_to_cart":
             MessageLookupByLibrary.simpleMessage(
                 "حدث خطأ: لم يتم اضافة المنتج للسلة"),
+        "error_product_is_not_edited":
+            MessageLookupByLibrary.simpleMessage("خطاء في تعديل المنتج"),
         "error_product_is_not_removed_from_cart":
             MessageLookupByLibrary.simpleMessage(
                 "حدث خطأ: لم يتم ازالة المنتج من السلة"),
@@ -105,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "يرجى التحقق من بريدك الالكتروني لتأكيد الحساب"),
         "product_category": MessageLookupByLibrary.simpleMessage("نوع المنتج"),
+        "product_desc": MessageLookupByLibrary.simpleMessage("وصف المنتج"),
         "product_image": MessageLookupByLibrary.simpleMessage("صورة المنتج"),
         "product_is_added_successfully":
             MessageLookupByLibrary.simpleMessage("تمت اضافة المنتج بنجاح"),

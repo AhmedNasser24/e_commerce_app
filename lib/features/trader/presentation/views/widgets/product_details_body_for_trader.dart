@@ -7,8 +7,8 @@ import 'package:gap/gap.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
 
-class ProductDetailsViewBodyForCustomer extends StatelessWidget {
-  const ProductDetailsViewBodyForCustomer ({super.key, required this.productItemModel});
+class ProductDetailsViewBodyForTrader extends StatelessWidget {
+  const ProductDetailsViewBodyForTrader ({super.key, required this.productItemModel});
   final ProductItemModel productItemModel;
   @override
   Widget build(BuildContext context) {
@@ -38,8 +38,8 @@ class ProductDetailsViewBodyForCustomer extends StatelessWidget {
               children: [
                 Text(productItemModel.name!, style: AppStyle.medium18),
                 const Gap(20),
-                const Text(
-                  "Nike , blue , size 41",
+                 Text(
+                  productItemModel.desc ?? "",
                   style: AppStyle.semiBold16,
                   textAlign: TextAlign.start,
                 ),

@@ -7,6 +7,7 @@ import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/l10n.dart';
 import 'add_product_button_bloc_consumer.dart';
 import 'product_category_text_form_field.dart';
+import 'product_desc_text_form_field.dart';
 import 'product_name_text_form_field.dart';
 import 'product_price_text_form_field.dart';
 
@@ -56,6 +57,11 @@ class _AddNewProductBodyState extends State<AddNewProductBody> {
                       style: AppStyle.medium14),
                   const Gap(5),
                   ProductImageTextFormField(productItemModel: productItemModel),
+                  const Gap(25),
+                  Text(S.of(context).product_desc,
+                      style: AppStyle.medium14),
+                  const Gap(5),
+                  ProductDescTextFormField(productItemModel: productItemModel),
                   const Gap(40),
                   Align(
                     alignment: Alignment.center,

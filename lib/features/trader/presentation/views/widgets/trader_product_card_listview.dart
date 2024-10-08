@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../customer/presentation/views/widgets/add_to_cart_view_body.dart';
 import '../../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
-import 'custom_refresh_indicator_for_trader.dart';
+import '../product_details_view_for_trader.dart';
 import 'trader_product_item.dart';
 
 class TraderProductItemListView extends StatelessWidget {
@@ -35,8 +35,16 @@ class TraderProductItemListView extends StatelessWidget {
                   // physics: const BouncingScrollPhysics(),
                   itemCount: state.productItemModelList.length,
                   itemBuilder: (context, i) {
-                    return TraderProductItem(
-                        productItemModel: productItemModelList[i]);
+                    return GestureDetector(
+                      onTap : () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductDetailsViewForTrader(productItemModel: productItemModelList[i]),
+                        ),
+                      ),
+                      child: TraderProductItem(
+                          productItemModel: productItemModelList[i]),
+                    );
                   },
                 ),
               )

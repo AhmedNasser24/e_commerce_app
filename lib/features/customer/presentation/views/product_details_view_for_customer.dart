@@ -1,6 +1,6 @@
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
-import 'package:e_commerce/features/trader/presentation/views/widgets/product_details_view_body.dart';
+import 'package:e_commerce/features/customer/presentation/views/widgets/product_details_view_body_for_customer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,7 +8,7 @@ import '../../../../constants.dart';
 import '../../../../core/models/product_item_model.dart';
 import '../../../../core/utils/app_style.dart';
 import '../../../../generated/l10n.dart';
-import 'widgets/back_arrow_button.dart';
+import '../../../trader/presentation/views/widgets/back_arrow_button.dart';
 
 class ProductDetailsViewForCustomer extends StatelessWidget {
   const ProductDetailsViewForCustomer({super.key, required this.productItemModel});
@@ -63,7 +63,7 @@ class CustomBottomAppbar extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       child: Row(
         children: [
-          Text(productItemModel.price!,
+          Text("${productItemModel.price!} ${S.of(context).LE}",
               style: AppStyle.semiBold18.copyWith(color: kWhiteColor)),
           const Spacer(),
           CustomButton(

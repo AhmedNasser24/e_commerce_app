@@ -12,7 +12,7 @@ import 'package:http/http.dart' as http;
 
 import '../../constants.dart';
 import '../../features/notifications/data/model/notification_model.dart';
-import '../../features/trader/presentation/views/product_details_view_for_customer.dart';
+import '../../features/customer/presentation/views/product_details_view_for_customer.dart';
 import '../models/product_item_model.dart';
 
 class NotificationService {

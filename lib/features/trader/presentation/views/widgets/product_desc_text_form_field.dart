@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 
-class ProductNameTextFormField extends StatelessWidget {
-  const ProductNameTextFormField({
+class ProductDescTextFormField extends StatelessWidget {
+  const ProductDescTextFormField({
     super.key,
     required this.productItemModel,
   });
@@ -14,14 +14,12 @@ class ProductNameTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
-      controller: TextEditingController(text: productItemModel.name ?? ''),
-      hintText: S.of(context).product_name,
-      
+      controller: TextEditingController(text: productItemModel.desc ?? ''),
+      hintText: S.of(context).product_desc,
+      maxLines: 5,
       validator: (value) {
-        if (value == null || value.isEmpty) {
-          return S.of(context).required_field;
-        }
-        productItemModel.name = value ;
+        
+        productItemModel.desc = value ;
         return null;
       },
     );

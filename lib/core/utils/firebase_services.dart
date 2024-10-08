@@ -80,10 +80,7 @@ class FirebaseServices {
   Future<QuerySnapshot<Map<String, dynamic>>> __getAllProductForTrader() async {
     return await FirebaseFirestore.instance
         .collection(kShopCollection)
-        .where(
-          kTraderId,
-          isEqualTo: FirebaseAuth.instance.currentUser!.uid,
-        )
+        .orderBy(kCreatedAt, descending: true)
         .get();
   }
 
@@ -91,10 +88,6 @@ class FirebaseServices {
       List<String> categoryInEngOrArbLangList) async {
     return await FirebaseFirestore.instance
         .collection(kShopCollection)
-        .where(
-          kTraderId,
-          isEqualTo: FirebaseAuth.instance.currentUser!.uid,
-        )
         .where(
           kProductCategory,
           whereIn: categoryInEngOrArbLangList,
