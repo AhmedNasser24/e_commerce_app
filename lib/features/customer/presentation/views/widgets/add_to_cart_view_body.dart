@@ -32,7 +32,7 @@ class _AddToCartViewBodyState extends State<AddToCartViewBody> {
                 await BlocProvider.of<CartCubit>(context).fetchCartItem();
               },
               child: CustomCartItemListView(
-                  cartItemModelList: state.cartItemModelList),
+                  cartItemModelList: state.cartItemModelList ?? []), // cartSuccess sometimes return null  
             ),
           );
         } else if (state is CartFailure) {

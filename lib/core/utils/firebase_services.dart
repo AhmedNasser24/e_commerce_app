@@ -109,7 +109,7 @@ class FirebaseServices {
           kProductCategory,
           whereIn: categoryInEngOrArbLangList,
         )
-        .orderBy(kCreatedAt, descending: true)
+        
         .get();
   }
 
@@ -183,7 +183,7 @@ class FirebaseServices {
       {required List<CartItemModel> cartItemModelList}) async {
     await __sendOrderToTrader(cartItemModelList: cartItemModelList);
     await __addToMyOrder(cartItemModelList: cartItemModelList) ;
-    await removeAllProductFromCart(cartItemModelList: cartItemModelList);
+    // await removeAllProductFromCart(cartItemModelList: cartItemModelList);
   }
 
   Future<List<BuyProductModel>> fetchNewOrdersforTrader() async {

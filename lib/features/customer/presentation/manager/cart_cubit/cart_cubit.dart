@@ -17,6 +17,7 @@ class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial());
   final CustomerRepo __customerRepoImpl = CustomerRepoImpl();
   bool __isFetchingBefore = false;
+  int numOfItemInCart = 0 ;
   Future<void> addToCart({
     required ProductItemModel productItemModel,
     required context,
@@ -30,7 +31,9 @@ class CartCubit extends Cubit<CartState> {
         await __customerRepoImpl.addToCart(cartItemModel: cartItemModel);
     result.fold(
       (ok) {
+        numOfItemInCart += 1;
         showSnackBar(context, S.of(context).product_is_added_to_cart);
+        emit(CartSuccess());
       },
       (failure) {
         showSnackBar(context, S.of(context).error_product_is_not_added_to_cart);
@@ -47,6 +50,7 @@ class CartCubit extends Cubit<CartState> {
     result.fold(
       (ok) {
         showSnackBar(context, S.of(context).product_is_removed_from_cart);
+        // emit(CartSuccess());
       },
       (failure) {
         showSnackBar(
@@ -59,6 +63,7 @@ class CartCubit extends Cubit<CartState> {
         await __customerRepoImpl.fetchCartItems();
     result1.fold(
       (cartItemModelList) {
+        numOfItemInCart = cartItemModelList.length ;
         emit(CartSuccess(cartItemModelList: cartItemModelList));
       },
       (fail) {},
@@ -67,10 +72,19 @@ class CartCubit extends Cubit<CartState> {
 
   Future<void> removeAllProductFromCart({
     required List<CartItemModel> cartItemModelList,
-    required context,
+    
   }) async {
-    await __customerRepoImpl.removeAllProductFromCart(
+    Either<void, Failure> result = await __customerRepoImpl.removeAllProductFromCart(
         cartItemModelList: cartItemModelList);
+    result.fold(
+      (ok) {
+        numOfItemInCart = 0;
+        emit(CartSuccess()) ;
+      },
+      (failure) {
+        
+      },
+    );    
   }
 
   Future<void> fetchCartItem() async {
@@ -81,6 +95,7 @@ class CartCubit extends Cubit<CartState> {
         await __customerRepoImpl.fetchCartItems();
     result.fold(
       (cartItemModelList) {
+        numOfItemInCart = cartItemModelList.length ;
         emit(CartSuccess(cartItemModelList: cartItemModelList));
       },
       (fail) {

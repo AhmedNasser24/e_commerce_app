@@ -42,7 +42,7 @@ class BuyButton extends StatelessWidget {
       btnCancelText: S.of(context).cancel,
       btnOkOnPress: () {
         BlocProvider.of<BuyProductCubit>(context)
-                .buyProduct(cartItemModelList: cartItemModelList);
+                .buyProduct(cartItemModelList: cartItemModelList , context : context);
       },
       btnCancelOnPress: () {},
     ).show();

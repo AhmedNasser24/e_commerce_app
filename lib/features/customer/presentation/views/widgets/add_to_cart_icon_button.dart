@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,12 +15,12 @@ class AddToCartIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        BlocProvider.of<CartCubit>(context).addToCart(
-            productItemModel: productItemModel, context: context);
+    return InkWell(
+      onTap: () {
+        BlocProvider.of<CartCubit>(context)
+            .addToCart(productItemModel: productItemModel, context: context);
       },
-      icon: const Icon(
+      child: const Icon(
         Icons.shopping_cart_checkout,
         color: kPurpleColor,
       ),

@@ -5,8 +5,8 @@ abstract class CartState {}
 class CartInitial extends CartState {}
 class CartLoading extends CartState {}
 class CartSuccess extends CartState {
-  final List < CartItemModel > cartItemModelList ;
-  CartSuccess({required this.cartItemModelList});
+  final List < CartItemModel >? cartItemModelList ;
+  CartSuccess({ this.cartItemModelList});
 }
 class CartFailure extends CartState {
   final String errMessage;

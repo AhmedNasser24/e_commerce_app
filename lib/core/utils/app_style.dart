@@ -10,6 +10,8 @@ class AppStyle {
     );
   }
 
+  static const TextStyle regular10 = TextStyle(
+      fontSize: 10, fontWeight: FontWeight.normal, color: kPurpleColor);
   static const TextStyle regular12 = TextStyle(
       fontSize: 12, fontWeight: FontWeight.normal, color: kPurpleColor);
   static const TextStyle regular14 = TextStyle(
