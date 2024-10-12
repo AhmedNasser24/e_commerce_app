@@ -6,9 +6,8 @@ import '../trader_home_view.dart';
 
 class TraderHomeViewBlocProvider extends StatelessWidget {
   const TraderHomeViewBlocProvider({
-    super.key, required this.changeLanguage,
+    super.key,
   });
-  final void Function(Locale newLocale) changeLanguage;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +15,7 @@ class TraderHomeViewBlocProvider extends StatelessWidget {
     // BlocProvider(
     //   create: (context) => FetchCategoryProductsForTraderCubit(),
     //   child:  
-      TraderHomeView(changeLanguage: changeLanguage);
+      const TraderHomeView();
     // );
   }
 }

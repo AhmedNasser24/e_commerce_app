@@ -10,9 +10,8 @@ import '../utils/app_style.dart';
 
 class SignOut extends StatelessWidget {
   const SignOut({
-    super.key, required this.changeLanguage,
+    super.key,
   });
-  final void Function(Locale newLocale) changeLanguage;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,7 @@ class SignOut extends StatelessWidget {
         if (state is SignOutSuccess) {
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) =>  LoginView(changeLanguage: changeLanguage)),
+            MaterialPageRoute(builder: (context) => const LoginView()),
             (route) =>
                 false, // Returning false will remove all previous routes from the stack
           );
@@ -36,7 +35,7 @@ class SignOut extends StatelessWidget {
           S.of(context).sign_out,
           style: AppStyle.semiBold16,
         ),
-        leading: const Icon(Icons.logout , color : kPurpleColor),
+        leading: const Icon(Icons.logout, color: kPurpleColor),
       ),
     );
   }

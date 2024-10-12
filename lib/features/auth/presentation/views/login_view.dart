@@ -3,13 +3,13 @@ import 'package:e_commerce/features/trader/presentation/views/widgets/menu_icon_
 import 'package:flutter/material.dart';
 import '../../../../constants.dart';
 import '../../../../core/utils/notification_service.dart';
-import '../../../../core/utils/notification_service.dart';
 import 'widgets/login_body.dart';
 import 'widgets/login_drawer.dart';
 
 class LoginView extends StatefulWidget {
-  const LoginView({super.key, required this.changeLanguage});
-  final void Function(Locale newLocale) changeLanguage;
+  const LoginView({
+    super.key,
+  });
 
   @override
   State<LoginView> createState() => _LoginViewState();
@@ -19,17 +19,19 @@ class _LoginViewState extends State<LoginView> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   void initState() {
-    NotificationService().setupInteractedMessageForBackgroundNotification(context);
+    NotificationService()
+        .setupInteractedMessageForBackgroundNotification(context);
     NotificationService().setupInteractedMessageForTerminatedState(context);
     NotificationService().subscribeToTopic();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: kOffWhiteColor,
-      body:  SafeArea(child: LoginBody(changeLanguage: widget.changeLanguage)),
+      body: const SafeArea(child: LoginBody()),
       appBar: AppBar(
         leading: MenuIconButtonForLogin(scaffoldKey: scaffoldKey),
         actions: const [NavigateToRegisterView()],
@@ -37,8 +39,8 @@ class _LoginViewState extends State<LoginView> {
         scrolledUnderElevation: 0,
         backgroundColor: kPurpleColor,
       ),
-      drawer: Drawer(
-        child: LoginDrawer(changeLanguage: widget.changeLanguage),
+      drawer: const Drawer(
+        child: LoginDrawer(),
       ),
     );
   }

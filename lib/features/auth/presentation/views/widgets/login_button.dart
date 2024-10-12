@@ -14,10 +14,9 @@ class LoginButton extends StatelessWidget {
   const LoginButton({
     super.key,
     required this.formKey,
-    required this.loginModel, required this.changeLanguage,
+    required this.loginModel,
   });
 
-  final void Function(Locale newLocale) changeLanguage;
   final GlobalKey<FormState> formKey;
   final LoginModel loginModel;
   @override
@@ -39,9 +38,9 @@ class LoginButton extends StatelessWidget {
                 // check if this email is for customer or trader
                 if (loginModel.accountKind == kTraderAccountKindEnglish ||
                     loginModel.accountKind == kTraderAccountKindArabic) {
-                  return  TraderHomeViewBlocProvider(changeLanguage: changeLanguage);
+                  return  const TraderHomeViewBlocProvider();
                 } else {
-                  return  CustomerHomeViewBlocProvider(changeLanguage: changeLanguage);
+                  return  const CustomerHomeViewBlocProvider();
                 }
               }, //const TraderHomeViewBlocProvider(),
             ),

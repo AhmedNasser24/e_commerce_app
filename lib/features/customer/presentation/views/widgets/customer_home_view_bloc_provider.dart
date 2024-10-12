@@ -5,8 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../customer_home_view.dart';
 
 class CustomerHomeViewBlocProvider extends StatelessWidget {
-  const CustomerHomeViewBlocProvider({super.key, required this.changeLanguage});
-  final void Function(Locale newLocale) changeLanguage;
+  const CustomerHomeViewBlocProvider({super.key,});
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -16,7 +15,7 @@ class CustomerHomeViewBlocProvider extends StatelessWidget {
         ),
         
       ],
-      child:  CustomerHomeView(changeLanguage: changeLanguage),
+      child:  CustomerHomeView(),
     );
   }
 }

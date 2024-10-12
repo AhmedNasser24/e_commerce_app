@@ -8,9 +8,8 @@ import 'widgets/trader_app_bar.dart';
 import 'widgets/trader_home_body.dart';
 
 class TraderHomeView extends StatefulWidget {
-  const TraderHomeView({super.key, required this.changeLanguage});
+  const TraderHomeView({super.key,});
 
-  final void Function(Locale newLocale) changeLanguage;
   @override
   State<TraderHomeView> createState() => _TraderHomeViewState();
 }
@@ -32,7 +31,7 @@ class _TraderHomeViewState extends State<TraderHomeView> {
       
       appBar: traderAppBar(context, scaffoldKey),
       floatingActionButton: const CustomFloatingActionButton(),
-      drawer:  SafeArea(child: CustomTraderDrawer(changeLanguage: widget.changeLanguage)),
+      drawer:  const SafeArea(child: CustomTraderDrawer()),
     );
   }
 }

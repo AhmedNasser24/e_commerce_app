@@ -1,14 +1,14 @@
 import 'package:e_commerce/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../generated/l10n.dart';
+import '../../local_cubit.dart';
 import '../utils/app_style.dart';
 
 class SelectLanguage extends StatelessWidget {
   const SelectLanguage({
     super.key,
-    required this.changeLanguage,
   });
-  final void Function(Locale newLocale) changeLanguage;
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -34,17 +34,20 @@ class SelectLanguage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                title: Text(S.of(context).arabic , style : AppStyle.semiBold14),
+                title: Text(S.of(context).arabic, style: AppStyle.semiBold14),
                 onTap: () {
-                  changeLanguage(const Locale('ar'));
+                  BlocProvider.of<LocalCubit>(context)
+                      .changeLanguage(const Locale('ar'));
                   Navigator.pop(context);
                   Navigator.pop(context);
                 },
               ),
               ListTile(
-                title: Text(S.of(context).english, style : AppStyle.semiBold14),
+                title: Text(S.of(context).english, style: AppStyle.semiBold14),
                 onTap: () {
-                  changeLanguage(const Locale('en'));
+                  BlocProvider.of<LocalCubit>(context)
+                      .changeLanguage(const Locale('en'));
+
                   Navigator.pop(context);
                   Navigator.pop(context);
                 },

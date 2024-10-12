@@ -8,13 +8,12 @@ import 'customer_order.dart';
 
 class CustomerDrawer extends StatelessWidget {
   const CustomerDrawer({
-    super.key, required this.changeLanguage, 
+    super.key,
   });
-  final void Function(Locale newLocale) changeLanguage;
   @override
   Widget build(BuildContext context) {
-    String customerName = BlocProvider.of<AuthCubit>(context).userInfo.name! ;
-    return  Drawer(
+    String customerName = BlocProvider.of<AuthCubit>(context).userInfo.name!;
+    return Drawer(
       child: Column(
         children: [
           DrawerHeader(
@@ -24,14 +23,10 @@ class CustomerDrawer extends StatelessWidget {
             ),
           ),
           const MyOrders(),
-          SelectLanguage(changeLanguage: changeLanguage),
-          SignOut(changeLanguage: changeLanguage)
+          const SelectLanguage(),
+          const SignOut()
         ],
       ),
     );
   }
 }
-
-
-
-

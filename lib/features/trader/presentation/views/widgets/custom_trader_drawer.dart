@@ -9,9 +9,8 @@ import 'new_orders_for_trader.dart';
 
 class CustomTraderDrawer extends StatelessWidget {
   const CustomTraderDrawer({
-    super.key, required this.changeLanguage,
+    super.key,
   });
-  final void Function(Locale newLocale) changeLanguage;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +27,8 @@ class CustomTraderDrawer extends StatelessWidget {
           ),
           const NewOrdersForTrader(),
           // const OldOrdersForTrader(),
-          SelectLanguage(changeLanguage: changeLanguage),
-          SignOut(changeLanguage: changeLanguage),
+          const SelectLanguage(),
+          const SignOut(),
         ],
       ),
     );

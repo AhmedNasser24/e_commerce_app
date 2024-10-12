@@ -6,8 +6,7 @@ import 'widgets/customer_drawer.dart';
 import 'widgets/customer_home_body.dart';
 
 class CustomerHomeView extends StatefulWidget {
-  const CustomerHomeView({super.key, required this.changeLanguage});
-  final void Function(Locale newLocale) changeLanguage;
+  const CustomerHomeView({super.key,});
 
   @override
   State<CustomerHomeView> createState() => _CustomerHomeViewState();
@@ -21,7 +20,7 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
       key: scaffoldKey,
       backgroundColor: kOffWhiteColor,
       body: const CustomerHomeBody(),
-      drawer: SafeArea(child: CustomerDrawer(changeLanguage: widget.changeLanguage)),
+      drawer: SafeArea(child: CustomerDrawer()),
       appBar: customerAppBar(context, scaffoldKey),
     );
   }

@@ -11,8 +11,9 @@ import 'login_password.dart';
 import 'title_text.dart';
 
 class LoginBody extends StatefulWidget {
-  const LoginBody({super.key, required this.changeLanguage});
-  final void Function(Locale newLocale) changeLanguage;
+  const LoginBody({
+    super.key,
+  });
 
   @override
   State<LoginBody> createState() => _LoginBodyState();
@@ -32,7 +33,6 @@ class _LoginBodyState extends State<LoginBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              
               const Gap(40),
               Align(
                 alignment: Alignment.center,
@@ -56,12 +56,9 @@ class _LoginBodyState extends State<LoginBody> {
                 child: LoginButton(
                   formKey: formKey,
                   loginModel: loginModel,
-                  changeLanguage: widget.changeLanguage,
                 ),
               ),
               const Gap(40),
-
-              
             ],
           ),
         ),
