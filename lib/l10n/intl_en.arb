@@ -75,6 +75,7 @@
     "error_new_product_is_not_added" : "Error: New Product is not added",
     "error_product_is_not_edited" : "Error: Product is not edited",
     "delete" : "Delete",
-    "product_desc" : "Product description"
+    "product_desc" : "Product description",
+    "login_first" : "Login first"
 
 }

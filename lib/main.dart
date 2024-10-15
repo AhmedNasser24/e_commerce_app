@@ -1,6 +1,8 @@
 import 'dart:developer';
 import 'package:e_commerce/core/utils/notification_service.dart';
+import 'package:e_commerce/features/customer/presentation/views/widgets/customer_home_view_bloc_provider.dart';
 import 'package:e_commerce/features/trader/presentation/manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
@@ -33,9 +35,7 @@ void main() async {
   );
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   Bloc.observer = SimpleBlocObserver();
-  // NotificationService().requestPermission();
-  // await NotificationService().getToken();
-  // await NotificationService().getAccessToken();
+
   if (kReleaseMode) {
     await SentryFlutter.init(
       (options) {
@@ -62,7 +62,7 @@ class MyAppState extends State<MyApp> {
   @override
   void initState() {
     NotificationService().foregroundNotificationHandling();
-
+    checkIfLogin();
     //--------------------------------------------------------------------------------------
     // those functions are in login view initstate because of context issue of navigation
     // NotificationService().setupInteractedMessageForBackgroundNotification(context);
@@ -71,14 +71,18 @@ class MyAppState extends State<MyApp> {
     super.initState();
   }
 
-  // Locale _locale = const Locale('en');
-  // void changeLanguage(Locale newLocale) {
-  //   setState(() {
-  //     _locale = newLocale;
-  //   });
-  // }
+  bool isLogin = false;
+  var auth = FirebaseAuth.instance;
+   void checkIfLogin() {
+    auth.authStateChanges().listen((User? user) {
+      if (user != null && mounted) {
+        setState(() {
+          isLogin = true;
+        });
+      }
+    });
+  }
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -105,18 +109,19 @@ class MyAppState extends State<MyApp> {
           create: (context) => CartCubit(),
         ),
       ],
-      child: const CustomMaterialApp(),
+      child:  CustomMaterialApp(isLogin: isLogin),
     );
   }
 }
 
 class CustomMaterialApp extends StatelessWidget {
-  const CustomMaterialApp({super.key});
-
+  const CustomMaterialApp({super.key, required this.isLogin});
+  final bool isLogin ;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LocalCubit, Locale>(
       builder: (context, state) {
+        isLogin ? BlocProvider.of<AuthCubit>(context).use
         return MaterialApp(
             locale: state,
             localizationsDelegates: const [
@@ -131,9 +136,7 @@ class CustomMaterialApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home:
-                const LoginView()
-            );
+            home: isLogin ? const CustomerHomeViewBlocProvider() : const LoginView());
       },
     );
   }

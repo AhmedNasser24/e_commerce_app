@@ -1,6 +1,8 @@
+import 'package:e_commerce/core/functions/show_snack_bar.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:e_commerce/features/customer/presentation/views/widgets/product_details_view_body_for_customer.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,40 +10,62 @@ import '../../../../constants.dart';
 import '../../../../core/models/product_item_model.dart';
 import '../../../../core/utils/app_style.dart';
 import '../../../../generated/l10n.dart';
+import '../../../auth/presentation/views/login_view.dart';
 import '../../../trader/presentation/views/widgets/back_arrow_button.dart';
+import 'widgets/customer_home_view_bloc_provider.dart';
 
 class ProductDetailsViewForCustomer extends StatelessWidget {
-  const ProductDetailsViewForCustomer({super.key, required this.productItemModel});
+  const ProductDetailsViewForCustomer(
+      {super.key, required this.productItemModel});
   final ProductItemModel productItemModel;
   @override
   Widget build(BuildContext context) {
-    bool isLoading = false ;
+    bool isLoading = false;
     return BlocConsumer<CartCubit, CartState>(
       listener: (context, state) {
-        if (state is CartLoading){
-          isLoading = true ;
-        }
-        else{
-          isLoading = false ;
+        if (state is CartLoading) {
+          isLoading = true;
+        } else {
+          isLoading = false;
         }
       },
       builder: (context, state) {
         return Scaffold(
           backgroundColor: kWhiteColor,
           body: SafeArea(
-            child: ProductDetailsViewBodyForCustomer(productItemModel: productItemModel),
+            child: ProductDetailsViewBodyForCustomer(
+                productItemModel: productItemModel),
           ),
-          appBar: AppBar(
-            title:  Text(productItemModel.name!, style: AppStyle.medium22),
-            centerTitle: true,
-            leading:  BackArrowButton(
-              dismissAction: isLoading ,
-            ),
-            backgroundColor: kWhiteColor,
-          ),
-          bottomNavigationBar: CustomBottomAppbar(productItemModel: productItemModel, isLoading: isLoading),
+          appBar: customAppBar(isLoading, context),
+          bottomNavigationBar: CustomBottomAppbar(
+              productItemModel: productItemModel, isLoading: isLoading),
         );
       },
+    );
+  }
+
+  AppBar customAppBar(bool isLoading, context) {
+    return AppBar(
+      title: Text(productItemModel.name!, style: AppStyle.medium22),
+      centerTitle: true,
+      leading: BackArrowButton(
+        dismissAction: isLoading,
+        onPressed: () {
+          if (FirebaseAuth.instance.currentUser == null) {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginView()),
+                (route) => false);
+          } else {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const CustomerHomeViewBlocProvider()),
+                (route) => false);
+          }
+        },
+      ),
+      backgroundColor: kWhiteColor,
     );
   }
 }
@@ -66,18 +90,40 @@ class CustomBottomAppbar extends StatelessWidget {
           Text("${productItemModel.price!} ${S.of(context).LE}",
               style: AppStyle.semiBold18.copyWith(color: kWhiteColor)),
           const Spacer(),
-          CustomButton(
-            isLoading: isLoading,
-            title: S.of(context).add_to_card,
-            style: AppStyle.medium14,
-            backGroundColor: kWhiteColor,
-            onTap: () {
-              BlocProvider.of<CartCubit>(context).addToCart(
-                  productItemModel: productItemModel, context: context);
-            },
-          ),
+          CustomAddToCartbuttonForProductDetailsViewForCustomer(
+              isLoading: isLoading, productItemModel: productItemModel),
         ],
       ),
+    );
+  }
+}
+
+class CustomAddToCartbuttonForProductDetailsViewForCustomer
+    extends StatelessWidget {
+  const CustomAddToCartbuttonForProductDetailsViewForCustomer({
+    super.key,
+    required this.isLoading,
+    required this.productItemModel,
+  });
+
+  final bool isLoading;
+  final ProductItemModel productItemModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomButton(
+      isLoading: isLoading,
+      title: S.of(context).add_to_card,
+      style: AppStyle.medium14,
+      backGroundColor: kWhiteColor,
+      onTap: () {
+        if (FirebaseAuth.instance.currentUser == null) {
+          showSnackBar(context, S.of(context).login_first);
+        } else {
+          BlocProvider.of<CartCubit>(context)
+              .addToCart(productItemModel: productItemModel, context: context);
+        }
+      },
     );
   }
 }

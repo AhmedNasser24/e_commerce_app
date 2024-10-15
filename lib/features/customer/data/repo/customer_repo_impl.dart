@@ -35,6 +35,9 @@ class CustomerRepoImpl extends CustomerRepo {
   Future <Either<void, Failure>> addToCart(
       {required CartItemModel cartItemModel}) async {
     try {
+      if (!await hasNetwork()) {
+        return right(const Failure("No Internet Connection"));
+      }
       await FirebaseServices().addToCart(cartItemModel: cartItemModel);
       return left(null);
     } on FirebaseException catch (e) {

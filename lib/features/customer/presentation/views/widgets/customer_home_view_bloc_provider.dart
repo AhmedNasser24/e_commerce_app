@@ -15,7 +15,7 @@ class CustomerHomeViewBlocProvider extends StatelessWidget {
         ),
         
       ],
-      child:  CustomerHomeView(),
+      child:  const CustomerHomeView(),
     );
   }
 }
