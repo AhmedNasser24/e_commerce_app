@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import '../../../../../core/widgets/message_widget.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../data/models/cart_item_model.dart';
 import 'cart_item.dart';
 import 'buy_product_bottom_app_bar.dart';
@@ -12,23 +14,25 @@ class CustomCartItemListView extends StatelessWidget {
   final List<CartItemModel> cartItemModelList;
   @override
   Widget build(BuildContext context) {
-    return Column(
-     children: [
-        Expanded(
-          child: ListView.builder(
-            itemCount: cartItemModelList.length,
-            itemBuilder: (context, i) {
-              return CartItem(
-                cartItemModel: cartItemModelList[i],
-              );
-            },
-          ),
-        ),
-        cartItemModelList.isEmpty
-            ? const Gap(0)
-            : BuyProductBottomAppBar(cartItemModelList: cartItemModelList),
-      ],
-    );
+    return cartItemModelList.isEmpty
+        ? MessageWidget(S.of(context).empty)
+        : Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: cartItemModelList.length,
+                  itemBuilder: (context, i) {
+                    return CartItem(
+                      cartItemModel: cartItemModelList[i],
+                    );
+                  },
+                ),
+              ),
+              cartItemModelList.isEmpty
+                  ? const Gap(0)
+                  : BuyProductBottomAppBar(
+                      cartItemModelList: cartItemModelList),
+            ],
+          );
   }
 }
-

@@ -54,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "electronics_category":
             MessageLookupByLibrary.simpleMessage("الكترونيات"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
+        "empty": MessageLookupByLibrary.simpleMessage("فارغ"),
         "english": MessageLookupByLibrary.simpleMessage("الانجليزية"),
         "error_new_product_is_not_added":
             MessageLookupByLibrary.simpleMessage("خطأ في اضافة المنتج الجديد"),

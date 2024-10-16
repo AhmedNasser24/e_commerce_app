@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/features/auth/data/models/register_model.dart';
 import 'package:e_commerce/features/auth/data/repos/auth_repo.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../constants.dart';
 // import '../../../../../generated/l10n.dart';
@@ -15,34 +14,39 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
   final AuthRepo _authRepoImpl = AuthRepoIml();
-  late UserInfoModel userInfo;
+   UserInfoModel? userInfo;
   // late String notificationToken ;
   Future<void> login(context, {required LoginModel loginModel}) async {
     emit(LoginLoading());
-    Either<void, Failure> response =
+    Either<void, Failure> loginResponse =
         await _authRepoImpl.login(loginModel: loginModel);
 
     // check if account kind is right for this email ?
     bool isValid = true;
-    late String kind ;
-    late Either<UserInfoModel?, Failure> userResponse;
+    late String userKind1, userKind2;
+    Either<UserInfoModel, Failure> userResponse =
+        await _authRepoImpl.getUserInfoModel();
     if (loginModel.accountKind == kTraderAccountKindEnglish ||
         loginModel.accountKind == kTraderAccountKindArabic) {
-      userResponse = await _authRepoImpl.gettraderInfoModel();
-      kind = "Trader" ;
+      userKind1 = kTrader;
     } else {
-      userResponse = await _authRepoImpl.getCustomerInfoModel();
-      kind = "Customer" ;
+      userKind1 = kCustomer;
     }
     userResponse.fold(
-      (userInfoModel) async{
-        if (userInfoModel == null) {
+      (userInfoModel) async {
+        if (userInfoModel.accountKind == kTraderAccountKindEnglish ||
+            userInfoModel.accountKind == kTraderAccountKindArabic) {
+          userKind2 = kTrader;
+        } else {
+          userKind2 = kCustomer;
+        }
+        if (userKind1 != userKind2) {
           isValid = false;
         } else {
           userInfo = userInfoModel;
-          if (userInfo.notificationToken == null && kind == "Customer" ) {
-            userInfo.notificationToken = await NotificationService().getToken() ;
-            await _authRepoImpl.setCustomerInfoIntoFireStore(userInfo);
+          if (userInfo!.notificationToken == null && userKind1 == kCustomer) {
+            userInfo!.notificationToken = await NotificationService().getToken();
+            await _authRepoImpl.setCustomerInfoIntoFireStore(userInfo!);
             // notificationToken = userInfo.notificationToken!;
           }
         }
@@ -51,9 +55,7 @@ class AuthCubit extends Cubit<AuthState> {
     );
     // --------------------------------------------------------------------
 
-    
-
-    response.fold(
+    loginResponse.fold(
       (ok) {
         // if (FirebaseAuth.instance.currentUser?.emailVerified ?? false) {
         if (isValid) {
@@ -90,7 +92,7 @@ class AuthCubit extends Cubit<AuthState> {
             userInfo.accountKind == kTraderAccountKindArabic) {
           response1 = await _authRepoImpl.setTraderInfoIntoFireStore(userInfo);
         } else {
-          userInfo.notificationToken =  await NotificationService().getToken();
+          userInfo.notificationToken = await NotificationService().getToken();
           response1 =
               await _authRepoImpl.setCustomerInfoIntoFireStore(userInfo);
         }
@@ -102,4 +104,6 @@ class AuthCubit extends Cubit<AuthState> {
       (failure) => emit(RegisterFailure(failure.errMessage)),
     );
   }
+
+  
 }

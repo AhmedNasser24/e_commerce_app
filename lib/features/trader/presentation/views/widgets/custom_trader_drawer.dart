@@ -14,7 +14,7 @@ class CustomTraderDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String traderName = BlocProvider.of<AuthCubit>(context).userInfo.name! ;
+    String? traderName = BlocProvider.of<AuthCubit>(context).userInfo?.name ?? "No Account";
     return  Drawer(
       backgroundColor : kOffWhiteColor,
       child: Column(
@@ -23,6 +23,7 @@ class CustomTraderDrawer extends StatelessWidget {
             child: Text(
               traderName,
               style: AppStyle.semiBold22,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
           const NewOrdersForTrader(),

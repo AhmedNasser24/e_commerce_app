@@ -59,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "electronics_category":
             MessageLookupByLibrary.simpleMessage("Electronics"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "empty": MessageLookupByLibrary.simpleMessage("Empty"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
         "error_new_product_is_not_added": MessageLookupByLibrary.simpleMessage(
             "Error: New Product is not added"),

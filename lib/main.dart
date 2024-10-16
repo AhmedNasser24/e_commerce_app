@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:dartz/dartz.dart' as dz;
 import 'package:e_commerce/core/utils/notification_service.dart';
 import 'package:e_commerce/features/customer/presentation/views/widgets/customer_home_view_bloc_provider.dart';
 import 'package:e_commerce/features/trader/presentation/manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
@@ -10,6 +11,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc_observer.dart';
+import 'constants.dart';
+import 'core/errors/failure.dart';
+import 'features/auth/data/models/register_model.dart';
+import 'features/auth/data/repos/auth_repo_iml.dart';
 import 'features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'features/auth/presentation/views/login_view.dart';
 // import 'features/notifications/presentation/views/notification_view.dart';
@@ -17,6 +22,7 @@ import 'features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'features/notifications/presentation/manager/notification_cubit/notification_cubit.dart';
 import 'features/trader/presentation/manager/fetch_new_orders_cubit/fetch_new_orders_cubit.dart';
 import 'features/trader/presentation/manager/image_picker_cubit/image_picker_cubit.dart';
+import 'features/trader/presentation/views/widgets/trader_home_view_bloc_provider.dart';
 import 'firebase_options.dart';
 import 'generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -72,15 +78,36 @@ class MyAppState extends State<MyApp> {
   }
 
   bool isLogin = false;
+  String? userKind ;
   var auth = FirebaseAuth.instance;
    void checkIfLogin() {
-    auth.authStateChanges().listen((User? user) {
+    auth.authStateChanges().listen((User? user) async{
       if (user != null && mounted) {
+        userKind = await getUserInfo();
         setState(() {
           isLogin = true;
         });
       }
     });
+  }
+  Future<String?> getUserInfo() async {
+    dz.Either<UserInfoModel, Failure> userResponse =
+        await AuthRepoIml().getUserInfoModel();
+    String? userKind;
+    userResponse.fold(
+      (userInfoModel) {
+        if (userInfoModel.accountKind == kTraderAccountKindEnglish ||
+            userInfoModel.accountKind == kTraderAccountKindArabic) {
+          userKind = kTrader;
+        } else {
+          userKind = kCustomer;
+        }
+      },
+      (fail) {
+        userKind = null;
+      },
+    );
+    return userKind;
   }
 
   @override
@@ -109,19 +136,19 @@ class MyAppState extends State<MyApp> {
           create: (context) => CartCubit(),
         ),
       ],
-      child:  CustomMaterialApp(isLogin: isLogin),
+      child:  CustomMaterialApp(isLogin: isLogin , userKind: userKind),
     );
   }
 }
 
 class CustomMaterialApp extends StatelessWidget {
-  const CustomMaterialApp({super.key, required this.isLogin});
+  const CustomMaterialApp({super.key, required this.isLogin, required this.userKind,  });
   final bool isLogin ;
+  final String? userKind ;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LocalCubit, Locale>(
       builder: (context, state) {
-        isLogin ? BlocProvider.of<AuthCubit>(context).use
         return MaterialApp(
             locale: state,
             localizationsDelegates: const [
@@ -136,7 +163,7 @@ class CustomMaterialApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home: isLogin ? const CustomerHomeViewBlocProvider() : const LoginView());
+            home: isLogin ? (userKind == kTrader ? const TraderHomeViewBlocProvider() : const CustomerHomeViewBlocProvider()) : const LoginView());
       },
     );
   }

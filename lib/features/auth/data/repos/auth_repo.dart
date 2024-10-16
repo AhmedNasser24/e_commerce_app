@@ -8,8 +8,7 @@ abstract class AuthRepo {
   Future<Either<void, Failure>> login({required LoginModel loginModel});
   Future<Either<void, Failure>> register( {required UserInfoModel registerModel});
   Future<Either<void, Failure>> signOut();
-  Future < Either < UserInfoModel? , Failure > > getCustomerInfoModel();
-  Future < Either < UserInfoModel? , Failure > > gettraderInfoModel();
+  Future < Either < UserInfoModel , Failure > > getUserInfoModel();
   Future < Either < void , Failure >> setTraderInfoIntoFireStore(UserInfoModel registerModel) ;
   Future < Either < void , Failure >> setCustomerInfoIntoFireStore(UserInfoModel registerModel) ;
 }

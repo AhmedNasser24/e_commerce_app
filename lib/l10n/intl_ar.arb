@@ -76,5 +76,6 @@
    "error_product_is_not_edited" : "خطاء في تعديل المنتج", 
    "delete" : "ازالة",
    "product_desc" : "وصف المنتج",
-   "login_first" : "الرجاء تسجيل الدخول اولا"
+   "login_first" : "الرجاء تسجيل الدخول اولا",
+   "empty" : "فارغ"
 }

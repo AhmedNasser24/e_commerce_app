@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/widgets/select_language.dart';
 import '../../../../../core/widgets/sign_out.dart';
+import '../../../../auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'customer_order.dart';
 
 class CustomerDrawer extends StatelessWidget {
@@ -10,19 +12,20 @@ class CustomerDrawer extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    // String customerName = BlocProvider.of<AuthCubit>(context).userInfo.name!;
-    return const Drawer(
+    String? customerName = BlocProvider.of<AuthCubit>(context).userInfo?.name ?? "No Account";
+    return  Drawer(
       child: Column(
         children: [
           DrawerHeader(
             child: Text(
-             "customerName",
+             customerName,
               style: AppStyle.semiBold22,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
-          MyOrders(),
-          SelectLanguage(),
-          SignOut(),
+          const MyOrders(),
+          const SelectLanguage(),
+          const SignOut(),
         ],
       ),
     );

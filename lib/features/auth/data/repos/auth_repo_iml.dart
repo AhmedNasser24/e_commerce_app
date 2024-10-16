@@ -61,24 +61,13 @@ class AuthRepoIml extends AuthRepo {
     }
   }
 
-  @override
-  Future<Either<UserInfoModel?, Failure>> getCustomerInfoModel() async {
-    try {
-      UserInfoModel? userInfoModel =
-          await FirebaseServices().getCustomerInfoModel();
-      return left(userInfoModel);
-    } on FirebaseException catch (e) {
-      return right(ServerFailure.fromFireBaseException(e));
-    } catch (e) {
-      return right(Failure("getCustomerInfoModel error : $e"));
-    }
-  }
+ 
 
   @override
-  Future<Either<UserInfoModel?, Failure>> gettraderInfoModel() async {
+  Future<Either<UserInfoModel, Failure>> getUserInfoModel() async {
     try {
-      UserInfoModel? userInfoModel =
-          await FirebaseServices().getTraderInfoModel();
+      UserInfoModel userInfoModel =
+          await FirebaseServices().getUserInfoModel();
       return left(userInfoModel);
     } on FirebaseException catch (e) {
       return right(ServerFailure.fromFireBaseException(e));

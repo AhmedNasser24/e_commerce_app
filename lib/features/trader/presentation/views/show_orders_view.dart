@@ -33,10 +33,11 @@ class ShowOrdersView extends StatelessWidget {
       elevation: 0,
       child: Row(
         children: [
-          Text("${__getTotalPrice(buyProductModel.productItemModelList)} ${S.of(context).LE}",
+          Text(
+              "${__getTotalPrice(buyProductModel.productItemModelList)} ${S.of(context).LE}",
               style: AppStyle.semiBold18.copyWith(color: kWhiteColor)),
           const Spacer(),
-          IsDeliveredWidget(buyProductModel: buyProductModel) ,
+          IsDeliveredWidget(buyProductModel: buyProductModel),
         ],
       ),
     );
@@ -45,8 +46,11 @@ class ShowOrdersView extends StatelessWidget {
   AppBar showOrdersViewAppBar() {
     return AppBar(
       leading: const BackArrowButton(),
-      title:
-          Text(buyProductModel.userInfoModel.name!, style: AppStyle.medium22),
+      title: Text(
+        buyProductModel.userInfoModel.name!,
+        style: AppStyle.medium22,
+        overflow: TextOverflow.ellipsis,
+      ),
       centerTitle: true,
       actions: [
         WhatsAppIconButton(

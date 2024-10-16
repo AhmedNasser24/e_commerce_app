@@ -22,33 +22,35 @@ class TraderProductItemListView extends StatelessWidget {
         if (state is FetchCategoryProductsForTraderSuccess) {
           List<ProductItemModel> productItemModelList =
               state.productItemModelList;
-          return productItemModelList.isNotEmpty ? Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: GridView.builder(
-                  gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 0.62,
-                    crossAxisSpacing: 15,
-                    mainAxisSpacing: 12,
-                  ),
-                  // physics: const BouncingScrollPhysics(),
-                  itemCount: state.productItemModelList.length,
-                  itemBuilder: (context, i) {
-                    return GestureDetector(
-                      onTap : () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProductDetailsViewForTrader(productItemModel: productItemModelList[i]),
+          return productItemModelList.isEmpty
+              ? MessageWidget(S.of(context).empty)
+              : Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.62,
+                      crossAxisSpacing: 15,
+                      mainAxisSpacing: 12,
+                    ),
+                    // physics: const BouncingScrollPhysics(),
+                    itemCount: state.productItemModelList.length,
+                    itemBuilder: (context, i) {
+                      return GestureDetector(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProductDetailsViewForTrader(
+                                productItemModel: productItemModelList[i]),
+                          ),
                         ),
-                      ),
-                      child: TraderProductItem(
-                          productItemModel: productItemModelList[i]),
-                    );
-                  },
-                ),
-              )
-              : MessageWidget(S.of(context).no_product_found);
+                        child: TraderProductItem(
+                            productItemModel: productItemModelList[i]),
+                      );
+                    },
+                  ),
+                );
         } else if (state is FetchCategoryProductsForTraderFailure) {
           // return Center(child: Text(state.errMessage));
           return ErrorMessageWidget(errMessage: state.errMessage);

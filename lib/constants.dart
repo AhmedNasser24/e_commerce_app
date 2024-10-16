@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-
+const String kTrader = "trader" ;
+const String kCustomer = "customer" ;
 const String kUsersCollection = "Users" ;
 const String kShopCollection = "Shop" ;
-const String kCustomerCollection = "Customer" ;
-const String kTraderCollection = "Trader" ;
-const String kCustomerInfoDoc = "customer_info" ;
-const String kTraderInfoDoc = "trader_info" ;
+const String kUserCollection = "user" ;
+const String kUserInfoDoc = "user_info" ;
 const String kName = "name" ;
 const String kEmail = "email" ;
 const String kPassword = "password" ;

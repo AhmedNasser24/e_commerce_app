@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -133,7 +132,7 @@ class FirebaseServices {
     await FirebaseFirestore.instance
         .collection(kUsersCollection)
         .doc(userId)
-        .collection(kCustomerCollection)
+        .collection(kUserCollection)
         .doc(kCartDocOrCollection)
         .collection(kCartDocOrCollection)
         .doc(orderId)
@@ -147,7 +146,7 @@ class FirebaseServices {
         .instance
         .collection(kUsersCollection)
         .doc(userId)
-        .collection(kCustomerCollection)
+        .collection(kUserCollection)
         .doc(kCartDocOrCollection)
         .collection(kCartDocOrCollection)
         .orderBy(kAddToCartDateKey, descending: true)
@@ -165,7 +164,7 @@ class FirebaseServices {
     await FirebaseFirestore.instance
         .collection(kUsersCollection)
         .doc(userId)
-        .collection(kCustomerCollection)
+        .collection(kUserCollection)
         .doc(kCartDocOrCollection)
         .collection(kCartDocOrCollection)
         .doc(orderId)
@@ -191,7 +190,7 @@ class FirebaseServices {
     var response = await FirebaseFirestore.instance
         .collection(kUsersCollection)
         .doc(traderId)
-        .collection(kTraderCollection)
+        .collection(kUserCollection)
         .doc(kTraderNewOrderCollectionAndDoc)
         .collection(kTraderNewOrderCollectionAndDoc)
         .orderBy(kBuyingDateKey, descending: true)
@@ -212,7 +211,7 @@ class FirebaseServices {
     await FirebaseFirestore.instance
         .collection(kUsersCollection)
         .doc(traderId)
-        .collection(kTraderCollection)
+        .collection(kUserCollection)
         .doc(kTraderNewOrderCollectionAndDoc)
         .collection(kTraderNewOrderCollectionAndDoc)
         .doc(orderId)
@@ -232,7 +231,7 @@ class FirebaseServices {
     await FirebaseFirestore.instance
         .collection(kUsersCollection)
         .doc(traderId)
-        .collection(kTraderCollection)
+        .collection(kUserCollection)
         .doc(kTraderNewOrderCollectionAndDoc)
         .collection(kTraderNewOrderCollectionAndDoc)
         .doc(orderId)
@@ -242,7 +241,7 @@ class FirebaseServices {
   // ignore: unused_element
   Future<void> __sendOrderToTrader(
       {required List<CartItemModel> cartItemModelList}) async {
-    UserInfoModel? userInfo = await getCustomerInfoModel();
+    UserInfoModel? userInfo = await getUserInfoModel();
 
     List<ProductItemModel> productItemModelList = [];
     for (var cartItemModel in cartItemModelList) {
@@ -251,7 +250,7 @@ class FirebaseServices {
     String customerId = FirebaseAuth.instance.currentUser!.uid;
     BuyProductModel buyProductModel = BuyProductModel(
       productItemModelList: productItemModelList,
-      userInfoModel: userInfo!,
+      userInfoModel: userInfo,
       orderId: Random().nextDouble().toString(),
       buyingDate: DateTime.now().toString(),
       customerId: customerId ,
@@ -266,38 +265,24 @@ class FirebaseServices {
     await FirebaseFirestore.instance
         .collection(kUsersCollection)
         .doc(traderId)
-        .collection(kTraderCollection)
+        .collection(kUserCollection)
         .doc(kTraderNewOrderCollectionAndDoc)
         .collection(kTraderNewOrderCollectionAndDoc)
         .doc(orderId)
         .set(buyProductModel.toJson());
   }
 
-  Future<UserInfoModel?> getCustomerInfoModel() async {
-    String userId = FirebaseAuth.instance.currentUser!.uid;
-    var response = await FirebaseFirestore.instance
-        .collection(kUsersCollection)
-        .doc(userId)
-        .collection(kCustomerCollection)
-        .doc(kCustomerInfoDoc)
-        .get();
-    if (response.data() == null) {
-      return null;
-    }
-    return UserInfoModel.fromJson(response.data());
-  }
 
-  Future<UserInfoModel?> getTraderInfoModel() async {
+
+  Future<UserInfoModel> getUserInfoModel() async {
     String userId = FirebaseAuth.instance.currentUser!.uid;
     var response = await FirebaseFirestore.instance
         .collection(kUsersCollection)
         .doc(userId)
-        .collection(kTraderCollection)
-        .doc(kTraderInfoDoc)
+        .collection(kUserCollection)
+        .doc(kUserInfoDoc)
         .get();
-    if (response.data() == null) {
-      return null;
-    }
+    
     return UserInfoModel.fromJson(response.data());
   }
 
@@ -306,8 +291,8 @@ class FirebaseServices {
     await FirebaseFirestore.instance
         .collection(kUsersCollection)
         .doc(traderUidDoc)
-        .collection(kTraderCollection)
-        .doc(kTraderInfoDoc)
+        .collection(kUserCollection)
+        .doc(kUserInfoDoc)
         .set(registerModel.toJson());
   }
 
@@ -316,8 +301,8 @@ class FirebaseServices {
     await FirebaseFirestore.instance
         .collection(kUsersCollection)
         .doc(customerUidDoc)
-        .collection(kCustomerCollection)
-        .doc(kCustomerInfoDoc)
+        .collection(kUserCollection)
+        .doc(kUserInfoDoc)
         .set(registerModel.toJson());
   }
 
@@ -328,7 +313,7 @@ class FirebaseServices {
         .instance
         .collection(kUsersCollection)
         .doc(userId)
-        .collection(kCustomerCollection)
+        .collection(kUserCollection)
         .doc(kMyOrdersDocOrCollection)
         .collection(kMyOrdersDocOrCollection)
         .orderBy(kMyOrderDate, descending: true)
@@ -352,7 +337,7 @@ class FirebaseServices {
       await FirebaseFirestore.instance
           .collection(kUsersCollection)
           .doc(userId)
-          .collection(kCustomerCollection)
+          .collection(kUserCollection)
           .doc(kMyOrdersDocOrCollection)
           .collection(kMyOrdersDocOrCollection)
           .doc(productId)
@@ -368,7 +353,7 @@ class FirebaseServices {
       await FirebaseFirestore.instance
           .collection(kUsersCollection)
           .doc(userId)
-          .collection(kCustomerCollection)
+          .collection(kUserCollection)
           .doc(kMyOrdersDocOrCollection)
           .collection(kMyOrdersDocOrCollection)
           .doc(productId)
