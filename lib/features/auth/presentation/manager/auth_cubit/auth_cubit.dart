@@ -105,5 +105,13 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  
+  Future<void> getUserInfo()async{
+    Either<UserInfoModel, Failure> response = await _authRepoImpl.getUserInfoModel();
+    response.fold(
+      (userInfoModel) => {
+        userInfo = userInfoModel
+      },
+      (failure) => {},
+    );
+  }
 }

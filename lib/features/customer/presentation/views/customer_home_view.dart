@@ -20,7 +20,7 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
       key: scaffoldKey,
       backgroundColor: kOffWhiteColor,
       body: const CustomerHomeBody(),
-      drawer: SafeArea(child: CustomerDrawer()),
+      drawer: const SafeArea(child: CustomerDrawer()),
       appBar: customerAppBar(context, scaffoldKey),
     );
   }

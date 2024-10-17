@@ -15,9 +15,13 @@ import '../../../trader/presentation/views/widgets/back_arrow_button.dart';
 import 'widgets/customer_home_view_bloc_provider.dart';
 
 class ProductDetailsViewForCustomer extends StatelessWidget {
-  const ProductDetailsViewForCustomer(
-      {super.key, required this.productItemModel});
+  const ProductDetailsViewForCustomer({
+    super.key,
+    required this.productItemModel,
+    this.navigateFromNotification = false,
+  });
   final ProductItemModel productItemModel;
+  final bool navigateFromNotification;
   @override
   Widget build(BuildContext context) {
     bool isLoading = false;
@@ -36,7 +40,7 @@ class ProductDetailsViewForCustomer extends StatelessWidget {
             child: ProductDetailsViewBodyForCustomer(
                 productItemModel: productItemModel),
           ),
-          appBar: customAppBar(isLoading, context),
+          appBar: customAppBar(isLoading, context, navigateFromNotification),
           bottomNavigationBar: CustomBottomAppbar(
               productItemModel: productItemModel, isLoading: isLoading),
         );
@@ -44,7 +48,7 @@ class ProductDetailsViewForCustomer extends StatelessWidget {
     );
   }
 
-  AppBar customAppBar(bool isLoading, context) {
+  AppBar customAppBar(bool isLoading, context, bool navigateFromNotification) {
     return AppBar(
       title: Text(productItemModel.name!, style: AppStyle.medium22),
       centerTitle: true,
@@ -57,11 +61,16 @@ class ProductDetailsViewForCustomer extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const LoginView()),
                 (route) => false);
           } else {
-            Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const CustomerHomeViewBlocProvider()),
-                (route) => false);
+            if (navigateFromNotification == false) {
+              Navigator.pop(context);
+            } else {
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const CustomerHomeViewBlocProvider()),
+                  (route) => false);
+            }
           }
         },
       ),

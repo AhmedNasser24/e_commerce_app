@@ -172,27 +172,36 @@ class NotificationService {
       ProductItemModel productItemModel =
           ProductItemModel.fromJson(initialMessage.data);
       Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  ProductDetailsViewForCustomer(productItemModel: productItemModel)));
+        context,
+        MaterialPageRoute(
+          builder: (context) => ProductDetailsViewForCustomer(
+            productItemModel: productItemModel,
+            navigateFromNotification: true,
+          ),
+        ),
+      );
     }
   }
 
   void setupInteractedMessageForBackgroundNotification(BuildContext context) {
     // Also handle any interaction when the app is in the background via a
     // Stream listener
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      ProductItemModel productItemModel =
-          ProductItemModel.fromJson(message.data);
-      log("onMessageOpenedApp: test click");
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) =>
-                ProductDetailsViewForCustomer(productItemModel: productItemModel)),
-      );
-    });
+    FirebaseMessaging.onMessageOpenedApp.listen(
+      (RemoteMessage message) {
+        ProductItemModel productItemModel =
+            ProductItemModel.fromJson(message.data);
+        log("onMessageOpenedApp: test click");
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductDetailsViewForCustomer(
+              productItemModel: productItemModel,
+              navigateFromNotification: true,
+            ),
+          ),
+        );
+      },
+    );
   }
 
   // used to send message to many devices
