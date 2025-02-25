@@ -19,9 +19,7 @@ class _LoginViewState extends State<LoginView> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   void initState() {
-    NotificationService()
-        .setupInteractedMessageForBackgroundNotification(context);
-    NotificationService().setupInteractedMessageForTerminatedState(context);
+    
     NotificationService().subscribeToTopic();
     super.initState();
   }

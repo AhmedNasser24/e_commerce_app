@@ -141,10 +141,24 @@ class MyAppState extends State<MyApp> {
   }
 }
 
-class CustomMaterialApp extends StatelessWidget {
+class CustomMaterialApp extends StatefulWidget {
   const CustomMaterialApp({super.key, required this.isLogin, required this.userKind,  });
   final bool isLogin ;
   final String? userKind ;
+
+  @override
+  State<CustomMaterialApp> createState() => _CustomMaterialAppState();
+}
+
+class _CustomMaterialAppState extends State<CustomMaterialApp> {
+
+  @override
+  void initState() {
+    NotificationService()
+        .setupInteractedMessageForBackgroundNotification(context);
+    NotificationService().setupInteractedMessageForTerminatedState(context);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LocalCubit, Locale>(
@@ -163,7 +177,7 @@ class CustomMaterialApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home: isLogin ? (userKind == kTrader ? const TraderHomeViewBlocProvider() : const CustomerHomeViewBlocProvider()) : const LoginView());
+            home: widget.isLogin ? (widget.userKind == kTrader ? const TraderHomeViewBlocProvider() : const CustomerHomeViewBlocProvider()) : const LoginView());
       },
     );
   }

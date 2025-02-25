@@ -15,8 +15,8 @@ class ImagePickerService {
     file = File(pickedImage!.path);
     int rand = Random().nextInt(10000000);
     String imageName = "$rand$basename(pickedImage.path)";
-    var storage = FirebaseStorage.instance.ref('image').child(imageName);
-    await storage.putFile(file);
+    var storage = FirebaseStorage.instance.ref('image').child(imageName);   // storage = image reference
+    await storage.putFile(file); 
     String imageUrl = await storage.getDownloadURL();
     return imageUrl;
   }
