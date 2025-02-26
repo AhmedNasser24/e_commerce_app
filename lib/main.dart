@@ -20,6 +20,7 @@ import 'features/auth/presentation/views/login_view.dart';
 // import 'features/notifications/presentation/views/notification_view.dart';
 import 'features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'features/notifications/presentation/manager/notification_cubit/notification_cubit.dart';
+import 'features/splash/presentation/views/splash_view.dart';
 import 'features/trader/presentation/manager/fetch_new_orders_cubit/fetch_new_orders_cubit.dart';
 import 'features/trader/presentation/manager/image_picker_cubit/image_picker_cubit.dart';
 import 'features/trader/presentation/views/widgets/trader_home_view_bloc_provider.dart';
@@ -177,7 +178,8 @@ class _CustomMaterialAppState extends State<CustomMaterialApp> {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home: widget.isLogin ? (widget.userKind == kTrader ? const TraderHomeViewBlocProvider() : const CustomerHomeViewBlocProvider()) : const LoginView());
+            home: const SplashView());  
+            // widget.isLogin ? (widget.userKind == kTrader ? const TraderHomeViewBlocProvider() : const CustomerHomeViewBlocProvider()) : const LoginView());
       },
     );
   }
