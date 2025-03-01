@@ -1,7 +1,6 @@
 import 'dart:developer';
 import 'package:dartz/dartz.dart' as dz;
 import 'package:e_commerce/core/utils/notification_service.dart';
-import 'package:e_commerce/features/customer/presentation/views/widgets/customer_home_view_bloc_provider.dart';
 import 'package:e_commerce/features/trader/presentation/manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -13,17 +12,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc_observer.dart';
 import 'constants.dart';
 import 'core/errors/failure.dart';
+import 'core/utils/shared_preference_singleton.dart';
 import 'features/auth/data/models/register_model.dart';
 import 'features/auth/data/repos/auth_repo_iml.dart';
 import 'features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
-import 'features/auth/presentation/views/login_view.dart';
 // import 'features/notifications/presentation/views/notification_view.dart';
 import 'features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'features/notifications/presentation/manager/notification_cubit/notification_cubit.dart';
 import 'features/splash/presentation/views/splash_view.dart';
 import 'features/trader/presentation/manager/fetch_new_orders_cubit/fetch_new_orders_cubit.dart';
 import 'features/trader/presentation/manager/image_picker_cubit/image_picker_cubit.dart';
-import 'features/trader/presentation/views/widgets/trader_home_view_bloc_provider.dart';
 import 'firebase_options.dart';
 import 'generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -42,7 +40,7 @@ void main() async {
   );
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   Bloc.observer = SimpleBlocObserver();
-
+  SharedPreferenceSingleton.init();
   if (kReleaseMode) {
     await SentryFlutter.init(
       (options) {
@@ -79,10 +77,10 @@ class MyAppState extends State<MyApp> {
   }
 
   bool isLogin = false;
-  String? userKind ;
+  String? userKind;
   var auth = FirebaseAuth.instance;
-   void checkIfLogin() {
-    auth.authStateChanges().listen((User? user) async{
+  void checkIfLogin() {
+    auth.authStateChanges().listen((User? user) async {
       if (user != null && mounted) {
         userKind = await getUserInfo();
         setState(() {
@@ -91,6 +89,7 @@ class MyAppState extends State<MyApp> {
       }
     });
   }
+
   Future<String?> getUserInfo() async {
     dz.Either<UserInfoModel, Failure> userResponse =
         await AuthRepoIml().getUserInfoModel();
@@ -137,22 +136,25 @@ class MyAppState extends State<MyApp> {
           create: (context) => CartCubit(),
         ),
       ],
-      child:  CustomMaterialApp(isLogin: isLogin , userKind: userKind),
+      child: CustomMaterialApp(isLogin: isLogin, userKind: userKind),
     );
   }
 }
 
 class CustomMaterialApp extends StatefulWidget {
-  const CustomMaterialApp({super.key, required this.isLogin, required this.userKind,  });
-  final bool isLogin ;
-  final String? userKind ;
+  const CustomMaterialApp({
+    super.key,
+    required this.isLogin,
+    required this.userKind,
+  });
+  final bool isLogin;
+  final String? userKind;
 
   @override
   State<CustomMaterialApp> createState() => _CustomMaterialAppState();
 }
 
 class _CustomMaterialAppState extends State<CustomMaterialApp> {
-
   @override
   void initState() {
     NotificationService()
@@ -160,6 +162,7 @@ class _CustomMaterialAppState extends State<CustomMaterialApp> {
     NotificationService().setupInteractedMessageForTerminatedState(context);
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LocalCubit, Locale>(
@@ -178,8 +181,11 @@ class _CustomMaterialAppState extends State<CustomMaterialApp> {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home: const SplashView());  
-            // widget.isLogin ? (widget.userKind == kTrader ? const TraderHomeViewBlocProvider() : const CustomerHomeViewBlocProvider()) : const LoginView());
+            home: SplashView(
+              isLogin: widget.isLogin,
+              userKind: widget.userKind,
+            ));
+        // widget.isLogin ? (widget.userKind == kTrader ? const TraderHomeViewBlocProvider() : const CustomerHomeViewBlocProvider()) : const LoginView());
       },
     );
   }
