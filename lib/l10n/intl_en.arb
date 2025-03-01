@@ -77,6 +77,9 @@
     "delete" : "Delete",
     "product_desc" : "Product description",
     "login_first" : "Login first",
-    "empty" : "Empty"
+    "empty" : "Empty",
+    "welcome" : "Welcome to the E-Commerce",
+    "subtitle1" : "In this app , Traders can upload their products with there prefered details and prices to sell them",
+    "subtitle2" : "Customers can buy products from different categories , add them to their cart , view their orders and confirm them after receiving them"
 
 }
