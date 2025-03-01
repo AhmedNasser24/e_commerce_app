@@ -3,7 +3,6 @@ import 'package:gap/gap.dart';
 
 import '../../../../../core/utils/app_images.dart';
 import '../../../../../core/utils/app_style.dart';
-import '../../../../../generated/l10n.dart';
 
 class PageView2 extends StatelessWidget {
   const PageView2({
@@ -14,19 +13,21 @@ class PageView2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          constraints: const BoxConstraints(maxWidth: 250),
-          child: Image.asset(Assets.imagesOnboarding2),
+        const Gap(20),
+        SizedBox(
+          height: 250,
+          width: 250,
+          child: Image.asset(Assets.imagesOnboarding2 , fit: BoxFit.fill),
         ),
         const Gap(50),
-         Text(
-          S.of(context).we_will_contact_you_within_24_hours ,
+         const Text(
+         "Welcome to the E-Commerce" ,
           style: AppStyle.bold20,
           textAlign: TextAlign.center,
         ),
         const Gap(20),
-         Text(
-          S.of(context).shoes_category,
+         const Text(
+         "Customers can buy products from different categories , add them to their cart , view their orders and confirm them after receiving them",
           style: AppStyle.regular14,
           textAlign: TextAlign.center,
         ),
