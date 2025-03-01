@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+const String kIsONBoardingVisited = "is_onboarding_visited" ;
 const String kTrader = "trader" ;
 const String kCustomer = "customer" ;
 const String kUsersCollection = "Users" ;
