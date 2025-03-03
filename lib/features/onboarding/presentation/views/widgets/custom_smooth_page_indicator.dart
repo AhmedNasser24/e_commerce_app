@@ -7,11 +7,9 @@ class CustomSmoothPageIndicator extends StatelessWidget {
   const CustomSmoothPageIndicator({
     super.key,
     required this.pageController,
-    required this.currentPage,
   }) ;
 
   final PageController pageController;
-  final int currentPage;
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +17,13 @@ class CustomSmoothPageIndicator extends StatelessWidget {
       controller: pageController,
       count: 2,
       axisDirection: Axis.horizontal,
-      effect: SlideEffect(
+      effect: const SlideEffect(
         spacing: 8.0,
         radius: 5,
         dotHeight: 10,
         dotWidth: 10,
         paintStyle: PaintingStyle.fill,
-        dotColor: currentPage == 1 ? kPurpleColor : Colors.grey,
+        dotColor:  Colors.grey,
         activeDotColor: kPurpleColor,
       ),
     );

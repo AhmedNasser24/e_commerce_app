@@ -6,6 +6,7 @@ import '../../../../../core/utils/app_style.dart';
 
 class PageView2 extends StatelessWidget {
   const PageView2({
+    
     super.key,
   });
 
