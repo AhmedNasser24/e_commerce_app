@@ -1,6 +1,7 @@
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/utils/app_images.dart';
 import 'package:e_commerce/core/utils/app_style.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
@@ -29,17 +30,21 @@ class _SplashViewState extends State<SplashView> {
     ]);
   }
 
-  
-
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 5), () {
       if (SharedPreferenceSingleton.getbool(kIsONBoardingVisited)) {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => widget.isLogin ? (widget.userKind == kTrader ? const TraderHomeViewBlocProvider() : const CustomerHomeViewBlocProvider()) : const LoginView()));
+            context,
+            MaterialPageRoute(
+                builder: (context) => widget.isLogin
+                    ? (widget.userKind == kTrader
+                        ? const TraderHomeViewBlocProvider()
+                        : const CustomerHomeViewBlocProvider())
+                    : const LoginView()));
       } else {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => const OnboardingView()));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const OnboardingView()));
       }
     });
     super.initState();
@@ -63,9 +68,8 @@ class _SplashViewState extends State<SplashView> {
                   constraints: const BoxConstraints(maxWidth: 300),
                   child: Image.asset(Assets.imagesAppLogo)),
               const Gap(20),
-              const Text("E Commmerce ", style: AppStyle.bold28),
-              const Text("for both Trader & Customer",
-                  style: AppStyle.regular14),
+              Text("welcome".tr(), style: AppStyle.bold28),
+              Text("email".tr(), style: AppStyle.regular14),
               const Spacer(
                 flex: 2,
               ),

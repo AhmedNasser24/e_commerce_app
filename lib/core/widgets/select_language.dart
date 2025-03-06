@@ -37,7 +37,7 @@ class SelectLanguage extends StatelessWidget {
                 title: Text(S.of(context).arabic, style: AppStyle.semiBold14),
                 onTap: () {
                   BlocProvider.of<LocalCubit>(context)
-                      .changeLanguage(const Locale('ar'));
+                      .changeLanguage(context , const Locale('ar'));
                   Navigator.pop(context);
                   Navigator.pop(context);
                 },
@@ -46,7 +46,7 @@ class SelectLanguage extends StatelessWidget {
                 title: Text(S.of(context).english, style: AppStyle.semiBold14),
                 onTap: () {
                   BlocProvider.of<LocalCubit>(context)
-                      .changeLanguage(const Locale('en'));
+                      .changeLanguage(context , const Locale('en'));
 
                   Navigator.pop(context);
                   Navigator.pop(context);

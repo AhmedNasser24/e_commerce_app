@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart' as dz;
 import 'package:e_commerce/core/utils/notification_service.dart';
 import 'package:e_commerce/features/trader/presentation/manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
@@ -23,8 +24,6 @@ import 'features/splash/presentation/views/splash_view.dart';
 import 'features/trader/presentation/manager/fetch_new_orders_cubit/fetch_new_orders_cubit.dart';
 import 'features/trader/presentation/manager/image_picker_cubit/image_picker_cubit.dart';
 import 'firebase_options.dart';
-import 'generated/l10n.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'local_cubit.dart';
@@ -41,6 +40,7 @@ void main() async {
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   Bloc.observer = SimpleBlocObserver();
   SharedPreferenceSingleton.init();
+  await EasyLocalization.ensureInitialized();
   if (kReleaseMode) {
     await SentryFlutter.init(
       (options) {
@@ -49,10 +49,24 @@ void main() async {
 
         options.tracesSampleRate = 0.01;
       },
-      appRunner: () => runApp(const MyApp()),
+      appRunner: () => runApp(
+        EasyLocalization(
+            supportedLocales: [Locale('en'), Locale('ar')],
+            path:
+                'assets/translations', // <-- change the path of the translation files
+            fallbackLocale: Locale('ar'),
+            child: MyApp()),
+      ),
     );
   } else {
-    runApp(const MyApp());
+    runApp(
+      EasyLocalization(
+          supportedLocales: [Locale('en'), Locale('ar')],
+          path:
+              'assets/translations', // <-- change the path of the translation files
+          fallbackLocale: Locale('ar'),
+          child: MyApp()),
+    );
   }
 }
 
@@ -168,14 +182,17 @@ class _CustomMaterialAppState extends State<CustomMaterialApp> {
     return BlocBuilder<LocalCubit, Locale>(
       builder: (context, state) {
         return MaterialApp(
-            locale: state,
-            localizationsDelegates: const [
-              S.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            // locale: state,
+            // localizationsDelegates: const [
+            //   S.delegate,
+            //   GlobalMaterialLocalizations.delegate,
+            //   GlobalWidgetsLocalizations.delegate,
+            //   GlobalCupertinoLocalizations.delegate,
+            // ],
+            // supportedLocales: S.delegate.supportedLocales,
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
