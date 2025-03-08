@@ -1,9 +1,10 @@
 import 'package:e_commerce/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../../../../../core/widgets/custom_button.dart';
-import '../../../../../generated/l10n.dart';
 import '../../../../../core/functions/show_snack_bar.dart';
+import '../../../../../generated/locale_keys.g.dart';
 import '../../../data/models/register_model.dart';
 
 class RegisterButton extends StatelessWidget {
@@ -34,7 +35,7 @@ class RegisterButton extends StatelessWidget {
       },
       builder: (context, state) {
         return CustomButton(
-          title: S.of(context).register,
+          title: LocaleKeys.register.tr(),
           isLoading: isLoading,
           horizontalMargin: 40,
           onTap: () {

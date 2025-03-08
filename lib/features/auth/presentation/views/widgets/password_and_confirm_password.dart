@@ -1,9 +1,10 @@
+import 'package:e_commerce/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
-import '../../../../../generated/l10n.dart';
 import '../../../data/models/register_model.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 
@@ -31,7 +32,7 @@ class _PasswordAndConfirmPasswordState
       children: [
         CustomTextFormField(
           obscureText: isObscure1,
-          hintText: S.of(context).password,
+          hintText: LocaleKeys.password.tr(),
           onChanged: (value) => password = value,
           suffixIcon: IconButton(
             onPressed: () {
@@ -39,6 +40,7 @@ class _PasswordAndConfirmPasswordState
                 isObscure1 = !isObscure1;
               });
             },
+
             icon: Icon(
               isObscure1 ? Icons.visibility_off : Icons.visibility,
               color: kPurpleColor,
@@ -46,17 +48,17 @@ class _PasswordAndConfirmPasswordState
           ),
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return S.of(context).required_field;
+              return LocaleKeys.required_field.tr();
             }
             if (confirmPassword != password) {
-              return S.of(context).passwords_do_not_match;
+              return LocaleKeys.passwords_do_not_match.tr();
             }
             widget.registerModel.password = value;
             return null;
           },
         ),
         const Gap(10),
-        Text(S.of(context).passwordConfirm, style: AppStyle.medium14),
+        Text(LocaleKeys.passwordConfirm.tr()  , style: AppStyle.medium14),
         const Gap(5),
         CustomTextFormField(
           suffixIcon: IconButton(
@@ -71,14 +73,14 @@ class _PasswordAndConfirmPasswordState
             ),
           ),
           obscureText: isObscure2,
-          hintText: S.of(context).passwordConfirm,
+          hintText: LocaleKeys.passwordConfirm.tr(),
           onChanged: (value) => confirmPassword = value,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return S.of(context).required_field;
+              return LocaleKeys.required_field.tr();
             }
             if (confirmPassword != password) {
-              return S.of(context).passwords_do_not_match;
+              return LocaleKeys.passwords_do_not_match.tr();
             }
             return null;
           },
