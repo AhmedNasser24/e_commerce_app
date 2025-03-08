@@ -1,7 +1,8 @@
 import 'package:e_commerce/constants.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/app_style.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../generated/locale_keys.g.dart';
 import '../../../data/models/login_model.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 
@@ -21,7 +22,7 @@ class _AccountKindForLoginState extends State<AccountKindForLogin> {
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
-      hintText: S.of(context).account_kind,
+      hintText: LocaleKeys.account_kind.tr(),
       onTap: () {
         _showAccountKindDialog(context);
       },
@@ -30,8 +31,8 @@ class _AccountKindForLoginState extends State<AccountKindForLogin> {
       suffixIcon: const Icon(Icons.arrow_drop_down, color: kPurpleColor),
       // suffix: _showPopUpMenu(),
       validator: (_) {
-        if (selectedAccountKind == '') {
-          return S.of(context).required_field;
+        if (selectedAccountKind.isEmpty) {
+          return LocaleKeys.required_field.tr(); 
         }
         widget.loginModel.accountKind = selectedAccountKind;
         return null;
@@ -47,26 +48,26 @@ class _AccountKindForLoginState extends State<AccountKindForLogin> {
         return AlertDialog(
           title: Align(
             alignment: Alignment.topCenter,
-            child: Text(S.of(context).account_kind , style : AppStyle.bold18)),
+            child: Text(LocaleKeys.account_kind.tr() , style : AppStyle.bold18)),
           
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                title: Text(S.of(context).trader, style : AppStyle.medium14),
+                title: Text(LocaleKeys.trader.tr(), style : AppStyle.medium14),
                 
                 onTap: () {
                   setState(() {
-                    selectedAccountKind = S.of(context).trader;
+                    selectedAccountKind = LocaleKeys.trader.tr();
                   });
                   Navigator.pop(context);
                 },
               ),
               ListTile(
-                title: Text(S.of(context).customer, style : AppStyle.medium14),
+                title: Text(LocaleKeys.customer.tr(), style : AppStyle.medium14),
                 onTap: () {
                   setState(() {
-                    selectedAccountKind = S.of(context).customer;
+                    selectedAccountKind = LocaleKeys.customer.tr() ;
                   });
                   Navigator.pop(context);
                 },
