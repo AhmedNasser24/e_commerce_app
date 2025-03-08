@@ -4,9 +4,11 @@ import 'package:e_commerce/features/trader/presentation/manager/image_picker_cub
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 import '../../../../core/functions/show_snack_bar.dart';
 import '../../../../core/utils/app_style.dart';
-import '../../../../generated/l10n.dart';
 import '../../../../core/models/product_item_model.dart';
 import '../manager/edit_product_cubit/edit_product_cubit.dart';
 import '../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
@@ -24,10 +26,10 @@ class EditProductView extends StatelessWidget {
       listener: (context, state) {
         if (state is ImagePickerFailure) {
               isLoading = false;
-              showSnackBar(context, S.of(context).image_is_not_added);
+              showSnackBar(context, LocaleKeys.image_is_not_added.tr());
             } else if (state is ImagePickerSuccess) {
               isLoading = false;
-              showSnackBar(context, S.of(context).image_is_added);
+              showSnackBar(context, LocaleKeys.image_is_added.tr());
             } else if (state is ImagePickerLoading) {
               isLoading = true;
             } else {
@@ -39,7 +41,7 @@ class EditProductView extends StatelessWidget {
           listener: (context, state) {
             if (state is EditProductFailure) {
               isLoading = false;
-              showSnackBar(context, S.of(context).error_product_is_not_edited);
+              showSnackBar(context, LocaleKeys.error_product_is_not_edited.tr());
             } else if (state is EditProductSuccess) {
               isLoading = false;
               __showSuccessAwesomeDialog(context);
@@ -75,7 +77,7 @@ class EditProductView extends StatelessWidget {
         color: kWhiteColor,
         dismissAction: isLoading ? true : false,
       ),
-      title: Text(S.of(context).edit_product,
+      title: Text(LocaleKeys.edit_product.tr(),
           style: AppStyle.medium22.copyWith(color: kWhiteColor)),
       centerTitle: true,
     );
@@ -87,8 +89,8 @@ class EditProductView extends StatelessWidget {
       dismissOnTouchOutside: false,
       dialogType: DialogType.success,
       animType: AnimType.topSlide,
-      desc: S.of(context).product_is_edited_successfully,
-      btnOkText: S.of(context).ok,
+      desc: LocaleKeys.product_is_edited_successfully.tr(),
+      btnOkText: LocaleKeys.ok.tr(),
       btnOkOnPress: () {
         BlocProvider.of<FetchCategoryProductsForTraderCubit>(context)
             .fetchCategoryProductsForTrader();

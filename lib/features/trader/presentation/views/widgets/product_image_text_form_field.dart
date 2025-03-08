@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
-import '../../../../../generated/l10n.dart';
 import '../../../../../core/models/product_item_model.dart';
+import '../../../../../generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ProductImageTextFormField extends StatefulWidget {
   const ProductImageTextFormField({
@@ -41,7 +42,7 @@ class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
       builder: (context, state) {
         return CustomTextFormField(
           controller: TextEditingController(text: selectedImage),
-          hintText: S.of(context).product_image,
+          hintText: LocaleKeys.product_image.tr(),
           readOnly: true,
           suffixIcon: const Icon(Icons.arrow_drop_down, color: kPurpleColor),
           onTap: () async {
@@ -49,7 +50,7 @@ class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
           },
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return S.of(context).required_field;
+              return LocaleKeys.required_field.tr();
             }
             return null;
           },
@@ -60,8 +61,8 @@ class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
 
   Future<void> _showCategoryDialog(BuildContext context) async {
     List<String> pickImageFrom = [
-      S.of(context).from_camera,
-      S.of(context).from_gallery
+      LocaleKeys.from_camera.tr(),
+      LocaleKeys.from_gallery.tr()
     ];
     showDialog(
       context: context,
@@ -69,7 +70,7 @@ class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
         return AlertDialog(
           title: Align(
               alignment: Alignment.topCenter,
-              child: Text(S.of(context).product_image, style: AppStyle.bold18)),
+              child: Text(LocaleKeys.product_image.tr(), style: AppStyle.bold18)),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: pickImageFrom
@@ -77,7 +78,7 @@ class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
                   (category) => ListTile(
                     title: Text(category, style: AppStyle.medium14),
                     onTap: () {
-                      if (category == S.of(context).from_camera) {
+                      if (category == LocaleKeys.from_camera.tr()) {
                         BlocProvider.of<ImagePickerCubit>(context)
                             .imagePickerFromCamera();
                       } else {

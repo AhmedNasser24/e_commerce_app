@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/utils/app_style.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class NewOrderItem extends StatelessWidget {
   const NewOrderItem({
@@ -43,14 +44,14 @@ class NewOrderItem extends StatelessWidget {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("${S.of(context).num_of_products} : $numOfProducts",
+                    Text("${LocaleKeys.num_of_products.tr()} : $numOfProducts",
                         style: isNew
                             ? AppStyle.medium16.copyWith(color: Colors.green)
                             : AppStyle.semiBold16),
                     isNew ? const Spacer() : const SizedBox(),
                     isNew
                         ? Text(
-                            S.of(context).news,
+                            LocaleKeys.news.tr(),
                             style:
                                 AppStyle.medium16.copyWith(color: Colors.green),
                           )
@@ -59,7 +60,7 @@ class NewOrderItem extends StatelessWidget {
                 ),
                 const Gap(10),
                 Text(
-                    "${S.of(context).total_price} : $totalPrice ${S.of(context).LE}",
+                    "${LocaleKeys.total_price.tr()} : $totalPrice ${LocaleKeys.LE.tr()}",
                     style: isNew
                         ? AppStyle.semiBold16.copyWith(color: Colors.green)
                         : AppStyle.semiBold16),

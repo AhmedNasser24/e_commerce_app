@@ -4,9 +4,11 @@ import 'package:e_commerce/features/trader/presentation/views/widgets/back_arrow
 import 'package:e_commerce/features/trader/presentation/views/widgets/is_delivered_widget.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/show_orders_view_body.dart';
 import 'package:flutter/material.dart';
+import '../../../../../generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../../../../core/models/product_item_model.dart';
 import '../../../../core/utils/app_style.dart';
-import '../../../../generated/l10n.dart';
+
 import 'widgets/whats_app_icon_button.dart';
 
 class ShowOrdersView extends StatelessWidget {
@@ -34,7 +36,7 @@ class ShowOrdersView extends StatelessWidget {
       child: Row(
         children: [
           Text(
-              "${__getTotalPrice(buyProductModel.productItemModelList)} ${S.of(context).LE}",
+              "${__getTotalPrice(buyProductModel.productItemModelList)} ${LocaleKeys.LE.tr()}",
               style: AppStyle.semiBold18.copyWith(color: kWhiteColor)),
           const Spacer(),
           IsDeliveredWidget(buyProductModel: buyProductModel),

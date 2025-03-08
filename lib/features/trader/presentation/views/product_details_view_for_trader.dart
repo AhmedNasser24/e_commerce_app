@@ -7,7 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../constants.dart';
 import '../../../../core/models/product_item_model.dart';
 import '../../../../core/utils/app_style.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../../generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
 import 'widgets/back_arrow_button.dart';
 import 'widgets/product_details_body_for_trader.dart';
@@ -75,12 +76,12 @@ class CustomBottomAppbar extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       child: Row(
         children: [
-          Text("${productItemModel.price!} ${S.of(context).LE}",
+          Text("${productItemModel.price!} ${LocaleKeys.LE.tr()}",
               style: AppStyle.semiBold18.copyWith(color: kWhiteColor)),
           const Spacer(),
           CustomButton(
             isLoading: isLoading,
-            title: S.of(context).delete,
+            title: LocaleKeys.delete.tr(),
             style: AppStyle.medium14,
             backGroundColor: kWhiteColor,
             onTap: () {
@@ -97,9 +98,9 @@ class CustomBottomAppbar extends StatelessWidget {
       context: context,
       dialogType: DialogType.question,
       animType: AnimType.topSlide,
-      desc: S.of(context).are_you_sure_you_want_to_delete_this_product,
-      btnOkText: S.of(context).yes,
-      btnCancelText: S.of(context).cancel,
+      desc: LocaleKeys.are_you_sure_you_want_to_delete_this_product.tr(),
+      btnOkText: LocaleKeys.yes.tr(),
+      btnCancelText: LocaleKeys.cancel.tr(),
       btnOkOnPress: () {
         BlocProvider.of<FetchCategoryProductsForTraderCubit>(context)
             .deleteProduct(productItemModel: productItemModel);

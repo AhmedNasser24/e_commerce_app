@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../generated/locale_keys.g.dart';
 import '../../../../trader/presentation/views/widgets/back_arrow_button.dart';
 import '../../manager/my_order_cubit/my_order_cubit.dart';
 import 'my_order_view_body.dart';
@@ -54,7 +54,7 @@ class MyOrderView extends StatelessWidget {
       leading: const BackArrowButton(
         color: kWhiteColor,
       ),
-      title: Text(S.of(context).my_orders, style: AppStyle.medium22.copyWith(color: kWhiteColor)),
+      title: Text(LocaleKeys.my_orders.tr(), style: AppStyle.medium22.copyWith(color: kWhiteColor)),
       centerTitle: true,
       elevation: 0,
       scrolledUnderElevation: 0,
@@ -75,7 +75,7 @@ class CustomBottomAppBar extends StatelessWidget {
       child: Row(
         children: [
           Text(
-              "${BlocProvider.of<MyOrderCubit>(context).totPrice} ${S.of(context).LE}",
+              "${BlocProvider.of<MyOrderCubit>(context).totPrice} ${LocaleKeys.LE.tr()}",
               style: AppStyle.semiBold18.copyWith(color: kWhiteColor)),
           const Spacer(),
           const NotDeliveredText(),

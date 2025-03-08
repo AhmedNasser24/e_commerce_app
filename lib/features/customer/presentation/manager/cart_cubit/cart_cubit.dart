@@ -2,12 +2,13 @@ import 'dart:math';
 
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/features/customer/data/repo/customer_repo.dart';
+import 'package:e_commerce/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/errors/failure.dart';
 import '../../../../../core/functions/show_snack_bar.dart';
 import '../../../../../core/models/product_item_model.dart';
-import '../../../../../generated/l10n.dart';
 import '../../../data/models/cart_item_model.dart';
 import '../../../data/repo/customer_repo_impl.dart';
 
@@ -31,12 +32,12 @@ class CartCubit extends Cubit<CartState> {
         await __customerRepoImpl.addToCart(cartItemModel: cartItemModel);
     result.fold(
       (ok) {
-        numOfItemInCart += 1;
-        showSnackBar(context, S.of(context).product_is_added_to_cart);
-        emit(CartSuccess());
+        showSnackBar(context, LocaleKeys.product_is_added_to_cart.tr());
+
+        fetchCartItem();
       },
       (failure) {
-        showSnackBar(context, S.of(context).error_product_is_not_added_to_cart);
+        showSnackBar(context, LocaleKeys.error_product_is_not_added_to_cart.tr());
       },
     );
   }
@@ -49,12 +50,12 @@ class CartCubit extends Cubit<CartState> {
         .removeProductFromCart(cartItemModel: cartItemModel);
     result.fold(
       (ok) {
-        showSnackBar(context, S.of(context).product_is_removed_from_cart);
+        showSnackBar(context, LocaleKeys.product_is_removed_from_cart);
         // emit(CartSuccess());
       },
       (failure) {
         showSnackBar(
-            context, S.of(context).error_product_is_not_removed_from_cart);
+            context, LocaleKeys.error_product_is_not_removed_from_cart);
       },
     );
 

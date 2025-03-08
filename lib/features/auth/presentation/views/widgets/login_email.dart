@@ -19,6 +19,14 @@ class LoginEmail extends StatelessWidget {
         if (value == null || value.isEmpty) {
           return LocaleKeys.required_field.tr();
         }
+        
+        value = value.trim();
+        final emailPattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
+        final emailRegExp = RegExp(emailPattern);
+        if (!emailRegExp.hasMatch(value)) {
+          return LocaleKeys.invalid_email.tr();
+        }
+
         loginModel.email = value;
         return null;
       },

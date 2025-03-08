@@ -6,7 +6,8 @@ import 'package:gap/gap.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/widgets/custom_button.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../../manager/fetch_new_orders_cubit/fetch_new_orders_cubit.dart';
 
 class IsDeliveredWidget extends StatefulWidget {
@@ -30,7 +31,7 @@ class _IsDeliveredWidgetState extends State<IsDeliveredWidget> {
   Widget build(BuildContext context) {
     return isDelivered
         ? CustomButton(
-            title: S.of(context).delivered,
+            title: LocaleKeys.delivered.tr(),
             style: AppStyle.medium14,
             backGroundColor: kWhiteColor,
             horizontalPadding: 6,
@@ -38,7 +39,7 @@ class _IsDeliveredWidgetState extends State<IsDeliveredWidget> {
             onTap: () {},
           )
         : CustomButton(
-            title: S.of(context).is_it_delivered,
+            title: LocaleKeys.is_it_delivered.tr(),
             style: AppStyle.medium14,
             backGroundColor: kWhiteColor,
             horizontalPadding: 6,
@@ -57,7 +58,7 @@ class _IsDeliveredWidgetState extends State<IsDeliveredWidget> {
           title: Align(
             alignment: Alignment.topCenter,
             child: Text(
-              "${S.of(context).did_you_sent_orders_to}\n$customerName",
+              "${LocaleKeys.did_you_sent_orders_to.tr()}\n$customerName",
               style: AppStyle.semiBold18,
               textAlign: TextAlign.center,
             ),
@@ -70,7 +71,7 @@ class _IsDeliveredWidgetState extends State<IsDeliveredWidget> {
               ),
               const Gap(10),
               ListTile(
-                title: Text(S.of(context).yes, style: AppStyle.medium14),
+                title: Text(LocaleKeys.yes.tr(), style: AppStyle.medium14),
                 onTap: () {
                   widget.buyProductModel.isDelivered = true;
                   isDelivered = true;
@@ -85,7 +86,7 @@ class _IsDeliveredWidgetState extends State<IsDeliveredWidget> {
                 },
               ),
               ListTile(
-                title: Text(S.of(context).not_yet, style: AppStyle.medium14),
+                title: Text(LocaleKeys.not_yet.tr(), style: AppStyle.medium14),
                 onTap: () {
                   Navigator.pop(context);
                 },

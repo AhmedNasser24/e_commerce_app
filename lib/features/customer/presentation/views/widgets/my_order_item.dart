@@ -1,10 +1,10 @@
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/features/customer/data/models/my_order_item_model.dart';
 import 'package:flutter/material.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/widgets/custom_cached_network_image.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../generated/locale_keys.g.dart';
 
 class MyOrderItem extends StatelessWidget {
   const MyOrderItem({super.key, required this.myOrderItemModel});
@@ -25,7 +25,7 @@ class MyOrderItem extends StatelessWidget {
           activeColor: kPurpleColor,
           value: '0', groupValue: "0", onChanged: (value){}),
         title: Text(productName, style: AppStyle.medium16),
-        subtitle: Text("$productPrice ${S.of(context).LE}", style: AppStyle.semiBold16),
+        subtitle: Text("$productPrice ${LocaleKeys.LE.tr()}", style: AppStyle.semiBold16),
         trailing: SizedBox(
           height: 60,
           width:60,

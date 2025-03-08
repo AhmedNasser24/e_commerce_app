@@ -3,7 +3,9 @@ import 'package:e_commerce/core/widgets/message_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../generated/l10n.dart';
+import '../../../../../generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 import '../../../../customer/presentation/views/widgets/add_to_cart_view_body.dart';
 import '../../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
 import '../product_details_view_for_trader.dart';
@@ -23,7 +25,7 @@ class TraderProductItemListView extends StatelessWidget {
           List<ProductItemModel> productItemModelList =
               state.productItemModelList;
           return productItemModelList.isEmpty
-              ? MessageWidget(S.of(context).empty)
+              ? MessageWidget(LocaleKeys.empty.tr())
               : Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GridView.builder(
@@ -52,7 +54,6 @@ class TraderProductItemListView extends StatelessWidget {
                   ),
                 );
         } else if (state is FetchCategoryProductsForTraderFailure) {
-          // return Center(child: Text(state.errMessage));
           return ErrorMessageWidget(errMessage: state.errMessage);
         } else {
           return const LoadingWidget();

@@ -1,12 +1,11 @@
 import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/widgets/custom_cached_network_image.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../generated/locale_keys.g.dart';
 import 'add_to_cart_icon_button.dart';
-
-
 
 class CustomerProductItem extends StatelessWidget {
   const CustomerProductItem({super.key, required this.productItemModel});
@@ -58,7 +57,7 @@ class CustomerProductItem extends StatelessWidget {
           ),
           Row(
             children: [
-              Text("${productItemModel.price!}${S.of(context).LE}",
+              Text("${productItemModel.price!}${LocaleKeys.LE.tr()}",
                   style: AppStyle.bold14),
               const Spacer(),
               AddToCartIconButton(productItemModel: productItemModel)

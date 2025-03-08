@@ -1,10 +1,11 @@
 import 'package:e_commerce/features/customer/presentation/views/widgets/remove_item_cart_button.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/widgets/custom_cached_network_image.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../generated/locale_keys.g.dart';
 import '../../../data/models/cart_item_model.dart';
 
 class CartItem extends StatelessWidget {
@@ -62,7 +63,7 @@ class CartItem extends StatelessWidget {
           const Gap(15),
           Row(
             children: [
-              Text("${cartItemModel.productItemModel.price!}${S.of(context).LE}",
+              Text("${cartItemModel.productItemModel.price!}${LocaleKeys.LE.tr()}",
                   style: AppStyle.bold16),
               const Spacer(),
               RemoveItemCartButton(cartItemModel: cartItemModel)

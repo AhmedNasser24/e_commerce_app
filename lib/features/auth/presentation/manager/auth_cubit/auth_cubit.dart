@@ -1,12 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/features/auth/data/models/register_model.dart';
 import 'package:e_commerce/features/auth/data/repos/auth_repo.dart';
+import 'package:e_commerce/generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../constants.dart';
 // import '../../../../../generated/l10n.dart';
 import '../../../../../core/errors/failure.dart';
 import '../../../../../core/utils/notification_service.dart';
-import '../../../../../generated/l10n.dart';
 import '../../../data/models/login_model.dart';
 import '../../../data/repos/auth_repo_iml.dart';
 part 'auth_state.dart';
@@ -62,12 +63,12 @@ class AuthCubit extends Cubit<AuthState> {
           NotificationService().subscribeToTopic();
           emit(LoginSuccess());
         } else {
-          emit(LoginFailure(S.of(context).invalid_email));
+          emit(LoginFailure(LocaleKeys.invalid_email.tr()));
         }
 
         // } else {
         //   emit(LoginFailure(
-        //       S.of(context).please_check_your_email_for_verification));
+        //       LocaleKeys.please_check_your_email_for_verification.tr()));
         // }
       },
       (failure) => emit(LoginFailure(failure.errMessage)),

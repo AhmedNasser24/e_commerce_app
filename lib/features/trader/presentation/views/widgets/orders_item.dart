@@ -5,7 +5,8 @@ import 'package:gap/gap.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/widgets/custom_cached_network_image.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class OrderItem extends StatelessWidget {
   const OrderItem({super.key, required this.productItemModel});
@@ -66,7 +67,7 @@ class OrderItem extends StatelessWidget {
           const Gap(15),
           Row(
             children: [
-              Text("${productItemModel.price!}${S.of(context).LE}",
+              Text("${productItemModel.price!}${LocaleKeys.LE.tr()}",
                   style: AppStyle.bold14),
               // const Spacer(),
               // const Text("quantity : 2", style: AppStyle.bold14),

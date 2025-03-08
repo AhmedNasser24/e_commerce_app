@@ -1,6 +1,5 @@
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/utils/shared_preference_singleton.dart';
-import 'package:e_commerce/features/auth/presentation/views/register_view.dart';
 import 'package:e_commerce/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';

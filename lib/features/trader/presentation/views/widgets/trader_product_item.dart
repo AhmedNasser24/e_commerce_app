@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/widgets/custom_cached_network_image.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'delete_icon_button.dart';
 import 'edit_icon_button.dart';
 
@@ -59,7 +60,7 @@ class TraderProductItem extends StatelessWidget {
           ),
           Row(
             children: [
-              Text("${productItemModel.price!} ${S.of(context).LE}",
+              Text("${productItemModel.price!} ${LocaleKeys.LE.tr()}",
                   style: AppStyle.bold14),
               const Spacer(),
               EditIconButton(productItemModel: productItemModel),

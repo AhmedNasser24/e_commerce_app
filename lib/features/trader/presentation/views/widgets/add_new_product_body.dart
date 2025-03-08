@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../../core/utils/app_style.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../generated/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'add_product_button_bloc_consumer.dart';
 import 'product_category_text_form_field.dart';
 import 'product_desc_text_form_field.dart';
@@ -37,29 +38,28 @@ class _AddNewProductBodyState extends State<AddNewProductBody> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Gap(40),
-                  Text("${S.of(context).product_name} *",
+                  Text("${LocaleKeys.product_name.tr()} *",
                       style: AppStyle.medium14),
                   const Gap(5),
                   ProductNameTextFormField(productItemModel: productItemModel),
                   const Gap(25),
-                  Text("${S.of(context).product_category} *",
+                  Text("${LocaleKeys.product_category.tr()} *",
                       style: AppStyle.medium14),
                   const Gap(5),
                   ProductCategoryTextFormField(
                       productItemModel: productItemModel),
                   const Gap(25),
-                  Text("${S.of(context).product_price} *",
+                  Text("${LocaleKeys.product_price.tr()} *",
                       style: AppStyle.medium14),
                   const Gap(5),
                   ProductPriceTextFormField(productItemModel: productItemModel),
                   const Gap(25),
-                  Text("${S.of(context).product_image} *",
+                  Text("${LocaleKeys.product_image.tr()} *",
                       style: AppStyle.medium14),
                   const Gap(5),
                   ProductImageTextFormField(productItemModel: productItemModel),
                   const Gap(25),
-                  Text(S.of(context).product_desc,
-                      style: AppStyle.medium14),
+                  Text(LocaleKeys.product_desc.tr(), style: AppStyle.medium14),
                   const Gap(5),
                   ProductDescTextFormField(productItemModel: productItemModel),
                   const Gap(40),

@@ -2,9 +2,9 @@ import 'package:e_commerce/features/customer/presentation/manager/my_order_cubit
 import 'package:e_commerce/features/customer/presentation/views/widgets/my_order_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import '../../../../../core/widgets/message_widget.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../generated/locale_keys.g.dart';
 import '../../../data/models/my_order_item_model.dart';
 
 class MyOrderViewBody extends StatelessWidget {
@@ -23,7 +23,7 @@ class MyOrderViewBody extends StatelessWidget {
               itemBuilder: (context, i) =>
                   MyOrderItem(myOrderItemModel: myOrderItemModelList[i]),
             )
-          : MessageWidget(S.of(context).all_last_orders_have_been_delivered_to_you),
+          : MessageWidget(LocaleKeys.all_last_orders_have_been_delivered_to_you.tr()),
     );
   }
 }

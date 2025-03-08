@@ -3,9 +3,10 @@ import 'package:e_commerce/features/customer/presentation/manager/buy%20product_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../generated/locale_keys.g.dart';
 import '../../../data/models/cart_item_model.dart';
 
 class BuyButton extends StatelessWidget {
@@ -16,7 +17,7 @@ class BuyButton extends StatelessWidget {
     
         return CustomButton(
           isLoading: BlocProvider.of<BuyProductCubit>(context).isLoading,
-          title: S.of(context).buy,
+          title: LocaleKeys.buy.tr(),
           style: AppStyle.semiBold20.copyWith(color:kWhiteColor),
           horizontalMargin: 50,
           verticalMargin: 0,
@@ -36,10 +37,10 @@ class BuyButton extends StatelessWidget {
       dismissOnTouchOutside: false,
       dialogType: DialogType.question,
       animType: AnimType.topSlide,
-      title: S.of(context).confirm_order,
-      desc: S.of(context).do_you_want_to_confirm_your_order_purchase,
-      btnOkText: S.of(context).ok,
-      btnCancelText: S.of(context).cancel,
+      title: LocaleKeys.confirm_order.tr(),
+      desc: LocaleKeys.do_you_want_to_confirm_your_order_purchase.tr(),
+      btnOkText: LocaleKeys.ok.tr(),
+      btnCancelText: LocaleKeys.cancel.tr(),
       btnOkOnPress: () {
         BlocProvider.of<BuyProductCubit>(context)
                 .buyProduct(cartItemModelList: cartItemModelList , context : context);
