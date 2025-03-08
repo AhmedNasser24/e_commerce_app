@@ -1,3 +1,5 @@
+import 'package:e_commerce/generated/local_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -6,7 +8,6 @@ import '../../../../../core/utils/app_style.dart';
 
 class PageView2 extends StatelessWidget {
   const PageView2({
-    
     super.key,
   });
 
@@ -18,17 +19,17 @@ class PageView2 extends StatelessWidget {
         SizedBox(
           height: 250,
           width: 250,
-          child: Image.asset(Assets.imagesOnboarding2 , fit: BoxFit.fill),
+          child: Image.asset(Assets.imagesOnboarding2, fit: BoxFit.fill),
         ),
         const Gap(50),
-         const Text(
-         "Welcome to the E-Commerce" ,
+        Text(
+          LocaleKeys.onboarding_title.tr(),
           style: AppStyle.bold20,
           textAlign: TextAlign.center,
         ),
         const Gap(20),
-         const Text(
-         "Customers can buy products from different categories , add them to their cart , view their orders and confirm them after receiving them",
+        Text(
+          LocaleKeys.onboarding_subtitle2.tr(),
           style: AppStyle.regular14,
           textAlign: TextAlign.center,
         ),

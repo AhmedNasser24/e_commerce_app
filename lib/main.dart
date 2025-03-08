@@ -185,14 +185,7 @@ class _CustomMaterialAppState extends State<CustomMaterialApp> {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            // locale: state,
-            // localizationsDelegates: const [
-            //   S.delegate,
-            //   GlobalMaterialLocalizations.delegate,
-            //   GlobalWidgetsLocalizations.delegate,
-            //   GlobalCupertinoLocalizations.delegate,
-            // ],
-            // supportedLocales: S.delegate.supportedLocales,
+            
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

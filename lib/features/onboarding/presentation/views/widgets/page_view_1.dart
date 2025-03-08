@@ -1,3 +1,5 @@
+import 'package:e_commerce/generated/local_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -17,17 +19,17 @@ class PageView1 extends StatelessWidget {
         SizedBox(
           height: 250,
           width: 250,
-          child: Image.asset(Assets.imagesOnboarding1 , fit: BoxFit.fill),
+          child: Image.asset(Assets.imagesOnboarding1, fit: BoxFit.fill),
         ),
         const Gap(50),
-         const Text(
-          "Welcome to the E-Commerce" ,
+        Text(
+          LocaleKeys.onboarding_title.tr(),
           style: AppStyle.bold20,
           textAlign: TextAlign.center,
         ),
         const Gap(20),
-         const Text(
-          "In this app , Traders can upload their products with there prefered details and prices to sell them",
+        Text(
+          LocaleKeys.onboarding_subtitle1.tr(),
           style: AppStyle.regular14,
           textAlign: TextAlign.center,
         ),

@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../core/utils/shared_preference_singleton.dart';
+import '../../../../generated/local_keys.g.dart';
 import '../../../auth/presentation/views/login_view.dart';
 import '../../../customer/presentation/views/widgets/customer_home_view_bloc_provider.dart';
 import '../../../onboarding/presentation/views/onboarding_view.dart';
@@ -33,19 +34,19 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 5), () {
-      if (SharedPreferenceSingleton.getbool(kIsONBoardingVisited)) {
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) => widget.isLogin
-                    ? (widget.userKind == kTrader
-                        ? const TraderHomeViewBlocProvider()
-                        : const CustomerHomeViewBlocProvider())
-                    : const LoginView()));
-      } else {
+      // if (SharedPreferenceSingleton.getbool(kIsONBoardingVisited)) {
+      //   Navigator.pushReplacement(
+      //       context,
+      //       MaterialPageRoute(
+      //           builder: (context) => widget.isLogin
+      //               ? (widget.userKind == kTrader
+      //                   ? const TraderHomeViewBlocProvider()
+      //                   : const CustomerHomeViewBlocProvider())
+      //               : const LoginView()));
+      // } else {
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const OnboardingView()));
-      }
+      // }
     });
     super.initState();
   }
@@ -68,8 +69,16 @@ class _SplashViewState extends State<SplashView> {
                   constraints: const BoxConstraints(maxWidth: 300),
                   child: Image.asset(Assets.imagesAppLogo)),
               const Gap(20),
-              Text("welcome".tr(), style: AppStyle.bold28),
-              Text("email".tr(), style: AppStyle.regular14),
+              Text(
+                LocaleKeys.splash_title.tr(),
+                style: AppStyle.bold28,
+                textAlign: TextAlign.center,
+              ),
+              Text(
+                LocaleKeys.splash_subtitle.tr(),
+                style: AppStyle.regular14,
+                textAlign: TextAlign.center,
+              ),
               const Spacer(
                 flex: 2,
               ),
