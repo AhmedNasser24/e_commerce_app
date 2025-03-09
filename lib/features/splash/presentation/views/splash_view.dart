@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/utils/app_images.dart';
 import 'package:e_commerce/core/utils/app_style.dart';
@@ -14,9 +16,7 @@ import '../../../onboarding/presentation/views/onboarding_view.dart';
 import '../../../trader/presentation/views/widgets/trader_home_view_bloc_provider.dart';
 
 class SplashView extends StatefulWidget {
-  const SplashView({super.key, required this.isLogin, required this.userKind});
-  final bool isLogin;
-  final String? userKind;
+  const SplashView({super.key,});
   @override
   State<SplashView> createState() => _SplashViewState();
 }
@@ -33,23 +33,11 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 5), () {
-      // if (SharedPreferenceSingleton.getbool(kIsONBoardingVisited)) {
-      //   Navigator.pushReplacement(
-      //       context,
-      //       MaterialPageRoute(
-      //           builder: (context) => widget.isLogin
-      //               ? (widget.userKind == kTrader
-      //                   ? const TraderHomeViewBlocProvider()
-      //                   : const CustomerHomeViewBlocProvider())
-      //               : const LoginView()));
-      // } else {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const OnboardingView()));
-      // }
-    });
+    splashLogic();
     super.initState();
   }
+
+  
 
   @override
   void dispose() {
@@ -87,5 +75,31 @@ class _SplashViewState extends State<SplashView> {
         ),
       ),
     );
+  }
+  void splashLogic() {
+    Future.delayed(const Duration(seconds: 5), () {
+      if (SharedPreferenceSingleton.getbool(kIsONBoardingVisited)) {
+        bool isLogin = SharedPreferenceSingleton.getbool(kIsLogin);
+        String userKind = SharedPreferenceSingleton.getString(kAccountKind);
+        if (isLogin && userKind == kTrader) {
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const TraderHomeViewBlocProvider()));
+        } else if (isLogin && userKind == kCustomer) {
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const CustomerHomeViewBlocProvider()));
+          return;
+        } else {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const LoginView()));
+        }
+      } else {
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const OnboardingView()));
+      }
+    });
   }
 }

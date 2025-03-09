@@ -37,7 +37,7 @@ class SelectLanguage extends StatelessWidget {
               ListTile(
                 title: Text(LocaleKeys.arabic.tr(), style: AppStyle.semiBold14),
                 onTap: () {
-                  BlocProvider.of<LocalCubit>(context)
+                  BlocProvider.of<LocaleCubit>(context)
                       .changeLanguage(context , const Locale('ar'));
                   Navigator.pop(context);
                   Navigator.pop(context);
@@ -46,7 +46,7 @@ class SelectLanguage extends StatelessWidget {
               ListTile(
                 title: Text(LocaleKeys.english.tr(), style: AppStyle.semiBold14),
                 onTap: () {
-                  BlocProvider.of<LocalCubit>(context)
+                  BlocProvider.of<LocaleCubit>(context)
                       .changeLanguage(context , const Locale('en'));
 
                   Navigator.pop(context);

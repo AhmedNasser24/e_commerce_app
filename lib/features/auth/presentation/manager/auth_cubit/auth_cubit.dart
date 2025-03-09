@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:e_commerce/core/utils/shared_preference_singleton.dart';
 import 'package:e_commerce/features/auth/data/models/register_model.dart';
 import 'package:e_commerce/features/auth/data/repos/auth_repo.dart';
 import 'package:e_commerce/generated/locale_keys.g.dart';
@@ -61,6 +62,8 @@ class AuthCubit extends Cubit<AuthState> {
         // if (FirebaseAuth.instance.currentUser?.emailVerified ?? false) {
         if (isValid) {
           NotificationService().subscribeToTopic();
+          SharedPreferenceSingleton.setbool(kIsLogin, true) ;
+          SharedPreferenceSingleton.setString(kAccountKind, userKind1);
           emit(LoginSuccess());
         } else {
           emit(LoginFailure(LocaleKeys.invalid_email.tr()));
@@ -78,11 +81,16 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> signOut() async {
     emit(SignOutLoading());
     Either<void, Failure> response = await _authRepoImpl.signOut();
-    response.fold((ok) => emit(SignOutSuccess()),
+    response.fold((ok)  {
+      SharedPreferenceSingleton.setbool(kIsLogin, false);
+      SharedPreferenceSingleton.setString(kAccountKind, '');
+      emit(SignOutSuccess());
+    },
         (failure) => emit(SignOutFailure(failure.errMessage)));
   }
 
   Future<void> register(context, {required UserInfoModel userInfo}) async {
+    String userKind = '';
     emit(RegisterLoading());
     Either<void, Failure> response =
         await _authRepoImpl.register(registerModel: userInfo);
@@ -91,14 +99,20 @@ class AuthCubit extends Cubit<AuthState> {
         late Either<void, Failure> response1;
         if (userInfo.accountKind == kTraderAccountKindEnglish ||
             userInfo.accountKind == kTraderAccountKindArabic) {
+          userKind = kTrader;
           response1 = await _authRepoImpl.setTraderInfoIntoFireStore(userInfo);
         } else {
           userInfo.notificationToken = await NotificationService().getToken();
+          userKind = kCustomer;
           response1 =
               await _authRepoImpl.setCustomerInfoIntoFireStore(userInfo);
         }
         response1.fold(
-          (ok) => emit(RegisterSuccess()),
+          (ok) {
+            SharedPreferenceSingleton.setbool(kIsLogin, true);
+            SharedPreferenceSingleton.setString(kAccountKind, userKind);
+            emit(RegisterSuccess());
+          },
           (failure) => emit(RegisterFailure(failure.errMessage)),
         );
       },
