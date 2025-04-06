@@ -9,7 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../core/utils/shared_preference_singleton.dart';
-import '../../../../generated/local_keys.g.dart';
+import '../../../../generated/locale_keys.g.dart';
 import '../../../auth/presentation/views/login_view.dart';
 import '../../../customer/presentation/views/widgets/customer_home_view_bloc_provider.dart';
 import '../../../onboarding/presentation/views/onboarding_view.dart';
@@ -49,28 +49,31 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: Column(
-            children: [
-              const Spacer(),
-              Container(
-                  constraints: const BoxConstraints(maxWidth: 300),
-                  child: Image.asset(Assets.imagesAppLogo)),
-              const Gap(20),
-              Text(
-                LocaleKeys.splash_title.tr(),
-                style: AppStyle.bold28,
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                LocaleKeys.splash_subtitle.tr(),
-                style: AppStyle.regular14,
-                textAlign: TextAlign.center,
-              ),
-              const Spacer(
-                flex: 2,
-              ),
-            ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Center(
+            child: Column(
+              children: [
+                const Spacer(),
+                Container(
+                    constraints: const BoxConstraints(maxWidth: 300),
+                    child: Image.asset(Assets.imagesAppLogo)),
+                const Gap(20),
+                Text(
+                  LocaleKeys.splash_title.tr(),
+                  style: AppStyle.bold28,
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  LocaleKeys.splash_subtitle.tr(),
+                  style: AppStyle.regular14,
+                  textAlign: TextAlign.center,
+                ),
+                const Spacer(
+                  flex: 2,
+                ),
+              ],
+            ),
           ),
         ),
       ),

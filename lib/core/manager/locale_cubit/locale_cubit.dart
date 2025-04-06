@@ -9,8 +9,8 @@ class LocaleCubit extends Cubit<LocaleState> {
   LocaleCubit() : super(LocaleInitial());
     void changeLanguage(BuildContext context, Locale newLocale) {
     if (context.locale == newLocale) return;
-    emit(LocaleLoading());
     context.setLocale(newLocale);
+    emit(LocaleLoading());
     emit(LocaleSuccess());
   }
 }

@@ -4,4 +4,5 @@ abstract class LocaleState {}
 
 class LocaleInitial extends LocaleState {}
 class LocaleLoading extends LocaleState {}
-class LocaleSuccess extends LocaleState {}
+class LocaleSuccess extends LocaleState {
+}

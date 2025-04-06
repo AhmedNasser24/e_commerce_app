@@ -3,7 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../generated/locale_keys.g.dart';
-import '../../local_cubit.dart';
+import '../manager/locale_cubit/locale_cubit.dart';
 import '../utils/app_style.dart';
 
 class SelectLanguage extends StatelessWidget {
@@ -38,7 +38,7 @@ class SelectLanguage extends StatelessWidget {
                 title: Text(LocaleKeys.arabic.tr(), style: AppStyle.semiBold14),
                 onTap: () {
                   BlocProvider.of<LocaleCubit>(context)
-                      .changeLanguage(context , const Locale('ar'));
+                      .changeLanguage(context, const Locale('ar'));
                   Navigator.pop(context);
                   Navigator.pop(context);
                 },

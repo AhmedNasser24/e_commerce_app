@@ -1,5 +1,7 @@
 import 'dart:developer';
+import 'package:e_commerce/core/manager/locale_cubit/locale_cubit.dart';
 import 'package:e_commerce/core/utils/notification_service.dart';
+import 'package:e_commerce/custom_material_app.dart';
 import 'package:e_commerce/features/trader/presentation/manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -20,7 +22,7 @@ import 'features/trader/presentation/manager/image_picker_cubit/image_picker_cub
 import 'firebase_options.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'local_cubit.dart';
+import 'generated/codegen_loader.g.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -50,6 +52,7 @@ void main() async {
             path:
                 'assets/translations', // <-- change the path of the translation files
             fallbackLocale: Locale('ar'),
+            assetLoader: CodegenLoader(),
             child: MyApp()),
       ),
     );
@@ -60,6 +63,7 @@ void main() async {
           path:
               'assets/translations', // <-- change the path of the translation files
           fallbackLocale: Locale('ar'),
+          assetLoader: CodegenLoader(),
           child: MyApp()),
     );
   }
@@ -77,7 +81,7 @@ class MyAppState extends State<MyApp> {
   void initState() {
     NotificationService().foregroundNotificationHandling();
     //--------------------------------------------------------------------------------------
-    // those functions are in login view initstate because of context issue of navigation
+    // those functions are in Splash view initstate because of context issue of navigation
     // NotificationService().setupInteractedMessageForBackgroundNotification(context);
     // NotificationService().setupInteractedMessageForTerminatedState(context);
     //--------------------------------------------------------------------------------------
@@ -111,46 +115,18 @@ class MyAppState extends State<MyApp> {
         ),
       ],
       child: CustomMaterialApp(),
-    );
-  }
-}
-
-class CustomMaterialApp extends StatefulWidget {
-  const CustomMaterialApp({
-    super.key,
-  });
-
-  @override
-  State<CustomMaterialApp> createState() => _CustomMaterialAppState();
-}
-
-class _CustomMaterialAppState extends State<CustomMaterialApp> {
-  @override
-  void initState() {
-    NotificationService()
-        .setupInteractedMessageForBackgroundNotification(context);
-    NotificationService().setupInteractedMessageForTerminatedState(context);
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<LocaleCubit, Locale>(
-      builder: (context, state) {
-        log(state.toString());
-        return MaterialApp(
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: state,
-          navigatorKey: navigatorKey,
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
-          ),
-          home: const SplashView(),
-        );
-      },
+      // child: MaterialApp(
+      //   localizationsDelegates: context.localizationDelegates,
+      //   supportedLocales: context.supportedLocales,
+      //   locale: context.locale,
+      //   navigatorKey: navigatorKey,
+      //   debugShowCheckedModeBanner: false,
+      //   theme: ThemeData(
+      //     colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      //     useMaterial3: true,
+      //   ),
+      //   home: const SplashView(),
+      // ),
     );
   }
 }
