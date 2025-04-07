@@ -80,37 +80,6 @@ class AuthCubit extends Cubit<AuthState> {
 
 
 
-  Future<void> register(context, {required UserInfoModel userInfo}) async {
-    String userKind = '';
-    emit(RegisterLoading());
-    Either<void, Failure> response =
-        await _authRepoImpl.register(registerModel: userInfo);
-    response.fold(
-      (ok) async {
-        late Either<void, Failure> response1;
-        if (userInfo.accountKind == kTraderAccountKindEnglish ||
-            userInfo.accountKind == kTraderAccountKindArabic) {
-          userKind = kTrader;
-          response1 = await _authRepoImpl.setTraderInfoIntoFireStore(userInfo);
-        } else {
-          userInfo.notificationToken = await NotificationService().getToken();
-          userKind = kCustomer;
-          response1 =
-              await _authRepoImpl.setCustomerInfoIntoFireStore(userInfo);
-        }
-        response1.fold(
-          (ok) {
-            SharedPreferenceSingleton.setbool(kIsLogin, true);
-            SharedPreferenceSingleton.setString(kAccountKind, userKind);
-            emit(RegisterSuccess());
-          },
-          (failure) => emit(RegisterFailure(failure.errMessage)),
-        );
-      },
-      (failure) => emit(RegisterFailure(failure.errMessage)),
-    );
-  }
-
   Future<void> getUserInfo()async{
     Either<UserInfoModel, Failure> response = await _authRepoImpl.getUserInfoModel();
     response.fold(

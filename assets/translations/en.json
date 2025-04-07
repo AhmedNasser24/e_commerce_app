@@ -88,5 +88,6 @@
         "subtitle2" : "Customers can buy products from different categories , add them to their cart , view their orders and confirm them after receiving them",
         "next" : "Next",
         "start" : "Start"
-    }
+    },
+    "register_success" : "Registration is successful"
 }

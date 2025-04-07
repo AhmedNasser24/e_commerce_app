@@ -104,7 +104,8 @@ class CodegenLoader extends AssetLoader{
     "subtitle2": "يمكن للعملاء الخاصين بالتسوق اضافة المنتجات الى سلة الشراء وعرض الطلبات وتاكيدها بعد الاستلام",
     "next": "التالي",
     "start": "ابدا"
-  }
+  },
+  "register_success": "تم التسجيل بنجاح"
 };
 static const Map<String,dynamic> _en = {
   "name": "name",
@@ -196,7 +197,8 @@ static const Map<String,dynamic> _en = {
     "subtitle2": "Customers can buy products from different categories , add them to their cart , view their orders and confirm them after receiving them",
     "next": "Next",
     "start": "Start"
-  }
+  },
+  "register_success": "Registration is successful"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": _ar, "en": _en};
 }

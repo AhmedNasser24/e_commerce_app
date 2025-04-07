@@ -91,5 +91,6 @@ abstract class  LocaleKeys {
   static const onboarding_next = 'onboarding.next';
   static const onboarding_start = 'onboarding.start';
   static const onboarding = 'onboarding';
+  static const register_success = 'register_success';
 
 }
