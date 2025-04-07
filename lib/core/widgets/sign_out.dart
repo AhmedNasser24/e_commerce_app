@@ -1,5 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:e_commerce/features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
+import 'package:e_commerce/features/auth/presentation/manager/sign_out_cubit/sign_out_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/views/login_view.dart';
 import 'package:e_commerce/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -16,7 +16,7 @@ class SignOut extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthCubit, AuthState>(
+    return BlocListener<SignOutCubit, SignOutState>(
       listener: (context, state) {
         // loading is in trader view or customer view
         if (state is SignOutSuccess) {
@@ -51,7 +51,7 @@ class SignOut extends StatelessWidget {
       btnOkText: LocaleKeys.ok.tr(),
       btnCancelText: LocaleKeys.cancel.tr(),
       btnOkOnPress: () {
-        BlocProvider.of<AuthCubit>(context).signOut();
+        BlocProvider.of<SignOutCubit>(context).signOut();
       },
       btnCancelOnPress: () {},
     ).show();

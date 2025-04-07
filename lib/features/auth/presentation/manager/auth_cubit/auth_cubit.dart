@@ -78,16 +78,7 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  Future<void> signOut() async {
-    emit(SignOutLoading());
-    Either<void, Failure> response = await _authRepoImpl.signOut();
-    response.fold((ok)  {
-      SharedPreferenceSingleton.setbool(kIsLogin, false);
-      SharedPreferenceSingleton.setString(kAccountKind, '');
-      emit(SignOutSuccess());
-    },
-        (failure) => emit(SignOutFailure(failure.errMessage)));
-  }
+
 
   Future<void> register(context, {required UserInfoModel userInfo}) async {
     String userKind = '';

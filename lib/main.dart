@@ -16,7 +16,6 @@ import 'features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 // import 'features/notifications/presentation/views/notification_view.dart';
 import 'features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'features/notifications/presentation/manager/notification_cubit/notification_cubit.dart';
-import 'features/splash/presentation/views/splash_view.dart';
 import 'features/trader/presentation/manager/fetch_new_orders_cubit/fetch_new_orders_cubit.dart';
 import 'features/trader/presentation/manager/image_picker_cubit/image_picker_cubit.dart';
 import 'firebase_options.dart';
@@ -115,18 +114,7 @@ class MyAppState extends State<MyApp> {
         ),
       ],
       child: CustomMaterialApp(),
-      // child: MaterialApp(
-      //   localizationsDelegates: context.localizationDelegates,
-      //   supportedLocales: context.supportedLocales,
-      //   locale: context.locale,
-      //   navigatorKey: navigatorKey,
-      //   debugShowCheckedModeBanner: false,
-      //   theme: ThemeData(
-      //     colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      //     useMaterial3: true,
-      //   ),
-      //   home: const SplashView(),
-      // ),
+      
     );
   }
 }

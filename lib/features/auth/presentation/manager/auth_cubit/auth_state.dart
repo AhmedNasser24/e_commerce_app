@@ -17,10 +17,4 @@ class RegisterFailure extends AuthState {
   RegisterFailure(this.errMessage);
 }
 
-class SignOutLoading extends AuthState {}
 
-class SignOutSuccess extends AuthState {}
-class SignOutFailure extends AuthState {
-  final String errMessage ;
-  SignOutFailure(this.errMessage);
-}

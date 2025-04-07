@@ -1,13 +1,10 @@
-import 'dart:developer';
 
 import 'package:e_commerce/core/utils/notification_service.dart';
 import 'package:e_commerce/features/splash/presentation/views/splash_view.dart';
 import 'package:e_commerce/main.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'core/manager/locale_cubit/locale_cubit.dart';
 
 class CustomMaterialApp extends StatefulWidget {
   const CustomMaterialApp({
