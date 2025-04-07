@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/app_style.dart';
-import '../../../../auth/presentation/manager/auth_cubit/auth_cubit.dart';
+import '../../../../auth/presentation/manager/login_cubit/login_cubit.dart';
 
 class CustomerDrawerHeader extends StatefulWidget {
   const CustomerDrawerHeader({
@@ -19,12 +19,12 @@ class _CustomerDrawerHeaderState extends State<CustomerDrawerHeader> {
 
   @override
   void initState() {
-     customerName =
-        BlocProvider.of<AuthCubit>(context).userInfo?.name ?? "No Account";
+    super.initState(); 
+    customerName =
+        BlocProvider.of<LoginCubit>(context).userInfo?.name ?? "No Account";
     if (customerName == "No Account") {
       getCustomerName();
     }
-    super.initState();
   }
 
   @override
@@ -39,10 +39,10 @@ class _CustomerDrawerHeaderState extends State<CustomerDrawerHeader> {
   }
 
   Future<void> getCustomerName() async {
-    await BlocProvider.of<AuthCubit>(context).getUserInfo();
+    await BlocProvider.of<LoginCubit>(context).getUserInfo();
     setState(() {
       customerName =
-          BlocProvider.of<AuthCubit>(context).userInfo?.name ?? "No Account";
+          BlocProvider.of<LoginCubit>(context).userInfo?.name ?? "No Account";
     });
   }
 }

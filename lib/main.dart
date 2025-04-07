@@ -12,7 +12,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc_observer.dart';
 import 'core/utils/shared_preference_singleton.dart';
-import 'features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 // import 'features/notifications/presentation/views/notification_view.dart';
 import 'features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'features/notifications/presentation/manager/notification_cubit/notification_cubit.dart';
@@ -94,9 +93,7 @@ class MyAppState extends State<MyApp> {
         BlocProvider(
           create: (context) => LocaleCubit(),
         ),
-        BlocProvider(
-          create: (context) => AuthCubit(),
-        ),
+        
         BlocProvider(
           create: (context) => FetchCategoryProductsForTraderCubit(),
         ),

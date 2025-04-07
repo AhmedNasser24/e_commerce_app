@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/app_style.dart';
-import '../../../../auth/presentation/manager/auth_cubit/auth_cubit.dart';
+import '../../../../auth/presentation/manager/login_cubit/login_cubit.dart';
 
 class TraderDrawerHeader extends StatefulWidget {
   const TraderDrawerHeader({
@@ -20,7 +20,7 @@ class _TraderDrawerHeaderState extends State<TraderDrawerHeader> {
   @override
   void initState() {
     traderName =
-        BlocProvider.of<AuthCubit>(context).userInfo?.name ?? "No Account";
+        BlocProvider.of<LoginCubit>(context).userInfo?.name ?? "No Account";
     if (traderName == "No Account") {
       getTraderName();
     }
@@ -39,10 +39,10 @@ class _TraderDrawerHeaderState extends State<TraderDrawerHeader> {
   }
 
   Future<void> getTraderName() async {
-    await BlocProvider.of<AuthCubit>(context).getUserInfo();
+    await BlocProvider.of<LoginCubit>(context).getUserInfo();
     setState(() {
       traderName =
-          BlocProvider.of<AuthCubit>(context).userInfo?.name ?? "No Account";
+          BlocProvider.of<LoginCubit>(context).userInfo?.name ?? "No Account";
     });
   }
 }

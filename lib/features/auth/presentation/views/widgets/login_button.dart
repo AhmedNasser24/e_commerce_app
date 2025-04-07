@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../data/models/login_model.dart';
-import '../../manager/auth_cubit/auth_cubit.dart';
+import '../../manager/login_cubit/login_cubit.dart';
 
 class LoginButton extends StatelessWidget {
   const LoginButton({
@@ -22,7 +22,7 @@ class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isLoading = false;
-    return BlocConsumer<AuthCubit, AuthState>(
+    return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginLoading) {
           isLoading = true;
@@ -57,7 +57,7 @@ class LoginButton extends StatelessWidget {
           horizontalMargin: 40,
           onTap: () {
             if (formKey.currentState!.validate()) {
-              BlocProvider.of<AuthCubit>(context)
+              BlocProvider.of<LoginCubit>(context)
                   .login(loginModel: loginModel, context);
             }
           },
