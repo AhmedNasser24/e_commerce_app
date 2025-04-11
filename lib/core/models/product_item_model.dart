@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:e_commerce/constants.dart';
 
 class ProductItemModel {
   String? productId, desc, name, category, price, imageUrl, traderId;
+  File? imageFile;
   int? quantity;
   String? createAt;
   ProductItemModel(
@@ -11,6 +14,7 @@ class ProductItemModel {
       this.category,
       this.price,
       this.imageUrl,
+      this.imageFile,
       this.traderId,
       this.quantity,
       this.desc,
