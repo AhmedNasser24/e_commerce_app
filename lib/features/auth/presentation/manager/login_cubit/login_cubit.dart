@@ -13,13 +13,12 @@ import '../../../../../generated/locale_keys.g.dart';
 import '../../../data/models/login_model.dart';
 import '../../../data/models/register_model.dart';
 import '../../../data/repos/auth_repo.dart';
-import '../../../data/repos/auth_repo_iml.dart';
 
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit() : super(LoginInitial());
-    final AuthRepo _authRepoImpl = AuthRepoIml();
+  LoginCubit(this._authRepoImpl) : super(LoginInitial());
+    final AuthRepo _authRepoImpl;
    UserInfoModel? userInfo;
   // late String notificationToken ;
   Future<void> login(context, {required LoginModel loginModel}) async {

@@ -4,14 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/errors/failure.dart';
 import '../../../../../core/models/product_item_model.dart';
 import '../../../data/repo/trader_repo.dart';
-import '../../../data/repo/trader_repo_impl.dart';
 
 part 'edit_product_state.dart';
 
 class EditProductCubit extends Cubit<EditProductState> {
-  EditProductCubit() : super(EditProductInitial());
+  EditProductCubit(this.__traderRepoImpl) : super(EditProductInitial());
   
-  final TraderRepo __traderRepoImpl = TraderRepoImpl();
+  final TraderRepo __traderRepoImpl ;
 
   Future<void> editProduct({required ProductItemModel productItemModel}) async {
     emit(EditProductLoading());

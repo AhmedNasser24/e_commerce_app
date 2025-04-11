@@ -5,13 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/errors/failure.dart';
 import '../../../data/models/cart_item_model.dart';
-import '../../../data/repo/customer_repo_impl.dart';
 
 part 'buy_product_state.dart';
 
 class BuyProductCubit extends Cubit<BuyProductState> {
-  BuyProductCubit() : super(BuyProductInitial());
-  final CustomerRepo __customerRepoImpl = CustomerRepoImpl();
+  BuyProductCubit(this.__customerRepoImpl) : super(BuyProductInitial());
+  final CustomerRepo __customerRepoImpl ;
   bool isLoading = false ;
   Future<void> buyProduct(
       {required List<CartItemModel> cartItemModelList , required context}) async {

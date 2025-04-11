@@ -12,6 +12,4 @@ abstract class TraderRepo {
   Future < Either < List < BuyProductModel > , Failure >> fetchNewOrdersforTrader(); 
   Future <Either < void , Failure >> changeOrderFromNewToOld({required BuyProductModel buyProductModel}) ;
   Future <Either < void , Failure >> changeOrderFromNotDeliveredToDelivered({required BuyProductModel buyProductModel}) ;
-  Future < Either < String , Failure >> imagePickerFromCamera() ;
-  Future < Either < String , Failure >> imagePickerFromGallery() ;
 }

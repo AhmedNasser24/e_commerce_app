@@ -10,13 +10,12 @@ import '../../../../../core/errors/failure.dart';
 import '../../../../../core/functions/show_snack_bar.dart';
 import '../../../../../core/models/product_item_model.dart';
 import '../../../data/models/cart_item_model.dart';
-import '../../../data/repo/customer_repo_impl.dart';
 
 part 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {
-  CartCubit() : super(CartInitial());
-  final CustomerRepo __customerRepoImpl = CustomerRepoImpl();
+  CartCubit(this.__customerRepoImpl) : super(CartInitial());
+  final CustomerRepo __customerRepoImpl ;
   bool __isFetchingBefore = false;
   int numOfItemInCart = 0 ;
   Future<void> addToCart({

@@ -2,7 +2,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/core/services/notification_service.dart';
 import 'package:e_commerce/core/utils/shared_preference_singleton.dart';
-import 'package:e_commerce/features/auth/data/repos/auth_repo_iml.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../constants.dart';
@@ -13,8 +12,8 @@ import '../../../data/repos/auth_repo.dart';
 part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
-  RegisterCubit() : super(RegisterInitial());
-  final AuthRepo _authRepoImpl = AuthRepoIml();
+  RegisterCubit(this._authRepoImpl) : super(RegisterInitial());
+  final AuthRepo _authRepoImpl ;
     Future<void> register(context, {required UserInfoModel userInfo}) async {
     String userKind = '';
     emit(RegisterLoading());

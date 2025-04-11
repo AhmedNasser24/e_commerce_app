@@ -4,27 +4,26 @@ import 'package:e_commerce/features/customer/data/repo/customer_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/errors/failure.dart';
-import '../../../data/repo/customer_repo_impl.dart';
 
 part 'my_order_state.dart';
 
 class MyOrderCubit extends Cubit<MyOrderState> {
-  MyOrderCubit() : super(MyOrderInitial()) {
+  MyOrderCubit(this.__customerRepoImpl) : super(MyOrderInitial()) {
     fetchMyOrderItems();
   }
-  final CustomerRepo __customerRepoImpl = CustomerRepoImpl();
+  final CustomerRepo __customerRepoImpl;
   double totPrice = 0.0;
   bool __isFetchedBefore = false;
   Future<void> fetchMyOrderItems() async {
-    !__isFetchedBefore ? emit(MyOrderLoading()) :null;
+    !__isFetchedBefore ? emit(MyOrderLoading()) : null;
     __isFetchedBefore = true;
-    
+
     Either<List<MyOrderItemModel>, Failure> myOrderItemsOrFailure =
         await __customerRepoImpl.fetchMyOrderItems();
     myOrderItemsOrFailure.fold(
       (myOrderItemModelList) {
-        totPrice = __getTotalPrice(myOrderItemModelList) ;
-        emit(MyOrderSuccess(myOrderItemModelList:myOrderItemModelList));
+        totPrice = __getTotalPrice(myOrderItemModelList);
+        emit(MyOrderSuccess(myOrderItemModelList: myOrderItemModelList));
       },
       (failure) => emit(MyOrderFailure(failure.errMessage)),
     );
@@ -33,9 +32,10 @@ class MyOrderCubit extends Cubit<MyOrderState> {
   double __getTotalPrice(List<MyOrderItemModel> myOrderItemModelList) {
     double total = 0.0;
     for (int i = 0; i < myOrderItemModelList.length; i++) {
-      total += double.parse(myOrderItemModelList[i].cartItemModel.productItemModel.price!);
+      total += double.parse(
+          myOrderItemModelList[i].cartItemModel.productItemModel.price!);
     }
-    
+
     return total;
   }
 }

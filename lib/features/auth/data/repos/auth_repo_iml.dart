@@ -11,12 +11,12 @@ import 'package:e_commerce/core/errors/failure.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../../core/services/database_services.dart';
-import '../../../../core/services/firebase_auth_service.dart';
-import '../../../../core/services/firestore_services.dart';
 
 class AuthRepoIml extends AuthRepo {
-  final AuthService authService = FirebaseAuthService();
-  final DatabaseServices dataBaseServices = FireStoreServices();
+  final AuthService authService ;
+  final DatabaseServices dataBaseServices ;
+
+  AuthRepoIml({required this.authService, required this.dataBaseServices});
   @override
   Future<Either<void, Failure>> login({required LoginModel loginModel}) async {
     try {

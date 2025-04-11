@@ -4,13 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/errors/failure.dart';
 import '../../../../../core/models/product_item_model.dart';
 import '../../../data/repo/trader_repo.dart';
-import '../../../data/repo/trader_repo_impl.dart';
 
 part 'add_product_state.dart';
 
 class AddProductCubit extends Cubit<AddProductState> {
-  AddProductCubit() : super(AddProductInitial());
-  final TraderRepo __traderRepoImpl = TraderRepoImpl();
+  AddProductCubit(this.__traderRepoImpl) : super(AddProductInitial());
+  final TraderRepo __traderRepoImpl ;
   bool isLoading = false ;
   Future<void> addProduct({required ProductItemModel productItemModel}) async {
     isLoading = true ;

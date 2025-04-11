@@ -1,6 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:e_commerce/constants.dart';
-import 'package:e_commerce/features/trader/presentation/manager/image_picker_cubit/image_picker_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,47 +21,30 @@ class EditProductView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isLoading = false;
-    return BlocConsumer<ImagePickerCubit, ImagePickerState>(
+    return BlocConsumer<EditProductCubit, EditProductState>(
       listener: (context, state) {
-        if (state is ImagePickerFailure) {
-              isLoading = false;
-              showSnackBar(context, LocaleKeys.image_is_not_added.tr());
-            } else if (state is ImagePickerSuccess) {
-              isLoading = false;
-              showSnackBar(context, LocaleKeys.image_is_added.tr());
-            } else if (state is ImagePickerLoading) {
-              isLoading = true;
-            } else {
-              isLoading = false;
-            }
+        if (state is EditProductFailure) {
+          isLoading = false;
+          showSnackBar(context, LocaleKeys.error_product_is_not_edited.tr());
+        } else if (state is EditProductSuccess) {
+          isLoading = false;
+          __showSuccessAwesomeDialog(context);
+        } else if (state is EditProductLoading) {
+          isLoading = true;
+        } else {
+          isLoading = false;
+        }
       },
       builder: (context, state) {
-        return BlocConsumer<EditProductCubit, EditProductState>(
-          listener: (context, state) {
-            if (state is EditProductFailure) {
-              isLoading = false;
-              showSnackBar(context, LocaleKeys.error_product_is_not_edited.tr());
-            } else if (state is EditProductSuccess) {
-              isLoading = false;
-              __showSuccessAwesomeDialog(context);
-            } else if (state is EditProductLoading) {
-              isLoading = true;
-            } else {
-              isLoading = false;
-            }
-          },
-          builder: (context, state) {
-            return Scaffold(
-              backgroundColor: kOffWhiteColor,
-              body: SafeArea(
-                child: EditProductBody(
-                  productItemModel: productItemModel,
-                  isLoading: isLoading,
-                ),
-              ),
-              appBar: editProductAppBar(context, isLoading),
-            );
-          },
+        return Scaffold(
+          backgroundColor: kOffWhiteColor,
+          body: SafeArea(
+            child: EditProductBody(
+              productItemModel: productItemModel,
+              isLoading: isLoading,
+            ),
+          ),
+          appBar: editProductAppBar(context, isLoading),
         );
       },
     );

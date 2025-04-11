@@ -5,18 +5,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/errors/failure.dart';
 import '../../../data/repo/trader_repo.dart';
-import '../../../data/repo/trader_repo_impl.dart';
 
 part 'fetch_category_products_for_trader_state.dart';
 
 class FetchCategoryProductsForTraderCubit
     extends Cubit<FetchCategoryProductsForTraderState> {
-  FetchCategoryProductsForTraderCubit()
+  FetchCategoryProductsForTraderCubit(this.__traderRepoImpl)
       : super(FetchCategoryProductsForTraderInitial()) {
     fetchCategoryProductsForTrader(category: kAllCategory);
   }
 
-  final TraderRepo __traderRepoImpl = TraderRepoImpl();
+  final TraderRepo __traderRepoImpl ;
   String __selectedCategory = kAllCategory;
   bool __isFetchedBefore = false;
   Future<void> fetchCategoryProductsForTrader({String? category}) async {

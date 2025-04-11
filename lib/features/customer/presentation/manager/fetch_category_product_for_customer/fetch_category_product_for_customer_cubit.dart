@@ -5,16 +5,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/errors/failure.dart';
 import '../../../../../core/models/product_item_model.dart';
 import '../../../data/repo/customer_repo.dart';
-import '../../../data/repo/customer_repo_impl.dart';
 
 part 'fetch_category_product_for_customer_state.dart';
 
 class FetchCategoryProductForCustomerCubit
     extends Cubit<FetchCategoryProductForCustomerState> {
-  FetchCategoryProductForCustomerCubit()
+  FetchCategoryProductForCustomerCubit(this.__customerRepoImpl)
       : super(FetchCategoryProductForCustomerInitial());
       
-  final CustomerRepo __customerRepoImpl = CustomerRepoImpl();
+  final CustomerRepo __customerRepoImpl;
   String __selectedCategory = kAllCategory;
   bool __isFetchedBefore = false;
   Future<void> fetchCategoryProductsForCustomer(

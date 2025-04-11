@@ -1,6 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:e_commerce/features/trader/presentation/manager/add_product_cubit/add_product_cubit.dart';
-import 'package:e_commerce/features/trader/presentation/manager/image_picker_cubit/image_picker_cubit.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/add_new_product_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,55 +19,40 @@ class AddNewProductView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isLoading = false;
-    return BlocConsumer<ImagePickerCubit, ImagePickerState>(
+    return BlocConsumer<AddProductCubit, AddProductState>(
       listener: (context, state) {
-        if (state is ImagePickerLoading) {
+        if (state is AddProductLoading) {
           isLoading = true;
-        } else if (state is ImagePickerSuccess) {
+        } else if (state is AddProductSuccess) {
           isLoading = false;
-          showSnackBar(context, LocaleKeys.image_is_added.tr());
-        } else if (state is ImagePickerFailure) {
-          showSnackBar(context, state.errMessage);
+          var notificationModel = NotificationModel(
+            title: "E Commerce",
+            body: LocaleKeys.new_product_is_added.tr(),
+            productItemModel: state.productItemModel,
+          );
+          BlocProvider.of<NotificationCubit>(context)
+              .sendMessageUsingTopic(notificationModel: notificationModel);
+    
+          // NotificationService().sendMessageUsingTopic(
+          //   notificationModel: NotificationModel(
+          //   title: "E Commerce",
+          //   body: S.of(context).new_product_is_added,
+          //   productItemModel: state.productItemModel,
+          // ));
+          __showSuccessAwesomeDialog(context);
+        } else if (state is AddProductFailure) {
+          showSnackBar(context, LocaleKeys.error_new_product_is_not_added.tr());
           isLoading = false;
         }
       },
       builder: (context, state) {
-        return BlocConsumer<AddProductCubit, AddProductState>(
-          listener: (context, state) {
-            if (state is AddProductLoading) {
-              isLoading = true;
-            } else if (state is AddProductSuccess) {
-              isLoading = false;
-              var notificationModel = NotificationModel(
-                title: "E Commerce",
-                body: LocaleKeys.new_product_is_added.tr(),
-                productItemModel: state.productItemModel,
-              );
-              BlocProvider.of<NotificationCubit>(context)
-                  .sendMessageUsingTopic(notificationModel: notificationModel);
-
-              // NotificationService().sendMessageUsingTopic(
-              //   notificationModel: NotificationModel(
-              //   title: "E Commerce",
-              //   body: S.of(context).new_product_is_added,
-              //   productItemModel: state.productItemModel,
-              // ));
-              __showSuccessAwesomeDialog(context);
-            } else if (state is AddProductFailure) {
-              showSnackBar(context, LocaleKeys.error_new_product_is_not_added.tr());
-              isLoading = false;
-            }
-          },
-          builder: (context, state) {
-            
-            return Scaffold(
-              backgroundColor: kOffWhiteColor,
-              body: SafeArea(
-                child: AddNewProductBody(isLoading: isLoading),
-              ),
-              appBar: addNewProductAppBar(context, isLoading),
-            );
-          },
+        
+        return Scaffold(
+          backgroundColor: kOffWhiteColor,
+          body: SafeArea(
+            child: AddNewProductBody(isLoading: isLoading),
+          ),
+          appBar: addNewProductAppBar(context, isLoading),
         );
       },
     );

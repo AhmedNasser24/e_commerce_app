@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'package:e_commerce/core/manager/locale_cubit/locale_cubit.dart';
 import 'package:e_commerce/core/services/notification_service.dart';
 import 'package:e_commerce/custom_material_app.dart';
+import 'package:e_commerce/features/trader/data/repo/trader_repo.dart';
 import 'package:e_commerce/features/trader/presentation/manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -11,12 +12,13 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc_observer.dart';
+import 'core/utils/get_it_setup.dart';
 import 'core/utils/shared_preference_singleton.dart';
 // import 'features/notifications/presentation/views/notification_view.dart';
+import 'features/customer/data/repo/customer_repo.dart';
 import 'features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'features/notifications/presentation/manager/notification_cubit/notification_cubit.dart';
 import 'features/trader/presentation/manager/fetch_new_orders_cubit/fetch_new_orders_cubit.dart';
-import 'features/trader/presentation/manager/image_picker_cubit/image_picker_cubit.dart';
 import 'firebase_options.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -32,6 +34,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  getItSetup();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   Bloc.observer = SimpleBlocObserver();
   SharedPreferenceSingleton.init();
@@ -95,19 +98,17 @@ class MyAppState extends State<MyApp> {
         ),
         
         BlocProvider(
-          create: (context) => FetchCategoryProductsForTraderCubit(),
+          create: (context) => FetchCategoryProductsForTraderCubit(getIt<TraderRepo>()),
         ),
         BlocProvider(
-          create: (context) => FetchNewOrdersCubit(),
+          create: (context) => FetchNewOrdersCubit(getIt<TraderRepo>()),
         ),
-        BlocProvider(
-          create: (context) => ImagePickerCubit(),
-        ),
+        
         BlocProvider(
           create: (context) => NotificationCubit(),
         ),
         BlocProvider(
-          create: (context) => CartCubit(),
+          create: (context) => CartCubit(getIt<CustomerRepo>()),
         ),
       ],
       child: CustomMaterialApp(),

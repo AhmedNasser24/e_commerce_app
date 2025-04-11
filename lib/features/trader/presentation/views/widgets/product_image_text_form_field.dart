@@ -4,10 +4,10 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:dotted_border/dotted_border.dart';
-import 'package:e_commerce/core/services/image_picker_services.dart';
 import 'package:e_commerce/core/widgets/custom_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import '../../../../../core/services/image_picker_services.dart';
 import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/models/product_item_model.dart';
