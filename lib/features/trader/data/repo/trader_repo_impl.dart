@@ -3,14 +3,14 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 
 import 'package:e_commerce/core/errors/failure.dart';
-import 'package:e_commerce/core/utils/firebase_services.dart';
+import 'package:e_commerce/core/services/firestore_services.dart';
 
 import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:e_commerce/features/customer/data/models/buy_product_model.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import '../../../../core/functions/has_network.dart';
-import '../../../../core/utils/image_picker_services.dart';
+import '../../../../core/services/image_picker_services.dart';
 import 'trader_repo.dart';
 
 class TraderRepoImpl extends TraderRepo {
@@ -21,7 +21,7 @@ class TraderRepoImpl extends TraderRepo {
       if (!await hasNetwork()) {
         return right(const Failure("لا يوجد اتصال بالانترنت"));
       }
-      await FirebaseServices().addProduct(productItemModel);
+      await FireStoreServices().addProduct(productItemModel);
       return left(null);
     } on FirebaseException catch (e) {
       return right(ServerFailure.fromFireBaseException(e));
@@ -39,7 +39,7 @@ class TraderRepoImpl extends TraderRepo {
       if (!await hasNetwork()) {
         return right(const Failure("لا يوجد اتصال بالانترنت"));
       }
-      await FirebaseServices().editProduct(productItemModel);
+      await FireStoreServices().editProduct(productItemModel);
       return left(null);
     } on FirebaseException catch (e) {
       return right(ServerFailure.fromFireBaseException(e));
@@ -57,7 +57,7 @@ class TraderRepoImpl extends TraderRepo {
       if (!await hasNetwork()) {
         return right(const Failure("لا يوجد اتصال بالانترنت"));
       }
-      await FirebaseServices().deleteProduct(productItemModel);
+      await FireStoreServices().deleteProduct(productItemModel);
       return left(null);
     } on SocketException catch (e) {
       return right(ServerFailure.fromSocketException(e));
@@ -72,7 +72,7 @@ class TraderRepoImpl extends TraderRepo {
   Future<Either<List<ProductItemModel>, Failure>>
       fetchCategoryProductsForTrader({required String category}) async {
     try {
-      List<ProductItemModel> productItemModelList = await FirebaseServices()
+      List<ProductItemModel> productItemModelList = await FireStoreServices()
           .fetchCategoryProductsForTrader(category: category);
       return left(productItemModelList);
     } on FirebaseException catch (e) {
@@ -89,7 +89,7 @@ class TraderRepoImpl extends TraderRepo {
       fetchNewOrdersforTrader() async {
     try {
       List<BuyProductModel> buyProductModelList =
-          await FirebaseServices().fetchNewOrdersforTrader();
+          await FireStoreServices().fetchNewOrdersforTrader();
       return left(buyProductModelList);
     } on FirebaseException catch (e) {
       return right(ServerFailure.fromFireBaseException(e));
@@ -104,7 +104,7 @@ class TraderRepoImpl extends TraderRepo {
   Future<Either<void, Failure>> changeOrderFromNewToOld(
       {required BuyProductModel buyProductModel}) async {
     try {
-      await FirebaseServices()
+      await FireStoreServices()
           .changeOrderFromNewToOld(buyProductModel: buyProductModel);
       return left(null);
     } on FirebaseException catch (e) {
@@ -120,7 +120,7 @@ class TraderRepoImpl extends TraderRepo {
   Future<Either<void, Failure>> changeOrderFromNotDeliveredToDelivered(
       {required BuyProductModel buyProductModel}) async {
     try {
-      await FirebaseServices().changeOrderFromNotDeliveredToDelivered(
+      await FireStoreServices().changeOrderFromNotDeliveredToDelivered(
           buyProductModel: buyProductModel);
       return left(null);
     } on FirebaseException catch (e) {

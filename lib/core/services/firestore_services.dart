@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/models/product_item_model.dart';
+import 'package:e_commerce/core/services/database_services.dart';
 import 'package:e_commerce/features/customer/data/models/buy_product_model.dart';
 import 'package:e_commerce/features/customer/data/models/my_order_item_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,7 +12,8 @@ import 'package:flutter/foundation.dart';
 import '../../features/auth/data/models/register_model.dart';
 import '../../features/customer/data/models/cart_item_model.dart';
 
-class FirebaseServices {
+class FireStoreServices implements DatabaseServices {
+  @override
   Future<void> addProduct(ProductItemModel productItemModel) async {
     String productId = productItemModel.productId!;
     // productItemModel.category =
@@ -22,6 +24,7 @@ class FirebaseServices {
         .set(productItemModel.toJson());
   }
 
+  @override
   Future<void> editProduct(ProductItemModel productItemModel) async {
     String productId = productItemModel.productId!;
     // productItemModel.category =
@@ -31,15 +34,18 @@ class FirebaseServices {
         .doc(productId)
         .set(productItemModel.toJson(), SetOptions(merge: true));
   }
+
+  @override
   Future<void> deleteProduct(ProductItemModel productItemModel) async {
     String productId = productItemModel.productId!;
-    
+
     await FirebaseFirestore.instance
         .collection(kShopCollection)
         .doc(productId)
         .delete();
   }
 
+  @override
   Future<List<ProductItemModel>> fetchCategoryProductsForTrader(
       {required String category}) async {
     List<ProductItemModel> productItemModelList = [];
@@ -58,6 +64,7 @@ class FirebaseServices {
     return productItemModelList;
   }
 
+  @override
   Future<List<ProductItemModel>> fetchCategoryProductsForCustomer(
       {required String category}) async {
     List<ProductItemModel> productItemModelList = [];
@@ -108,7 +115,6 @@ class FirebaseServices {
           kProductCategory,
           whereIn: categoryInEngOrArbLangList,
         )
-        
         .get();
   }
 
@@ -126,6 +132,7 @@ class FirebaseServices {
     }
   }
 
+  @override
   Future<void> addToCart({required CartItemModel cartItemModel}) async {
     String userId = FirebaseAuth.instance.currentUser!.uid;
     String orderId = cartItemModel.orderId;
@@ -139,6 +146,7 @@ class FirebaseServices {
         .set(cartItemModel.toJson());
   }
 
+  @override
   Future<List<CartItemModel>> fetchCartItems() async {
     String userId = FirebaseAuth.instance.currentUser!.uid;
     List<CartItemModel> addToCartModelList = [];
@@ -157,6 +165,7 @@ class FirebaseServices {
     return addToCartModelList;
   }
 
+  @override
   Future<void> removeProductFromCart(
       {required CartItemModel cartItemModel}) async {
     String userId = FirebaseAuth.instance.currentUser!.uid;
@@ -171,6 +180,7 @@ class FirebaseServices {
         .delete();
   }
 
+  @override
   Future<void> removeAllProductFromCart(
       {required List<CartItemModel> cartItemModelList}) async {
     for (int i = 0; i < cartItemModelList.length; i++) {
@@ -178,13 +188,15 @@ class FirebaseServices {
     }
   }
 
+  @override
   Future<void> buyProduct(
       {required List<CartItemModel> cartItemModelList}) async {
     await __sendOrderToTrader(cartItemModelList: cartItemModelList);
-    await __addToMyOrder(cartItemModelList: cartItemModelList) ;
+    await __addToMyOrder(cartItemModelList: cartItemModelList);
     // await removeAllProductFromCart(cartItemModelList: cartItemModelList);
   }
 
+  @override
   Future<List<BuyProductModel>> fetchNewOrdersforTrader() async {
     String traderId = FirebaseAuth.instance.currentUser!.uid;
     var response = await FirebaseFirestore.instance
@@ -203,6 +215,7 @@ class FirebaseServices {
     return buyProductModelList;
   }
 
+  @override
   Future<void> changeOrderFromNewToOld(
       {required BuyProductModel buyProductModel}) async {
     buyProductModel.isNew = false;
@@ -218,13 +231,16 @@ class FirebaseServices {
         .set(buyProductModel.toJson(), SetOptions(merge: true));
   }
 
+  @override
   Future<void> changeOrderFromNotDeliveredToDelivered(
       {required BuyProductModel buyProductModel}) async {
     await __updateOrderFromNotDeliveredToDelivered(buyProductModel);
-    await __removeitemsFromMyOrdersForCustomer(buyProductModel: buyProductModel) ;
+    await __removeitemsFromMyOrdersForCustomer(
+        buyProductModel: buyProductModel);
   }
 
-  Future<void> __updateOrderFromNotDeliveredToDelivered(BuyProductModel buyProductModel) async {
+  Future<void> __updateOrderFromNotDeliveredToDelivered(
+      BuyProductModel buyProductModel) async {
     buyProductModel.isDelivered = true;
     String traderId = FirebaseAuth.instance.currentUser!.uid;
     String orderId = buyProductModel.orderId;
@@ -253,7 +269,7 @@ class FirebaseServices {
       userInfoModel: userInfo,
       orderId: Random().nextDouble().toString(),
       buyingDate: DateTime.now().toString(),
-      customerId: customerId ,
+      customerId: customerId,
     );
 
     await __sendOrder(buyProductModel);
@@ -272,8 +288,7 @@ class FirebaseServices {
         .set(buyProductModel.toJson());
   }
 
-
-
+  @override
   Future<UserInfoModel> getUserInfoModel() async {
     String userId = FirebaseAuth.instance.currentUser!.uid;
     var response = await FirebaseFirestore.instance
@@ -282,10 +297,11 @@ class FirebaseServices {
         .collection(kUserCollection)
         .doc(kUserInfoDoc)
         .get();
-    
+
     return UserInfoModel.fromJson(response.data());
   }
 
+  @override
   Future<void> setTraderInfoIntoFireStore(UserInfoModel registerModel) async {
     String traderUidDoc = FirebaseAuth.instance.currentUser!.uid;
     await FirebaseFirestore.instance
@@ -296,6 +312,7 @@ class FirebaseServices {
         .set(registerModel.toJson());
   }
 
+  @override
   Future<void> setCustomerInfoIntoFireStore(UserInfoModel registerModel) async {
     String customerUidDoc = FirebaseAuth.instance.currentUser!.uid;
     await FirebaseFirestore.instance
@@ -306,6 +323,7 @@ class FirebaseServices {
         .set(registerModel.toJson());
   }
 
+  @override
   Future<List<MyOrderItemModel>> fetchMyOrderItems() async {
     String userId = FirebaseAuth.instance.currentUser!.uid;
     List<MyOrderItemModel> myOrderItemModelList = [];

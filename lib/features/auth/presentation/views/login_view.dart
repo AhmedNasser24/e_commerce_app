@@ -4,7 +4,7 @@ import 'package:e_commerce/features/trader/presentation/views/widgets/menu_icon_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../constants.dart';
-import '../../../../core/utils/notification_service.dart';
+import '../../../../core/services/notification_service.dart';
 import 'widgets/login_body.dart';
 import 'widgets/login_drawer.dart';
 

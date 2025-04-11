@@ -2,7 +2,7 @@
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
-import 'package:e_commerce/core/utils/notification_service.dart';
+import 'package:e_commerce/core/services/notification_service.dart';
 import 'package:e_commerce/core/utils/shared_preference_singleton.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

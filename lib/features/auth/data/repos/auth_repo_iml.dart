@@ -9,7 +9,7 @@ import 'package:e_commerce/features/auth/data/repos/auth_repo.dart';
 import 'package:e_commerce/core/errors/failure.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../../core/utils/firebase_services.dart';
+import '../../../../core/services/firestore_services.dart';
 
 class AuthRepoIml extends AuthRepo {
   @override
@@ -67,7 +67,7 @@ class AuthRepoIml extends AuthRepo {
   Future<Either<UserInfoModel, Failure>> getUserInfoModel() async {
     try {
       UserInfoModel userInfoModel =
-          await FirebaseServices().getUserInfoModel();
+          await FireStoreServices().getUserInfoModel();
       return left(userInfoModel);
     } on FirebaseException catch (e) {
       return right(ServerFailure.fromFireBaseException(e));
@@ -80,7 +80,7 @@ class AuthRepoIml extends AuthRepo {
   Future<Either<void, Failure>> setTraderInfoIntoFireStore(
       UserInfoModel registerModel) async {
     try {
-      await FirebaseServices().setTraderInfoIntoFireStore(registerModel);
+      await FireStoreServices().setTraderInfoIntoFireStore(registerModel);
       return left(null);
     } on FirebaseAuthException catch (e) {
       return right(ServerFailure.fromFireBaseException(e));
@@ -95,7 +95,7 @@ class AuthRepoIml extends AuthRepo {
   Future<Either<void, Failure>> setCustomerInfoIntoFireStore(
       UserInfoModel registerModel) async {
     try {
-      await FirebaseServices().setCustomerInfoIntoFireStore(registerModel);
+      await FireStoreServices().setCustomerInfoIntoFireStore(registerModel);
 
       return left(null);
     } on FirebaseAuthException catch (e) {

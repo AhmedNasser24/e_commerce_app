@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:e_commerce/core/manager/locale_cubit/locale_cubit.dart';
-import 'package:e_commerce/core/utils/notification_service.dart';
+import 'package:e_commerce/core/services/notification_service.dart';
 import 'package:e_commerce/custom_material_app.dart';
 import 'package:e_commerce/features/trader/presentation/manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';

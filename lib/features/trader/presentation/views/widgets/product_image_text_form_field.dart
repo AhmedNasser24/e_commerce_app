@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:dotted_border/dotted_border.dart';
-import 'package:e_commerce/core/utils/image_picker_services.dart';
+import 'package:e_commerce/core/services/image_picker_services.dart';
 import 'package:e_commerce/core/widgets/custom_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

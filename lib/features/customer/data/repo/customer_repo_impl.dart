@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 
 import 'package:e_commerce/core/errors/failure.dart';
-import 'package:e_commerce/core/utils/firebase_services.dart';
+import 'package:e_commerce/core/services/firestore_services.dart';
 import 'package:e_commerce/features/customer/data/models/my_order_item_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -20,7 +20,7 @@ class CustomerRepoImpl extends CustomerRepo {
   Future<Either<List<ProductItemModel>, Failure>>
       fetchCategoryProductsForCustomer({required String category}) async {
     try {
-      List<ProductItemModel> productItemModelList = await FirebaseServices()
+      List<ProductItemModel> productItemModelList = await FireStoreServices()
           .fetchCategoryProductsForCustomer(category: category);
       return left(productItemModelList);
     } on FirebaseException catch (e) {
@@ -38,7 +38,7 @@ class CustomerRepoImpl extends CustomerRepo {
       if (!await hasNetwork()) {
         return right(const Failure("No Internet Connection"));
       }
-      await FirebaseServices().addToCart(cartItemModel: cartItemModel);
+      await FireStoreServices().addToCart(cartItemModel: cartItemModel);
       return left(null);
     } on FirebaseException catch (e) {
       return right(ServerFailure.fromFireBaseException(e) ) ;
@@ -52,7 +52,7 @@ class CustomerRepoImpl extends CustomerRepo {
   @override
   Future<Either<List<CartItemModel>, Failure>> fetchCartItems() async{
     try {
-      List<CartItemModel> cartItemList = await FirebaseServices().fetchCartItems();
+      List<CartItemModel> cartItemList = await FireStoreServices().fetchCartItems();
       return left(cartItemList);
     } on FirebaseException catch (e) {
       return right(ServerFailure.fromFireBaseException(e) ) ;
@@ -66,7 +66,7 @@ class CustomerRepoImpl extends CustomerRepo {
    @override
   Future<Either<List<MyOrderItemModel>, Failure>> fetchMyOrderItems() async{
     try {
-      List<MyOrderItemModel> myOrderItemList = await FirebaseServices().fetchMyOrderItems();
+      List<MyOrderItemModel> myOrderItemList = await FireStoreServices().fetchMyOrderItems();
       return left(myOrderItemList);
     } on FirebaseException catch (e) {
       return right(ServerFailure.fromFireBaseException(e) ) ;
@@ -83,7 +83,7 @@ class CustomerRepoImpl extends CustomerRepo {
       if (!await hasNetwork()) {
         return right(const Failure("No Internet Connection"));
       }
-      await FirebaseServices().removeProductFromCart(cartItemModel: cartItemModel);
+      await FireStoreServices().removeProductFromCart(cartItemModel: cartItemModel);
       return left(null);
     } on FirebaseException catch (e) {
       return right(ServerFailure.fromFireBaseException(e) ) ;
@@ -101,7 +101,7 @@ class CustomerRepoImpl extends CustomerRepo {
       if (!await hasNetwork()) {
         return right(const Failure("No Internet Connection"));
       }
-      await FirebaseServices().removeAllProductFromCart(cartItemModelList: cartItemModelList);
+      await FireStoreServices().removeAllProductFromCart(cartItemModelList: cartItemModelList);
       return left(null);
     } on FirebaseException catch (e) {
       return right(ServerFailure.fromFireBaseException(e) ) ;
@@ -118,7 +118,7 @@ class CustomerRepoImpl extends CustomerRepo {
       if (!await hasNetwork()) {
         return right(const Failure("No Internet Connection"));
       }
-      await FirebaseServices().buyProduct(cartItemModelList: cartItemModelList);
+      await FireStoreServices().buyProduct(cartItemModelList: cartItemModelList);
       return left(null);
     } on FirebaseException catch (e) {
       return right(ServerFailure.fromFireBaseException(e) ) ;

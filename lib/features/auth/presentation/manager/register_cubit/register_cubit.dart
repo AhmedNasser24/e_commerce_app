@@ -1,6 +1,6 @@
 
 import 'package:dartz/dartz.dart';
-import 'package:e_commerce/core/utils/notification_service.dart';
+import 'package:e_commerce/core/services/notification_service.dart';
 import 'package:e_commerce/core/utils/shared_preference_singleton.dart';
 import 'package:e_commerce/features/auth/data/repos/auth_repo_iml.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

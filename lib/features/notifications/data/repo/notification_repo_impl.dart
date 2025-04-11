@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 
 import 'package:e_commerce/core/errors/failure.dart';
-import 'package:e_commerce/core/utils/notification_service.dart';
+import 'package:e_commerce/core/services/notification_service.dart';
 
 import 'package:e_commerce/features/notifications/data/model/notification_model.dart';
 import 'package:http/http.dart' as http;
