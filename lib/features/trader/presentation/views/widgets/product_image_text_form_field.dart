@@ -11,7 +11,6 @@ import 'package:gap/gap.dart';
 import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/models/product_item_model.dart';
-import '../../../../../core/widgets/custom_model_progress_hud.dart';
 import '../../../../../generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -29,7 +28,26 @@ class ProductImageTextFormField extends StatefulWidget {
 
 class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
   bool isLoading = false;
+  ProductItemModel get productItemModel => widget.productItemModel; 
+  late ProductItemModel productItemModelCopy ;
+  @override
+  void initState() {
+    super.initState();
+    productItemModelCopy = ProductItemModel(
+      imageUrl: productItemModel.imageUrl,
+      imageFile: productItemModel.imageFile,
+      name: productItemModel.name,
+      category: productItemModel.category,
+      price: productItemModel.price,
+      desc: productItemModel.desc,
+      productId: productItemModel.productId,
+      quantity: productItemModel.quantity,
+      traderId: productItemModel.traderId,
+      createAt: productItemModel.createAt,
 
+      
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
@@ -40,18 +58,18 @@ class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
           child: child,
         );
       },
-      child: widget.productItemModel.imageUrl != null
+      child: productItemModelCopy.imageUrl != null
           ? Container(
               constraints: const BoxConstraints(maxWidth: 340),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   CustomCachedNetworkImage(
-                      imageUrl: widget.productItemModel.imageUrl!),
+                      imageUrl: productItemModelCopy.imageUrl!),
                   const Gap(5),
                   IconButton(
                     onPressed: () {
-                      widget.productItemModel.imageUrl = null;
+                      productItemModelCopy.imageUrl = null;
                       setState(() {});
                     },
                     icon: const Icon(
@@ -71,15 +89,15 @@ class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
                   child: child,
                 );
               },
-              child: widget.productItemModel.imageFile == null
+              child: productItemModelCopy.imageFile == null
                   ? AbsorbPointer(
                       absorbing: isLoading,
                       child: GestureDetector(
                         onTap: () async {
                           
-                          widget.productItemModel.imageFile =
+                          productItemModelCopy.imageFile =
                               await _showCategoryDialog(context);
-                          log('imageFile: ${widget.productItemModel.imageFile?.path}');    
+                          log('imageFile: ${productItemModelCopy.imageFile?.path}');    
                           setState(() {});
                         },
                         child: DottedBorder(
@@ -110,14 +128,14 @@ class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Image.file(
-                                  widget.productItemModel.imageFile!,
+                                  productItemModelCopy.imageFile!,
                                   fit: BoxFit.fill),
                             ),
                           ),
                           const Gap(8),
                           IconButton(
                             onPressed: () {
-                              widget.productItemModel.imageFile = null;
+                              productItemModelCopy.imageFile = null;
                               setState(() {});
                             },
                             icon: const Icon(
