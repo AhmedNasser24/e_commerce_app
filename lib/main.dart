@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/manager/locale_cubit/locale_cubit.dart';
 import 'package:e_commerce/core/services/notification_service.dart';
 import 'package:e_commerce/core/services/supabase_storage_service.dart';
@@ -36,6 +37,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   SupabaseStorageService.init();
+  await SupabaseStorageService.createBucket(kECommerceBucket);
   getItSetup();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   Bloc.observer = SimpleBlocObserver();

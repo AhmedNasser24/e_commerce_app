@@ -1,6 +1,4 @@
-// import 'dart:math';
 
-import 'dart:developer' as dev;
 import 'dart:math';
 
 import 'package:e_commerce/core/services/storage_services.dart';
@@ -15,7 +13,6 @@ class FirebaseStorageServices implements StorageServices {
 
     int rand = Random().nextInt(1000000000);
     String imageName = "$rand$basename(file.path)";
-    dev.log("image name: $imageName");
     var storage = fireStorageReference.child("$path/$imageName");
     await storage.putFile(file);
     String imageUrl = await storage.getDownloadURL();

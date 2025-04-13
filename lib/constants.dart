@@ -53,5 +53,5 @@ const Color kPurpleColor = Color(0xFF4C53A4);
 const Color kWhiteColor = Colors.white;
 const Color kOffWhiteColor = Color(0xFFEDECF1);
 const String kSupabaseUrl = "https://kpixmaxzarpjbsttrpdm.supabase.co";
-const String kSupabaseKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtwaXhtYXh6YXJwamJzdHRycGRtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ0NzcyODksImV4cCI6MjA2MDA1MzI4OX0.7s-bOq2kkZUnggz-0BWaTRyqWVRwTkG8BJUBXnbl7_0";
+const String kSupabaseKey ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtwaXhtYXh6YXJwamJzdHRycGRtIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0NDQ3NzI4OSwiZXhwIjoyMDYwMDUzMjg5fQ.-PwKi9UQPWMWFoMniZ9C1QeFrpXKk1aMq8RgXejR0Q8";
+const String kECommerceBucket = "ecommerce_image";
