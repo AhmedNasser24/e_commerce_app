@@ -33,7 +33,8 @@ class SupabaseStorageService implements StorageServices {
   Future<String> uploadFile(File file, String path) async {
     // path is the folder name in firebase storage
     int rand = Random().nextInt(1000000000);
-    String imageName = "$rand$basename(file.path)";
+    String imageName = "$rand${basename(file.path)}";
+    dev.log("imageName: $imageName");
     final storageResponse = await __supabase.storage
         .from(kECommerceBucket)
         .upload("$path/$imageName", file);

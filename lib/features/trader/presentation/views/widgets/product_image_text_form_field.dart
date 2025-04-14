@@ -50,104 +50,108 @@ class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
   }
   @override
   Widget build(BuildContext context) {
-    return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 300),
-      transitionBuilder: (Widget child, Animation<double> animation) {
-        return FadeTransition(
-          opacity: animation,
-          child: child,
-        );
-      },
-      child: productItemModelCopy.imageUrl != null
-          ? Container(
-              constraints: const BoxConstraints(maxWidth: 340),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CustomCachedNetworkImage(
-                      imageUrl: productItemModelCopy.imageUrl!),
-                  const Gap(5),
-                  IconButton(
-                    onPressed: () {
-                      productItemModelCopy.imageUrl = null;
-                      setState(() {});
-                    },
-                    icon: const Icon(
-                      Icons.delete,
-                      color: AppColor.primaryColor,
-                      size: 30,
+    return Center(
+      child: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        transitionBuilder: (Widget child, Animation<double> animation) {
+          return FadeTransition(
+            opacity: animation,
+            child: child,
+          );
+        },
+        child: productItemModelCopy.imageUrl != null
+            ? Container(
+                constraints: const BoxConstraints(maxWidth: 340),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    CustomCachedNetworkImage(
+                        imageUrl: productItemModelCopy.imageUrl!),
+                    const Gap(5),
+                    IconButton(
+                      onPressed: () {
+                        productItemModelCopy.imageUrl = null;
+                        setState(() {});
+                      },
+                      icon: const Icon(
+                        Icons.delete,
+                        color: AppColor.primaryColor,
+                        size: 30,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            )
-          : AnimatedSwitcher(
-              duration: const Duration(milliseconds: 300),
-              transitionBuilder: (Widget child, Animation<double> animation) {
-                return FadeTransition(
-                  opacity: animation,
-                  child: child,
-                );
-              },
-              child: productItemModelCopy.imageFile == null
-                  ? AbsorbPointer(
-                      absorbing: isLoading,
-                      child: GestureDetector(
-                        onTap: () async {
-                          
-                          productItemModelCopy.imageFile =
-                              await _showCategoryDialog(context);
-                          log('imageFile: ${productItemModelCopy.imageFile?.path}');    
-                          setState(() {});
-                        },
-                        child: DottedBorder(
-                          color: AppColor.primaryColor,
-                          borderType: BorderType.RRect,
-                          radius: const Radius.circular(12),
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              // SvgPicture.asset(Assets.imagesImageIcon),
-                              // const Gap(8),
-                              const Text("Add Img", style: AppStyle.medium18),
-                            ],
+                  ],
+                ),
+              )
+            : AnimatedSwitcher(
+                duration: const Duration(milliseconds: 300),
+                transitionBuilder: (Widget child, Animation<double> animation) {
+                  return FadeTransition(
+                    opacity: animation,
+                    child: child,
+                  );
+                },
+                child: productItemModelCopy.imageFile == null
+                    ? AbsorbPointer(
+                        absorbing: isLoading,
+                        child: GestureDetector(
+                          onTap: () async {
+                            
+                            productItemModelCopy.imageFile =
+                                await _showCategoryDialog(context);
+                            productItemModel.imageFile = productItemModelCopy.imageFile;    
+                            log('imageFile: ${productItemModelCopy.imageFile?.path}');    
+                            setState(() {});
+                          },
+                          child: DottedBorder(
+                            color: AppColor.primaryColor,
+                            borderType: BorderType.RRect,
+                            radius: const Radius.circular(12),
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                // SvgPicture.asset(Assets.imagesImageIcon),
+                                // const Gap(8),
+                                const Text("Add Img", style: AppStyle.medium18),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    )
-                  : Container(
-                      constraints: const BoxConstraints(maxWidth: 300),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          AspectRatio(
-                            aspectRatio: 1,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
+                      )
+                    : Container(
+                        constraints: const BoxConstraints(maxWidth: 300),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            AspectRatio(
+                              aspectRatio: 1,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Image.file(
+                                    productItemModelCopy.imageFile!,
+                                    fit: BoxFit.fill),
                               ),
-                              child: Image.file(
-                                  productItemModelCopy.imageFile!,
-                                  fit: BoxFit.fill),
                             ),
-                          ),
-                          const Gap(8),
-                          IconButton(
-                            onPressed: () {
-                              productItemModelCopy.imageFile = null;
-                              setState(() {});
-                            },
-                            icon: const Icon(
-                              Icons.delete,
-                              color: AppColor.primaryColor,
-                              size: 30,
+                            const Gap(8),
+                            IconButton(
+                              onPressed: () {
+                                productItemModelCopy.imageFile = null;
+                                productItemModel.imageFile = productItemModelCopy.imageFile;    
+                                setState(() {});
+                              },
+                              icon: const Icon(
+                                Icons.delete,
+                                color: AppColor.primaryColor,
+                                size: 30,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-            ),
+              ),
+      ),
     );
   }
 

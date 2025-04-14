@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:e_commerce/core/errors/failure.dart';
 
 import 'package:e_commerce/core/models/product_item_model.dart';
+import 'package:e_commerce/core/services/storage_services.dart';
 import 'package:e_commerce/features/customer/data/models/buy_product_model.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -14,8 +15,8 @@ import 'trader_repo.dart';
 
 class TraderRepoImpl extends TraderRepo {
   final DatabaseServices dataBaseServices;
-
-  TraderRepoImpl({required this.dataBaseServices});
+  final StorageServices storageServices;
+  TraderRepoImpl( {required this.dataBaseServices, required this.storageServices});
   @override
   Future<Either<void, Failure>> addProduct(
       {required ProductItemModel productItemModel}) async {
@@ -23,6 +24,8 @@ class TraderRepoImpl extends TraderRepo {
       if (!await hasNetwork()) {
         return right(const Failure("لا يوجد اتصال بالانترنت"));
       }
+      productItemModel.imageUrl = await storageServices.uploadFile(
+          productItemModel.imageFile!, "product_images");
       await dataBaseServices.addProduct(productItemModel);
       return left(null);
     } on FirebaseException catch (e) {
@@ -106,8 +109,8 @@ class TraderRepoImpl extends TraderRepo {
   Future<Either<void, Failure>> changeOrderFromNewToOld(
       {required BuyProductModel buyProductModel}) async {
     try {
-      await dataBaseServices
-          .changeOrderFromNewToOld(buyProductModel: buyProductModel);
+      await dataBaseServices.changeOrderFromNewToOld(
+          buyProductModel: buyProductModel);
       return left(null);
     } on FirebaseException catch (e) {
       return right(ServerFailure.fromFireBaseException(e));
@@ -133,8 +136,4 @@ class TraderRepoImpl extends TraderRepo {
       return right(Failure(e.toString()));
     }
   }
-
-  
-  }
-
-
+}

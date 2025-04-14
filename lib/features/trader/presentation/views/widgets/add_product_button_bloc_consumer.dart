@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/functions/show_snack_bar.dart';
 import '../../../../../generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import '../../../../../core/models/product_item_model.dart';
@@ -25,8 +26,10 @@ class AddProductButton extends StatelessWidget {
       title: LocaleKeys.add_product.tr(),
       horizontalMargin: 50,
       onTap: () {
-        if (formKey.currentState!.validate()) {
-          __showConfirmAwesomeDialog(context) ;
+        if (productItemModel.imageFile == null) {
+          showSnackBar(context, LocaleKeys.image_is_not_added.tr());
+        } else if (formKey.currentState!.validate()) {
+          __showConfirmAwesomeDialog(context);
         } else {
           formKey.currentState!.save();
         }
@@ -39,6 +42,7 @@ class AddProductButton extends StatelessWidget {
     productItemModel.productId = Random().nextDouble().toString();
     productItemModel.traderId = FirebaseAuth.instance.currentUser!.uid;
   }
+
   void __showConfirmAwesomeDialog(context) {
     AwesomeDialog(
       context: context,
@@ -49,10 +53,10 @@ class AddProductButton extends StatelessWidget {
       btnCancelText: LocaleKeys.cancel.tr(),
       btnOkOnPress: () {
         setProductIdAndTraderIdAndDate();
-          BlocProvider.of<AddProductCubit>(context)
-              .addProduct(productItemModel: productItemModel);
+        BlocProvider.of<AddProductCubit>(context)
+            .addProduct(productItemModel: productItemModel);
       },
-      btnCancelOnPress: () {} ,
+      btnCancelOnPress: () {},
     ).show();
   }
 }
