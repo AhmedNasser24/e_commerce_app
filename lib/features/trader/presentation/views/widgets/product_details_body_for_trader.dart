@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
+import 'product_image.dart';
 
 class ProductDetailsViewBodyForTrader extends StatelessWidget {
   const ProductDetailsViewBodyForTrader ({super.key, required this.productItemModel});
@@ -15,20 +16,7 @@ class ProductDetailsViewBodyForTrader extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Arc(
-            edge: Edge.BOTTOM,
-            height: 50,
-            arcType: ArcType.CONVEX,
-            child: Container(
-              width: double.infinity,
-              color: kOffWhiteColor,
-              height: 300,
-              child: CustomCachedNetworkImage(
-                imageUrl: productItemModel.imageUrl!,
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),
+          ProductImage(productItemModel: productItemModel),
           const Gap(30),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -43,6 +31,7 @@ class ProductDetailsViewBodyForTrader extends StatelessWidget {
                   style: AppStyle.semiBold16,
                   textAlign: TextAlign.start,
                 ),
+                const Gap(60),
               ],
             ),
           )
@@ -51,3 +40,5 @@ class ProductDetailsViewBodyForTrader extends StatelessWidget {
     );
   }
 }
+
+

@@ -13,19 +13,17 @@ class CustomCachedNetworkImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      fit: fit ?? BoxFit.contain,
       imageUrl: imageUrl,
       imageBuilder: (context, imageProvider) => Container(
-        constraints: const BoxConstraints(maxWidth: 300),
+        constraints: BoxConstraints(maxWidth: 300),
         child: AspectRatio(
           aspectRatio: 1,
           child: Container(
-            // constraints: BoxConstraints(maxWidth: 300),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               image: DecorationImage(
                 image: imageProvider,
-                fit: BoxFit.fill,
+                fit: fit ?? BoxFit.contain,
               ),
             ),
           ),
