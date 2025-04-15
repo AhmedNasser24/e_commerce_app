@@ -5,15 +5,16 @@ import 'dart:developer' as dev;
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/services/storage_services.dart';
 import 'package:path/path.dart';
-import 'package:supabase/supabase.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseStorageService implements StorageServices {
   static late SupabaseClient __supabase;
-  static void init() {
-    __supabase = SupabaseClient(kSupabaseUrl, kSupabaseKey);
+  static Future<void> init() async {
+    await Supabase.initialize(url: kSupabaseUrl, anonKey: kSupabaseKey);
+    __supabase = Supabase.instance.client;
   }
 
-  static Future <void> createBucket(String bucketName) async {
+  static Future<void> createBucket(String bucketName) async {
     bool bucketExists = false;
     final response = await __supabase.storage.listBuckets();
     for (var bucket in response) {
@@ -23,8 +24,11 @@ class SupabaseStorageService implements StorageServices {
       }
     }
     if (!bucketExists) {
-      await __supabase.storage.createBucket(bucketName);
-      dev.log("Bucket created: $bucketName");
+      await __supabase.storage.createBucket(
+          bucketName,
+          BucketOptions(
+            public: true,             // authuntication is not required to access the bucket
+          ));
       return;
     }
   }
@@ -34,7 +38,6 @@ class SupabaseStorageService implements StorageServices {
     // path is the folder name in firebase storage
     int rand = Random().nextInt(1000000000);
     String imageName = "$rand${basename(file.path)}";
-    dev.log("imageName: $imageName");
     final storageResponse = await __supabase.storage
         .from(kECommerceBucket)
         .upload("$path/$imageName", file);
@@ -45,6 +48,7 @@ class SupabaseStorageService implements StorageServices {
   String __getFileUrl(String path) {
     String publicUrl =
         __supabase.storage.from(kECommerceBucket).getPublicUrl(path);
+
     return publicUrl;
   }
 }

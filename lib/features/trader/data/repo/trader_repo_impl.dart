@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
@@ -16,7 +17,8 @@ import 'trader_repo.dart';
 class TraderRepoImpl extends TraderRepo {
   final DatabaseServices dataBaseServices;
   final StorageServices storageServices;
-  TraderRepoImpl( {required this.dataBaseServices, required this.storageServices});
+  TraderRepoImpl(
+      {required this.dataBaseServices, required this.storageServices});
   @override
   Future<Either<void, Failure>> addProduct(
       {required ProductItemModel productItemModel}) async {
@@ -26,6 +28,7 @@ class TraderRepoImpl extends TraderRepo {
       }
       productItemModel.imageUrl = await storageServices.uploadFile(
           productItemModel.imageFile!, "product_images");
+      log(productItemModel.imageUrl!);
       await dataBaseServices.addProduct(productItemModel);
       return left(null);
     } on FirebaseException catch (e) {

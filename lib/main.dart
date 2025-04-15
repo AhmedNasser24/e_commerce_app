@@ -36,7 +36,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  SupabaseStorageService.init();
+  await SupabaseStorageService.init();
   await SupabaseStorageService.createBucket(kECommerceBucket);
   getItSetup();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
