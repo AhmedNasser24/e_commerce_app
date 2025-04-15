@@ -6,7 +6,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'add_product_button_bloc_consumer.dart';
+import 'add_product_button.dart';
 import 'product_category_text_form_field.dart';
 import 'product_desc_text_form_field.dart';
 import 'product_name_text_form_field.dart';

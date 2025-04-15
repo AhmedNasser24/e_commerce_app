@@ -27,7 +27,7 @@ class TraderRepoImpl extends TraderRepo {
         return right(const Failure("لا يوجد اتصال بالانترنت"));
       }
       productItemModel.imageUrl = await storageServices.uploadFile(
-          productItemModel.imageFile!, "product_images");
+          productItemModel);
       log(productItemModel.imageUrl!);
       await dataBaseServices.addProduct(productItemModel);
       return left(null);
@@ -64,6 +64,10 @@ class TraderRepoImpl extends TraderRepo {
     try {
       if (!await hasNetwork()) {
         return right(const Failure("لا يوجد اتصال بالانترنت"));
+      }
+      if (productItemModel.imagePath != null &&
+          productItemModel.imageBucket != null) {
+        await storageServices.deleteFile(productItemModel.imagePath!);
       }
       await dataBaseServices.deleteProduct(productItemModel);
       return left(null);

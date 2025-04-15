@@ -3,7 +3,8 @@ import 'dart:io';
 import 'package:e_commerce/constants.dart';
 
 class ProductItemModel {
-  String? productId, desc, name, category, price, imageUrl, traderId;
+  String? productId, desc, name, category, price,  traderId;
+  String? imageUrl, imagePath , imageBucket;
   File? imageFile;
   int? quantity;
   String? createAt;
@@ -18,6 +19,8 @@ class ProductItemModel {
       this.traderId,
       this.quantity,
       this.desc,
+      this.imagePath,
+      this.imageBucket
       });
 
   Map<String, dynamic> toJson() {
@@ -30,7 +33,9 @@ class ProductItemModel {
       kProductQuantity: quantity,
       kTraderId: traderId,
       kCreatedAt: createAt,
-      kProductDescription : desc
+      kProductDescription : desc ,
+      kProductImagePath: imagePath,
+      kProductImageBucket: imageBucket,
     };
   }
 
@@ -41,10 +46,13 @@ class ProductItemModel {
       category: json[kProductCategory],
       price: json[kProductPrice],
       imageUrl: json[kProductImageUrl],
+      imagePath: json[kProductImagePath],
+      imageBucket: json[kProductImageBucket],
       traderId: json[kTraderId],
       quantity: json[kProductQuantity],
       createAt: json[kCreatedAt],
       desc: json[kProductDescription],
+
     );
   }
 }

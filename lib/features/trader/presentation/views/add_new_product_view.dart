@@ -76,6 +76,7 @@ class AddNewProductView extends StatelessWidget {
   void __showSuccessAwesomeDialog(context) {
     AwesomeDialog(
       context: context,
+      dismissOnBackKeyPress: false,
       dismissOnTouchOutside: false,
       dialogType: DialogType.success,
       animType: AnimType.topSlide,
