@@ -10,12 +10,15 @@ import '../models/product_item_model.dart';
 
 class SupabaseStorageService implements StorageServices {
   static late SupabaseClient __supabase;
+  final String path = "product_images";    // path after the bucket name and until file name
+
   static Future<void> init() async {
     await Supabase.initialize(url: kSupabaseUrl, anonKey: kSupabaseKey);
     __supabase = Supabase.instance.client;
   }
 
-  static Future<void> createBucket(String bucketName) async {
+  Future<void> createBucket() async {
+    String bucketName = kECommerceBucket;
     bool bucketExists = false;
     final response = await __supabase.storage.listBuckets();
     for (var bucket in response) {
@@ -35,18 +38,23 @@ class SupabaseStorageService implements StorageServices {
   }
 
   @override
-  Future<String> uploadFile(ProductItemModel productItemModel) async {
+  Future<void> uploadFile(ProductItemModel productItemModel) async {
+    await createBucket();
     File file = productItemModel.imageFile!;
-    String path = "product_images";
     // path is the folder name in firebase storage
     int rand = Random().nextInt(1000000000);
     String imageName = "$rand${basename(file.path)}";
-   await __supabase.storage
+    await __supabase.storage
         .from(kECommerceBucket)
-        .upload("$path/$imageName", file);
+        .upload("$path/$imageName", file,
+        fileOptions: const FileOptions(
+          cacheControl: '0',
+          upsert: true,
+        )
+        );
     productItemModel.imagePath = "$path/$imageName";
     productItemModel.imageBucket = kECommerceBucket;
-    return __getFileUrl("$path/$imageName");
+    productItemModel.imageUrl = __getFileUrl("$path/$imageName");
   }
 
   @override
@@ -58,5 +66,14 @@ class SupabaseStorageService implements StorageServices {
     String publicUrl =
         __supabase.storage.from(kECommerceBucket).getPublicUrl(path);
     return publicUrl;
+  }
+
+  @override
+  Future<void> updateFile(ProductItemModel productItemModel) async {
+    String oldPath = productItemModel.imagePath!; 
+    deleteFile(oldPath); // delete the old file from the bucket
+     productItemModel.imageFile!;
+    await uploadFile(productItemModel); // productItemModel has the new file;
+
   }
 }

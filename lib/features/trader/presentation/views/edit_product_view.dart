@@ -69,6 +69,7 @@ class EditProductView extends StatelessWidget {
     AwesomeDialog(
       context: context,
       dismissOnTouchOutside: false,
+      dismissOnBackKeyPress: false,
       dialogType: DialogType.success,
       animType: AnimType.topSlide,
       desc: LocaleKeys.product_is_edited_successfully.tr(),

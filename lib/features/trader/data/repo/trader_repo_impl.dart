@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
@@ -26,9 +25,7 @@ class TraderRepoImpl extends TraderRepo {
       if (!await hasNetwork()) {
         return right(const Failure("لا يوجد اتصال بالانترنت"));
       }
-      productItemModel.imageUrl = await storageServices.uploadFile(
-          productItemModel);
-      log(productItemModel.imageUrl!);
+      await storageServices.uploadFile(productItemModel);
       await dataBaseServices.addProduct(productItemModel);
       return left(null);
     } on FirebaseException catch (e) {
@@ -46,6 +43,10 @@ class TraderRepoImpl extends TraderRepo {
     try {
       if (!await hasNetwork()) {
         return right(const Failure("لا يوجد اتصال بالانترنت"));
+      }
+      if (productItemModel.imagePath != null &&
+          productItemModel.imageBucket != null) {
+        await storageServices.updateFile(productItemModel);
       }
       await dataBaseServices.editProduct(productItemModel);
       return left(null);

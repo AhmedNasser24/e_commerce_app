@@ -37,7 +37,6 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await SupabaseStorageService.init();
-  await SupabaseStorageService.createBucket(kECommerceBucket);
   getItSetup();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   Bloc.observer = SimpleBlocObserver();
