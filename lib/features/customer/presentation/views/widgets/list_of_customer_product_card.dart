@@ -31,13 +31,10 @@ class ListOfCustomerProductCard extends StatelessWidget {
                     ),
                     itemCount: state.productItemModelList.length,
                     itemBuilder: (context, i) => GestureDetector(
-                      onTap: () => Navigator.push(
+                      onTap: () => Navigator.pushNamed(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => ProductDetailsViewForCustomer(
-                            productItemModel: state.productItemModelList[i],
-                          ),
-                        ),
+                        ProductDetailsViewForCustomer.routeName,
+                        arguments: state.productItemModelList[i],
                       ),
                       child: CustomerProductItem(
                           productItemModel: state.productItemModelList[i]),

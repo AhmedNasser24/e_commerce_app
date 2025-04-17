@@ -17,6 +17,7 @@ class ProductDetailsViewForTrader extends StatelessWidget {
   const ProductDetailsViewForTrader(
       {super.key, required this.productItemModel});
   final ProductItemModel productItemModel;
+  static const String routeName = "/productDetailsViewForTrader";
   @override
   Widget build(BuildContext context) {
     bool isLoading = false;

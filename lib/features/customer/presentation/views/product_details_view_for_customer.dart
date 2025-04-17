@@ -23,6 +23,7 @@ class ProductDetailsViewForCustomer extends StatelessWidget {
   });
   final ProductItemModel productItemModel;
   final bool navigateFromNotification;
+  static const String routeName = "ProductDetailsViewForCustomer";
   @override
   Widget build(BuildContext context) {
     bool isLoading = false;

@@ -13,12 +13,10 @@ class EditIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (context) =>
-                EditProductViewBlocProvider(productItemModel: productItemModel),
-          ),
+          EditProductViewBlocProvider.routeName,
+          arguments: productItemModel,
         );
       },
       icon: const Icon(Icons.edit, color: kPurpleColor),

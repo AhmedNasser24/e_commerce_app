@@ -14,6 +14,7 @@ class EditProductViewBlocProvider extends StatelessWidget {
   });
 
   final ProductItemModel productItemModel;
+  static const routeName = '/EditProductViewBlocProvider';
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
