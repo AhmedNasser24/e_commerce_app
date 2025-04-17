@@ -5,8 +5,8 @@ import 'package:easy_localization/easy_localization.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../generated/locale_keys.g.dart';
 
-class MyOrders extends StatelessWidget {
-  const MyOrders({super.key});
+class MyOrdersDrawerButton extends StatelessWidget {
+  const MyOrdersDrawerButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +16,10 @@ class MyOrders extends StatelessWidget {
         style: AppStyle.semiBold16,
       ),
       leading: const Icon(Icons.shopping_cart, color: kPurpleColor),
-      onTap: () => Navigator.push(
+      onTap: () => Navigator.pushNamed(
         context,
-        MaterialPageRoute(
-          builder: (context) => const MyOrderViewBlocProvider(),
-        ),
+        MyOrderViewBlocProvider.routeName,
+       
       ),
     );
   }

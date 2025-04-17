@@ -8,7 +8,7 @@ import '../../manager/add_product_cubit/add_product_cubit.dart';
 
 class AddNewProductViewBlocProvider extends StatelessWidget {
   const AddNewProductViewBlocProvider({super.key});
-
+  static const String routeName = "/addNewProductViewBlocProvider";
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

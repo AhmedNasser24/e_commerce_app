@@ -13,7 +13,7 @@ class TraderHomeViewBlocProvider extends StatelessWidget {
   const TraderHomeViewBlocProvider({
     super.key,
   });
-
+  static const String routeName = "/traderHomeViewBlocProvider";
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(

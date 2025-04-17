@@ -7,8 +7,8 @@ import 'package:easy_localization/easy_localization.dart';
 
 import '../new_orders_view.dart';
 
-class NewOrderListTile extends StatelessWidget {
-  const NewOrderListTile({
+class NewOrderListTileButton extends StatelessWidget {
+  const NewOrderListTileButton({
     super.key,
     required this.isActive,
   });
@@ -17,12 +17,10 @@ class NewOrderListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        Navigator.push(
+        Navigator.pop(context);
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (context) =>
-                const NewOrdersView(),
-          ),
+          NewOrdersView.routeName,
         );
       },
       title: Text(

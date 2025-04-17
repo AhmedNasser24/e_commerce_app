@@ -17,6 +17,7 @@ import '../../../trader/presentation/views/widgets/trader_home_view_bloc_provide
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key,});
+  static const String routeName = "/splashView";
   @override
   State<SplashView> createState() => _SplashViewState();
 }
@@ -85,23 +86,23 @@ class _SplashViewState extends State<SplashView> {
         bool isLogin = SharedPreferenceSingleton.getbool(kIsLogin);
         String userKind = SharedPreferenceSingleton.getString(kAccountKind);
         if (isLogin && userKind == kTrader) {
-          Navigator.pushReplacement(
+          
+          Navigator.pushReplacementNamed(
               context,
-              MaterialPageRoute(
-                  builder: (context) => const TraderHomeViewBlocProvider()));
+              TraderHomeViewBlocProvider.routeName);
         } else if (isLogin && userKind == kCustomer) {
-          Navigator.pushReplacement(
+          Navigator.pushReplacementNamed(
               context,
-              MaterialPageRoute(
-                  builder: (context) => const CustomerHomeViewBlocProvider()));
+              CustomerHomeViewBlocProvider.routeName);
           return;
         } else {
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const LoginView()));
+          Navigator.pushReplacementNamed(
+              context,
+              LoginView.routeName);
         }
       } else {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const OnboardingView()));
+        Navigator.pushReplacementNamed(context,
+            OnboardingView.routeName);
       }
     });
   }

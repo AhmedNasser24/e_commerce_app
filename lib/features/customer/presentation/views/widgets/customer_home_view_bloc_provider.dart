@@ -11,6 +11,7 @@ import '../customer_home_view.dart';
 
 class CustomerHomeViewBlocProvider extends StatelessWidget {
   const CustomerHomeViewBlocProvider({super.key,});
+  static const String routeName = "/customerHomeViewBlocProvider";
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(

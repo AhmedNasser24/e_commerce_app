@@ -15,7 +15,7 @@ class NavigateToRegisterView extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterView())) ;
+        Navigator.pushNamed(context, RegisterView.routeName);
       },
       child: Text(LocaleKeys.register.tr(), style: AppStyle.medium16.copyWith(color: kWhiteColor)),
     );

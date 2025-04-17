@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/widgets/select_language.dart';
 import '../../../../../core/widgets/sign_out.dart';
 import 'customer_drawer_header.dart';
-import 'customer_order.dart';
+import 'my_order_drawer_button.dart';
 
 class CustomerDrawer extends StatelessWidget {
   const CustomerDrawer({
@@ -14,7 +14,7 @@ class CustomerDrawer extends StatelessWidget {
       child: Column(
         children: [
           CustomerDrawerHeader(),
-          MyOrders(),
+          MyOrdersDrawerButton(),
           SelectLanguage(),
           SignOut(),
         ],

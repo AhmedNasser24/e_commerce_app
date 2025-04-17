@@ -11,7 +11,6 @@ import 'not_delivered_text.dart';
 
 class MyOrderView extends StatelessWidget {
   const MyOrderView({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MyOrderCubit, MyOrderState>(

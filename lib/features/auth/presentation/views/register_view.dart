@@ -9,7 +9,7 @@ import 'widgets/register_body.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
-
+  static const String routeName = "/registerView";
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

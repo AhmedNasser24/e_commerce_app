@@ -8,6 +8,7 @@ import 'widgets/my_order_view.dart';
 class MyOrderViewBlocProvider extends StatelessWidget {
   const MyOrderViewBlocProvider({super.key});
 
+  static const String routeName = '/myOrderView';
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

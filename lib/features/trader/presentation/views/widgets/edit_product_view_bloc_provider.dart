@@ -14,7 +14,6 @@ class EditProductViewBlocProvider extends StatelessWidget {
   });
 
   final ProductItemModel productItemModel;
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

@@ -8,7 +8,7 @@ import '../add_to_cart_view.dart';
 
 class AddToCardViewBlocProvider extends StatelessWidget {
   const AddToCardViewBlocProvider({super.key});
-
+  static const String routeName = "/addToCardViewBlocProvider";
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

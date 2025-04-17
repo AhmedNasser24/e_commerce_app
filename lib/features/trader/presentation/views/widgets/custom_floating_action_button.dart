@@ -14,11 +14,9 @@ class CustomFloatingActionButton extends StatelessWidget {
     return FloatingActionButton(
       backgroundColor: kPurpleColor,
       onPressed: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (context) => const AddNewProductViewBlocProvider()
-          ),
+          AddNewProductViewBlocProvider.routeName,
         );
       },
       child: const Icon(Icons.add , color: kWhiteColor,),

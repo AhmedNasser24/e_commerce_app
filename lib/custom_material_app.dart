@@ -1,5 +1,6 @@
 
 import 'package:e_commerce/core/services/notification_service.dart';
+import 'package:e_commerce/core/utils/on_generate_route.dart';
 import 'package:e_commerce/features/splash/presentation/views/splash_view.dart';
 import 'package:e_commerce/main.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -36,7 +37,8 @@ class _CustomMaterialAppState extends State<CustomMaterialApp> {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const SplashView(),
+          onGenerateRoute: onGenerateRoute,
+          initialRoute: SplashView.routeName,
         );
       
   }

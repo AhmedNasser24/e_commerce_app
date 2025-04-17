@@ -16,7 +16,7 @@ class StartButton extends StatelessWidget {
       title: LocaleKeys.onboarding_start.tr(),
       onTap: () {
         SharedPreferenceSingleton.setbool(kIsONBoardingVisited, true);
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginView()));
+        Navigator.pushReplacementNamed(context, LoginView.routeName);
       },
     );
   }

@@ -31,19 +31,15 @@ class LoginButton extends StatelessWidget {
           showSnackBar(context, state.errMessage);
         } else if (state is LoginSuccess) {
           isLoading = false;
-          Navigator.pushAndRemoveUntil(
+          Navigator.pushNamedAndRemoveUntil(
             context,
-            MaterialPageRoute(
-              builder: (context) {
-                // check if this email is for customer or trader
-                if (loginModel.accountKind == kTraderAccountKindEnglish ||
-                    loginModel.accountKind == kTraderAccountKindArabic) {
-                  return  const TraderHomeViewBlocProvider();
-                } else {
-                  return  const CustomerHomeViewBlocProvider();
-                }
-              }, //const TraderHomeViewBlocProvider(),
-            ),
+
+            // check if this email is for customer or trader
+            (loginModel.accountKind == kTraderAccountKindEnglish ||
+                    loginModel.accountKind == kTraderAccountKindArabic)
+                ? TraderHomeViewBlocProvider.routeName
+                : CustomerHomeViewBlocProvider.routeName,
+
             (route) => false,
           );
         } else {

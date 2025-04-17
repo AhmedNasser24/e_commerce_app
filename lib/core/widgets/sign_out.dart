@@ -20,9 +20,9 @@ class SignOut extends StatelessWidget {
       listener: (context, state) {
         // loading is in trader view or customer view
         if (state is SignOutSuccess) {
-          Navigator.pushAndRemoveUntil(
+          Navigator.pushNamedAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => const LoginView()),
+            LoginView.routeName,
             (route) =>
                 false, // Returning false will remove all previous routes from the stack
           );

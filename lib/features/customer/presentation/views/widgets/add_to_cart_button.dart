@@ -14,11 +14,9 @@ class AddToCartButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (context) => const AddToCardViewBlocProvider(),
-          ),
+          AddToCardViewBlocProvider.routeName,
         );
       },
       child: const CustomBadge(

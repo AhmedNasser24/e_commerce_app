@@ -10,7 +10,7 @@ import '../../../../core/utils/app_style.dart';
 
 class NewOrdersView extends StatelessWidget {
   const NewOrdersView({super.key});
-
+  static const String routeName = '/newOrdersView';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
