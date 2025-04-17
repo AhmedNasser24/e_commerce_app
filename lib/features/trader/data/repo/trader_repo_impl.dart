@@ -47,6 +47,8 @@ class TraderRepoImpl extends TraderRepo {
       if (productItemModel.imagePath != null &&
           productItemModel.imageBucket != null) {
         await storageServices.updateFile(productItemModel);
+      }else {
+        await storageServices.uploadFile(productItemModel);
       }
       await dataBaseServices.editProduct(productItemModel);
       return left(null);
