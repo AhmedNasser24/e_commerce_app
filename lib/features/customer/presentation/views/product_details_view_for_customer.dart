@@ -98,11 +98,18 @@ class CustomBottomAppbar extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       child: Row(
         children: [
-          Text("${productItemModel.price!} ${LocaleKeys.LE.tr()}",
-              style: AppStyle.semiBold18.copyWith(color: kWhiteColor)),
-          const Spacer(),
-          CustomAddToCartbuttonForProductDetailsViewForCustomer(
-              isLoading: isLoading, productItemModel: productItemModel),
+          Expanded(
+            flex: 2,  
+            child: Text(
+              "${productItemModel.price!} ${LocaleKeys.LE.tr()}",
+              style: AppStyle.semiBold18.copyWith(color: kWhiteColor),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: CustomAddToCartbuttonForProductDetailsViewForCustomer(
+                isLoading: isLoading, productItemModel: productItemModel),
+          ),
         ],
       ),
     );

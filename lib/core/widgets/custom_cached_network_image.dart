@@ -15,7 +15,7 @@ class CustomCachedNetworkImage extends StatelessWidget {
     return CachedNetworkImage(
       imageUrl: imageUrl,
       imageBuilder: (context, imageProvider) => Container(
-        constraints: BoxConstraints(maxWidth: 300),
+        constraints: BoxConstraints(maxWidth: 380),
         child: AspectRatio(
           aspectRatio: 1,
           child: Container(

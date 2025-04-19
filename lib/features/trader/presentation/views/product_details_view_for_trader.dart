@@ -77,17 +77,25 @@ class CustomBottomAppbar extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       child: Row(
         children: [
-          Text("${productItemModel.price!} ${LocaleKeys.LE.tr()}",
-              style: AppStyle.semiBold18.copyWith(color: kWhiteColor)),
-          const Spacer(),
-          CustomButton(
-            isLoading: isLoading,
-            title: LocaleKeys.delete.tr(),
-            style: AppStyle.medium14,
-            backGroundColor: kWhiteColor,
-            onTap: () {
-              __showConfirmAwesomeDialog(context);
-            },
+          Expanded(
+            flex: 2,
+            child: Text(
+              "${productItemModel.price!} ${LocaleKeys.LE.tr()}",
+              style: AppStyle.semiBold18.copyWith(color: kWhiteColor),
+              overflow: TextOverflow.ellipsis,          
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: CustomButton(
+              isLoading: isLoading,
+              title: LocaleKeys.delete.tr(),
+              style: AppStyle.medium14,
+              backGroundColor: kWhiteColor,
+              onTap: () {
+                __showConfirmAwesomeDialog(context);
+              },
+            ),
           ),
         ],
       ),

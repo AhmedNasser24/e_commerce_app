@@ -27,10 +27,10 @@ class AddProductButton extends StatelessWidget {
       title: LocaleKeys.add_product.tr(),
       horizontalMargin: 50,
       onTap: () {
-        if (productItemModel.imageFile == null) {
-          showSnackBar(context, LocaleKeys.image_is_not_added.tr());
-        } else if (formKey.currentState!.validate()) {
+        if (formKey.currentState!.validate()) {
           __showConfirmAwesomeDialog(context);
+        } else if (productItemModel.imageFile == null) {
+          showSnackBar(context, LocaleKeys.image_is_not_added.tr());
         } else {
           formKey.currentState!.save();
         }

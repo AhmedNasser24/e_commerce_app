@@ -5,17 +5,18 @@ import 'package:e_commerce/features/trader/presentation/manager/edit_product_cub
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/functions/show_snack_bar.dart';
 import '../../../../../generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import '../../../../../core/models/product_item_model.dart';
 
 class EditProductButton extends StatelessWidget {
-  const EditProductButton(
-      {super.key,
-      required this.formKey,
-      required this.productItemModel,
-      });
+  const EditProductButton({
+    super.key,
+    required this.formKey,
+    required this.productItemModel,
+  });
   final GlobalKey<FormState> formKey;
   final ProductItemModel productItemModel;
   @override
@@ -26,12 +27,15 @@ class EditProductButton extends StatelessWidget {
       onTap: () async {
         if (formKey.currentState!.validate()) {
           __showConfirmAwesomeDialog(context);
+        } else if (productItemModel.imageFile == null) {
+          showSnackBar(context, LocaleKeys.image_is_not_added.tr());
         } else {
           formKey.currentState!.save();
         }
       },
     );
   }
+
   void __showConfirmAwesomeDialog(context) {
     AwesomeDialog(
       width: kMaxWidthForDialog,
@@ -43,9 +47,9 @@ class EditProductButton extends StatelessWidget {
       btnCancelText: LocaleKeys.cancel.tr(),
       btnOkOnPress: () {
         BlocProvider.of<EditProductCubit>(context)
-              .editProduct(productItemModel: productItemModel);
+            .editProduct(productItemModel: productItemModel);
       },
-      btnCancelOnPress: () {} ,
+      btnCancelOnPress: () {},
     ).show();
   }
 }

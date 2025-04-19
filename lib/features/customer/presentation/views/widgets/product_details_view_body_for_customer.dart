@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
+import '../../../../trader/presentation/views/widgets/product_image.dart';
 
 class ProductDetailsViewBodyForCustomer extends StatelessWidget {
   const ProductDetailsViewBodyForCustomer ({super.key, required this.productItemModel});
@@ -15,20 +16,7 @@ class ProductDetailsViewBodyForCustomer extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Arc(
-            edge: Edge.BOTTOM,
-            height: 50,
-            arcType: ArcType.CONVEX,
-            child: Container(
-              width: double.infinity,
-              color: kOffWhiteColor,
-              height: 300,
-              child: CustomCachedNetworkImage(
-                imageUrl: productItemModel.imageUrl!,
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),
+          ProductImage(productItemModel: productItemModel),
           const Gap(30),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12),
