@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/select_language.dart';
 import '../../../../../core/widgets/sign_out.dart';
@@ -14,14 +15,17 @@ class CustomTraderDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return  const Drawer(
       backgroundColor : kOffWhiteColor,
-      child: Column(
-        children: [
-          TraderDrawerHeader(),
-          NewOrdersForTrader(),
-          // const OldOrdersForTrader(),
-          SelectLanguage(),
-          SignOut(),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            TraderDrawerHeader(),
+            NewOrdersForTrader(),
+            // const OldOrdersForTrader(),
+            SelectLanguage(),
+            SignOut(),
+            Gap(30),
+          ],
+        ),
       ),
     );
   }

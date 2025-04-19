@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../constants.dart';
 import '../../../../../core/functions/show_snack_bar.dart';
 import '../../../../../generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -45,6 +46,7 @@ class AddProductButton extends StatelessWidget {
 
   void __showConfirmAwesomeDialog(context) {
     AwesomeDialog(
+      width: kMaxWidthForDialog,
       context: context,
       dialogType: DialogType.question,
       animType: AnimType.topSlide,

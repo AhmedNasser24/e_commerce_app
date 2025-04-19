@@ -13,9 +13,9 @@ import 'trader_product_item.dart';
 
 class TraderProductItemListView extends StatelessWidget {
   const TraderProductItemListView({
-    super.key,
+    super.key, required this.crossAxisCount,
   });
-
+  final int crossAxisCount ;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FetchCategoryProductsForTraderCubit,
@@ -30,8 +30,8 @@ class TraderProductItemListView extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: GridView.builder(
                     gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
+                         SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: crossAxisCount,
                       childAspectRatio: 0.62,
                       crossAxisSpacing: 15,
                       mainAxisSpacing: 12,

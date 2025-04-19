@@ -1,4 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/trader/presentation/manager/edit_product_cubit/edit_product_cubit.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,7 @@ class EditProductButton extends StatelessWidget {
   }
   void __showConfirmAwesomeDialog(context) {
     AwesomeDialog(
+      width: kMaxWidthForDialog,
       context: context,
       dialogType: DialogType.question,
       animType: AnimType.topSlide,

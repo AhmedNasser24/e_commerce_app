@@ -8,14 +8,12 @@ import 'package:e_commerce/features/trader/presentation/manager/fetch_category_p
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc_observer.dart';
 import 'core/utils/get_it_setup.dart';
 import 'core/utils/shared_preference_singleton.dart';
-// import 'features/notifications/presentation/views/notification_view.dart';
 import 'features/customer/data/repo/customer_repo.dart';
 import 'features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'features/notifications/presentation/manager/notification_cubit/notification_cubit.dart';

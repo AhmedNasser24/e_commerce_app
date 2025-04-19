@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import '../../../../../core/widgets/select_language.dart';
 import '../../../../../core/widgets/sign_out.dart';
 import 'customer_drawer_header.dart';
@@ -11,13 +12,16 @@ class CustomerDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Drawer(
-      child: Column(
-        children: [
-          CustomerDrawerHeader(),
-          MyOrdersDrawerButton(),
-          SelectLanguage(),
-          SignOut(),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            CustomerDrawerHeader(),
+            MyOrdersDrawerButton(),
+            SelectLanguage(),
+            SignOut(),
+            Gap(30),
+          ],
+        ),
       ),
     );
   }

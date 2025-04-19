@@ -29,6 +29,7 @@ class DeleteIconButton extends StatelessWidget {
 
   void __showConfirmAwesomeDialog(context) {
     AwesomeDialog(
+      width: kMaxWidthForDialog,
       context: context,
       dialogType: DialogType.question,
       animType: AnimType.topSlide,

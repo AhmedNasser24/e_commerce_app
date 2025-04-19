@@ -75,6 +75,7 @@ class AddNewProductView extends StatelessWidget {
 
   void __showSuccessAwesomeDialog(context) {
     AwesomeDialog(
+      width: kMaxWidthForDialog,
       context: context,
       dismissOnBackKeyPress: false,
       dismissOnTouchOutside: false,

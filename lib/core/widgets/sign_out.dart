@@ -43,6 +43,7 @@ class SignOut extends StatelessWidget {
 
   void showAwesomeDialog(context) {
     AwesomeDialog(
+      width: kMaxWidthForDialog,
       context: context,
       dialogType: DialogType.question,
       animType: AnimType.topSlide,
@@ -53,7 +54,9 @@ class SignOut extends StatelessWidget {
       btnOkOnPress: () {
         BlocProvider.of<SignOutCubit>(context).signOut();
       },
-      btnCancelOnPress: () {},
+      btnCancelOnPress: () {
+        Navigator.pop(context) ;
+      },
     ).show();
   }
 }

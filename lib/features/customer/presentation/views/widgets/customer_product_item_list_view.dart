@@ -8,9 +8,9 @@ import '../product_details_view_for_customer.dart';
 import 'add_to_cart_view_body.dart';
 import 'customer_product_card.dart';
 
-class ListOfCustomerProductCard extends StatelessWidget {
-  const ListOfCustomerProductCard({super.key});
-
+class CustomerProductItemListView extends StatelessWidget {
+  const CustomerProductItemListView({super.key, required this.crossAxisCount});
+  final int crossAxisCount;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FetchCategoryProductForCustomerCubit,
@@ -22,9 +22,8 @@ class ListOfCustomerProductCard extends StatelessWidget {
               : Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: crossAxisCount,
                       childAspectRatio: 0.62,
                       crossAxisSpacing: 15,
                       mainAxisSpacing: 12,

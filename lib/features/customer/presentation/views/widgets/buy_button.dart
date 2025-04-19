@@ -33,6 +33,7 @@ class BuyButton extends StatelessWidget {
 
   void showSubmitAwesomeDialog(context) {
     AwesomeDialog(
+      width: kMaxWidthForDialog,
       context: context,
       dismissOnTouchOutside: false,
       dialogType: DialogType.question,
