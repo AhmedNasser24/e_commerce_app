@@ -1,10 +1,6 @@
 import 'package:e_commerce/core/models/product_item_model.dart';
-import 'package:e_commerce/core/widgets/custom_cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:clippy_flutter/clippy_flutter.dart';
 import 'package:gap/gap.dart';
-
-import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../trader/presentation/views/widgets/product_image.dart';
 

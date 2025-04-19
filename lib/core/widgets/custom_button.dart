@@ -45,6 +45,9 @@ class CustomButton extends StatelessWidget {
             : Text(
                 title,
                 style: style ?? AppStyle.medium20.copyWith(color: kWhiteColor),
+
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.visible,
               ),
       ),
     );

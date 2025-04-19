@@ -11,16 +11,17 @@ class MyOrdersDrawerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(
-        LocaleKeys.my_orders.tr(),
-        style: AppStyle.semiBold16,
-      ),
-      leading: const Icon(Icons.shopping_cart, color: kPurpleColor),
-      onTap: () => Navigator.pushNamed(
-        context,
-        MyOrderViewBlocProvider.routeName,
-       
-      ),
-    );
+        title: Text(
+          LocaleKeys.my_orders.tr(),
+          style: AppStyle.semiBold16,
+        ),
+        leading: const Icon(Icons.shopping_cart, color: kPurpleColor),
+        onTap: () {
+          Navigator.pop(context); // Close the drawer before navigating
+          Navigator.pushNamed(
+            context,
+            MyOrderViewBlocProvider.routeName,
+          );
+        });
   }
 }

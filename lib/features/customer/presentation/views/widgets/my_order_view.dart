@@ -21,7 +21,9 @@ class MyOrderView extends StatelessWidget {
                 child: MyOrderViewBody(
                     myOrderItemModelList: state.myOrderItemModelList)),
             appBar: myOrderAppBar(context),
-            bottomNavigationBar: state.myOrderItemModelList.isEmpty? null : const CustomBottomAppBar(),
+            bottomNavigationBar: state.myOrderItemModelList.isEmpty
+                ? null
+                : const CustomBottomAppBar(),
           );
         } else if (state is MyOrderFailure) {
           return Scaffold(
@@ -53,7 +55,8 @@ class MyOrderView extends StatelessWidget {
       leading: const BackArrowButton(
         color: kWhiteColor,
       ),
-      title: Text(LocaleKeys.my_orders.tr(), style: AppStyle.medium22.copyWith(color: kWhiteColor)),
+      title: Text(LocaleKeys.my_orders.tr(),
+          style: AppStyle.medium22.copyWith(color: kWhiteColor)),
       centerTitle: true,
       elevation: 0,
       scrolledUnderElevation: 0,
@@ -73,11 +76,18 @@ class CustomBottomAppBar extends StatelessWidget {
       color: kPurpleColor,
       child: Row(
         children: [
-          Text(
+          Expanded(
+            flex: 2,
+            child: Text(
               "${BlocProvider.of<MyOrderCubit>(context).totPrice} ${LocaleKeys.LE.tr()}",
-              style: AppStyle.semiBold18.copyWith(color: kWhiteColor)),
-          const Spacer(),
-          const NotDeliveredText(),
+              style: AppStyle.semiBold18.copyWith(color: kWhiteColor),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: const NotDeliveredText(),
+          ),
         ],
       ),
     );

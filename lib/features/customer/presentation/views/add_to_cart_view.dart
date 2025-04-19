@@ -63,7 +63,7 @@ class AddToCartView extends StatelessWidget {
 
   void showThankYouAwesomeDialog(context) {
     AwesomeDialog(
-      
+      width: kMaxWidthForDialog,
       context: context,
       dialogType: DialogType.success,
       animType: AnimType.topSlide,
@@ -74,6 +74,7 @@ class AddToCartView extends StatelessWidget {
         Navigator.pop(context);
       },
       dismissOnTouchOutside: false,
+      dismissOnBackKeyPress: false,
     ).show();
   }
   int getTotalPriceX100(List<CartItemModel> cartItemModelList) {
