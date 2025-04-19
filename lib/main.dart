@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/manager/locale_cubit/locale_cubit.dart';
 import 'package:e_commerce/core/services/notification_service.dart';
 import 'package:e_commerce/core/services/supabase_storage_service.dart';

@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/onboarding/presentation/views/widgets/on_boarding_image.dart';
 import 'package:e_commerce/generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -16,22 +17,24 @@ class PageView2 extends StatelessWidget {
     return Column(
       children: [
         const Gap(20),
-        SizedBox(
-          height: 250,
-          width: 250,
-          child: Image.asset(Assets.imagesOnboarding2, fit: BoxFit.fill),
-        ),
+        OnBoardingImage(Assets.imagesOnboarding2),
         const Gap(50),
-        Text(
-          LocaleKeys.onboarding_title.tr(),
-          style: AppStyle.bold20,
-          textAlign: TextAlign.center,
+        Container(
+          constraints: BoxConstraints(maxWidth: 340),
+          child: Text(
+            LocaleKeys.onboarding_title.tr(),
+            style: AppStyle.bold20,
+            textAlign: TextAlign.center,
+          ),
         ),
         const Gap(20),
-        Text(
-          LocaleKeys.onboarding_subtitle2.tr(),
-          style: AppStyle.regular14,
-          textAlign: TextAlign.center,
+        Container(
+          constraints: BoxConstraints(maxWidth: 340),
+          child: Text(
+            LocaleKeys.onboarding_subtitle2.tr(),
+            style: AppStyle.regular14,
+            textAlign: TextAlign.center,
+          ),
         ),
       ],
     );
