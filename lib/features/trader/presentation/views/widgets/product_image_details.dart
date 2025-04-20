@@ -5,8 +5,8 @@ import '../../../../../constants.dart';
 import '../../../../../core/models/product_item_model.dart';
 import '../../../../../core/widgets/custom_cached_network_image.dart';
 
-class ProductImage extends StatelessWidget {
-  const ProductImage({
+class ProductImageDetails extends StatelessWidget {
+  const ProductImageDetails({
     super.key,
     required this.productItemModel,
   });

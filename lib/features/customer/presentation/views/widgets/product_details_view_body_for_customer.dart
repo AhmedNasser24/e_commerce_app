@@ -1,18 +1,19 @@
 import 'package:e_commerce/core/models/product_item_model.dart';
+import 'package:e_commerce/features/trader/presentation/views/widgets/product_image_details.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../../../../../core/utils/app_style.dart';
-import '../../../../trader/presentation/views/widgets/product_image.dart';
 
 class ProductDetailsViewBodyForCustomer extends StatelessWidget {
-  const ProductDetailsViewBodyForCustomer ({super.key, required this.productItemModel});
+  const ProductDetailsViewBodyForCustomer(
+      {super.key, required this.productItemModel});
   final ProductItemModel productItemModel;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          ProductImage(productItemModel: productItemModel),
+          ProductImageDetails(productItemModel: productItemModel),
           const Gap(30),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12),

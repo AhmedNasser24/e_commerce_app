@@ -35,11 +35,18 @@ class ShowOrdersView extends StatelessWidget {
       elevation: 0,
       child: Row(
         children: [
-          Text(
+          Expanded(
+            flex: 2,
+            child: Text(
               "${__getTotalPrice(buyProductModel.productItemModelList)} ${LocaleKeys.LE.tr()}",
-              style: AppStyle.semiBold18.copyWith(color: kWhiteColor)),
-          const Spacer(),
-          IsDeliveredWidget(buyProductModel: buyProductModel),
+              style: AppStyle.semiBold18.copyWith(color: kWhiteColor),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: IsDeliveredWidget(buyProductModel: buyProductModel),
+          ),
         ],
       ),
     );

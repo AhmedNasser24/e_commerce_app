@@ -2,7 +2,7 @@ import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:flutter/material.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
-import '../../../../../core/widgets/custom_cached_network_image.dart';
+import '../../../../../core/widgets/product_image_item.dart';
 import '../../../../../generated/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'delete_icon_button.dart';
@@ -43,11 +43,7 @@ class TraderProductItem extends StatelessWidget {
               DeleteIconButton(productItemModel: productItemModel),
             ],
           ),
-          SizedBox(
-              height: 90,
-              width: double.infinity,
-              child: CustomCachedNetworkImage(
-                  imageUrl: productItemModel.imageUrl!)),
+          ProductImageItem(imageUrl: productItemModel.imageUrl!),
           Text(
             productItemModel.name!,
             style: AppStyle.bold18,
@@ -71,5 +67,4 @@ class TraderProductItem extends StatelessWidget {
     );
   }
 }
-
 

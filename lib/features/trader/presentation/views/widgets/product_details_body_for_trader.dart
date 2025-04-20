@@ -1,9 +1,9 @@
 import 'package:e_commerce/core/models/product_item_model.dart';
+import 'package:e_commerce/features/trader/presentation/views/widgets/product_image_details.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/utils/app_style.dart';
-import 'product_image.dart';
 
 class ProductDetailsViewBodyForTrader extends StatelessWidget {
   const ProductDetailsViewBodyForTrader ({super.key, required this.productItemModel});
@@ -13,7 +13,7 @@ class ProductDetailsViewBodyForTrader extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          ProductImage(productItemModel: productItemModel),
+          ProductImageDetails(productItemModel: productItemModel),
           const Gap(30),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12),

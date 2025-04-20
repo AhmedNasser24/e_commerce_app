@@ -19,7 +19,7 @@ class EditIconButton extends StatelessWidget {
           arguments: productItemModel,
         );
       },
-      icon: const Icon(Icons.edit, color: kPurpleColor),
+      icon: const Icon(Icons.edit, color: kPurpleColor ),
     );
   }
 }
