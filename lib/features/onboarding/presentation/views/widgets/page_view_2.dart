@@ -1,6 +1,5 @@
 import 'package:e_commerce/features/onboarding/presentation/views/widgets/on_boarding_image.dart';
-import 'package:e_commerce/generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -22,7 +21,7 @@ class PageView2 extends StatelessWidget {
         Container(
           constraints: BoxConstraints(maxWidth: 340),
           child: Text(
-            LocaleKeys.onboarding_title.tr(),
+            AppLocalizations.of(context)!.onboarding_title,
             style: AppStyle.bold20,
             textAlign: TextAlign.center,
           ),
@@ -31,7 +30,7 @@ class PageView2 extends StatelessWidget {
         Container(
           constraints: BoxConstraints(maxWidth: 340),
           child: Text(
-            LocaleKeys.onboarding_subtitle2.tr(),
+            AppLocalizations.of(context)!.onboarding_subtitle2,
             style: AppStyle.regular14,
             textAlign: TextAlign.center,
           ),

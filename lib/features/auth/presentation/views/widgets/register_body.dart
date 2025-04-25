@@ -1,10 +1,9 @@
 import 'package:e_commerce/features/auth/data/models/register_model.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 
 import '../../../../../core/utils/app_style.dart';
-import '../../../../../generated/locale_keys.g.dart';
 import 'account_kind_for_register.dart';
 import 'password_and_confirm_password.dart';
 import 'register_button.dart';
@@ -36,26 +35,26 @@ class _RegisterBodyState extends State<RegisterBody> {
               const Gap(50),
               Align(
                 alignment: Alignment.center,
-                child: TitleText(title: LocaleKeys.register.tr()),
+                child: TitleText(title: AppLocalizations.of(context)!.register),
               ),
               const Gap(30),
-              Text(LocaleKeys.name.tr(), style: AppStyle.medium14),
+              Text(AppLocalizations.of(context)!.name, style: AppStyle.medium14),
               const Gap(5),
               RegisterName(registerModel: registerModel),
               const Gap(10),
-              Text(LocaleKeys.email.tr(), style: AppStyle.medium14),
+              Text(AppLocalizations.of(context)!.email, style: AppStyle.medium14),
               const Gap(5),
               RegisterEmail(registerModel: registerModel),
               const Gap(10),
-              Text(LocaleKeys.password.tr(), style: AppStyle.medium14),
+              Text(AppLocalizations.of(context)!.password, style: AppStyle.medium14),
               const Gap(5),
               PasswordAndConfirmPassword(registerModel: registerModel),
               const Gap(10),
-              Text(LocaleKeys.whatsapp_number.tr(), style: AppStyle.medium14),
+              Text(AppLocalizations.of(context)!.whatsapp_number, style: AppStyle.medium14),
               const Gap(5),
               WhatsAppNumber(registerModel: registerModel),
               const Gap(10),
-              Text(LocaleKeys.account_kind.tr(), style: AppStyle.medium14),
+              Text(AppLocalizations.of(context)!.account_kind, style: AppStyle.medium14),
               const Gap(5),
               AccountKindForRegister(registerModel: registerModel),
               const Gap(50),

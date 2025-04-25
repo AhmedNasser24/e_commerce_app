@@ -4,8 +4,7 @@ import 'package:e_commerce/features/trader/presentation/views/widgets/back_arrow
 import 'package:e_commerce/features/trader/presentation/views/widgets/is_delivered_widget.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/show_orders_view_body.dart';
 import 'package:flutter/material.dart';
-import '../../../../../generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import '../../../../core/models/product_item_model.dart';
 import '../../../../core/utils/app_style.dart';
 
@@ -24,7 +23,7 @@ class ShowOrdersView extends StatelessWidget {
       body: SafeArea(
           child: ShowOrdersViewBody(
               productItemModelList: buyProductModel.productItemModelList)),
-      appBar: showOrdersViewAppBar(),
+      appBar: showOrdersViewAppBar(context),
       bottomNavigationBar: custombottomAppBar(context),
     );
   }
@@ -38,7 +37,7 @@ class ShowOrdersView extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Text(
-              "${__getTotalPrice(buyProductModel.productItemModelList)} ${LocaleKeys.LE.tr()}",
+              "${__getTotalPrice(buyProductModel.productItemModelList)} ${AppLocalizations.of(context)!.le}",
               style: AppStyle.semiBold18.copyWith(color: kWhiteColor),
               overflow: TextOverflow.ellipsis,
             ),
@@ -52,7 +51,7 @@ class ShowOrdersView extends StatelessWidget {
     );
   }
 
-  AppBar showOrdersViewAppBar() {
+  AppBar showOrdersViewAppBar(BuildContext context) {
     return AppBar(
       leading: const BackArrowButton(),
       title: Text(

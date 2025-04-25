@@ -11,8 +11,7 @@ import '../../../../../core/services/image_picker_services.dart';
 import '../../../../../core/utils/app_color.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/models/product_item_model.dart';
-import '../../../../../generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 
 class ProductImageTextFormField extends StatefulWidget {
   const ProductImageTextFormField({
@@ -157,8 +156,8 @@ class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
 
 Future<File?> _showCategoryDialog(BuildContext context) async {
   List<String> pickImageFrom = [
-    LocaleKeys.from_camera.tr(),
-    LocaleKeys.from_gallery.tr()
+    AppLocalizations.of(context)!.from_camera,
+    AppLocalizations.of(context)!.from_gallery
   ];
 
   return await showDialog<File>(
@@ -167,7 +166,7 @@ Future<File?> _showCategoryDialog(BuildContext context) async {
       return AlertDialog(
         title: Align(
           alignment: Alignment.topCenter,
-          child: Text(LocaleKeys.product_image.tr(), style: AppStyle.bold18),
+          child: Text(AppLocalizations.of(context)!.product_image, style: AppStyle.bold18),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
@@ -177,7 +176,7 @@ Future<File?> _showCategoryDialog(BuildContext context) async {
                   title: Text(category, style: AppStyle.medium14),
                   onTap: () async {
                     File? imageFile;
-                    if (category == LocaleKeys.from_camera.tr()) {
+                    if (category == AppLocalizations.of(context)!.from_camera) {
                       imageFile = await ImagePickerService.pickImageFromCamera();
                     } else {
                       imageFile = await ImagePickerService.pickImageFromGallery();

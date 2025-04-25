@@ -1,9 +1,8 @@
+import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/core/utils/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:easy_localization/easy_localization.dart';
-import '../../../../../constants.dart';
-import '../../../../../generated/locale_keys.g.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import '../../../data/models/cart_item_model.dart';
 import '../../manager/cart_cubit/cart_cubit.dart';
 
@@ -27,7 +26,7 @@ class RemoveItemCartButton extends StatelessWidget {
           color: kPurpleColor,
         ),
         child: Text(
-          LocaleKeys.remove_from_card.tr(),
+          AppLocalizations.of(context)!.remove_from_card,
           style: AppStyle.regular12.copyWith(color: kWhiteColor),
         ),
       ),

@@ -1,8 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:e_commerce/features/auth/presentation/manager/sign_out_cubit/sign_out_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/views/login_view.dart';
-import 'package:e_commerce/generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,7 +32,7 @@ class SignOut extends StatelessWidget {
           showAwesomeDialog(context);
         },
         title: Text(
-          LocaleKeys.sign_out.tr(),
+          AppLocalizations.of(context)!.sign_out,
           style: AppStyle.semiBold16,
         ),
         leading: const Icon(Icons.logout, color: kPurpleColor),
@@ -47,10 +46,10 @@ class SignOut extends StatelessWidget {
       context: context,
       dialogType: DialogType.question,
       animType: AnimType.topSlide,
-      title: LocaleKeys.sign_out.tr(),
-      desc: LocaleKeys.are_you_sure_you_want_to_signOut.tr(),
-      btnOkText: LocaleKeys.ok.tr(),
-      btnCancelText: LocaleKeys.cancel.tr(),
+      title: AppLocalizations.of(context)!.sign_out,
+      desc: AppLocalizations.of(context)!.are_you_sure_you_want_to_signOut,
+      btnOkText: AppLocalizations.of(context)!.ok,
+      btnCancelText: AppLocalizations.of(context)!.cancel,
       btnOkOnPress: () {
         BlocProvider.of<SignOutCubit>(context).signOut();
       },

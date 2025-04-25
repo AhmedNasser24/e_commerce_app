@@ -1,6 +1,5 @@
 import 'package:e_commerce/constants.dart';
-import 'package:e_commerce/generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 import '../../../data/models/login_model.dart';
@@ -33,10 +32,10 @@ class _LoginPasswordState extends State<LoginPassword> {
         color: kPurpleColor,
         ),
       ),
-      hintText: LocaleKeys.password.tr(),
+      hintText: AppLocalizations.of(context)!.password,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return LocaleKeys.required_field.tr();
+          return AppLocalizations.of(context)!.required_field;
         }
         widget.loginModel.password = value ;
         return null;

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/widgets/custom_button.dart';
-import '../../../../../generated/locale_keys.g.dart';
 
 class NotDeliveredText extends StatelessWidget {
   const NotDeliveredText({super.key});
@@ -11,7 +10,7 @@ class NotDeliveredText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomButton(
-      title: LocaleKeys.not_delivered.tr(),
+      title: AppLocalizations.of(context)!.not_delivered,
       style: AppStyle.medium14,
       backGroundColor: kWhiteColor,
       horizontalPadding: 6,

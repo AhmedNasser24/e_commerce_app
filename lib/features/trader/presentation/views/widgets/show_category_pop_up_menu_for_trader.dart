@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
-import '../../../../../generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import '../../../../../core/functions/list_of_product_category.dart';
 
 Widget showCategoryPopUpMenuForTrader(context) {
-  List<String> categoriesList = [LocaleKeys.all_category.tr()];
+  List<String> categoriesList = [AppLocalizations.of(context)!.all_category];
   categoriesList.addAll(categoryList(context));
   return PopupMenuButton<String>(
     icon: const Icon(

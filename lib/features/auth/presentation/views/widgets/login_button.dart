@@ -1,8 +1,7 @@
 import 'package:e_commerce/core/functions/show_snack_bar.dart';
 import 'package:e_commerce/features/customer/presentation/views/widgets/customer_home_view_bloc_provider.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/trader_home_view_bloc_provider.dart';
-import 'package:e_commerce/generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../constants.dart';
@@ -48,7 +47,7 @@ class LoginButton extends StatelessWidget {
       },
       builder: (context, state) {
         return CustomButton(
-          title: LocaleKeys.login.tr(),
+          title: AppLocalizations.of(context)!.login,
           isLoading: isLoading,
           horizontalMargin: 40,
           onTap: () {

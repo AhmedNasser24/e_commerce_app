@@ -5,12 +5,11 @@ import 'package:e_commerce/features/customer/presentation/views/widgets/product_
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 
 import '../../../../constants.dart';
 import '../../../../core/models/product_item_model.dart';
 import '../../../../core/utils/app_style.dart';
-import '../../../../generated/locale_keys.g.dart';
 import '../../../auth/presentation/views/login_view.dart';
 import '../../../trader/presentation/views/widgets/back_arrow_button.dart';
 import 'widgets/customer_home_view_bloc_provider.dart';
@@ -101,7 +100,7 @@ class CustomBottomAppbar extends StatelessWidget {
           Expanded(
             flex: 2,  
             child: Text(
-              "${productItemModel.price!} ${LocaleKeys.LE.tr()}",
+              "${productItemModel.price!} ${AppLocalizations.of(context)!.le}",
               style: AppStyle.semiBold18.copyWith(color: kWhiteColor),
             ),
           ),
@@ -131,12 +130,12 @@ class CustomAddToCartbuttonForProductDetailsViewForCustomer
   Widget build(BuildContext context) {
     return CustomButton(
       isLoading: isLoading,
-      title: LocaleKeys.add_to_card.tr(),
+      title: AppLocalizations.of(context)!.add_to_card,
       style: AppStyle.medium14,
       backGroundColor: kWhiteColor,
       onTap: () {
         if (FirebaseAuth.instance.currentUser == null) {
-          showSnackBar(context, LocaleKeys.login_first.tr());
+          showSnackBar(context, AppLocalizations.of(context)!.login_first);
         } else {
           BlocProvider.of<CartCubit>(context)
               .addToCart(productItemModel: productItemModel, context: context);

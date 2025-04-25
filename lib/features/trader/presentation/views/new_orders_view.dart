@@ -1,10 +1,9 @@
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/back_arrow_button.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/new_orders_view_body.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 import '../../../../core/utils/app_style.dart';
 
@@ -17,7 +16,7 @@ class NewOrdersView extends StatelessWidget {
       backgroundColor: kOffWhiteColor,
       body: const SafeArea(child: NewOrdersViewBody()),
       appBar: AppBar(
-        title: Text(LocaleKeys.new_orders.tr(), style: AppStyle.medium22),
+        title: Text(AppLocalizations.of(context)!.new_orders, style: AppStyle.medium22),
         centerTitle: true,
         elevation: 0,
         scrolledUnderElevation: 0,

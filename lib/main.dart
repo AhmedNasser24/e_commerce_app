@@ -5,7 +5,6 @@ import 'package:e_commerce/core/services/supabase_storage_service.dart';
 import 'package:e_commerce/custom_material_app.dart';
 import 'package:e_commerce/features/trader/data/repo/trader_repo.dart';
 import 'package:e_commerce/features/trader/presentation/manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +20,6 @@ import 'features/trader/presentation/manager/fetch_new_orders_cubit/fetch_new_or
 import 'firebase_options.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'generated/codegen_loader.g.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -38,7 +36,6 @@ void main() async {
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   Bloc.observer = SimpleBlocObserver();
   SharedPreferenceSingleton.init();
-  await EasyLocalization.ensureInitialized();
   if (kReleaseMode) {
     await SentryFlutter.init(
       (options) {
@@ -47,26 +44,10 @@ void main() async {
 
         options.tracesSampleRate = 0.01;
       },
-      appRunner: () => runApp(
-        EasyLocalization(
-            supportedLocales: [Locale('en'), Locale('ar')],
-            path:
-                'assets/translations', // <-- change the path of the translation files
-            fallbackLocale: Locale('ar'),
-            assetLoader: CodegenLoader(),
-            child: MyApp()),
-      ),
+      appRunner: () => runApp(MyApp()),
     );
   } else {
-    runApp(
-      EasyLocalization(
-          supportedLocales: [Locale('en'), Locale('ar')],
-          path:
-              'assets/translations', // <-- change the path of the translation files
-          fallbackLocale: Locale('ar'),
-          assetLoader: CodegenLoader(),
-          child: MyApp()),
-    );
+    runApp(MyApp());
   }
 }
 
@@ -96,23 +77,24 @@ class MyAppState extends State<MyApp> {
         BlocProvider(
           create: (context) => LocaleCubit(),
         ),
-        
         BlocProvider(
-          create: (context) => FetchCategoryProductsForTraderCubit(getIt<TraderRepo>()),
+          create: (context) =>
+              FetchCategoryProductsForTraderCubit(getIt<TraderRepo>()),
         ),
         BlocProvider(
           create: (context) => FetchNewOrdersCubit(getIt<TraderRepo>()),
         ),
-        
         BlocProvider(
           create: (context) => NotificationCubit(),
         ),
         BlocProvider(
           create: (context) => CartCubit(getIt<CustomerRepo>()),
         ),
+        BlocProvider(
+          create: (context) => LocaleCubit() ,
+        ),
       ],
       child: CustomMaterialApp(),
-      
     );
   }
 }

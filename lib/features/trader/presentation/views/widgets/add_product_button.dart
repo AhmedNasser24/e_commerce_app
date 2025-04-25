@@ -7,8 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/functions/show_snack_bar.dart';
-import '../../../../../generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
+import '../../../../../l10n/app_localizations.dart';
 import '../../../../../core/models/product_item_model.dart';
 import '../../manager/add_product_cubit/add_product_cubit.dart';
 
@@ -24,13 +23,13 @@ class AddProductButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomButton(
-      title: LocaleKeys.add_product.tr(),
+      title: AppLocalizations.of(context)!.add_product,
       horizontalMargin: 50,
       onTap: () {
         if (formKey.currentState!.validate()) {
           __showConfirmAwesomeDialog(context);
         } else if (productItemModel.imageFile == null) {
-          showSnackBar(context, LocaleKeys.image_is_not_added.tr());
+          showSnackBar(context, AppLocalizations.of(context)!.image_is_not_added);
         } else {
           formKey.currentState!.save();
         }
@@ -50,9 +49,9 @@ class AddProductButton extends StatelessWidget {
       context: context,
       dialogType: DialogType.question,
       animType: AnimType.topSlide,
-      desc: LocaleKeys.are_you_sure_you_want_to_add_this_product.tr(),
-      btnOkText: LocaleKeys.yes.tr(),
-      btnCancelText: LocaleKeys.cancel.tr(),
+      desc: AppLocalizations.of(context)!.are_you_sure_you_want_to_add_this_product,
+      btnOkText: AppLocalizations.of(context)!.yes,
+      btnCancelText: AppLocalizations.of(context)!.cancel,
       btnOkOnPress: () {
         setProductIdAndTraderIdAndDate();
         BlocProvider.of<AddProductCubit>(context)

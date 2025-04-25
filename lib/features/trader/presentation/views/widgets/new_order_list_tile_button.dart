@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
-import '../../../../../generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 
 import '../new_orders_view.dart';
 
@@ -24,7 +23,7 @@ class NewOrderListTileButton extends StatelessWidget {
         );
       },
       title: Text(
-        LocaleKeys.new_orders.tr(),
+        AppLocalizations.of(context)!.new_orders,
         style: isActive
             ? AppStyle.semiBold16.copyWith(color: Colors.green)
             : AppStyle.semiBold16,
@@ -40,7 +39,7 @@ class NewOrderListTileButton extends StatelessWidget {
             ),
       trailing: isActive
           ? Text(
-              LocaleKeys.news.tr(),
+              AppLocalizations.of(context)!.news,
               style: AppStyle.semiBold16.copyWith(color: Colors.green),
             )
           : null,

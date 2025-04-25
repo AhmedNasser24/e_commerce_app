@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
-import '../../../../../generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class OldOrdersForTrader extends StatelessWidget {
   const OldOrdersForTrader({
@@ -14,7 +13,7 @@ class OldOrdersForTrader extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-        LocaleKeys.old_orders.tr(),
+        AppLocalizations.of(context)!.old_orders,
         style: AppStyle.semiBold16,
       ),
       leading: const Icon(Icons.history , color: kPurpleColor),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 
-import '../../../../../generated/locale_keys.g.dart';
 import '../../../data/models/register_model.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 
@@ -20,11 +19,11 @@ class _RegisterNameState extends State<RegisterName> {
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
-      hintText:  LocaleKeys.name.tr(),
+      hintText:  AppLocalizations.of(context)!.name,
       onChanged: (value) => name = value,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return LocaleKeys.required_field.tr();
+          return AppLocalizations.of(context)!.required_field;
         }
         widget.registerModel.name = value ;
         return null;

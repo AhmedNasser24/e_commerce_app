@@ -1,8 +1,7 @@
 import 'package:e_commerce/constants.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../generated/locale_keys.g.dart';
 import '../manager/locale_cubit/locale_cubit.dart';
 import '../utils/app_style.dart';
 
@@ -15,7 +14,7 @@ class SelectLanguage extends StatelessWidget {
     return ListTile(
       onTap: () => _showLanguageDialog(context),
       title: Text(
-        LocaleKeys.language.tr(),
+        AppLocalizations.of(context)!.language,
         style: AppStyle.semiBold16,
       ),
       leading: const Icon(Icons.translate, color: kPurpleColor),
@@ -29,13 +28,13 @@ class SelectLanguage extends StatelessWidget {
         return AlertDialog(
           title: Align(
             alignment: Alignment.topCenter,
-            child: Text(LocaleKeys.language.tr(), style: AppStyle.bold18),
+            child: Text(AppLocalizations.of(context)!.language, style: AppStyle.bold18),
           ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                title: Text(LocaleKeys.arabic.tr(), style: AppStyle.semiBold14),
+                title: Text(AppLocalizations.of(context)!.arabic, style: AppStyle.semiBold14),
                 onTap: () {
                   BlocProvider.of<LocaleCubit>(context)
                       .changeLanguage(context, const Locale('ar'));
@@ -44,7 +43,7 @@ class SelectLanguage extends StatelessWidget {
                 },
               ),
               ListTile(
-                title: Text(LocaleKeys.english.tr(), style: AppStyle.semiBold14),
+                title: Text(AppLocalizations.of(context)!.english, style: AppStyle.semiBold14),
                 onTap: () {
                   BlocProvider.of<LocaleCubit>(context)
                       .changeLanguage(context , const Locale('en'));

@@ -1,15 +1,13 @@
-
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/core/services/notification_service.dart';
 import 'package:e_commerce/core/utils/shared_preference_singleton.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/errors/failure.dart';
-import '../../../../../generated/locale_keys.g.dart';
 import '../../../data/models/login_model.dart';
 import '../../../data/models/register_model.dart';
 import '../../../data/repos/auth_repo.dart';
@@ -71,12 +69,12 @@ class LoginCubit extends Cubit<LoginState> {
           SharedPreferenceSingleton.setString(kAccountKind, userKind1);
           emit(LoginSuccess());
         } else {
-          emit(LoginFailure(LocaleKeys.invalid_email.tr()));
+          emit(LoginFailure(AppLocalizations.of(context)!.invalid_email));
         }
 
         // } else {
         //   emit(LoginFailure(
-        //       LocaleKeys.please_check_your_email_for_verification.tr()));
+        //       AppLocalizations.of(context)!.please_check_your_email_for_verification));
         // }
       },
       (failure) => emit(LoginFailure(failure.errMessage)),

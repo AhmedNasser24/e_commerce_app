@@ -3,8 +3,7 @@ import 'package:e_commerce/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 
 import '../../../../core/functions/show_snack_bar.dart';
 import '../../../../core/utils/app_style.dart';
@@ -25,7 +24,7 @@ class EditProductView extends StatelessWidget {
       listener: (context, state) {
         if (state is EditProductFailure) {
           isLoading = false;
-          showSnackBar(context, LocaleKeys.error_product_is_not_edited.tr());
+          showSnackBar(context, AppLocalizations.of(context)!.error_product_is_not_edited);
         } else if (state is EditProductSuccess) {
           isLoading = false;
           __showSuccessAwesomeDialog(context);
@@ -59,7 +58,7 @@ class EditProductView extends StatelessWidget {
         color: kWhiteColor,
         dismissAction: isLoading ? true : false,
       ),
-      title: Text(LocaleKeys.edit_product.tr(),
+      title: Text(AppLocalizations.of(context)!.edit_product,
           style: AppStyle.medium22.copyWith(color: kWhiteColor)),
       centerTitle: true,
     );
@@ -73,8 +72,8 @@ class EditProductView extends StatelessWidget {
       dismissOnBackKeyPress: false,
       dialogType: DialogType.success,
       animType: AnimType.topSlide,
-      desc: LocaleKeys.product_is_edited_successfully.tr(),
-      btnOkText: LocaleKeys.ok.tr(),
+      desc: AppLocalizations.of(context)!.product_is_edited_successfully,
+      btnOkText: AppLocalizations.of(context)!.ok,
       btnOkOnPress: () {
         BlocProvider.of<FetchCategoryProductsForTraderCubit>(context)
             .fetchCategoryProductsForTrader();

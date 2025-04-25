@@ -1,12 +1,11 @@
-import 'package:easy_localization/easy_localization.dart';
-import '../../../../../generated/locale_keys.g.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 
 List<String> categoryList(context) {
   List<String> categoryList = [
-    LocaleKeys.electronics_category.tr(),
-    LocaleKeys.clothes_category.tr(),
-    LocaleKeys.shoes_category.tr(),
-    LocaleKeys.jewellary_category.tr(),
+    AppLocalizations.of(context)!.electronics_category,
+    AppLocalizations.of(context)!.clothes_category,
+    AppLocalizations.of(context)!.shoes_category,
+    AppLocalizations.of(context)!.jewellary_category,
   ];
   return categoryList;
 }

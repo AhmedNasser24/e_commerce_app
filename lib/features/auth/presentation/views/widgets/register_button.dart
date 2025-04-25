@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/functions/show_snack_bar.dart';
-import '../../../../../generated/locale_keys.g.dart';
 import '../../../data/models/register_model.dart';
 import '../../manager/register_cubit/register_cubit.dart';
 
@@ -28,7 +27,7 @@ class RegisterButton extends StatelessWidget {
           showSnackBar(context, state.errMessage);
         } else if (state is RegisterSuccess) {
           isLoading = false;
-          showSnackBar(context, LocaleKeys.register_success.tr());
+          showSnackBar(context, AppLocalizations.of(context)!.register_success);
           Navigator.pop(context);
         } else {
           isLoading = false;
@@ -36,7 +35,7 @@ class RegisterButton extends StatelessWidget {
       },
       builder: (context, state) {
         return CustomButton(
-          title: LocaleKeys.register.tr(),
+          title: AppLocalizations.of(context)!.register,
           isLoading: isLoading,
           horizontalMargin: 40,
           onTap: () {

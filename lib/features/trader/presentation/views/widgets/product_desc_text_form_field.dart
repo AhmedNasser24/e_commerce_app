@@ -1,8 +1,7 @@
 import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 
 import '../../../../../core/widgets/custom_text_form_field.dart';
 
@@ -17,7 +16,7 @@ class ProductDescTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomTextFormField(
       controller: TextEditingController(text: productItemModel.desc ?? ''),
-      hintText: LocaleKeys.product_desc.tr(),
+      hintText: AppLocalizations.of(context)!.product_desc,
       maxLines: 5,
       validator: (value) {
         

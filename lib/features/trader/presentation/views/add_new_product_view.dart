@@ -3,11 +3,10 @@ import 'package:e_commerce/features/trader/presentation/manager/add_product_cubi
 import 'package:e_commerce/features/trader/presentation/views/widgets/add_new_product_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import '../../../../constants.dart';
 import '../../../../core/functions/show_snack_bar.dart';
 import '../../../../core/utils/app_style.dart';
-import '../../../../generated/locale_keys.g.dart';
 import '../../../notifications/data/model/notification_model.dart';
 import '../../../notifications/presentation/manager/notification_cubit/notification_cubit.dart';
 import '../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
@@ -27,21 +26,14 @@ class AddNewProductView extends StatelessWidget {
           isLoading = false;
           var notificationModel = NotificationModel(
             title: "E Commerce",
-            body: LocaleKeys.new_product_is_added.tr(),
+            body: AppLocalizations.of(context)!.new_product_is_added,
             productItemModel: state.productItemModel,
           );
           BlocProvider.of<NotificationCubit>(context)
               .sendMessageUsingTopic(notificationModel: notificationModel);
-    
-          // NotificationService().sendMessageUsingTopic(
-          //   notificationModel: NotificationModel(
-          //   title: "E Commerce",
-          //   body: S.of(context).new_product_is_added,
-          //   productItemModel: state.productItemModel,
-          // ));
           __showSuccessAwesomeDialog(context);
         } else if (state is AddProductFailure) {
-          showSnackBar(context, LocaleKeys.error_new_product_is_not_added.tr());
+          showSnackBar(context, AppLocalizations.of(context)!.error_new_product_is_not_added);
           isLoading = false;
         }
       },
@@ -67,7 +59,7 @@ class AddNewProductView extends StatelessWidget {
         color: kWhiteColor,
         dismissAction: isLoading ? true : false,
       ),
-      title: Text(LocaleKeys.add_product.tr(),
+      title: Text(AppLocalizations.of(context)!.add_product,
           style: AppStyle.medium22.copyWith(color: kWhiteColor)),
       centerTitle: true,
     );
@@ -81,8 +73,8 @@ class AddNewProductView extends StatelessWidget {
       dismissOnTouchOutside: false,
       dialogType: DialogType.success,
       animType: AnimType.topSlide,
-      desc: LocaleKeys.product_is_added_successfully.tr(),
-      btnOkText: LocaleKeys.ok.tr(),
+      desc: AppLocalizations.of(context)!.product_is_added_successfully,
+      btnOkText: AppLocalizations.of(context)!.ok,
       btnOkOnPress: () {
         BlocProvider.of<FetchCategoryProductsForTraderCubit>(context)
             .fetchCategoryProductsForTrader();

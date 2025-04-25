@@ -6,8 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/functions/show_snack_bar.dart';
-import '../../../../../generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 
 import '../../../../../core/models/product_item_model.dart';
 
@@ -22,13 +21,13 @@ class EditProductButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomButton(
-      title: LocaleKeys.edit_product.tr(),
+      title: AppLocalizations.of(context)!.edit_product,
       horizontalMargin: 50,
       onTap: () async {
         if (formKey.currentState!.validate()) {
           __showConfirmAwesomeDialog(context);
         } else if (productItemModel.imageFile == null) {
-          showSnackBar(context, LocaleKeys.image_is_not_added.tr());
+          showSnackBar(context, AppLocalizations.of(context)!.image_is_not_added);
         } else {
           formKey.currentState!.save();
         }
@@ -42,9 +41,9 @@ class EditProductButton extends StatelessWidget {
       context: context,
       dialogType: DialogType.question,
       animType: AnimType.topSlide,
-      desc: LocaleKeys.are_you_sure_you_want_to_edit_this_product.tr(),
-      btnOkText: LocaleKeys.yes.tr(),
-      btnCancelText: LocaleKeys.cancel.tr(),
+      desc: AppLocalizations.of(context)!.are_you_sure_you_want_to_edit_this_product,
+      btnOkText: AppLocalizations.of(context)!.yes,
+      btnCancelText: AppLocalizations.of(context)!.cancel,
       btnOkOnPress: () {
         BlocProvider.of<EditProductCubit>(context)
             .editProduct(productItemModel: productItemModel);

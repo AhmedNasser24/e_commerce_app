@@ -2,11 +2,10 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:e_commerce/features/customer/presentation/views/widgets/add_to_cart_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import '../../../../constants.dart';
 import '../../../../core/functions/show_snack_bar.dart';
 import '../../../../core/utils/app_style.dart';
-import '../../../../generated/locale_keys.g.dart';
 import '../../../trader/presentation/views/widgets/back_arrow_button.dart';
 import '../../data/models/cart_item_model.dart';
 import '../manager/buy product_cubit/buy_product_cubit.dart';
@@ -49,7 +48,7 @@ class AddToCartView extends StatelessWidget {
 
   AppBar addToCartAppBar(BuildContext context , bool isLoading) {
     return AppBar(
-      title: Text(LocaleKeys.my_cart.tr(), style: AppStyle.medium22.copyWith(color : kWhiteColor)),
+      title: Text(AppLocalizations.of(context)!.my_cart, style: AppStyle.medium22.copyWith(color : kWhiteColor)),
       centerTitle: true,
       leading:  BackArrowButton(
         color: kWhiteColor,
@@ -67,9 +66,9 @@ class AddToCartView extends StatelessWidget {
       context: context,
       dialogType: DialogType.success,
       animType: AnimType.topSlide,
-      title: LocaleKeys.thank_you.tr(),
-      desc: LocaleKeys.we_will_contact_you_within_24_hours.tr(),
-      btnOkText: LocaleKeys.ok.tr(),
+      title: AppLocalizations.of(context)!.thank_you,
+      desc: AppLocalizations.of(context)!.we_will_contact_you_within_24_hours,
+      btnOkText: AppLocalizations.of(context)!.ok,
       btnOkOnPress: () {
         Navigator.pop(context);
       },

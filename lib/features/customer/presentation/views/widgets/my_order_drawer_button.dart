@@ -1,9 +1,8 @@
 import 'package:e_commerce/constants.dart';
 import 'package:e_commerce/features/customer/presentation/views/my_order_view_bloc_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import '../../../../../core/utils/app_style.dart';
-import '../../../../../generated/locale_keys.g.dart';
 
 class MyOrdersDrawerButton extends StatelessWidget {
   const MyOrdersDrawerButton({super.key});
@@ -12,7 +11,7 @@ class MyOrdersDrawerButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
         title: Text(
-          LocaleKeys.my_orders.tr(),
+          AppLocalizations.of(context)!.my_orders,
           style: AppStyle.semiBold16,
         ),
         leading: const Icon(Icons.shopping_cart, color: kPurpleColor),

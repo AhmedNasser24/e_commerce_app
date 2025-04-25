@@ -1,9 +1,7 @@
-// import 'package:e_commerce/core/utils/notification_service.dart';
 import 'package:e_commerce/core/manager/locale_cubit/locale_cubit.dart';
 import 'package:e_commerce/features/auth/presentation/views/login_view.dart';
 import 'package:e_commerce/features/auth/presentation/views/widgets/account_kind_for_login.dart';
-import 'package:e_commerce/generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -47,18 +45,18 @@ class _LoginBodyState extends State<LoginBody> {
                   const Gap(40),
                   Align(
                     alignment: Alignment.center,
-                    child: TitleText(title: LocaleKeys.login.tr()),
+                    child: TitleText(title: AppLocalizations.of(context)!.login),
                   ),
                   const Gap(50),
-                  Text(LocaleKeys.email.tr(), style: AppStyle.medium14),
+                  Text(AppLocalizations.of(context)!.email, style: AppStyle.medium14),
                   const Gap(5),
                   LoginEmail(loginModel: loginModel),
                   const Gap(10),
-                  Text(LocaleKeys.password.tr(), style: AppStyle.medium14),
+                  Text(AppLocalizations.of(context)!.password, style: AppStyle.medium14),
                   const Gap(5),
                   LoginPassword(loginModel: loginModel),
                   const Gap(10),
-                  Text(LocaleKeys.account_kind.tr(), style: AppStyle.medium14),
+                  Text(AppLocalizations.of(context)!.account_kind, style: AppStyle.medium14),
                   const Gap(5),
                   AccountKindForLogin(loginModel: loginModel),
                   const Gap(50),

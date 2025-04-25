@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../../core/utils/app_style.dart';
-import '../../../../../generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import 'edit_product_button.dart';
 import 'product_category_text_form_field.dart';
 import 'product_desc_text_form_field.dart';
@@ -38,31 +37,32 @@ class _EditProductBodyState extends State<EditProductBody> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Gap(40),
-                  Text("${LocaleKeys.product_name.tr()} *",
+                  Text("${AppLocalizations.of(context)!.product_name} *",
                       style: AppStyle.medium14),
                   const Gap(5),
                   ProductNameTextFormField(
                       productItemModel: widget.productItemModel),
                   const Gap(25),
-                  Text("${LocaleKeys.product_category.tr()} *",
+                  Text("${AppLocalizations.of(context)!.product_category} *",
                       style: AppStyle.medium14),
                   const Gap(5),
                   ProductCategoryTextFormField(
                       productItemModel: widget.productItemModel),
                   const Gap(25),
-                  Text("${LocaleKeys.product_price.tr()} *",
+                  Text("${AppLocalizations.of(context)!.product_price} *",
                       style: AppStyle.medium14),
                   const Gap(5),
                   ProductPriceTextFormField(
                       productItemModel: widget.productItemModel),
                   const Gap(25),
-                  Text("${LocaleKeys.product_image.tr()} *",
+                  Text("${AppLocalizations.of(context)!.product_image} *",
                       style: AppStyle.medium14),
                   const Gap(5),
                   ProductImageTextFormField(
                       productItemModel: widget.productItemModel),
                   const Gap(25),
-                  Text(LocaleKeys.product_desc.tr(), style: AppStyle.medium14),
+                  Text(AppLocalizations.of(context)!.product_desc,
+                      style: AppStyle.medium14),
                   const Gap(5),
                   ProductDescTextFormField(
                       productItemModel: widget.productItemModel),

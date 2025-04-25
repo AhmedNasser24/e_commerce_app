@@ -4,8 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/models/product_item_model.dart';
-import '../../../../../generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import '../../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
 
 class DeleteIconButton extends StatelessWidget {
@@ -33,9 +32,9 @@ class DeleteIconButton extends StatelessWidget {
       context: context,
       dialogType: DialogType.question,
       animType: AnimType.topSlide,
-      desc: LocaleKeys.are_you_sure_you_want_to_delete_this_product.tr(),
-      btnOkText: LocaleKeys.yes.tr(),
-      btnCancelText: LocaleKeys.cancel.tr(),
+      desc: AppLocalizations.of(context)!.are_you_sure_you_want_to_delete_this_product,
+      btnOkText: AppLocalizations.of(context)!.yes,
+      btnCancelText: AppLocalizations.of(context)!.cancel,
       btnOkOnPress: () {
         BlocProvider.of<FetchCategoryProductsForTraderCubit>(context)
             .deleteProduct(productItemModel: productItemModel);

@@ -1,11 +1,11 @@
-
+import 'package:e_commerce/core/manager/locale_cubit/locale_cubit.dart';
 import 'package:e_commerce/core/services/notification_service.dart';
 import 'package:e_commerce/core/utils/on_generate_route.dart';
 import 'package:e_commerce/features/splash/presentation/views/splash_view.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 import 'package:e_commerce/main.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomMaterialApp extends StatefulWidget {
   const CustomMaterialApp({
@@ -27,10 +27,12 @@ class _CustomMaterialAppState extends State<CustomMaterialApp> {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
+    return BlocBuilder<LocaleCubit, LocaleState>(
+      builder: (context, state) {
+        return MaterialApp(
+          locale: BlocProvider.of<LocaleCubit>(context).currentLocale,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
           navigatorKey: navigatorKey,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
@@ -40,6 +42,7 @@ class _CustomMaterialAppState extends State<CustomMaterialApp> {
           onGenerateRoute: onGenerateRoute,
           initialRoute: SplashView.routeName,
         );
-      
+      },
+    );
   }
 }

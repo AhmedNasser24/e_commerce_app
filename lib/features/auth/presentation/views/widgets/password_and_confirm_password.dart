@@ -1,7 +1,6 @@
-import 'package:e_commerce/generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:e_commerce/l10n/app_localizations.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/utils/app_style.dart';
@@ -32,7 +31,7 @@ class _PasswordAndConfirmPasswordState
       children: [
         CustomTextFormField(
           obscureText: isObscure1,
-          hintText: LocaleKeys.password.tr(),
+          hintText: AppLocalizations.of(context)!.password,
           onChanged: (value) => password = value,
           suffixIcon: IconButton(
             onPressed: () {
@@ -48,17 +47,17 @@ class _PasswordAndConfirmPasswordState
           ),
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return LocaleKeys.required_field.tr();
+              return AppLocalizations.of(context)!.required_field;
             }
             if (confirmPassword != password) {
-              return LocaleKeys.passwords_do_not_match.tr();
+              return AppLocalizations.of(context)!.passwords_do_not_match;
             }
             widget.registerModel.password = value;
             return null;
           },
         ),
         const Gap(10),
-        Text(LocaleKeys.passwordConfirm.tr()  , style: AppStyle.medium14),
+        Text(AppLocalizations.of(context)!.passwordConfirm  , style: AppStyle.medium14),
         const Gap(5),
         CustomTextFormField(
           suffixIcon: IconButton(
@@ -73,14 +72,14 @@ class _PasswordAndConfirmPasswordState
             ),
           ),
           obscureText: isObscure2,
-          hintText: LocaleKeys.passwordConfirm.tr(),
+          hintText: AppLocalizations.of(context)!.passwordConfirm,
           onChanged: (value) => confirmPassword = value,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return LocaleKeys.required_field.tr();
+              return AppLocalizations.of(context)!.required_field;
             }
             if (confirmPassword != password) {
-              return LocaleKeys.passwords_do_not_match.tr();
+              return AppLocalizations.of(context)!.passwords_do_not_match;
             }
             return null;
           },

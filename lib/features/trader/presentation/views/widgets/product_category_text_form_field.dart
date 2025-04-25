@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/functions/list_of_product_category.dart';
 import '../../../../../core/utils/app_style.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
-import '../../../../../generated/locale_keys.g.dart';
-import 'package:easy_localization/easy_localization.dart';
+import '../../../../../l10n/app_localizations.dart';
 import '../../../../../core/models/product_item_model.dart';
 
 class ProductCategoryTextFormField extends StatefulWidget {
@@ -33,7 +32,7 @@ class _ProductCategoryTextFormFieldState
   Widget build(BuildContext context) {
     return CustomTextFormField(
       controller: TextEditingController(text: selectedCategory),
-      hintText: LocaleKeys.product_category.tr(),
+      hintText: AppLocalizations.of(context)!.product_category,
       readOnly: true,
       suffixIcon : const Icon(Icons.arrow_drop_down, color : kPurpleColor),
       onTap: () {
@@ -41,7 +40,7 @@ class _ProductCategoryTextFormFieldState
       },
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return LocaleKeys.required_field.tr();
+          return AppLocalizations.of(context)!.required_field;
         }
         widget.productItemModel.category = value;
         return null;
@@ -56,7 +55,7 @@ class _ProductCategoryTextFormFieldState
         return AlertDialog(
           title: Align(
             alignment: Alignment.topCenter,
-            child: Text(LocaleKeys.product_category.tr(), style: AppStyle.bold18)),
+            child: Text(AppLocalizations.of(context)!.product_category, style: AppStyle.bold18)),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
