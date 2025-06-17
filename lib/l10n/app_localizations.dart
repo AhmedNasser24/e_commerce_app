@@ -616,6 +616,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Start'**
   String get onboarding_start;
+
+  /// No description provided for @invalid_price.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid price'**
+  String get invalid_price;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

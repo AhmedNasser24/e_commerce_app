@@ -21,6 +21,9 @@ class ProductPriceTextFormField extends StatelessWidget {
         if (value == null || value.isEmpty) {
           return AppLocalizations.of(context)!.required_field;
         }
+        if (  int.tryParse(value) == null || int.parse(value) <= 0) {
+          return AppLocalizations.of(context)!.invalid_price;
+        }
         productItemModel.price = value;
         return null;
       },

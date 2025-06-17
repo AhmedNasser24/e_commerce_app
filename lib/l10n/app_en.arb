@@ -86,5 +86,6 @@
     "onboarding_subtitle1" : "In this app , Traders can upload their products with there prefered details and prices to sell them",
     "onboarding_subtitle2" : "Customers can buy products from different categories , add them to their cart , view their orders and confirm them after receiving them",
     "onboarding_next" : "Next",
-    "onboarding_start" : "Start"
+    "onboarding_start" : "Start",
+    "invalid_price" : "Invalid price"
 }

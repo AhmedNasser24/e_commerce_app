@@ -268,4 +268,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboarding_start => 'Start';
+
+  @override
+  String get invalid_price => 'Invalid price';
 }

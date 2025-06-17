@@ -15,13 +15,12 @@ class FetchCategoryProductsForTraderCubit
     fetchCategoryProductsForTrader(category: kAllCategory);
   }
 
-  final TraderRepo __traderRepoImpl ;
+  final TraderRepo __traderRepoImpl;
   String __selectedCategory = kAllCategory;
   bool __isFetchedBefore = false;
   Future<void> fetchCategoryProductsForTrader({String? category}) async {
-
     !__isFetchedBefore ? emit(FetchCategoryProductsForTraderLoading()) : null;
-    __isFetchedBefore = true ;
+    __isFetchedBefore = true;
     __selectedCategory = category ?? __selectedCategory;
     Either<List<ProductItemModel>, Failure> response = await __traderRepoImpl
         .fetchCategoryProductsForTrader(category: __selectedCategory);
@@ -37,10 +36,11 @@ class FetchCategoryProductsForTraderCubit
     );
   }
 
-  Future<void> deleteProduct({required ProductItemModel productItemModel}) async {
-    emit(FetchCategoryProductsForTraderLoading()) ;
-    Either<void, Failure> result =
-        await __traderRepoImpl.deleteProduct(productItemModel: productItemModel);
+  Future<void> deleteProduct(
+      {required ProductItemModel productItemModel}) async {
+    emit(FetchCategoryProductsForTraderLoading());
+    Either<void, Failure> result = await __traderRepoImpl.deleteProduct(
+        productItemModel: productItemModel);
     result.fold(
       (value) => fetchCategoryProductsForTrader(category: __selectedCategory),
       (fail) => emit(FetchCategoryProductsForTraderFailure(fail.errMessage)),

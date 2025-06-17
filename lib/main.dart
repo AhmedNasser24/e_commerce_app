@@ -90,9 +90,7 @@ class MyAppState extends State<MyApp> {
         BlocProvider(
           create: (context) => CartCubit(getIt<CustomerRepo>()),
         ),
-        BlocProvider(
-          create: (context) => LocaleCubit() ,
-        ),
+        
       ],
       child: CustomMaterialApp(),
     );

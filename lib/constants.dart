@@ -28,6 +28,7 @@ const String kProductImageUrl = "product_image_url";
 const String kProductImagePath = "product_image_path";
 const String kProductImageBucket = "product_image_bucket";
 const String kProductQuantity = "product_quantity";
+const String kProductImageFile = "product_image_file";
 const String kTraderId = "trader_id";
 const String kCreatedAt = "created_at";
 const String kElectronicsCategory = "Electronics";

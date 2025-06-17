@@ -33,9 +33,10 @@ class ProductItemModel {
       kProductQuantity: quantity,
       kTraderId: traderId,
       kCreatedAt: createAt,
-      kProductDescription : desc ,
+      kProductDescription: desc,
       kProductImagePath: imagePath,
       kProductImageBucket: imageBucket,
+      kProductImageFile:  imageFile!.path,
     };
   }
 
@@ -52,7 +53,7 @@ class ProductItemModel {
       quantity: json[kProductQuantity],
       createAt: json[kCreatedAt],
       desc: json[kProductDescription],
-
+      imageFile: json[kProductImageFile] == null ? null : File(json[kProductImageFile]),
     );
   }
 }

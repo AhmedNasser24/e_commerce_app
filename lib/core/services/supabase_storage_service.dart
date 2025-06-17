@@ -72,7 +72,7 @@ class SupabaseStorageService implements StorageServices {
   Future<void> updateFile(ProductItemModel productItemModel) async {
     String oldPath = productItemModel.imagePath!; 
     deleteFile(oldPath); // delete the old file from the bucket
-     productItemModel.imageFile!;
+    //  productItemModel.imageFile!;
     await uploadFile(productItemModel); // productItemModel has the new file;
 
   }

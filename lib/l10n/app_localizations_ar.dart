@@ -268,4 +268,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get onboarding_start => 'ابدا';
+
+  @override
+  String get invalid_price => 'سعر غير صالح';
 }
