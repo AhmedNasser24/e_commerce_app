@@ -271,4 +271,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get invalid_price => 'سعر غير صالح';
+
+  @override
+  String get no_internet_connection => 'لا يوجد اتصال بالانترنت';
+
+  @override
+  String get failure_invalid_email => 'بريد الكتروني غير صالح ، يجب ان يكون البريد بالشكل التالي: email_name@*****.com';
+
+  @override
+  String get failure_invalid_password => 'كلمة المرور ضعيفة جدا';
+
+  @override
+  String get failure_email_already_in_use => 'البريد الالكتروني مستخدم بالفعل من قبل حساب اخر';
+
+  @override
+  String get failure_unauthenticated => 'المستخدم غير مصادق عليه. يرجى تسجيل الدخول والمحاولة مرة أخرى.';
+
+  @override
+  String get failure_unauthorized => 'المستخدم غير مسجل . يرجى تسجيل الدخول والمحاولة مرة أخرى.';
+
+  @override
+  String get failure_unknown => 'حدث خطأ غير معروف. يرجى المحاولة مرة أخرى لاحقًا.';
+
+  @override
+  String get failure_permission_denied => 'تم رفض الإذن. ليس لديك حق الوصول إلى هذه المورد.';
+
+  @override
+  String get failure_email_not_found => 'البريد الالكتروني غير موجود. يرجى التحقق من بريدك الالكتروني والمحاولة مرة أخرى.';
 }

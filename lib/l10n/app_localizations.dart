@@ -622,6 +622,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Invalid price'**
   String get invalid_price;
+
+  /// No description provided for @no_internet_connection.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection'**
+  String get no_internet_connection;
+
+  /// No description provided for @failure_invalid_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email , email should be : email_name@*****.com'**
+  String get failure_invalid_email;
+
+  /// No description provided for @failure_invalid_password.
+  ///
+  /// In en, this message translates to:
+  /// **'The password provided is too weak'**
+  String get failure_invalid_password;
+
+  /// No description provided for @failure_email_already_in_use.
+  ///
+  /// In en, this message translates to:
+  /// **'The email address is already in use by another account'**
+  String get failure_email_already_in_use;
+
+  /// No description provided for @failure_unauthenticated.
+  ///
+  /// In en, this message translates to:
+  /// **'User is not authenticated. Please sign in and try again.'**
+  String get failure_unauthenticated;
+
+  /// No description provided for @failure_unauthorized.
+  ///
+  /// In en, this message translates to:
+  /// **'User is not authenticated. Please sign in and try again.'**
+  String get failure_unauthorized;
+
+  /// No description provided for @failure_unknown.
+  ///
+  /// In en, this message translates to:
+  /// **'An unknown error occurred. Please try again later.'**
+  String get failure_unknown;
+
+  /// No description provided for @failure_permission_denied.
+  ///
+  /// In en, this message translates to:
+  /// **'Permission denied. You do not have access to this resource.'**
+  String get failure_permission_denied;
+
+  /// No description provided for @failure_email_not_found.
+  ///
+  /// In en, this message translates to:
+  /// **'Email not found. Please check your email and try again.'**
+  String get failure_email_not_found;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

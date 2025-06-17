@@ -271,4 +271,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get invalid_price => 'Invalid price';
+
+  @override
+  String get no_internet_connection => 'No internet connection';
+
+  @override
+  String get failure_invalid_email => 'Invalid email , email should be : email_name@*****.com';
+
+  @override
+  String get failure_invalid_password => 'The password provided is too weak';
+
+  @override
+  String get failure_email_already_in_use => 'The email address is already in use by another account';
+
+  @override
+  String get failure_unauthenticated => 'User is not authenticated. Please sign in and try again.';
+
+  @override
+  String get failure_unauthorized => 'User is not authenticated. Please sign in and try again.';
+
+  @override
+  String get failure_unknown => 'An unknown error occurred. Please try again later.';
+
+  @override
+  String get failure_permission_denied => 'Permission denied. You do not have access to this resource.';
+
+  @override
+  String get failure_email_not_found => 'Email not found. Please check your email and try again.';
 }

@@ -24,7 +24,7 @@ class EditProductView extends StatelessWidget {
       listener: (context, state) {
         if (state is EditProductFailure) {
           isLoading = false;
-          showSnackBar(context, AppLocalizations.of(context)!.error_product_is_not_edited);
+          showSnackBar(context, state.errMessage);
         } else if (state is EditProductSuccess) {
           isLoading = false;
           __showSuccessAwesomeDialog(context);

@@ -87,5 +87,14 @@
     "onboarding_subtitle2" : "Customers can buy products from different categories , add them to their cart , view their orders and confirm them after receiving them",
     "onboarding_next" : "Next",
     "onboarding_start" : "Start",
-    "invalid_price" : "Invalid price"
+    "invalid_price" : "Invalid price",
+    "no_internet_connection" : "No internet connection",
+    "failure_invalid_email" : "Invalid email , email should be : email_name@*****.com",
+    "failure_invalid_password" : "The password provided is too weak",
+    "failure_email_already_in_use" : "The email address is already in use by another account",
+    "failure_unauthenticated" : "User is not authenticated. Please sign in and try again.",
+    "failure_unauthorized" : "User is not authenticated. Please sign in and try again.",
+    "failure_unknown" : "An unknown error occurred. Please try again later.",
+    "failure_permission_denied" : "Permission denied. You do not have access to this resource.",
+    "failure_email_not_found" : "Email not found. Please check your email and try again."
 }
