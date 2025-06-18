@@ -9,9 +9,9 @@ import 'edit_icon_button.dart';
 import 'package:e_commerce/l10n/app_localizations.dart';
 
 class TraderProductItem extends StatelessWidget {
-  const TraderProductItem({super.key, required this.productItemModel});
+  const TraderProductItem({super.key, required this.productItemModel, required this.index});
   final ProductItemModel productItemModel;
-
+  final int index ;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,7 +40,7 @@ class TraderProductItem extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              DeleteIconButton(productItemModel: productItemModel),
+              DeleteIconButton(productItemModel: productItemModel , index: index),
             ],
           ),
           ProductImageItem(imageUrl: productItemModel.imageUrl!),

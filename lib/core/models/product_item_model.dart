@@ -8,6 +8,7 @@ class ProductItemModel {
   File? imageFile;
   int? quantity;
   String? createAt;
+  String? discount ;
   ProductItemModel(
       {this.createAt,
       this.productId,
@@ -20,7 +21,8 @@ class ProductItemModel {
       this.quantity,
       this.desc,
       this.imagePath,
-      this.imageBucket
+      this.imageBucket,
+      this.discount = "50"
       });
 
   Map<String, dynamic> toJson() {

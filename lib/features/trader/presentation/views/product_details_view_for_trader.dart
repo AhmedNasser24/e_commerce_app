@@ -15,8 +15,9 @@ import 'widgets/product_details_body_for_trader.dart';
 
 class ProductDetailsViewForTrader extends StatelessWidget {
   const ProductDetailsViewForTrader(
-      {super.key, required this.productItemModel});
+      {super.key, required this.productItemModel, required this.index});
   final ProductItemModel productItemModel;
+  final int index ;
   static const String routeName = "/productDetailsViewForTrader";
   @override
   Widget build(BuildContext context) {
@@ -53,7 +54,7 @@ class ProductDetailsViewForTrader extends StatelessWidget {
             backgroundColor: kWhiteColor,
           ),
           bottomNavigationBar: CustomBottomAppbar(
-              productItemModel: productItemModel, isLoading: isLoading),
+              productItemModel: productItemModel, isLoading: isLoading , index : index),
         );
       },
     );
@@ -64,12 +65,12 @@ class CustomBottomAppbar extends StatelessWidget {
   const CustomBottomAppbar({
     super.key,
     required this.productItemModel,
-    required this.isLoading,
+    required this.isLoading, required this.index,
   });
 
   final ProductItemModel productItemModel;
   final bool isLoading;
-
+  final int index ;
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -112,7 +113,7 @@ class CustomBottomAppbar extends StatelessWidget {
       btnCancelText: AppLocalizations.of(context)!.cancel,
       btnOkOnPress: () {
         BlocProvider.of<FetchCategoryProductsForTraderCubit>(context)
-            .deleteProduct(productItemModel: productItemModel);
+            .deleteProduct(productItemModel: productItemModel , index: index);
       },
       btnCancelOnPress: () {},
     ).show();

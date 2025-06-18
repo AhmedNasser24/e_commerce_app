@@ -10,9 +10,10 @@ import '../../manager/fetch_category_products_for_trader/fetch_category_products
 class DeleteIconButton extends StatelessWidget {
   const DeleteIconButton({
     super.key,
-    required this.productItemModel,
+    required this.productItemModel, required this.index,
   });
   final ProductItemModel productItemModel;
+  final int index ;
   @override
   Widget build(BuildContext context) {
     return IconButton(
@@ -37,7 +38,7 @@ class DeleteIconButton extends StatelessWidget {
       btnCancelText: AppLocalizations.of(context)!.cancel,
       btnOkOnPress: () {
         BlocProvider.of<FetchCategoryProductsForTraderCubit>(context)
-            .deleteProduct(productItemModel: productItemModel);
+            .deleteProduct(productItemModel: productItemModel , index: index);
       },
       btnCancelOnPress: () {} ,
     ).show();

@@ -8,6 +8,14 @@ String changePriceLanguage(String price, BuildContext context) {
   }
 }
 
+String changeNumLanguage(String num, BuildContext context) {
+  if (isLocalizationArabic(context)) {
+    return changeNumToArabic(num);
+  } else {
+    return changeNumToEnglish(num);
+  }
+}
+
 bool isLocalizationArabic(BuildContext context) {
   return Localizations.localeOf(context).languageCode == 'ar';
 }

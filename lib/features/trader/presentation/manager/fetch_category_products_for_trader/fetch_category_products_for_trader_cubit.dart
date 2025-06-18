@@ -20,7 +20,7 @@ class FetchCategoryProductsForTraderCubit
   final TraderRepo __traderRepoImpl;
   String __selectedCategory = kAllCategory;
   bool __isFetchedBefore = false;
-  late List<ProductItemModel> __productItemModelList;
+  List<ProductItemModel> __productItemModelList = [];
   Future<void> fetchCategoryProductsForTrader({String? category}) async {
     !__isFetchedBefore ? emit(FetchCategoryProductsForTraderLoading()) : null;
     __isFetchedBefore = true;
@@ -60,4 +60,8 @@ class FetchCategoryProductsForTraderCubit
       },
     );
   }
+
+  List<ProductItemModel> get productItemModelList =>
+      __productItemModelList; // Expose the product list to the UI
+
 }

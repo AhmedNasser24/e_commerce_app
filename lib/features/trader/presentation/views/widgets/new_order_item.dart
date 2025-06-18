@@ -45,7 +45,7 @@ class NewOrderItem extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                        "${AppLocalizations.of(context)!.num_of_products} : ${changePriceLanguage(numOfProducts.toString(), context)}", // num of product not price but function name is changePriceLanguage
+                        "${AppLocalizations.of(context)!.num_of_products} : ${changeNumLanguage(numOfProducts.toString(), context)}", // num of product not price but function name is changePriceLanguage
                         style: isNew
                             ? AppStyle.medium16.copyWith(color: Colors.green)
                             : AppStyle.semiBold16),

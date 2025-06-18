@@ -43,7 +43,8 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => EditProductViewBlocProvider(productItemModel: productItemModel));  
     case ProductDetailsViewForTrader.routeName:
       final productItemModel = settings.arguments as ProductItemModel;
-      return MaterialPageRoute(builder: (context) => ProductDetailsViewForTrader(productItemModel: productItemModel));  
+      final index = settings.arguments as int;
+      return MaterialPageRoute(builder: (context) => ProductDetailsViewForTrader(productItemModel: productItemModel, index: index));  
     case ProductDetailsViewForCustomer.routeName:
       final productItemModel = settings.arguments as ProductItemModel;
       return MaterialPageRoute(builder: (context) => ProductDetailsViewForCustomer(productItemModel: productItemModel));  
