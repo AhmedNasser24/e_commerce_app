@@ -20,7 +20,7 @@ class FetchCategoryProductsForTraderCubit
   final TraderRepo __traderRepoImpl;
   String __selectedCategory = kAllCategory;
   bool __isFetchedBefore = false;
-  late List<ProductItemModel> __productItemModelList ;
+  late List<ProductItemModel> __productItemModelList;
   Future<void> fetchCategoryProductsForTrader({String? category}) async {
     !__isFetchedBefore ? emit(FetchCategoryProductsForTraderLoading()) : null;
     __isFetchedBefore = true;
@@ -41,16 +41,23 @@ class FetchCategoryProductsForTraderCubit
   }
 
   Future<void> deleteProduct(
-      {required ProductItemModel productItemModel}) async {
+      {required ProductItemModel productItemModel, required int index}) async {
     emit(FetchCategoryProductsForTraderLoading());
     Either<void, Failure> result = await __traderRepoImpl.deleteProduct(
         productItemModel: productItemModel);
+    __productItemModelList.removeAt(index);
     result.fold(
-      (value) => fetchCategoryProductsForTrader(category: __selectedCategory),
+      (value) => emit(
+        FetchCategoryProductsForTraderSuccess(
+            productItemModelList: __productItemModelList),
+      ),
       (fail) {
         showSnackBar(navigatorKey.currentState!.context, fail.errMessage);
-        emit(FetchCategoryProductsForTraderSuccess( productItemModelList: __productItemModelList));
-      }
+        emit(
+          FetchCategoryProductsForTraderSuccess(
+              productItemModelList: __productItemModelList),
+        );
+      },
     );
   }
 }

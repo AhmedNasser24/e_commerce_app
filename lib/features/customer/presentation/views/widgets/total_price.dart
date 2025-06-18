@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/functions/change_num_to_arabic.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/l10n/app_localizations.dart';
 import '../../../../../core/utils/app_style.dart';
@@ -21,7 +22,7 @@ class TotalPrice extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            "${getTotalPrice(cartItemModelList)} ${AppLocalizations.of(context)!.le}",
+            "${changePriceLanguage(getTotalPrice(cartItemModelList),context)} ${AppLocalizations.of(context)!.le}",
             style: AppStyle.semiBold18,
           ),
         ],
@@ -29,11 +30,11 @@ class TotalPrice extends StatelessWidget {
     );
   }
 
-  getTotalPrice(List<CartItemModel> cartItemModelList) {
+  String getTotalPrice(List<CartItemModel> cartItemModelList) {
     double total = 0;
     for (int i = 0; i < cartItemModelList.length; i++) {
       total += double.parse(cartItemModelList[i].productItemModel.price!);
     }
-    return total;
+    return total.toString();
   }
 }
