@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/functions/change_num_to_arabic.dart';
 import 'package:e_commerce/features/customer/presentation/views/widgets/remove_item_cart_button.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -35,7 +36,7 @@ class CartItemDetails extends StatelessWidget {
         Row(
           children: [
             Text(
-              "${cartItemModel.productItemModel.price!} ${AppLocalizations.of(context)!.le}",
+              "${changePriceLanguage(cartItemModel.productItemModel.price!,context)} ${AppLocalizations.of(context)!.le}",
               style: AppStyle.semiBold16,
             ),
             const Spacer(),

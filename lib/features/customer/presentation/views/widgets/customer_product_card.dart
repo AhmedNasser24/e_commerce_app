@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/functions/change_num_to_arabic.dart';
 import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:e_commerce/core/widgets/product_image_item.dart';
 import 'package:flutter/material.dart';
@@ -52,7 +53,7 @@ class CustomerProductItem extends StatelessWidget {
           ),
           Row(
             children: [
-              Text("${productItemModel.price!}${AppLocalizations.of(context)!.le}",
+              Text("${changePriceLanguage(productItemModel.price!, context)} ${AppLocalizations.of(context)!.le}",
                   style: AppStyle.bold14 , overflow: TextOverflow.ellipsis,),
               const Spacer(),
               AddToCartIconButton(productItemModel: productItemModel)
@@ -63,3 +64,4 @@ class CustomerProductItem extends StatelessWidget {
     );
   }
 }
+

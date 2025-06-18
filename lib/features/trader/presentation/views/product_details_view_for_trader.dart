@@ -1,4 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:e_commerce/core/functions/change_num_to_arabic.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/edit_icon_button.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +80,7 @@ class CustomBottomAppbar extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Text(
-              "${productItemModel.price!} ${AppLocalizations.of(context)!.le}",
+              "$changePriceLanguage(productItemModel.price!) ${AppLocalizations.of(context)!.le}",
               style: AppStyle.semiBold18.copyWith(color: kWhiteColor),
               overflow: TextOverflow.ellipsis,          
             ),

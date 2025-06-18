@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/functions/change_num_to_arabic.dart';
 import 'package:e_commerce/core/functions/show_snack_bar.dart';
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
@@ -100,7 +101,7 @@ class CustomBottomAppbar extends StatelessWidget {
           Expanded(
             flex: 2,  
             child: Text(
-              "${productItemModel.price!} ${AppLocalizations.of(context)!.le}",
+              "${changePriceLanguage(productItemModel.price!,context)} ${AppLocalizations.of(context)!.le}",
               style: AppStyle.semiBold18.copyWith(color: kWhiteColor),
             ),
           ),

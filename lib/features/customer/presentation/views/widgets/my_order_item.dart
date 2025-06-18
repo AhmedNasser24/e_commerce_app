@@ -1,4 +1,5 @@
 import 'package:e_commerce/constants.dart';
+import 'package:e_commerce/core/functions/change_num_to_arabic.dart';
 import 'package:e_commerce/features/customer/data/models/my_order_item_model.dart';
 import 'package:e_commerce/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,7 @@ class MyOrderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String productName = myOrderItemModel.cartItemModel.productItemModel.name!;
-    String productPrice = myOrderItemModel.cartItemModel.productItemModel.price!;
+    String productPrice = changePriceLanguage(myOrderItemModel.cartItemModel.productItemModel.price! , context) ;
     String productImage = myOrderItemModel.cartItemModel.productItemModel.imageUrl!;
     return Padding(
       padding: const EdgeInsets.all(12.0),

@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/functions/change_num_to_arabic.dart';
 import 'package:e_commerce/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -32,7 +33,7 @@ class OrderItemDetails extends StatelessWidget {
         ),
         const Gap(6),
         Text(
-          "${productItemModel.price} ${AppLocalizations.of(context)!.le}", // Fixed the usage of .tr() method
+          "${changePriceLanguage(productItemModel.price!, context)} ${AppLocalizations.of(context)!.le}", // Fixed the usage of .tr() method
           style: AppStyle.semiBold16,
         ),
       ],

@@ -24,12 +24,10 @@ class OrderItemsListView extends StatelessWidget {
         itemBuilder: (context, i) => NewOrderItem(
           buyProductModel: buyProductModelList[i],
           onTap: () {
-            Navigator.push(
+            Navigator.pushNamed(
               context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    ShowOrdersView(buyProductModel: buyProductModelList[i]),
-              ),
+              ShowOrdersView.routeName,
+              arguments: buyProductModelList[i],
             );
             BlocProvider.of<FetchNewOrdersCubit>(context)
                 .changeOrderFromNewToOld(buyProductModel: buyProductModelList[i]);

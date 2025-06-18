@@ -1,9 +1,11 @@
 
+import 'package:e_commerce/features/customer/data/models/buy_product_model.dart';
 import 'package:e_commerce/features/customer/presentation/views/my_order_view_bloc_provider.dart';
 import 'package:e_commerce/features/customer/presentation/views/product_details_view_for_customer.dart';
 import 'package:e_commerce/features/customer/presentation/views/widgets/add_to_card_view_bloc_provider.dart';
 import 'package:e_commerce/features/trader/presentation/views/new_orders_view.dart';
 import 'package:e_commerce/features/trader/presentation/views/product_details_view_for_trader.dart';
+import 'package:e_commerce/features/trader/presentation/views/show_orders_view.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/add_new_product_view_bloc_provider.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/edit_product_view_bloc_provider.dart';
 import 'package:flutter/material.dart';
@@ -47,8 +49,10 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => ProductDetailsViewForCustomer(productItemModel: productItemModel));  
     case NewOrdersView.routeName:
       return MaterialPageRoute(builder: (context) => const NewOrdersView());
+    case ShowOrdersView.routeName:
+      final buyProductModel = settings.arguments as BuyProductModel;
+      return MaterialPageRoute(builder: (context) => ShowOrdersView(buyProductModel: buyProductModel));
 
-      
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
 

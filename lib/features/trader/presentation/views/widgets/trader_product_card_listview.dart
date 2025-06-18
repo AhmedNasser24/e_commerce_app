@@ -39,12 +39,10 @@ class TraderProductItemListView extends StatelessWidget {
                     itemCount: state.productItemModelList.length,
                     itemBuilder: (context, i) {
                       return GestureDetector(
-                        onTap: () => Navigator.push(
+                        onTap: () => Navigator.pushNamed(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => ProductDetailsViewForTrader(
-                                productItemModel: productItemModelList[i]),
-                          ),
+                          ProductDetailsViewForTrader.routeName,
+                          arguments: productItemModelList[i],
                         ),
                         child: TraderProductItem(
                             productItemModel: productItemModelList[i]),

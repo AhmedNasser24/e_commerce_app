@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/functions/change_num_to_arabic.dart';
 import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:flutter/material.dart';
 import '../../../../../constants.dart';
@@ -55,7 +56,7 @@ class TraderProductItem extends StatelessWidget {
           ),
           Row(
             children: [
-              Text("${productItemModel.price!} ${AppLocalizations.of(context)!.le}",
+              Text("${changePriceLanguage(productItemModel.price!, context)} ${AppLocalizations.of(context)!.le}",
                   style: AppStyle.bold14),
               const Spacer(),
               EditIconButton(productItemModel: productItemModel),

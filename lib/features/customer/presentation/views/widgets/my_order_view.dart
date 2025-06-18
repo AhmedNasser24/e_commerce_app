@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/functions/change_num_to_arabic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../constants.dart';
@@ -78,7 +79,7 @@ class CustomBottomAppBar extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Text(
-              "${BlocProvider.of<MyOrderCubit>(context).totPrice} ${AppLocalizations.of(context)!.le}",
+              "${changePriceLanguage(BlocProvider.of<MyOrderCubit>(context).totPrice.toString(), context)} ${AppLocalizations.of(context)!.le}",
               style: AppStyle.semiBold18.copyWith(color: kWhiteColor),
               overflow: TextOverflow.ellipsis,
             ),

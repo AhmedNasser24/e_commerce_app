@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/functions/change_num_to_arabic.dart';
 import 'package:e_commerce/core/utils/app_style.dart';
 import 'package:e_commerce/features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
@@ -23,16 +24,16 @@ class _CustomBadgeState extends State<CustomBadge> {
 
   @override
   Widget build(BuildContext context) {
-
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
-        int numOfItemInCart = BlocProvider.of<CartCubit>(context).numOfItemInCart;
+        int numOfItemInCart =
+            BlocProvider.of<CartCubit>(context).numOfItemInCart;
         return badges.Badge(
           position: badges.BadgePosition.topEnd(top: -12, end: -8),
           showBadge: numOfItemInCart != 0,
           ignorePointer: false,
-          
-          badgeContent: Text(numOfItemInCart.toString(),
+          badgeContent: Text(
+              changePriceLanguage(numOfItemInCart.toString(), context), // Convert number to Arabic if needed but function is name changePriceLanguage
               style: AppStyle.regular10.copyWith(color: kWhiteColor)),
           badgeAnimation: const badges.BadgeAnimation.rotation(
             animationDuration: Duration(seconds: 1),

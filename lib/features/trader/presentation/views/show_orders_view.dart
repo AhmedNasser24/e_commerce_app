@@ -1,4 +1,5 @@
 import 'package:e_commerce/constants.dart';
+import 'package:e_commerce/core/functions/change_num_to_arabic.dart';
 import 'package:e_commerce/features/customer/data/models/buy_product_model.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/back_arrow_button.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/is_delivered_widget.dart';
@@ -16,6 +17,7 @@ class ShowOrdersView extends StatelessWidget {
     required this.buyProductModel,
   });
   final BuyProductModel buyProductModel;
+  static const String routeName = '/showOrdersView';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +39,7 @@ class ShowOrdersView extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Text(
-              "${__getTotalPrice(buyProductModel.productItemModelList)} ${AppLocalizations.of(context)!.le}",
+              "${changePriceLanguage(__getTotalPrice(buyProductModel.productItemModelList),context)} ${AppLocalizations.of(context)!.le}",
               style: AppStyle.semiBold18.copyWith(color: kWhiteColor),
               overflow: TextOverflow.ellipsis,
             ),
@@ -71,11 +73,11 @@ class ShowOrdersView extends StatelessWidget {
     );
   }
 
-  double __getTotalPrice(List<ProductItemModel> productItemModelList) {
+  String __getTotalPrice(List<ProductItemModel> productItemModelList) {
     double totalPrice = 0.0;
     for (var productItemModel in productItemModelList) {
       totalPrice += double.parse(productItemModel.price!);
     }
-    return totalPrice;
+    return totalPrice.toString();
   }
 }

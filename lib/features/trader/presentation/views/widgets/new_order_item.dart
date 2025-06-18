@@ -1,4 +1,5 @@
 import 'package:e_commerce/constants.dart';
+import 'package:e_commerce/core/functions/change_num_to_arabic.dart';
 import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:e_commerce/features/customer/data/models/buy_product_model.dart';
 import 'package:flutter/material.dart';
@@ -20,13 +21,13 @@ class NewOrderItem extends StatelessWidget {
     String customerName = buyProductModel.userInfoModel.name!;
     int numOfProducts = buyProductModel.productItemModelList.length;
     String totalPrice = __getTotalPrice(buyProductModel.productItemModelList);
-    bool isNew = buyProductModel.isNew; 
+    bool isNew = buyProductModel.isNew;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
       child: GestureDetector(
         onTap: onTap,
         child: Card(
-          color:  kWhiteColor,
+          color: kWhiteColor,
           elevation: 0,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -43,7 +44,8 @@ class NewOrderItem extends StatelessWidget {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("${AppLocalizations.of(context)!.num_of_products} : $numOfProducts",
+                    Text(
+                        "${AppLocalizations.of(context)!.num_of_products} : ${changePriceLanguage(numOfProducts.toString(), context)}", // num of product not price but function name is changePriceLanguage
                         style: isNew
                             ? AppStyle.medium16.copyWith(color: Colors.green)
                             : AppStyle.semiBold16),
@@ -59,7 +61,7 @@ class NewOrderItem extends StatelessWidget {
                 ),
                 const Gap(10),
                 Text(
-                    "${AppLocalizations.of(context)!.total_price} : $totalPrice ${AppLocalizations.of(context)!.le}",
+                    "${AppLocalizations.of(context)!.total_price} : ${changePriceLanguage(totalPrice, context)} ${AppLocalizations.of(context)!.le}",
                     style: isNew
                         ? AppStyle.semiBold16.copyWith(color: Colors.green)
                         : AppStyle.semiBold16),
