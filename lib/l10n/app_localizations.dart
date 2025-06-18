@@ -551,6 +551,12 @@ abstract class AppLocalizations {
   /// **'Delete'**
   String get delete;
 
+  /// No description provided for @add_image.
+  ///
+  /// In en, this message translates to:
+  /// **'Add image'**
+  String get add_image;
+
   /// No description provided for @product_desc.
   ///
   /// In en, this message translates to:

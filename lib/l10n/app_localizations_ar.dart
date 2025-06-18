@@ -237,6 +237,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get delete => 'ازالة';
 
   @override
+  String get add_image => 'اضافة صورة';
+
+  @override
   String get product_desc => 'وصف المنتج';
 
   @override

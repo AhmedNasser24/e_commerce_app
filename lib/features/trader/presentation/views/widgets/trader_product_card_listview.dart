@@ -1,11 +1,11 @@
 import 'package:e_commerce/core/models/product_item_model.dart';
+import 'package:e_commerce/core/widgets/error_message_widget.dart';
 import 'package:e_commerce/core/widgets/message_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:e_commerce/l10n/app_localizations.dart';
 
-import '../../../../customer/presentation/views/widgets/add_to_cart_view_body.dart';
 import '../../manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
 import '../product_details_view_for_trader.dart';
 import 'trader_product_item.dart';
@@ -35,7 +35,7 @@ class TraderProductItemListView extends StatelessWidget {
                       crossAxisSpacing: 15,
                       mainAxisSpacing: 12,
                     ),
-                    // physics: const BouncingScrollPhysics(),
+                    physics: const AlwaysScrollableScrollPhysics(),
                     itemCount: state.productItemModelList.length,
                     itemBuilder: (context, i) {
                       return GestureDetector(

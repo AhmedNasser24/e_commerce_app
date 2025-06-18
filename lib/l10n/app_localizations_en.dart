@@ -237,6 +237,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get delete => 'Delete';
 
   @override
+  String get add_image => 'Add image';
+
+  @override
   String get product_desc => 'Product description';
 
   @override

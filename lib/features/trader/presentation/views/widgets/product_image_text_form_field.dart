@@ -111,7 +111,7 @@ class _ProductImageTextFormFieldState extends State<ProductImageTextFormField> {
                               children: [
                                 // SvgPicture.asset(Assets.imagesImageIcon),
                                 // const Gap(8),
-                                const Text("Add Img", style: AppStyle.medium18),
+                                Text(AppLocalizations.of(context)!.add_image, style: AppStyle.medium18),
                               ],
                             ),
                           ),

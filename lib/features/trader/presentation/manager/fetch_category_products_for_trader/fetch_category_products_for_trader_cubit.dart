@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce/constants.dart';
+import 'package:e_commerce/core/functions/show_snack_bar.dart';
 import 'package:e_commerce/core/models/product_item_model.dart';
+import 'package:e_commerce/main.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/errors/failure.dart';
@@ -18,6 +20,7 @@ class FetchCategoryProductsForTraderCubit
   final TraderRepo __traderRepoImpl;
   String __selectedCategory = kAllCategory;
   bool __isFetchedBefore = false;
+  late List<ProductItemModel> __productItemModelList ;
   Future<void> fetchCategoryProductsForTrader({String? category}) async {
     !__isFetchedBefore ? emit(FetchCategoryProductsForTraderLoading()) : null;
     __isFetchedBefore = true;
@@ -27,8 +30,9 @@ class FetchCategoryProductsForTraderCubit
 
     response.fold(
       (productItemModelList) {
+        __productItemModelList = productItemModelList;
         emit(FetchCategoryProductsForTraderSuccess(
-            productItemModelList: productItemModelList));
+            productItemModelList: __productItemModelList));
       },
       (failure) {
         emit(FetchCategoryProductsForTraderFailure(failure.errMessage));
@@ -43,7 +47,10 @@ class FetchCategoryProductsForTraderCubit
         productItemModel: productItemModel);
     result.fold(
       (value) => fetchCategoryProductsForTrader(category: __selectedCategory),
-      (fail) => emit(FetchCategoryProductsForTraderFailure(fail.errMessage)),
+      (fail) {
+        showSnackBar(navigatorKey.currentState!.context, fail.errMessage);
+        emit(FetchCategoryProductsForTraderSuccess( productItemModelList: __productItemModelList));
+      }
     );
   }
 }

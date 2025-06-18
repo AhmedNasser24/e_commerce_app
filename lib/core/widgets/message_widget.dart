@@ -8,15 +8,24 @@ class MessageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: Text(
-          message,
-          style: AppStyle.medium16,
-          textAlign: TextAlign.center,
+    return ListView(
+      physics: const AlwaysScrollableScrollPhysics(),
+      children: [
+        SizedBox(
+          height: MediaQuery.sizeOf(context).height * 0.36,
         ),
-      ),
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: Text(
+              message,
+              style: AppStyle.medium16,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+        
+      ],
     );
   }
 }

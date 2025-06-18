@@ -1,10 +1,10 @@
+import 'package:e_commerce/core/widgets/error_message_widget.dart';
 import 'package:e_commerce/core/widgets/message_widget.dart';
 import 'package:e_commerce/features/customer/presentation/manager/fetch_category_product_for_customer/fetch_category_product_for_customer_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce/l10n/app_localizations.dart';
 import '../product_details_view_for_customer.dart';
-import 'add_to_cart_view_body.dart';
 import 'customer_product_card.dart';
 
 class CustomerProductItemListView extends StatelessWidget {

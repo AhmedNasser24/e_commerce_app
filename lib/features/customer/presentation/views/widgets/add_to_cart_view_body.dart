@@ -1,8 +1,8 @@
-import 'package:e_commerce/core/utils/app_style.dart';
 import 'package:e_commerce/features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../constants.dart';
+import '../../../../../core/widgets/error_message_widget.dart';
 import 'custom_cart_Item_list_view.dart';
 
 class AddToCartViewBody extends StatefulWidget {
@@ -45,23 +45,3 @@ class _AddToCartViewBodyState extends State<AddToCartViewBody> {
   }
 }
 
-class ErrorMessageWidget extends StatelessWidget {
-  const ErrorMessageWidget({
-    super.key,
-    required this.errMessage,
-  });
-  final String errMessage;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(26.0),
-      child: Center(
-        child: Text(
-          errMessage,
-          style: AppStyle.medium14.copyWith(color: Colors.red),
-          textAlign: TextAlign.center,
-        ),
-      ),
-    );
-  }
-}
