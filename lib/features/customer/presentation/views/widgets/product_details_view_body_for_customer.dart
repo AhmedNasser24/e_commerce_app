@@ -28,6 +28,7 @@ class ProductDetailsViewBodyForCustomer extends StatelessWidget {
                   style: AppStyle.semiBold16,
                   textAlign: TextAlign.start,
                 ),
+                const Gap(60),
               ],
             ),
           )

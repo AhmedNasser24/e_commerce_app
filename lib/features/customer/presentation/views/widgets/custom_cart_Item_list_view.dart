@@ -10,8 +10,10 @@ class CustomCartItemListView extends StatelessWidget {
   const CustomCartItemListView({
     super.key,
     required this.cartItemModelList,
+    required this.crossAxisCount,
   });
   final List<CartItemModel> cartItemModelList;
+  final int crossAxisCount;
   @override
   Widget build(BuildContext context) {
     return cartItemModelList.isEmpty
@@ -19,7 +21,14 @@ class CustomCartItemListView extends StatelessWidget {
         : Column(
             children: [
               Expanded(
-                child: ListView.builder(
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: crossAxisCount,
+                    childAspectRatio: 1,
+                    crossAxisSpacing: 15,
+                    mainAxisSpacing: 12,
+                  ),
+                  // physics: AlwaysScrollableScrollPhysics(),
                   itemCount: cartItemModelList.length,
                   itemBuilder: (context, i) {
                     return CartItem(

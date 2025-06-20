@@ -1,9 +1,9 @@
 import 'package:e_commerce/features/customer/presentation/manager/cart_cubit/cart_cubit.dart';
+import 'package:e_commerce/features/customer/presentation/views/widgets/responsive_cart_item_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/error_message_widget.dart';
-import 'custom_cart_Item_list_view.dart';
 
 class AddToCartViewBody extends StatefulWidget {
   const AddToCartViewBody({super.key, required this.isLoading});
@@ -31,7 +31,7 @@ class _AddToCartViewBodyState extends State<AddToCartViewBody> {
               onRefresh: () async {
                 await BlocProvider.of<CartCubit>(context).fetchCartItem();
               },
-              child: CustomCartItemListView(
+              child: ResponsiveCartItemGridView(
                   cartItemModelList: state.cartItemModelList ?? []), // cartSuccess sometimes return null  
             ),
           );
