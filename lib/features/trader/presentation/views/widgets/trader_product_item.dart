@@ -35,7 +35,7 @@ class TraderProductItem extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(16)),
                 ),
                 child: Text(
-                  '-50%',
+                  '-${changeNumLanguage(productItemModel.discount!, context)}%',
                   style: AppStyle.medium12.copyWith(color: kWhiteColor),
                 ),
               ),
