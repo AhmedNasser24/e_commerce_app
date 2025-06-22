@@ -13,11 +13,11 @@ class BuyProductCubit extends Cubit<BuyProductState> {
   final CustomerRepo __customerRepoImpl ;
   bool isLoading = false ;
   Future<void> buyProduct(
-      {required List<CartItemModel> cartItemModelList , required context}) async {
+      {required List<CartItemModel> cartItemModelList , required bool isPaid , required context}) async {
     isLoading = true;
     emit(BuyProductLoading());
     Either<void, Failure> result = await __customerRepoImpl.buyProduct(
-        cartItemModelList: cartItemModelList);
+        cartItemModelList: cartItemModelList, isPaid: isPaid);
 
     result.fold(
       (ok) {

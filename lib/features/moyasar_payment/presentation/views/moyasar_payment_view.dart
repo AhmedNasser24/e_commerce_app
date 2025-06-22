@@ -22,7 +22,7 @@ class MoyasarPaymentView extends StatelessWidget {
         case PaymentStatus.paid:
           log("payment success");
           BlocProvider.of<BuyProductCubit>(context)
-            .buyProduct(cartItemModelList: cartItemModelList, context: context);
+            .buyProduct(cartItemModelList: cartItemModelList, isPaid: true, context: context);
           showSnackBar(context, AppLocalizations.of(context)!.payment_successful);
           Navigator.pop(context);
           break;

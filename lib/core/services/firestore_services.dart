@@ -192,8 +192,8 @@ class FireStoreServices implements DatabaseServices {
 
   @override
   Future<void> buyProduct(
-      {required List<CartItemModel> cartItemModelList}) async {
-    await __sendOrderToTrader(cartItemModelList: cartItemModelList);
+      {required List<CartItemModel> cartItemModelList, required bool isPaid}) async {
+    await __sendOrderToTrader(cartItemModelList: cartItemModelList, isPaid: isPaid);
     await __addToMyOrder(cartItemModelList: cartItemModelList);
     // await removeAllProductFromCart(cartItemModelList: cartItemModelList);
   }
@@ -258,7 +258,7 @@ class FireStoreServices implements DatabaseServices {
 
   // ignore: unused_element
   Future<void> __sendOrderToTrader(
-      {required List<CartItemModel> cartItemModelList}) async {
+      {required List<CartItemModel> cartItemModelList , required bool isPaid}) async {
     UserInfoModel? userInfo = await getUserInfoModel();
 
     List<ProductItemModel> productItemModelList = [];
@@ -272,6 +272,7 @@ class FireStoreServices implements DatabaseServices {
       orderId: Random().nextDouble().toString(),
       buyingDate: DateTime.now().toString(),
       customerId: customerId,
+      isPaid: isPaid,
     );
 
     await __sendOrder(buyProductModel);

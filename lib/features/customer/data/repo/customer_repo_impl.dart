@@ -115,12 +115,12 @@ class CustomerRepoImpl extends CustomerRepo {
   }
   
   @override
-  Future<Either<void, Failure>> buyProduct({required List<CartItemModel> cartItemModelList}) async{
+  Future<Either<void, Failure>> buyProduct({required List<CartItemModel> cartItemModelList, required bool isPaid}) async{
     try {
       if (!await hasNetwork()) {
         return right(const Failure("No Internet Connection"));
       }
-      await dataBaseServices.buyProduct(cartItemModelList: cartItemModelList);
+      await dataBaseServices.buyProduct(cartItemModelList: cartItemModelList, isPaid: isPaid);
       return left(null);
     } on FirebaseException catch (e) {
       return right(ServerFailure.fromFireBaseException(e) ) ;

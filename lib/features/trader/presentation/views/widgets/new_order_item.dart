@@ -86,7 +86,7 @@ class NewOrderItem extends StatelessWidget {
                   top: 22,
                   right: -2,
                   child: Transform.rotate(
-                    angle: 45 * 3.14 / 180,
+                    angle: 45 * 3.14 / 180 ,
                     child: Container(
                       decoration: BoxDecoration(
                         color: isNew ? Colors.red : Colors.green,

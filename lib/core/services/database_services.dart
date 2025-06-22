@@ -13,7 +13,7 @@ abstract class DatabaseServices {
   Future<void> removeProductFromCart({required CartItemModel cartItemModel});
   Future<void> removeAllProductFromCart(
       {required List<CartItemModel> cartItemModelList});
-  Future<void> buyProduct({required List<CartItemModel> cartItemModelList});
+  Future<void> buyProduct({required List<CartItemModel> cartItemModelList, required bool isPaid});
 
   Future<List<ProductItemModel>> fetchCategoryProductsForTrader(
       {required String category});

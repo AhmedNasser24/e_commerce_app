@@ -13,5 +13,5 @@ abstract class CustomerRepo {
   Future <Either<void, Failure>> removeAllProductFromCart({required List <CartItemModel> cartItemModelList});
   Future< Either <List<CartItemModel> , Failure >> fetchCartItems() ;
   Future< Either <List<MyOrderItemModel> , Failure >> fetchMyOrderItems() ;
-  Future <Either < void , Failure >> buyProduct({required List<CartItemModel> cartItemModelList}) ;
+  Future <Either < void , Failure >> buyProduct({required List<CartItemModel> cartItemModelList, required bool isPaid}) ;
 }
