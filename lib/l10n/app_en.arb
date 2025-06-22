@@ -101,6 +101,8 @@
     "credit" : "Credit",
     "cash" : "Cash",
     "payment_failed" : "Payment failed , please try again",
-    "payment_successful" : "Payment successful"
+    "payment_successful" : "Payment successful",
+    "paid" : "Paid",
+    "not_paid" : "Not paid"
 
 }

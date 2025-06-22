@@ -313,4 +313,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get payment_successful => 'تم الدفع بنجاح';
+
+  @override
+  String get paid => 'مدفوع';
+
+  @override
+  String get not_paid => 'غير مدفوع';
 }

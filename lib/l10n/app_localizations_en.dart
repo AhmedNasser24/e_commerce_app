@@ -313,4 +313,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get payment_successful => 'Payment successful';
+
+  @override
+  String get paid => 'Paid';
+
+  @override
+  String get not_paid => 'Not paid';
 }

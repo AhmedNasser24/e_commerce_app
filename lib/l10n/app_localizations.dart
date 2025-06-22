@@ -706,6 +706,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Payment successful'**
   String get payment_successful;
+
+  /// No description provided for @paid.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get paid;
+
+  /// No description provided for @not_paid.
+  ///
+  /// In en, this message translates to:
+  /// **'Not paid'**
+  String get not_paid;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

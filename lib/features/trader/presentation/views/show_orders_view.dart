@@ -24,7 +24,7 @@ class ShowOrdersView extends StatelessWidget {
       backgroundColor: kOffWhiteColor,
       body: SafeArea(
           child: ShowOrdersViewBody(
-              productItemModelList: buyProductModel.productItemModelList)),
+              buyProductModel: buyProductModel)),
       appBar: showOrdersViewAppBar(context),
       bottomNavigationBar: custombottomAppBar(context),
     );

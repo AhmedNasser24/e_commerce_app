@@ -102,7 +102,9 @@
     "credit" : "فيزا",
     "cash" : "نقدا",
     "payment_failed" : "فشل الدفع ، يرجى المحاولة مرة أخرى",
-    "payment_successful" : "تم الدفع بنجاح"
+    "payment_successful" : "تم الدفع بنجاح",
+    "paid" : "مدفوع",
+    "not_paid" : "غير مدفوع"
 
 
 }
