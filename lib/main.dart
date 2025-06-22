@@ -3,6 +3,7 @@ import 'package:e_commerce/core/manager/locale_cubit/locale_cubit.dart';
 import 'package:e_commerce/core/services/notification_service.dart';
 import 'package:e_commerce/core/services/supabase_storage_service.dart';
 import 'package:e_commerce/custom_material_app.dart';
+import 'package:e_commerce/features/customer/presentation/manager/buy%20product_cubit/buy_product_cubit.dart';
 import 'package:e_commerce/features/trader/data/repo/trader_repo.dart';
 import 'package:e_commerce/features/trader/presentation/manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -20,10 +21,10 @@ import 'features/trader/presentation/manager/fetch_new_orders_cubit/fetch_new_or
 import 'firebase_options.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   log("BackgroundHandler succeed");
 }
+
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
@@ -72,7 +73,6 @@ class MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -91,7 +91,9 @@ class MyAppState extends State<MyApp> {
         BlocProvider(
           create: (context) => CartCubit(getIt<CustomerRepo>()),
         ),
-        
+        BlocProvider(
+          create: (context) => BuyProductCubit(getIt<CustomerRepo>()),
+        ),
       ],
       child: CustomMaterialApp(),
     );

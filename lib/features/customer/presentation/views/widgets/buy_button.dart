@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/customer/presentation/manager/buy%20product_cubit/buy_product_cubit.dart';
+import 'package:e_commerce/features/moyasar_payment/presentation/views/moyasar_payment_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -13,40 +14,38 @@ class BuyButton extends StatelessWidget {
   final List<CartItemModel> cartItemModelList;
   @override
   Widget build(BuildContext context) {
-    
-        return CustomButton(
-          isLoading: BlocProvider.of<BuyProductCubit>(context).isLoading,
-          title: AppLocalizations.of(context)!.buy,
-          style: AppStyle.semiBold20.copyWith(color:kWhiteColor),
-          horizontalMargin: 50,
-          verticalMargin: 0,
-          onTap: () {
-            showSubmitAwesomeDialog(context);
-            
-          },
-        );
-      
+    return CustomButton(
+      isLoading: BlocProvider.of<BuyProductCubit>(context).isLoading,
+      title: AppLocalizations.of(context)!.buy,
+      style: AppStyle.semiBold20.copyWith(color: kWhiteColor),
+      horizontalMargin: 50,
+      verticalMargin: 0,
+      onTap: () {
+        showSubmitAwesomeDialog(context);
+      },
+    );
   }
-
- 
 
   void showSubmitAwesomeDialog(context) {
     AwesomeDialog(
       width: kMaxWidthForDialog,
       context: context,
-      dismissOnTouchOutside: false,
+      // dismissOnTouchOutside: false,
       dialogType: DialogType.question,
       animType: AnimType.topSlide,
       title: AppLocalizations.of(context)!.confirm_order,
-      desc: AppLocalizations.of(context)!.do_you_want_to_confirm_your_order_purchase,
-      btnOkText: AppLocalizations.of(context)!.ok,
-      btnCancelText: AppLocalizations.of(context)!.cancel,
+      desc: AppLocalizations.of(context)!
+          .do_you_want_to_confirm_your_order_purchase,
+      btnOkText: AppLocalizations.of(context)!.credit,
+      btnCancelText: AppLocalizations.of(context)!.cash,
       btnOkOnPress: () {
-        BlocProvider.of<BuyProductCubit>(context)
-                .buyProduct(cartItemModelList: cartItemModelList , context : context);
+        Navigator.pushNamed(context, MoyasarPaymentView.routeName,
+            arguments: cartItemModelList);
       },
-      btnCancelOnPress: () {},
+      btnCancelOnPress: () {
+        BlocProvider.of<BuyProductCubit>(context)
+            .buyProduct(cartItemModelList: cartItemModelList, context: context);
+      },
     ).show();
   }
- 
 }

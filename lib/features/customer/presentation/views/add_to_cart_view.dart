@@ -7,12 +7,11 @@ import '../../../../constants.dart';
 import '../../../../core/functions/show_snack_bar.dart';
 import '../../../../core/utils/app_style.dart';
 import '../../../trader/presentation/views/widgets/back_arrow_button.dart';
-import '../../data/models/cart_item_model.dart';
 import '../manager/buy product_cubit/buy_product_cubit.dart';
 
 class AddToCartView extends StatelessWidget {
   const AddToCartView({super.key});
-
+  static const String routeName = '/add_to_cart_view';
   @override
   Widget build(BuildContext context) {
     bool isLoading = false;
@@ -76,12 +75,5 @@ class AddToCartView extends StatelessWidget {
       dismissOnBackKeyPress: false,
     ).show();
   }
-  int getTotalPriceX100(List<CartItemModel> cartItemModelList) {
-    double total = 0;
-    for (int i = 0; i < cartItemModelList.length; i++) {
-      total += double.parse(cartItemModelList[i].productItemModel.price!);
-    }
-    total *= 100;
-    return total.toInt();
-  }
+ 
 }

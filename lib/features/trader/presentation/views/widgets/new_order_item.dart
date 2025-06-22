@@ -47,14 +47,15 @@ class NewOrderItem extends StatelessWidget {
                     Text(
                         "${AppLocalizations.of(context)!.num_of_products} : ${changeNumLanguage(numOfProducts.toString(), context)}", // num of product not price but function name is changePriceLanguage
                         style: isNew
-                            ? AppStyle.medium16.copyWith(color: Colors.green)
+                            ? AppStyle.medium16
+                                .copyWith(color: Colors.green)
                             : AppStyle.semiBold16),
                     isNew ? const Spacer() : const SizedBox(),
                     isNew
                         ? Text(
                             AppLocalizations.of(context)!.news,
-                            style:
-                                AppStyle.medium16.copyWith(color: Colors.green),
+                            style: AppStyle.medium16
+                                .copyWith(color: Colors.green),
                           )
                         : const SizedBox()
                   ],

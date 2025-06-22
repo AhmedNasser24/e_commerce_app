@@ -682,6 +682,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Email not found. Please check your email and try again.'**
   String get failure_email_not_found;
+
+  /// No description provided for @credit.
+  ///
+  /// In en, this message translates to:
+  /// **'Credit'**
+  String get credit;
+
+  /// No description provided for @cash.
+  ///
+  /// In en, this message translates to:
+  /// **'Cash'**
+  String get cash;
+
+  /// No description provided for @payment_failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment failed , please try again'**
+  String get payment_failed;
+
+  /// No description provided for @payment_successful.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment successful'**
+  String get payment_successful;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

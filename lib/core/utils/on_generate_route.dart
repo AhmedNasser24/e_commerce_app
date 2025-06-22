@@ -1,8 +1,9 @@
-
 import 'package:e_commerce/features/customer/data/models/buy_product_model.dart';
+import 'package:e_commerce/features/customer/data/models/cart_item_model.dart';
+import 'package:e_commerce/features/customer/presentation/views/add_to_cart_view.dart';
 import 'package:e_commerce/features/customer/presentation/views/my_order_view_bloc_provider.dart';
 import 'package:e_commerce/features/customer/presentation/views/product_details_view_for_customer.dart';
-import 'package:e_commerce/features/customer/presentation/views/widgets/add_to_card_view_bloc_provider.dart';
+import 'package:e_commerce/features/moyasar_payment/presentation/views/moyasar_payment_view.dart';
 import 'package:e_commerce/features/trader/presentation/views/new_orders_view.dart';
 import 'package:e_commerce/features/trader/presentation/views/product_details_view_for_trader.dart';
 import 'package:e_commerce/features/trader/presentation/views/show_orders_view.dart';
@@ -29,33 +30,51 @@ Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     case RegisterView.routeName:
       return MaterialPageRoute(builder: (context) => const RegisterView());
     case TraderHomeViewBlocProvider.routeName:
-      return MaterialPageRoute(builder: (context) => const TraderHomeViewBlocProvider());
+      return MaterialPageRoute(
+          builder: (context) => const TraderHomeViewBlocProvider());
     case CustomerHomeViewBlocProvider.routeName:
-      return MaterialPageRoute(builder: (context) => const CustomerHomeViewBlocProvider());
+      return MaterialPageRoute(
+          builder: (context) => const CustomerHomeViewBlocProvider());
     case MyOrderViewBlocProvider.routeName:
-      return MaterialPageRoute(builder: (context) => const MyOrderViewBlocProvider());
-    case AddToCardViewBlocProvider.routeName:
-      return MaterialPageRoute(builder: (context) => const AddToCardViewBlocProvider());
+      return MaterialPageRoute(
+          builder: (context) => const MyOrderViewBlocProvider());
+    case AddToCartView.routeName:
+      return MaterialPageRoute(builder: (context) => const AddToCartView());
     case AddNewProductViewBlocProvider.routeName:
-      return MaterialPageRoute(builder: (context) => const AddNewProductViewBlocProvider());
+      return MaterialPageRoute(
+          builder: (context) => const AddNewProductViewBlocProvider());
     case EditProductViewBlocProvider.routeName:
       final productItemModel = settings.arguments as ProductItemModel;
-      return MaterialPageRoute(builder: (context) => EditProductViewBlocProvider(productItemModel: productItemModel));  
+      return MaterialPageRoute(
+          builder: (context) =>
+              EditProductViewBlocProvider(productItemModel: productItemModel));
     case ProductDetailsViewForTrader.routeName:
       final productItemModel = settings.arguments as ProductItemModel;
       final index = settings.arguments as int;
-      return MaterialPageRoute(builder: (context) => ProductDetailsViewForTrader(productItemModel: productItemModel, index: index));  
+      return MaterialPageRoute(
+          builder: (context) => ProductDetailsViewForTrader(
+              productItemModel: productItemModel, index: index));
     case ProductDetailsViewForCustomer.routeName:
       final productItemModel = settings.arguments as ProductItemModel;
-      return MaterialPageRoute(builder: (context) => ProductDetailsViewForCustomer(productItemModel: productItemModel));  
+      return MaterialPageRoute(
+          builder: (context) => ProductDetailsViewForCustomer(
+              productItemModel: productItemModel));
     case NewOrdersView.routeName:
       return MaterialPageRoute(builder: (context) => const NewOrdersView());
     case ShowOrdersView.routeName:
       final buyProductModel = settings.arguments as BuyProductModel;
-      return MaterialPageRoute(builder: (context) => ShowOrdersView(buyProductModel: buyProductModel));
+      return MaterialPageRoute(
+          builder: (context) =>
+              ShowOrdersView(buyProductModel: buyProductModel));
+    case MoyasarPaymentView.routeName:
+      final List<CartItemModel> cartItemModelList =
+          settings.arguments as List<CartItemModel>;
+
+      return MaterialPageRoute(
+          builder: (context) =>
+              MoyasarPaymentView(cartItemModelList: cartItemModelList));
 
     default:
       return MaterialPageRoute(builder: (context) => const Scaffold());
-
   }
 }

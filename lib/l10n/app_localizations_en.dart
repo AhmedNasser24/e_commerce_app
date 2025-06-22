@@ -301,4 +301,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get failure_email_not_found => 'Email not found. Please check your email and try again.';
+
+  @override
+  String get credit => 'Credit';
+
+  @override
+  String get cash => 'Cash';
+
+  @override
+  String get payment_failed => 'Payment failed , please try again';
+
+  @override
+  String get payment_successful => 'Payment successful';
 }

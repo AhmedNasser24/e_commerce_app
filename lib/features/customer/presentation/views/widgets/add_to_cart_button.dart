@@ -1,7 +1,6 @@
-
+import 'package:e_commerce/features/customer/presentation/views/add_to_cart_view.dart';
 import 'package:flutter/material.dart';
 
-import 'add_to_card_view_bloc_provider.dart';
 import 'custom_badge.dart';
 import 'my_shopping_cart_icon_button.dart';
 
@@ -16,7 +15,7 @@ class AddToCartButton extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(
           context,
-          AddToCardViewBlocProvider.routeName,
+          AddToCartView.routeName,
         );
       },
       child: const CustomBadge(

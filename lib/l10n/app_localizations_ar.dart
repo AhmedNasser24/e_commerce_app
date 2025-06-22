@@ -301,4 +301,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get failure_email_not_found => 'البريد الالكتروني غير موجود. يرجى التحقق من بريدك الالكتروني والمحاولة مرة أخرى.';
+
+  @override
+  String get credit => 'فيزا';
+
+  @override
+  String get cash => 'نقدا';
+
+  @override
+  String get payment_failed => 'فشل الدفع ، يرجى المحاولة مرة أخرى';
+
+  @override
+  String get payment_successful => 'تم الدفع بنجاح';
 }

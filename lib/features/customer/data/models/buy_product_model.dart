@@ -8,6 +8,7 @@ class BuyProductModel {
   final String orderId ;
   final String buyingDate ;
   final String customerId ;
+  final bool isPaid ;
   bool isDelivered ;
   bool isNew ;
   BuyProductModel( {
@@ -18,6 +19,7 @@ class BuyProductModel {
     required this.customerId,
     this.isNew = true,
     this.isDelivered = false,
+    this.isPaid = false,
   });
 
   toJson(){
@@ -33,6 +35,7 @@ class BuyProductModel {
       kIsNewKey : isNew ,
       kIsDelivered : isDelivered,
       kCustomerIdKey : customerId,
+      kIsPaidKey : isPaid,
     };
   }
 
@@ -49,6 +52,7 @@ class BuyProductModel {
       customerId: json[kCustomerIdKey],
       isNew: json[kIsNewKey] ,
       isDelivered: json[kIsDelivered] ?? false,
+      isPaid: json[kIsPaidKey] ?? false,
     );
   }
 }

@@ -97,5 +97,10 @@
     "failure_unauthorized" : "User is not authenticated. Please sign in and try again.",
     "failure_unknown" : "An unknown error occurred. Please try again later.",
     "failure_permission_denied" : "Permission denied. You do not have access to this resource.",
-    "failure_email_not_found" : "Email not found. Please check your email and try again."
+    "failure_email_not_found" : "Email not found. Please check your email and try again.",
+    "credit" : "Credit",
+    "cash" : "Cash",
+    "payment_failed" : "Payment failed , please try again",
+    "payment_successful" : "Payment successful"
+
 }
