@@ -10,6 +10,11 @@ A complete mobile **e-commerce application** built with Flutter, supporting **Tr
 
 ---
 
+ 
+## [⬇️ Download APK](https://github.com/AhmedNasser24/e_commerce_app/releases/download/v1.0.0/app-release.apk)
+
+
+
 ## 👥 User Roles
 
 ### 🧑‍💼 Trader Features:
@@ -90,6 +95,5 @@ flutter pub get
 # Run the app
 flutter run
 
-# download APK
-[download](https://github.com/AhmedNasser24/e_commerce_app/releases/download/v1.0.0/app-release.apk)
+
 
