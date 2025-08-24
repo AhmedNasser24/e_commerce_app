@@ -1,6 +1,6 @@
 
 import 'package:dartz/dartz.dart';
-import 'package:e_commerce/core/services/notification_service.dart';
+import 'package:e_commerce/core/services/push_notification_service.dart';
 import 'package:e_commerce/core/utils/shared_preference_singleton.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,7 +27,7 @@ class RegisterCubit extends Cubit<RegisterState> {
           userKind = kTrader;
           response1 = await _authRepoImpl.setTraderInfoIntoFireStore(userInfo);
         } else {
-          userInfo.notificationToken = await NotificationService().getToken();
+          userInfo.notificationToken = await PushNotificationService().getToken();
           userKind = kCustomer;
           response1 =
               await _authRepoImpl.setCustomerInfoIntoFireStore(userInfo);

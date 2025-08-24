@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 
 import 'package:e_commerce/core/errors/failure.dart';
-import 'package:e_commerce/core/services/notification_service.dart';
+import 'package:e_commerce/core/services/push_notification_service.dart';
 
 import 'package:e_commerce/features/notifications/data/model/notification_model.dart';
 import 'package:http/http.dart' as http;
@@ -16,7 +16,7 @@ class NotificationRepoImpl implements NotificationRepo {
   @override
   Future<Either<String, Failure>> getAccessToken() async{
     try {
-      String token = await NotificationService().getAccessToken();
+      String token = await PushNotificationService().getAccessToken();
       return left(token);
     } on FirebaseException catch (e) {
       log("firebase message error : $e");
@@ -36,7 +36,7 @@ class NotificationRepoImpl implements NotificationRepo {
   @override
   Future<Either<String, Failure>> getToken() async{
     try {
-      String token = await NotificationService().getToken();
+      String token = await PushNotificationService().getToken();
       return left(token);
     } on FirebaseException catch (e) {
       log("firebase message error : $e");
@@ -57,9 +57,9 @@ class NotificationRepoImpl implements NotificationRepo {
   Future<Either<void, Failure>> sendMessageUsingToken(
       {required NotificationModel notificationModel}) async {
     try {
-      String accesstoken = await NotificationService().getAccessToken();
+      String accesstoken = await PushNotificationService().getAccessToken();
       notificationModel.accessToken = accesstoken;
-      NotificationService().sendMessageUsingToken(notificationModel: notificationModel) ;
+      PushNotificationService().sendMessageUsingToken(notificationModel: notificationModel) ;
       return left(null);
     } on FirebaseException catch (e) {
       log("firebase message error : $e");
@@ -80,9 +80,9 @@ class NotificationRepoImpl implements NotificationRepo {
   Future<Either<void, Failure>> sendMessageUsingTopic(
       {required NotificationModel notificationModel}) async {
     try {
-      String accesstoken = await NotificationService().getAccessToken();
+      String accesstoken = await PushNotificationService().getAccessToken();
       notificationModel.accessToken = accesstoken;
-      NotificationService()
+      PushNotificationService()
           .sendMessageUsingTopic(notificationModel: notificationModel);
       return left(null);
     } on FirebaseException catch (e) {
@@ -103,7 +103,7 @@ class NotificationRepoImpl implements NotificationRepo {
   @override
   Future<Either<void, Failure>> subscribeToTopic() async{
     try {
-      await NotificationService().subscribeToTopic();
+      await PushNotificationService().subscribeToTopic();
       return left(null);
     } on FirebaseException catch (e) {
       log("firebase message error : $e");
@@ -125,7 +125,7 @@ class NotificationRepoImpl implements NotificationRepo {
   @override
   Future<Either<void, Failure>> unsubscribeFromTopic() async {
     try {
-      await NotificationService().unsubscribeFromTopic();
+      await PushNotificationService().unsubscribeFromTopic();
       return left(null);
     } on FirebaseException catch (e) {
       log("firebase message error : $e");

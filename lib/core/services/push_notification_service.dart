@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:e_commerce/core/errors/failure.dart';
+import 'package:e_commerce/core/services/local_notification_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -15,8 +16,8 @@ import '../../features/notifications/data/model/notification_model.dart';
 import '../../features/customer/presentation/views/product_details_view_for_customer.dart';
 import '../models/product_item_model.dart';
 
-class NotificationService {
-  FirebaseMessaging messaging = FirebaseMessaging.instance;
+class PushNotificationService {
+  static FirebaseMessaging messaging = FirebaseMessaging.instance;
 
   Future<String> getToken() async {
     try {
@@ -125,7 +126,7 @@ class NotificationService {
     }
   }
 
-  void foregroundNotificationHandling() {
+  static void foregroundNotificationHandling() {
     FirebaseMessaging.onMessage.listen(
       (RemoteMessage message) {
         log('Got a message whilst in the foreground!');
@@ -133,7 +134,10 @@ class NotificationService {
 
         if (message.notification != null) {
           log('Message also contained a notification: ${message.notification!.title}');
+          log('Message also contained a notification: ${message.notification!.body}');
         }
+        // to show notification you should use local notification to do it 
+        LocalNotificationService.showBasicNotification(message) ;
       },
     ).onError((handleError) => log("onError: $handleError"));
   }
@@ -267,4 +271,26 @@ class NotificationService {
   // --------------------------------------------------------------------------------------
   //   super.initState();
   // }
+
+
+
+
+  //----------------------------------------------------------------------------------
+  // ---------------------------------with tutorial --------------------------------------
+
+  static Future <void> init ()async{
+    await messaging.requestPermission() ;
+    String? token = await messaging.getToken() ;
+    log("FCM Token: $token");
+    backgroundAndTerminalNotificationHandling();
+    foregroundNotificationHandling();
+  }
+
+  static void backgroundAndTerminalNotificationHandling() {
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler) ;
+  }
+  static Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+    log("Handling a background message: ${message.notification?.title} - ${message.notification?.body}") ;
+  }
+
 }

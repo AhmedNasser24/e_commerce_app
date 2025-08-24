@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/manager/locale_cubit/locale_cubit.dart';
-import 'package:e_commerce/core/services/notification_service.dart';
+import 'package:e_commerce/core/services/push_notification_service.dart';
 import 'package:e_commerce/core/utils/on_generate_route.dart';
 import 'package:e_commerce/features/splash/presentation/views/splash_view.dart';
 import 'package:e_commerce/l10n/app_localizations.dart';
@@ -19,9 +19,9 @@ class CustomMaterialApp extends StatefulWidget {
 class _CustomMaterialAppState extends State<CustomMaterialApp> {
   @override
   void initState() {
-    NotificationService()
-        .setupInteractedMessageForBackgroundNotification(context);
-    NotificationService().setupInteractedMessageForTerminatedState(context);
+    // PushNotificationService()
+    //     .setupInteractedMessageForBackgroundNotification(context);
+    // PushNotificationService().setupInteractedMessageForTerminatedState(context);
     super.initState();
   }
 

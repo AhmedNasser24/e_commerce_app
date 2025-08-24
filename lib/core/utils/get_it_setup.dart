@@ -10,7 +10,7 @@ import '../../features/trader/data/repo/trader_repo.dart';
 import '../../features/trader/data/repo/trader_repo_impl.dart';
 import '../services/database_services.dart';
 import '../services/firestore_services.dart';
-import '../services/notification_service.dart';
+import '../services/push_notification_service.dart';
 import '../services/storage_services.dart';
 import '../services/supabase_storage_service.dart';
 
@@ -21,7 +21,7 @@ void getItSetup() {
 
   getIt.registerSingleton<DatabaseServices>(FireStoreServices());
   getIt.registerSingleton<StorageServices>(SupabaseStorageService());
-  getIt.registerSingleton<NotificationService>(NotificationService());
+  getIt.registerSingleton<PushNotificationService>(PushNotificationService());
   getIt.registerSingleton<AuthRepo>(
     AuthRepoIml(
       authService: getIt<AuthService>(),

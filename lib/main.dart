@@ -1,12 +1,11 @@
-import 'dart:developer';
 import 'package:e_commerce/core/manager/locale_cubit/locale_cubit.dart';
-import 'package:e_commerce/core/services/notification_service.dart';
+import 'package:e_commerce/core/services/local_notification_service.dart';
+import 'package:e_commerce/core/services/push_notification_service.dart';
 import 'package:e_commerce/core/services/supabase_storage_service.dart';
 import 'package:e_commerce/custom_material_app.dart';
 import 'package:e_commerce/features/customer/presentation/manager/buy%20product_cubit/buy_product_cubit.dart';
 import 'package:e_commerce/features/trader/data/repo/trader_repo.dart';
 import 'package:e_commerce/features/trader/presentation/manager/fetch_category_products_for_trader/fetch_category_products_for_trader_cubit.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,9 +20,9 @@ import 'features/trader/presentation/manager/fetch_new_orders_cubit/fetch_new_or
 import 'firebase_options.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  log("BackgroundHandler succeed");
-}
+// Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+//   log("BackgroundHandler succeed");
+// }
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -32,9 +31,15 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await SupabaseStorageService.init();
+  await Future.wait([
+    LocalNotificationService.init(),   // 2sec
+    PushNotificationService.init(),    // 3 sec
+    SupabaseStorageService.init(),     // 1 sec
+    // this method work parallel , so it take the longest time , in this case 3 sec
+    // warning : don't put methods that depend on each other in this list , so we don't put Firebase.initializeApp
+  ])  ;
   getItSetup();
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   Bloc.observer = SimpleBlocObserver();
   SharedPreferenceSingleton.init();
   if (kReleaseMode) {
@@ -62,7 +67,7 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   @override
   void initState() {
-    NotificationService().foregroundNotificationHandling();
+    // PushNotificationService().foregroundNotificationHandling();
     //--------------------------------------------------------------------------------------
     // those functions are in Splash view initstate because of context issue of navigation
     // NotificationService().setupInteractedMessageForBackgroundNotification(context);

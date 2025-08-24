@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
-import 'package:e_commerce/core/services/notification_service.dart';
+import 'package:e_commerce/core/services/push_notification_service.dart';
 import 'package:e_commerce/core/utils/shared_preference_singleton.dart';
 import 'package:e_commerce/l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,7 +50,7 @@ class LoginCubit extends Cubit<LoginState> {
         } else {
           userInfo = userInfoModel;
           if (userInfo!.notificationToken == null && userKind1 == kCustomer) {
-            userInfo!.notificationToken = await NotificationService().getToken();
+            userInfo!.notificationToken = await PushNotificationService().getToken();
             await _authRepoImpl.setCustomerInfoIntoFireStore(userInfo!);
             // notificationToken = userInfo.notificationToken!;
           }
@@ -64,7 +64,7 @@ class LoginCubit extends Cubit<LoginState> {
       (ok) {
         // if (FirebaseAuth.instance.currentUser?.emailVerified ?? false) {
         if (isValid) {
-          NotificationService().subscribeToTopic();
+          PushNotificationService().subscribeToTopic();
           SharedPreferenceSingleton.setbool(kIsLogin, true) ;
           SharedPreferenceSingleton.setString(kAccountKind, userKind1);
           emit(LoginSuccess());
