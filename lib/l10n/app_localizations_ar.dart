@@ -33,7 +33,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get required_field => 'هذا الحقل مطلوب';
 
   @override
-  String get phone_number_must_be_at_least_11_characters => 'رقم الهاتف يجب الا يقل عن 11 رقم';
+  String get phone_number_must_be_at_least_11_characters =>
+      'رقم الهاتف يجب الا يقل عن 11 رقم';
 
   @override
   String get passwords_do_not_match => 'كلمات المرور غير متطابقة';
@@ -48,7 +49,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get customer => 'عميل';
 
   @override
-  String get please_check_your_email_for_verification => 'يرجى التحقق من بريدك الالكتروني لتأكيد الحساب';
+  String get please_check_your_email_for_verification =>
+      'يرجى التحقق من بريدك الالكتروني لتأكيد الحساب';
 
   @override
   String get my_shop => 'متجري';
@@ -141,13 +143,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get product_is_added_to_cart => 'تمت اضافة المنتج للسلة بنجاح';
 
   @override
-  String get error_product_is_not_added_to_cart => 'حدث خطأ: لم يتم اضافة المنتج للسلة';
+  String get error_product_is_not_added_to_cart =>
+      'حدث خطأ: لم يتم اضافة المنتج للسلة';
 
   @override
   String get product_is_removed_from_cart => 'تمت ازالة المنتج من السلة بنجاح';
 
   @override
-  String get error_product_is_not_removed_from_cart => 'حدث خطأ: لم يتم ازالة المنتج من السلة';
+  String get error_product_is_not_removed_from_cart =>
+      'حدث خطأ: لم يتم ازالة المنتج من السلة';
 
   @override
   String get buy => 'شراء';
@@ -156,7 +160,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get total_price => 'السعر الكلي';
 
   @override
-  String get we_will_contact_you_within_24_hours => 'سوف يتم التوصل معك خلال 24 ساعة';
+  String get we_will_contact_you_within_24_hours =>
+      'سوف يتم التوصل معك خلال 24 ساعة';
 
   @override
   String get thank_you => 'شكر لتواصلك معنا';
@@ -201,22 +206,27 @@ class AppLocalizationsAr extends AppLocalizations {
   String get no_orders_yet => 'ليس لديك طلبات حتى الان';
 
   @override
-  String get all_last_orders_have_been_delivered_to_you => 'كل المنتجات السابقة تم تسليمها لك بنجاح';
+  String get all_last_orders_have_been_delivered_to_you =>
+      'كل المنتجات السابقة تم تسليمها لك بنجاح';
 
   @override
   String get confirm_order => 'تاكيد الطلب';
 
   @override
-  String get do_you_want_to_confirm_your_order_purchase => 'هل تريد تأكيد شراء الطلب';
+  String get do_you_want_to_confirm_your_order_purchase =>
+      'هل تريد تأكيد شراء الطلب';
 
   @override
-  String get are_you_sure_you_want_to_delete_this_product => 'هل تريد حذف هذا المنتج';
+  String get are_you_sure_you_want_to_delete_this_product =>
+      'هل تريد حذف هذا المنتج';
 
   @override
-  String get are_you_sure_you_want_to_edit_this_product => 'هل تريد تعديل هذا المنتج';
+  String get are_you_sure_you_want_to_edit_this_product =>
+      'هل تريد تعديل هذا المنتج';
 
   @override
-  String get are_you_sure_you_want_to_add_this_product => 'هل تريد اضافة هذا المنتج';
+  String get are_you_sure_you_want_to_add_this_product =>
+      'هل تريد اضافة هذا المنتج';
 
   @override
   String get no_product_found => 'لا يوجد منتجات';
@@ -255,16 +265,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get splash_title => 'المتجر الالكتروني';
 
   @override
-  String get splash_subtitle => 'التاجر والزائر يمكنهم الاستفادة من هذا التطبيق للتسوق الالكتروني';
+  String get splash_subtitle =>
+      'التاجر والزائر يمكنهم الاستفادة من هذا التطبيق للتسوق الالكتروني';
 
   @override
   String get onboarding_title => 'مرحبا بك في التسوق الالكتروني';
 
   @override
-  String get onboarding_subtitle1 => 'في هذا التطبيق يمكن للتاجر رفع المنتجات الخاصة بهم علي التطبيق وتحديد السعر والوصف للبيع';
+  String get onboarding_subtitle1 =>
+      'في هذا التطبيق يمكن للتاجر رفع المنتجات الخاصة بهم علي التطبيق وتحديد السعر والوصف للبيع';
 
   @override
-  String get onboarding_subtitle2 => 'يمكن للعملاء الخاصين بالتسوق اضافة المنتجات الى سلة الشراء وعرض الطلبات وتاكيدها بعد الاستلام';
+  String get onboarding_subtitle2 =>
+      'يمكن للعملاء الخاصين بالتسوق اضافة المنتجات الى سلة الشراء وعرض الطلبات وتاكيدها بعد الاستلام';
 
   @override
   String get onboarding_next => 'التالي';
@@ -279,28 +292,35 @@ class AppLocalizationsAr extends AppLocalizations {
   String get no_internet_connection => 'لا يوجد اتصال بالانترنت';
 
   @override
-  String get failure_invalid_email => 'بريد الكتروني غير صالح ، يجب ان يكون البريد بالشكل التالي: email_name@*****.com';
+  String get failure_invalid_email =>
+      'بريد الكتروني غير صالح ، يجب ان يكون البريد بالشكل التالي: email_name@*****.com';
 
   @override
   String get failure_invalid_password => 'كلمة المرور ضعيفة جدا';
 
   @override
-  String get failure_email_already_in_use => 'البريد الالكتروني مستخدم بالفعل من قبل حساب اخر';
+  String get failure_email_already_in_use =>
+      'البريد الالكتروني مستخدم بالفعل من قبل حساب اخر';
 
   @override
-  String get failure_unauthenticated => 'المستخدم غير مصادق عليه. يرجى تسجيل الدخول والمحاولة مرة أخرى.';
+  String get failure_unauthenticated =>
+      'المستخدم غير مصادق عليه. يرجى تسجيل الدخول والمحاولة مرة أخرى.';
 
   @override
-  String get failure_unauthorized => 'المستخدم غير مسجل . يرجى تسجيل الدخول والمحاولة مرة أخرى.';
+  String get failure_unauthorized =>
+      'المستخدم غير مسجل . يرجى تسجيل الدخول والمحاولة مرة أخرى.';
 
   @override
-  String get failure_unknown => 'حدث خطأ غير معروف. يرجى المحاولة مرة أخرى لاحقًا.';
+  String get failure_unknown =>
+      'حدث خطأ غير معروف. يرجى المحاولة مرة أخرى لاحقًا.';
 
   @override
-  String get failure_permission_denied => 'تم رفض الإذن. ليس لديك حق الوصول إلى هذه المورد.';
+  String get failure_permission_denied =>
+      'تم رفض الإذن. ليس لديك حق الوصول إلى هذه المورد.';
 
   @override
-  String get failure_email_not_found => 'البريد الالكتروني غير موجود. يرجى التحقق من بريدك الالكتروني والمحاولة مرة أخرى.';
+  String get failure_email_not_found =>
+      'البريد الالكتروني غير موجود. يرجى التحقق من بريدك الالكتروني والمحاولة مرة أخرى.';
 
   @override
   String get credit => 'فيزا';

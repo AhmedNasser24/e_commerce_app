@@ -33,7 +33,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get required_field => 'required field';
 
   @override
-  String get phone_number_must_be_at_least_11_characters => 'phone number must be at least 11 characters';
+  String get phone_number_must_be_at_least_11_characters =>
+      'phone number must be at least 11 characters';
 
   @override
   String get passwords_do_not_match => 'passwords do not match';
@@ -48,7 +49,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get customer => 'Customer';
 
   @override
-  String get please_check_your_email_for_verification => 'please check your email for verification';
+  String get please_check_your_email_for_verification =>
+      'please check your email for verification';
 
   @override
   String get my_shop => 'My Shop';
@@ -141,13 +143,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get product_is_added_to_cart => 'Product is added to cart';
 
   @override
-  String get error_product_is_not_added_to_cart => 'Error: Product isn\'t added to cart';
+  String get error_product_is_not_added_to_cart =>
+      'Error: Product isn\'t added to cart';
 
   @override
   String get product_is_removed_from_cart => 'Product is removed from cart';
 
   @override
-  String get error_product_is_not_removed_from_cart => 'Error: Product isn\'t removed from cart';
+  String get error_product_is_not_removed_from_cart =>
+      'Error: Product isn\'t removed from cart';
 
   @override
   String get buy => 'Buy';
@@ -156,7 +160,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get total_price => 'Total price';
 
   @override
-  String get we_will_contact_you_within_24_hours => 'We will contact you within 24 hours';
+  String get we_will_contact_you_within_24_hours =>
+      'We will contact you within 24 hours';
 
   @override
   String get thank_you => 'Thank you';
@@ -174,7 +179,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cancel => 'Cancel';
 
   @override
-  String get are_you_sure_you_want_to_signOut => 'Are you sure you want to signOut';
+  String get are_you_sure_you_want_to_signOut =>
+      'Are you sure you want to signOut';
 
   @override
   String get invalid_email => 'Invalid email';
@@ -201,22 +207,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get no_orders_yet => 'No orders yet';
 
   @override
-  String get all_last_orders_have_been_delivered_to_you => 'All last orders have been delivered to you';
+  String get all_last_orders_have_been_delivered_to_you =>
+      'All last orders have been delivered to you';
 
   @override
   String get confirm_order => 'Confirm order';
 
   @override
-  String get do_you_want_to_confirm_your_order_purchase => 'Do you want to confirm your order purchase?';
+  String get do_you_want_to_confirm_your_order_purchase =>
+      'Do you want to confirm your order purchase?';
 
   @override
-  String get are_you_sure_you_want_to_delete_this_product => 'Are you sure you want to delete this product?';
+  String get are_you_sure_you_want_to_delete_this_product =>
+      'Are you sure you want to delete this product?';
 
   @override
-  String get are_you_sure_you_want_to_edit_this_product => 'Are you sure you want to edit this product?';
+  String get are_you_sure_you_want_to_edit_this_product =>
+      'Are you sure you want to edit this product?';
 
   @override
-  String get are_you_sure_you_want_to_add_this_product => 'Are you sure you want to add this product?';
+  String get are_you_sure_you_want_to_add_this_product =>
+      'Are you sure you want to add this product?';
 
   @override
   String get no_product_found => 'No product found';
@@ -228,7 +239,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get new_product_is_added => 'New product is added';
 
   @override
-  String get error_new_product_is_not_added => 'Error: New Product is not added';
+  String get error_new_product_is_not_added =>
+      'Error: New Product is not added';
 
   @override
   String get error_product_is_not_edited => 'Error: Product is not edited';
@@ -255,16 +267,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get splash_title => 'E-Commerce';
 
   @override
-  String get splash_subtitle => 'Trader & Customer can use this app to sell and buy products';
+  String get splash_subtitle =>
+      'Trader & Customer can use this app to sell and buy products';
 
   @override
   String get onboarding_title => 'Welcome to the E-Commerce';
 
   @override
-  String get onboarding_subtitle1 => 'In this app , Traders can upload their products with there prefered details and prices to sell them';
+  String get onboarding_subtitle1 =>
+      'In this app , Traders can upload their products with there prefered details and prices to sell them';
 
   @override
-  String get onboarding_subtitle2 => 'Customers can buy products from different categories , add them to their cart , view their orders and confirm them after receiving them';
+  String get onboarding_subtitle2 =>
+      'Customers can buy products from different categories , add them to their cart , view their orders and confirm them after receiving them';
 
   @override
   String get onboarding_next => 'Next';
@@ -279,28 +294,35 @@ class AppLocalizationsEn extends AppLocalizations {
   String get no_internet_connection => 'No internet connection';
 
   @override
-  String get failure_invalid_email => 'Invalid email , email should be : email_name@*****.com';
+  String get failure_invalid_email =>
+      'Invalid email , email should be : email_name@*****.com';
 
   @override
   String get failure_invalid_password => 'The password provided is too weak';
 
   @override
-  String get failure_email_already_in_use => 'The email address is already in use by another account';
+  String get failure_email_already_in_use =>
+      'The email address is already in use by another account';
 
   @override
-  String get failure_unauthenticated => 'User is not authenticated. Please sign in and try again.';
+  String get failure_unauthenticated =>
+      'User is not authenticated. Please sign in and try again.';
 
   @override
-  String get failure_unauthorized => 'User is not authenticated. Please sign in and try again.';
+  String get failure_unauthorized =>
+      'User is not authenticated. Please sign in and try again.';
 
   @override
-  String get failure_unknown => 'An unknown error occurred. Please try again later.';
+  String get failure_unknown =>
+      'An unknown error occurred. Please try again later.';
 
   @override
-  String get failure_permission_denied => 'Permission denied. You do not have access to this resource.';
+  String get failure_permission_denied =>
+      'Permission denied. You do not have access to this resource.';
 
   @override
-  String get failure_email_not_found => 'Email not found. Please check your email and try again.';
+  String get failure_email_not_found =>
+      'Email not found. Please check your email and try again.';
 
   @override
   String get credit => 'Credit';

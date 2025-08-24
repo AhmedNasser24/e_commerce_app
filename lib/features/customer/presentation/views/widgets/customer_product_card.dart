@@ -40,7 +40,9 @@ class CustomerProductItem extends StatelessWidget {
               ),
             ],
           ),
-          ProductImageItem(imageUrl: productItemModel.imageUrl!),
+          Hero(
+            tag: productItemModel.productId!,
+            child: ProductImageItem(imageUrl: productItemModel.imageUrl!)),
           Text(
             productItemModel.name!,
             style: AppStyle.bold18,

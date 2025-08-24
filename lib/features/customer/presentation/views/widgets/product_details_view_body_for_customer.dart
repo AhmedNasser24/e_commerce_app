@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:e_commerce/core/models/product_item_model.dart';
 import 'package:e_commerce/features/trader/presentation/views/widgets/product_image_details.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +30,10 @@ class ProductDetailsViewBodyForCustomer extends StatelessWidget {
                   style: AppStyle.semiBold16,
                   textAlign: TextAlign.start,
                 ),
+                const Gap(30),
+                Transform.rotate(
+                  angle: 0 * pi / 180,
+                  child: Text("🏠🏛️👋📋🏢💳⚙️📞🚪⭐❓👤✨🔒🔒", style: TextStyle(fontSize: 90),)),
                 const Gap(60),
               ],
             ),

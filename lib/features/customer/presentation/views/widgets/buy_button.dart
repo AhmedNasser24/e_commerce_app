@@ -1,6 +1,6 @@
 import 'package:e_commerce/core/widgets/custom_button.dart';
 import 'package:e_commerce/features/customer/presentation/manager/buy%20product_cubit/buy_product_cubit.dart';
-import 'package:e_commerce/features/moyasar_payment/presentation/views/moyasar_payment_view.dart';
+// import 'package:e_commerce/features/moyasar_payment/presentation/views/moyasar_payment_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -36,12 +36,12 @@ class BuyButton extends StatelessWidget {
       title: AppLocalizations.of(context)!.confirm_order,
       desc: AppLocalizations.of(context)!
           .do_you_want_to_confirm_your_order_purchase,
-      btnOkText: AppLocalizations.of(context)!.credit,
+      // btnOkText: AppLocalizations.of(context)!.credit,
       btnCancelText: AppLocalizations.of(context)!.cash,
-      btnOkOnPress: () {
-        Navigator.pushNamed(context, MoyasarPaymentView.routeName,
-            arguments: cartItemModelList);
-      },
+      // btnOkOnPress: () {
+      //   Navigator.pushNamed(context, MoyasarPaymentView.routeName,
+      //       arguments: cartItemModelList);
+      // },
       btnCancelOnPress: () {
         BlocProvider.of<BuyProductCubit>(context)
             .buyProduct(cartItemModelList: cartItemModelList, isPaid: false, context: context);

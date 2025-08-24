@@ -20,14 +20,17 @@ class ProductImageDetails extends StatelessWidget {
       height: 50,
       
       arcType: ArcType.CONVEX,
-      child: Container(
-        color: kOffWhiteColor,
-        width: double.infinity,
-        // height: 300,
-        child: Center(
-          child: CustomCachedNetworkImage(
-            imageUrl: productItemModel.imageUrl!,
-            fit: BoxFit.contain,
+      child: Hero(
+        tag: productItemModel.productId! ,
+        child: Container(
+          color: kOffWhiteColor,
+          width: double.infinity,
+          // height: 300,
+          child: Center(
+            child: CustomCachedNetworkImage(
+              imageUrl: productItemModel.imageUrl!,
+              fit: BoxFit.contain,
+            ),
           ),
         ),
       ),
