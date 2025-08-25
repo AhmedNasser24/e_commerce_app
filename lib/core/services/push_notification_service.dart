@@ -91,7 +91,7 @@ class PushNotificationService {
   }
 
   Future<void> sendMessageUsingToken(
-      {required NotificationModel notificationModel}) async {
+      {required NotificationModel notificationModel }) async {
     var headersList = {
       'Accept': '*/*',
       'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ class PushNotificationService {
     };
     var url = Uri.parse(
         'https://fcm.googleapis.com/v1/projects/e-commerce-app-10f7e/messages:send');
-
+    
     var body = {
       "message": {
         // token ony change when you reinstall the app or change the device
@@ -107,6 +107,7 @@ class PushNotificationService {
         "notification": {
           "title": notificationModel.title,
           "body": notificationModel.body,
+          // x ? "image": notificationModel.imageUrl : null,
         },
         "data": notificationModel.productItemModel?.toJson() ?? {},
       }
