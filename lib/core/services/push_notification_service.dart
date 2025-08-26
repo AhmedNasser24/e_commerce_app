@@ -115,7 +115,7 @@ class PushNotificationService {
         "android": {
           "notification": {
             "sound": "azkar",
-            "channel_id": kNotificationChannelId // should be as same as channel_id in local_notification_service.dart
+            "channel_id": kNotificationChannelName // should be as same as channel_id in local_notification_service.dart
           }
         }
       }

@@ -47,7 +47,7 @@ class LocalNotificationService {
       );
     }
     AndroidNotificationDetails android = AndroidNotificationDetails(
-      kNotificationChannelId, // New channel ID,you should change id if you change notification sound
+      kNotificationChannelName, // New channel ID , you should change channel_id if you change notification sound
       'Azkar Channel',
       importance: Importance.max,
       priority: Priority.high,
