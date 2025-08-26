@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:e_commerce/constants.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:http/http.dart' as http;
@@ -46,17 +47,17 @@ class LocalNotificationService {
       );
     }
     AndroidNotificationDetails android = AndroidNotificationDetails(
-      'channel_id',
-      'channel_name',
+      kNotificationChannelId, // New channel ID,you should change id if you change notification sound
+      'Azkar Channel',
       importance: Importance.max,
       priority: Priority.high,
       styleInformation: bigPictureStyleInformation,
       playSound: true,
-      // sound: RawResourceAndroidNotificationSound(
-      //     'long_notification_sound'.split('.').first),
+      sound: RawResourceAndroidNotificationSound('azkar'),
     );
     NotificationDetails details = NotificationDetails(
       android: android,
+      iOS: const DarwinNotificationDetails(sound: 'azkar.mp3'),
     );
     await flutterLocalNotificationsPlugin.show(
       0,

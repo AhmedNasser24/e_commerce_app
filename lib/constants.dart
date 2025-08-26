@@ -60,3 +60,4 @@ const String kSupabaseUrl = "https://kpixmaxzarpjbsttrpdm.supabase.co";
 const String kSupabaseKey ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtwaXhtYXh6YXJwamJzdHRycGRtIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0NDQ3NzI4OSwiZXhwIjoyMDYwMDUzMjg5fQ.-PwKi9UQPWMWFoMniZ9C1QeFrpXKk1aMq8RgXejR0Q8";
 const String kECommerceBucket = "ecommerce_image";
 const double kMaxWidthForDialog = 700;
+const String kNotificationChannelId = "azkar_channel";
