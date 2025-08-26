@@ -91,7 +91,7 @@ class PushNotificationService {
   }
 
   Future<void> sendMessageUsingToken(
-      {required NotificationModel notificationModel }) async {
+      {required NotificationModel notificationModel}) async {
     var headersList = {
       'Accept': '*/*',
       'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ class PushNotificationService {
     };
     var url = Uri.parse(
         'https://fcm.googleapis.com/v1/projects/e-commerce-app-10f7e/messages:send');
-    
+
     var body = {
       "message": {
         // token ony change when you reinstall the app or change the device
@@ -110,6 +110,14 @@ class PushNotificationService {
           // x ? "image": notificationModel.imageUrl : null,
         },
         "data": notificationModel.productItemModel?.toJson() ?? {},
+
+        //Always include this part to play the custom sound
+        "android": {
+          "notification": {
+            "sound": "azkar",
+            "channel_id": "channel_id" // should be as same as channel_id in local_notification_service.dart
+          }
+        }
       }
     };
 
@@ -137,8 +145,8 @@ class PushNotificationService {
           log('Message also contained a notification: ${message.notification!.title}');
           log('Message also contained a notification: ${message.notification!.body}');
         }
-        // to show notification you should use local notification to do it 
-        LocalNotificationService.showBasicNotification(message) ;
+        // to show notification you should use local notification to do it
+        LocalNotificationService.showBasicNotification(message);
       },
     ).onError((handleError) => log("onError: $handleError"));
   }
@@ -273,25 +281,23 @@ class PushNotificationService {
   //   super.initState();
   // }
 
-
-
-
   //----------------------------------------------------------------------------------
   // ---------------------------------with tutorial --------------------------------------
 
-  static Future <void> init ()async{
-    await messaging.requestPermission() ;
-    String? token = await messaging.getToken() ;
+  static Future<void> init() async {
+    await messaging.requestPermission();
+    String? token = await messaging.getToken();
     log("FCM Token: $token");
     backgroundAndTerminalNotificationHandling();
     foregroundNotificationHandling();
   }
 
   static void backgroundAndTerminalNotificationHandling() {
-    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler) ;
-  }
-  static Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-    log("Handling a background message: ${message.notification?.title} - ${message.notification?.body}") ;
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   }
 
+  static Future<void> _firebaseMessagingBackgroundHandler(
+      RemoteMessage message) async {
+    log("Handling a background message: ${message.notification?.title} - ${message.notification?.body}");
+  }
 }

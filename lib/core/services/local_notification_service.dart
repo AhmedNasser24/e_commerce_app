@@ -46,17 +46,17 @@ class LocalNotificationService {
       );
     }
     AndroidNotificationDetails android = AndroidNotificationDetails(
-      'channel_id',
-      'channel_name',
+      'azkar_channel', // New channel ID
+      'Azkar Channel',
       importance: Importance.max,
       priority: Priority.high,
       styleInformation: bigPictureStyleInformation,
       playSound: true,
-      // sound: RawResourceAndroidNotificationSound(
-      //     'long_notification_sound'.split('.').first),
+      sound: RawResourceAndroidNotificationSound('azkar'),
     );
     NotificationDetails details = NotificationDetails(
       android: android,
+      iOS: const DarwinNotificationDetails(sound: 'azkar.mp3'),
     );
     await flutterLocalNotificationsPlugin.show(
       0,
