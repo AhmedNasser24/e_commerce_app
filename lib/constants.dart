@@ -61,3 +61,4 @@ const String kSupabaseKey ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXB
 const String kECommerceBucket = "ecommerce_image";
 const double kMaxWidthForDialog = 700;
 const String kNotificationChannelId = "azkar_channel";
+const String kNotificationChannelName = "Azkar Channel";

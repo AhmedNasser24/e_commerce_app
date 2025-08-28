@@ -90,50 +90,7 @@ class PushNotificationService {
     }
   }
 
-  Future<void> sendMessageUsingToken(
-      {required NotificationModel notificationModel}) async {
-    var headersList = {
-      'Accept': '*/*',
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ${notificationModel.accessToken}',
-    };
-    var url = Uri.parse(
-        'https://fcm.googleapis.com/v1/projects/e-commerce-app-10f7e/messages:send');
-
-    var body = {
-      "message": {
-        // token ony change when you reinstall the app or change the device
-        "token": notificationModel.token,
-        "notification": {
-          "title": notificationModel.title,
-          "body": notificationModel.body,
-          // x ? "image": notificationModel.imageUrl : null,
-        },
-        "data": notificationModel.productItemModel?.toJson() ?? {},
-
-        //Always include this part to play the custom sound
-        "android": {
-          "notification": {
-            "sound": "azkar",
-            "channel_id": kNotificationChannelName // should be as same as channel_id in local_notification_service.dart
-          }
-        }
-      }
-    };
-
-    var req = http.Request('POST', url);
-    req.headers.addAll(headersList);
-    req.body = json.encode(body);
-
-    var res = await req.send();
-    final resBody = await res.stream.bytesToString();
-
-    if (res.statusCode >= 200 && res.statusCode < 300) {
-      log("resBody: $resBody");
-    } else {
-      log("res.reasonPhrase: ${res.reasonPhrase}");
-    }
-  }
+  
 
   static void foregroundNotificationHandling() {
     FirebaseMessaging.onMessage.listen(
@@ -217,6 +174,51 @@ class PushNotificationService {
     );
   }
 
+Future<void> sendMessageUsingToken(
+      {required NotificationModel notificationModel}) async {
+    var headersList = {
+      'Accept': '*/*',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${notificationModel.accessToken}',
+    };
+    var url = Uri.parse(
+        'https://fcm.googleapis.com/v1/projects/e-commerce-app-10f7e/messages:send');
+
+    var body = {
+      "message": {
+        // token ony change when you reinstall the app or change the device
+        "token": notificationModel.token,
+        "notification": {
+          "title": notificationModel.title,
+          "body": notificationModel.body,
+          // x ? "image": notificationModel.imageUrl : null,
+        },
+        "data": notificationModel.productItemModel?.toJson() ?? {},
+
+        //Always include this part to play the custom sound
+        "android": {
+          "notification": {
+            "sound": "azkar",
+            "channel_id": kNotificationChannelName // should be as same as channel_id in local_notification_service.dart
+          }
+        }
+      }
+    };
+
+    var req = http.Request('POST', url);
+    req.headers.addAll(headersList);
+    req.body = json.encode(body);
+
+    var res = await req.send();
+    final resBody = await res.stream.bytesToString();
+
+    if (res.statusCode >= 200 && res.statusCode < 300) {
+      log("resBody: $resBody");
+    } else {
+      log("res.reasonPhrase: ${res.reasonPhrase}");
+    }
+  }
+
   // used to send message to many devices
   Future<void> sendMessageUsingTopic({
     required NotificationModel notificationModel,
@@ -237,6 +239,13 @@ class PushNotificationService {
         },
         "data": notificationModel.productItemModel?.toJson() ?? {},
         "topic": kNotificationTopic,
+        //Always include this part to play the custom sound
+        "android": {
+          "notification": {
+            "sound": "azkar",
+            "channel_id": kNotificationChannelName // should be as same as channel_id in local_notification_service.dart
+          }
+        }
       }
     };
 
@@ -254,16 +263,24 @@ class PushNotificationService {
     }
   }
 
-  Future<void> subscribeToTopic() async {
-    await FirebaseMessaging.instance.subscribeToTopic(
+  static Future<void> subscribeToTopic() async {
+    await messaging.subscribeToTopic(
       kNotificationTopic,
-    );
+    ).then((value) {
+      log("Subscribed to topic: $kNotificationTopic");
+    }).onError((error, stackTrace) {
+      log("Error subscribing to topic: $error");
+    });
   }
 
-  Future<void> unsubscribeFromTopic() async {
-    await FirebaseMessaging.instance.unsubscribeFromTopic(
+  static Future<void> unsubscribeFromTopic() async {
+    await messaging.unsubscribeFromTopic(
       kNotificationTopic,
-    );
+    ).then((value) {
+      log("Unsubscribed from topic: $kNotificationTopic");
+    }).onError((error, stackTrace) {
+      log("Error unsubscribing from topic: $error");
+    });
   }
 
   // put in main.dart
@@ -290,6 +307,7 @@ class PushNotificationService {
     log("FCM Token: $token");
     backgroundAndTerminalNotificationHandling();
     foregroundNotificationHandling();
+    await subscribeToTopic();
   }
 
   static void backgroundAndTerminalNotificationHandling() {

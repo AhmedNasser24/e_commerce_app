@@ -64,7 +64,7 @@ class LoginCubit extends Cubit<LoginState> {
       (ok) {
         // if (FirebaseAuth.instance.currentUser?.emailVerified ?? false) {
         if (isValid) {
-          PushNotificationService().subscribeToTopic();
+          PushNotificationService.subscribeToTopic();
           SharedPreferenceSingleton.setbool(kIsLogin, true) ;
           SharedPreferenceSingleton.setString(kAccountKind, userKind1);
           emit(LoginSuccess());

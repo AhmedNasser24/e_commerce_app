@@ -103,7 +103,7 @@ class NotificationRepoImpl implements NotificationRepo {
   @override
   Future<Either<void, Failure>> subscribeToTopic() async{
     try {
-      await PushNotificationService().subscribeToTopic();
+      await PushNotificationService.subscribeToTopic();
       return left(null);
     } on FirebaseException catch (e) {
       log("firebase message error : $e");
@@ -125,7 +125,7 @@ class NotificationRepoImpl implements NotificationRepo {
   @override
   Future<Either<void, Failure>> unsubscribeFromTopic() async {
     try {
-      await PushNotificationService().unsubscribeFromTopic();
+      await PushNotificationService.unsubscribeFromTopic();
       return left(null);
     } on FirebaseException catch (e) {
       log("firebase message error : $e");
